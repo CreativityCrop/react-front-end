@@ -1,21 +1,24 @@
-import { Header } from "./header/Header.js";
-import { Routes, Route, useLocation, Navigate } from "react-router-dom";
-import { fetchToken } from "./AuthAPI";
+import { Header } from './header/Header.js';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { fetchToken } from './AuthAPI';
 
-import MainContent from "./MainContent";
-import Home from "./routes/Home";
-import Login from "./routes/Login";
-import Register from "./routes/Register";
-import Aboutus from "./routes/Aboutus";
-import Account from "./routes/Account";
+import MainContent from './MainContent';
+import Home from './routes/Home';
+import Login from './routes/Login';
+import Register from './routes/Register';
+import Aboutus from './routes/Aboutus';
+import Account from './routes/Account';
 
-import NotFound from "./NotFound";
+import NotFound from './NotFound';
 
-import Marketplace from "./routes/Marketplace";
-import MarketplaceIndex from "./marketplace/MarketplaceIndex";
-import BuyView from "./marketplace/BuyView";
-import SellView from "./marketplace/SellView";
-import Idea from "./marketplace/Idea";
+import Marketplace from './routes/Marketplace';
+import MarketplaceIndex from './marketplace/MarketplaceIndex';
+import BuyView from './marketplace/BuyView';
+import SellView from './marketplace/SellView';
+import IdeasForSale from './marketplace/buyview/IdeasForSale';
+import Idea from './marketplace/Idea';
+import ListedIdea from './marketplace/buyview/ListedIdea/ListedIdea';
+import Logout from './routes/Logout';
 
 export default function App() {
   return (
@@ -30,24 +33,44 @@ export default function App() {
             <Route path="marketplace" element={<Marketplace/>}>
               <Route index element={<MarketplaceIndex/>}/>
               <Route path="buy" element={<BuyView/>}>
-                <Route path=":ideaID" element={<Idea/>}/>
+                <Route index element={ <IdeasForSale/> } />
+                <Route path=":ideaID" element={
+                  <AuthenticatedRoute>
+                    <ListedIdea/>
+                  </AuthenticatedRoute>
+                }/>
               </Route>
-              <Route path="sell" element={<SellView/>}/>
+              <Route path="sell" element={
+                <AuthenticatedRoute>
+                  <SellView/>
+                </AuthenticatedRoute>
+              }/>
             </Route>
             {/* All other first level routes */}
             <Route path="about-us" element={<Aboutus/>}/>
 
             <Route path="login" element={
-              <AuthenticationRoute><Login/></AuthenticationRoute>
+              <AuthenticationRoute>
+                <Login/>
+              </AuthenticationRoute>
             }/>
             <Route path="register" element={
-              
-              <AuthenticationRoute><Register/></AuthenticationRoute>
+              <AuthenticationRoute>
+                <Register/>
+              </AuthenticationRoute>
             }/>
             
             <Route path="account" element={
-              <AuthenticatedRoute><Account/></AuthenticatedRoute>
+              <AuthenticatedRoute>
+                <Account/>
+              </AuthenticatedRoute>
             }/>
+            <Route path="/idea/:ideaID" element={
+                  <AuthenticatedRoute>
+                    <Idea/>
+                  </AuthenticatedRoute>
+            }/>
+            <Route path="logout" element={ <Logout /> }/>
             {/* Route to display some error page when the route is not defined */}
             <Route path="*" element={<NotFound/>}/>
           </Route>
@@ -56,7 +79,7 @@ export default function App() {
   );
 }
 
-function AuthenticationRoute({children}) {
+export function AuthenticationRoute({children}) {
   let auth = fetchToken();
   let location = useLocation();
 
@@ -67,11 +90,12 @@ function AuthenticationRoute({children}) {
   return children;
 }
 
-function AuthenticatedRoute({ children }) {
+export function AuthenticatedRoute({children }) {
   let auth = fetchToken();
   let location = useLocation();
 
   if (!auth) {
+    localStorage.setItem("redirect-back", location.pathname);
     return <Navigate to="/login" state={{ from: location }}/>;
   }
 

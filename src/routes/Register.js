@@ -1,34 +1,87 @@
+import { useState } from 'react';
+import { setToken } from '../AuthAPI';
+import { useNavigate } from 'react-router-dom';
 
+import axios from 'axios';
+import { sha3_256 } from 'js-sha3';
 
 export default function Register() {
-    return (
+  const navigate = useNavigate();
+  const navigateBack = localStorage.getItem("redirect-back");
+  const [ firstName, setFirstName ] = useState("");
+  const [ lastName, setLastName ] = useState("");
+  const [ email, setEmail ] = useState("");
+  const [ username, setUsername ] = useState("");
+  const [ password, setPassword ] = useState("");
+
+  const isFormValid = () => {
+      return true;
+  }
+
+  const register = () => {
+    if (!isFormValid) {
+      return;
+    } else {
+      axios
+        .post("http://localhost:8000/api/auth/register", {
+          first_name: firstName,
+          last_name: lastName,
+          email: email,
+          username: username,
+          pass_hash: sha3_256(password)
+        })
+        .then(function (response) {
+          //console.log(response.data.access_token, "response.data.access_token");
+          if (response.data.access_token) {
+            setToken(response.data.access_token);
+            if(navigateBack) {
+              localStorage.removeItem("redirect-back");
+              navigate(navigateBack);
+            }
+            else {
+              navigate("/account");
+            }
+          }
+        })
+        .catch(function (error) {
+          console.log(error, "error");
+        });
+    }
+  };
+
+  return (
+    <div>
+      <h1>Register</h1>
+      <form className="justify justify-center">
+        <label>
+          <p>First name</p>
+          <input type="text" onChange={(e) => setFirstName(e.target.value)} />
+        </label>
+        <label>
+          <p>Last name</p>
+          <input type="text" onChange={(e) => setLastName(e.target.value)} />
+        </label>
+        <label>
+          <p>Email address</p>
+          <input type="email" onChange={(e) => setEmail(e.target.value)} />
+        </label>
+        <label>
+          <p>Username</p>
+          <input type="text" onChange={(e) => setUsername(e.target.value)} />
+        </label>
+        <label>
+          <p>Password</p>
+          <input
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
         <div>
-            <h1>Register</h1>
-            <form className="justify justify-center">
-                <label>
-                    <p>First name</p>
-                    <input type="text" />
-                </label>
-                <label>
-                    <p>Last name</p>
-                    <input type="text" />
-                </label>
-                <label>
-                    <p>Email address</p>
-                    <input type="email" />
-                </label>
-                <label>
-                    <p>Username</p>
-                    <input type="text" />
-                </label>
-                <label>
-                    <p>Password</p>
-                    <input type="password" />
-                </label>
-                <div>
-                    <button type="button">Submit</button>
-                </div>
-            </form>
+          <button type="button" onClick={register}>
+            Submit
+          </button>
         </div>
-    );
+      </form>
+    </div>
+  );
 }

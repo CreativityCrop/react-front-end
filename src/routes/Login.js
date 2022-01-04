@@ -6,6 +6,7 @@ import { sha3_256 } from 'js-sha3';
 
 export default function Login() {
   const navigate = useNavigate();
+  const navigateBack = localStorage.getItem("redirect-back");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   
@@ -14,19 +15,25 @@ export default function Login() {
       return;
     } else {
       axios
-      .post("http://78.128.16.152:8000/api/auth/login", {
+      .post("http://localhost:8000/api/auth/login", {
         username: username,
         pass_hash: sha3_256(password)
       })
       .then(function (response) {
-        console.log(response.data.access_token, "response.data.access_token");
+        //console.log(response.data.access_token, "response.data.access_token");
         if (response.data.access_token) {
           setToken(response.data.access_token);
-          navigate("/account");
+          if(navigateBack) {
+            localStorage.removeItem("redirect-back");
+            navigate(navigateBack);
+          }
+          else {
+            navigate("/account");
+          }
         }
       })
       .catch(function (error) {
-        //console.log(error, "error");
+        console.log(error, "error");
       });
     }
   }

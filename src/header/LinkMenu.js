@@ -1,11 +1,10 @@
 import Link from './Link';
-import {fetchToken} from '../AuthAPI'
+import { fetchToken } from '../AuthAPI'
 import React from 'react';
 
 export function LinkMenu() {
     return (
         <ul className="flex">
-            <Link addr="/" text="Home"/>
             <Link addr="/marketplace" text="Marketplace"/>
             <Link addr="/about-us" text="About us"/>
             <AuthenticatedLinks/>
@@ -23,7 +22,7 @@ class AuthenticatedLinks extends React.Component {
     componentDidMount() {
       this.timerID = setInterval(
         () => this.tick(),
-        500
+        100
       );
     }
   
@@ -39,14 +38,16 @@ class AuthenticatedLinks extends React.Component {
   
     render() {
         if(this.state.auth) {
-            return <Link addr="/account" text="Account"/>
+            return <>
+              <Link addr="/account" text="Account"/>
+              <Link addr="/logout" text="Sign out"></Link>
+            </>
         }
         else {
             return <>
-                <Link addr="/login" text="Login"/>
-                <Link addr="/register" text="Register"/>
+              <Link addr="/login" text="Login"/>
+              <Link addr="/register" text="Register"/>
             </>
         }
     }
 }
-

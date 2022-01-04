@@ -9,7 +9,7 @@ export default function Link(props) {
             >
                 {props.text}
             </NavLink>
-        
         </li>
     );
 }
+
