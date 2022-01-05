@@ -1,12 +1,16 @@
-import { setToken, MAIN_API_URL } from '../AuthAPI';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom'
+
 import axios from 'axios';
 import { sha3_256 } from 'js-sha3';
+
+import { setToken, MAIN_API_URL } from '../AuthAPI';
+import { AuthContext } from '../Context';
 
 export default function Login() {
   const navigate = useNavigate();
   const navigateBack = localStorage.getItem("redirect-back");
+  const [authContext, setAuthContext] = useContext(AuthContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   
@@ -23,6 +27,8 @@ export default function Login() {
         //console.log(response.data.access_token, "response.data.access_token");
         if (response.data.access_token) {
           setToken(response.data.access_token);
+          setAuthContext("authenticated");
+          console.log(authContext);
           if(navigateBack) {
             localStorage.removeItem("redirect-back");
             navigate(navigateBack);

@@ -24,7 +24,7 @@ import Logout from './routes/Logout';
 
 
 export default function App() {
-  const [authContext, setAuthContext] = useState("not");
+  const [authContext, setAuthContext] = useState("unauthenticated");
 
   return (
     <div>

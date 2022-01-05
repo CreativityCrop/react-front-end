@@ -1,75 +1,27 @@
+import { useEffect, useContext } from 'react';
+
+import { AuthContext } from '../Context';
+
 import Link from './Link';
-import { useEffect } from 'react';
-import { getToken } from '../AuthAPI';
 
 export function LinkMenu() {
-
-    useEffect(() => {
-    
-    }, []);
-
-    return (
-      <ul className="flex">
-            <Link addr="/marketplace" text="Marketplace"/>
-            <Link addr="/about-us" text="About us"/>
-            <AuthenticatedLinks/>
-        </ul>
-    );
+  const [authContext, setAuthContext] = useContext(AuthContext);
+	
+	return (
+		<ul className="flex">
+					<Link addr="/marketplace" text="Marketplace"/>
+					<Link addr="/about-us" text="About us"/>
+					{
+						authContext === "authenticated" ?
+						<>
+							<Link addr="/account" text="Account"/>
+      				<Link addr="/logout" text="Sign out"></Link>
+						</> :
+						<>
+							<Link addr="/login" text="Login"/>
+							<Link addr="/register" text="Register"/>
+						</>
+					}
+			</ul>
+	);
 }
-
-function AuthenticatedLinks() {
-  const auth = getToken();
-  if(auth) {
-    return <>
-      <Link addr="/account" text="Account"/>
-      <Link addr="/logout" text="Sign out"></Link>
-    </>
-  }
-  else {
-      return <>
-        <Link addr="/login" text="Login"/>
-        <Link addr="/register" text="Register"/>
-      </>
-  }
-}
-
-//TODO:very bad code, must change(maybe)'
-/*
-class AuthenticatedLinks extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {auth: getToken()};
-    }
-  
-    componentDidMount() {
-      this.timerID = setInterval(
-        () => this.tick(),
-        100
-      );
-    }
-  
-    componentWillUnmount() {
-      clearInterval(this.timerID);
-    }
-  
-    tick() {
-      this.setState({
-        auth: getToken()
-      });
-    }
-  
-    render() {
-        if(this.state.auth) {
-            return <>
-              <Link addr="/account" text="Account"/>
-              <Link addr="/logout" text="Sign out"></Link>
-            </>
-        }
-        else {
-            return <>
-              <Link addr="/login" text="Login"/>
-              <Link addr="/register" text="Register"/>
-            </>
-        }
-    }
-}*/
