@@ -5,7 +5,7 @@ import { removeToken } from '../AuthAPI';
 import { AuthContext } from '../Context';
 
 export default function Logout() {
-    const [authContext, setAuthContext] = useContext(AuthContext);
+    const [ , setAuthContext ] = useContext(AuthContext);
 
     removeToken();
     setAuthContext("unauthenticated");

@@ -1,15 +1,12 @@
-import { verifyToken } from '../AuthAPI';
-import { useEffect } from 'react'
 import { Outlet } from 'react-router-dom';
+
+import AuthProvider from '../AuthProvider';
 
 export default function BuyView() {
 
-    useEffect(() => {
-        verifyToken();
-    }, []);
-
     return (
-        <div className="">
+        <div>
+            <AuthProvider/>
             <Outlet/>
         </div>
     );

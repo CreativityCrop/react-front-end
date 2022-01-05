@@ -1,15 +1,11 @@
-import { verifyToken } from '../AuthAPI';
-import { useEffect } from 'react'
+import AuthProvider from '../AuthProvider';
+
 import FirstSection from "../homepage/FirstSection";
 
 export default function Home() {
-
-    useEffect(() => {
-        verifyToken();
-    }, []);
-
     return (
         <div>
+            <AuthProvider/>
             <FirstSection/>
         </div>
     );

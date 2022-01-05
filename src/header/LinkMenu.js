@@ -1,11 +1,11 @@
-import { useEffect, useContext } from 'react';
+import { useContext } from 'react';
 
 import { AuthContext } from '../Context';
 
 import Link from './Link';
 
 export function LinkMenu() {
-  const [authContext, setAuthContext] = useContext(AuthContext);
+  const [authContext, ] = useContext(AuthContext);
 	
 	return (
 		<ul className="flex">

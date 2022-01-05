@@ -1,16 +1,13 @@
-import { verifyToken } from '../AuthAPI';
-import { useEffect } from 'react'
 import { Outlet, NavLink } from 'react-router-dom';
 
+import AuthProvider from '../AuthProvider';
+
 export default function Marketplace() {
-    
-    useEffect(() => {
-        verifyToken();
-    }, []);
 
     return (
         <div>
-            <h1 className="text-center m-5">Marketplace</h1>
+            <AuthProvider/>
+            <h1 className="">Marketplace</h1>
 
             <div className="flex flex-col sm:flex-row justify-center">
                 <NavLink

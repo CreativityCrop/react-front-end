@@ -1,14 +1,9 @@
-import { verifyToken } from '../AuthAPI';
-import { useEffect } from 'react'
+import AuthProvider from '../AuthProvider';
 
 export default function Aboutus() {
-
-    useEffect(() => {
-        verifyToken();
-    }, []);
-    
     return (
         <div>
+            <AuthProvider/>
             <h1>About us</h1>
         </div>
     );
