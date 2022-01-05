@@ -3,7 +3,7 @@ import Logo from './Logo.js';
 
 export function Header() {
     return (
-        <div className="flex flex-auto bg-blue-500 cent p-10 justify-between z-10 top-0">
+        <div className="flex flex-auto bg-blue-500 cent py-2 px-10 justify-between place-items-center select-none">
             <Logo/>
             <LinkMenu/>
         </div>
