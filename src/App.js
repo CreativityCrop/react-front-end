@@ -17,7 +17,7 @@ import BuyView from './marketplace/BuyView';
 import SellView from './marketplace/SellView';
 import IdeasForSale from './marketplace/buyview/IdeasForSale';
 import Idea from './marketplace/Idea';
-import ListedIdea from './marketplace/buyview/ListedIdea/ListedIdea';
+import ListedIdea from './marketplace/buyview/ListedIdea';
 import Logout from './routes/Logout';
 
 export default function App() {

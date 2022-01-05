@@ -7,8 +7,9 @@ export default function Logo() {
             <ul className="flex">
             <Link
                 text="Home"
-                addr="#"
-            /></ul>
+                addr="/"
+            />
+            </ul>
         </div>
         );    
 }

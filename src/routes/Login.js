@@ -42,11 +42,17 @@ export default function Login() {
     <div>
       <h1>Login</h1>
       <form className="justify justify-center" onSubmit={login}>
-        <label>Input Username</label>
+        <label>
+          <p>Input Username</p>
           <input type="text" onChange={(e) => setUsername(e.target.value)} />
-        <label>Input Password</label>
+        </label>
+        <label>
+          <p>Input Password</p>
           <input type="password" onChange={(e) => setPassword(e.target.value)} />
-        <button type="button" onClick={login} >Submit</button>
+        </label>
+        <div>
+          <button type="button" onClick={login} >Submit</button>
+        </div>
       </form>
     </div>
   );
