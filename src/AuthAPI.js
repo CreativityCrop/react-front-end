@@ -15,16 +15,19 @@ export const removeToken = () => {
 }
 
 export const verifyToken = async () => {
-  await axios.get(MAIN_API_URL + "/auth/verify", {
-    headers: {
-      "Token": getToken(),
-      "Content-Type": "application/json"
-    }
-  }).catch(function (error) {
-    if (error.response.status === 401) {
-      console.log(error.response.data);
-    } else {
-      console.log('Error', error.message);
-    }
-  });
+  if(getToken() !== null) {
+    await axios.get(MAIN_API_URL + "/auth/verify", {
+      headers: {
+        "Token": getToken(),
+        "Content-Type": "application/json"
+      }
+    }).catch(function (error) {
+      if (error.response.status === 401) {
+        console.log("removing the token")
+        removeToken();
+      } else {
+        console.log('Error', error.message);
+      }
+    });
+  }
 }

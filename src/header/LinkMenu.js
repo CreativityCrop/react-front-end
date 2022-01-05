@@ -1,10 +1,15 @@
 import Link from './Link';
-import { getToken } from '../AuthAPI'
-import React from 'react';
+import { useEffect } from 'react';
+import { getToken } from '../AuthAPI';
 
 export function LinkMenu() {
+
+    useEffect(() => {
+    
+    }, []);
+
     return (
-        <ul className="flex">
+      <ul className="flex">
             <Link addr="/marketplace" text="Marketplace"/>
             <Link addr="/about-us" text="About us"/>
             <AuthenticatedLinks/>
@@ -12,7 +17,24 @@ export function LinkMenu() {
     );
 }
 
-//TODO:very bad code, must change(maybe)
+function AuthenticatedLinks() {
+  const auth = getToken();
+  if(auth) {
+    return <>
+      <Link addr="/account" text="Account"/>
+      <Link addr="/logout" text="Sign out"></Link>
+    </>
+  }
+  else {
+      return <>
+        <Link addr="/login" text="Login"/>
+        <Link addr="/register" text="Register"/>
+      </>
+  }
+}
+
+//TODO:very bad code, must change(maybe)'
+/*
 class AuthenticatedLinks extends React.Component {
     constructor(props) {
       super(props);
@@ -50,4 +72,4 @@ class AuthenticatedLinks extends React.Component {
             </>
         }
     }
-}
+}*/

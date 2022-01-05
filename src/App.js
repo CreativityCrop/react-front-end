@@ -1,7 +1,8 @@
-import { Header } from './header/Header.js';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { getToken } from './AuthAPI';
-import React from 'react'
+import React, { useState } from 'react'
+
+import { AuthContext } from './Context';
 
 import MainContent from './MainContent';
 import Home from './routes/Home';
@@ -21,11 +22,13 @@ import Idea from './marketplace/Idea';
 import ListedIdea from './marketplace/buyview/ListedIdea';
 import Logout from './routes/Logout';
 
+
 export default function App() {
+  const [authContext, setAuthContext] = useState("not");
+
   return (
     <div>
-        <Header/>
-
+      <AuthContext.Provider value={[authContext, setAuthContext]}>
         <Routes>
           {/* Main route */}
           <Route path="/" element={<MainContent/>}>
@@ -67,15 +70,16 @@ export default function App() {
               </AuthenticatedRoute>
             }/>
             <Route path="/idea/:ideaID" element={
-                  <AuthenticatedRoute>
-                    <Idea/>
-                  </AuthenticatedRoute>
+              <AuthenticatedRoute>
+                <Idea/>
+              </AuthenticatedRoute>
             }/>
             <Route path="logout" element={ <Logout /> }/>
             {/* Route to display some error page when the route is not defined */}
             <Route path="*" element={<NotFound/>}/>
           </Route>
         </Routes>
+      </AuthContext.Provider>
     </div>
   );
 }

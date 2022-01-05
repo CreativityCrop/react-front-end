@@ -1,6 +1,11 @@
-
+import { verifyToken } from '../AuthAPI';
+import { useEffect } from 'react'
 
 export default function Account() {
+
+  useEffect(() => {
+    verifyToken();
+  }, []);
 
   return (
     <div>

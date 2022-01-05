@@ -1,15 +1,15 @@
 import { Outlet } from 'react-router-dom';
-import { useEffect } from 'react';
-import { verifyToken } from './AuthAPI';
+import Header from './header/Header';
+import Footer from './footer/Footer';
 
 export default function MainContent() {
-    useEffect(() => {
-        verifyToken();
-    });
-
     return (
-        <div className="flex flex-col items-center">
-            <Outlet/>
+        <div >
+            <Header/>
+            <div className="flex flex-col items-center">
+                <Outlet/>
+            </div>
+            <Footer/>
         </div>
     );
 }

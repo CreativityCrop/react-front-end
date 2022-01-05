@@ -1,7 +1,14 @@
+import { verifyToken } from '../AuthAPI';
+import { useEffect } from 'react'
 import { Outlet, NavLink } from 'react-router-dom';
 
 export default function Marketplace() {
-        return (
+    
+    useEffect(() => {
+        verifyToken();
+    }, []);
+
+    return (
         <div>
             <h1 className="text-center m-5">Marketplace</h1>
 
