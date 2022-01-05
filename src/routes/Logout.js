@@ -1,8 +1,8 @@
 import { Navigate } from 'react-router-dom';
-
+import { removeToken } from '../AuthAPI';
 
 export default function Logout() {
-    localStorage.removeItem("access_token");
+    removeToken();
 
     return(
         <Navigate to="/"/>

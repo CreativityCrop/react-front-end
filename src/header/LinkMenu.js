@@ -1,5 +1,5 @@
 import Link from './Link';
-import { fetchToken } from '../AuthAPI'
+import { getToken } from '../AuthAPI'
 import React from 'react';
 
 export function LinkMenu() {
@@ -16,7 +16,7 @@ export function LinkMenu() {
 class AuthenticatedLinks extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {auth: fetchToken()};
+      this.state = {auth: getToken()};
     }
   
     componentDidMount() {
@@ -32,7 +32,7 @@ class AuthenticatedLinks extends React.Component {
   
     tick() {
       this.setState({
-        auth: fetchToken()
+        auth: getToken()
       });
     }
   

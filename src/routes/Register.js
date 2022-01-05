@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { setToken } from '../AuthAPI';
+import { setToken, MAIN_API_URL } from '../AuthAPI';
 import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
@@ -23,7 +23,7 @@ export default function Register() {
       return;
     } else {
       axios
-        .post("http://localhost:8000/api/auth/register", {
+        .post(MAIN_API_URL + "/auth/register", {
           first_name: firstName,
           last_name: lastName,
           email: email,

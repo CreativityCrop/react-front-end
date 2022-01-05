@@ -1,6 +1,7 @@
 import { Header } from './header/Header.js';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
-import { fetchToken } from './AuthAPI';
+import { getToken } from './AuthAPI';
+import React from 'react'
 
 import MainContent from './MainContent';
 import Home from './routes/Home';
@@ -80,7 +81,7 @@ export default function App() {
 }
 
 export function AuthenticationRoute({children}) {
-  let auth = fetchToken();
+  let auth = getToken();
   let location = useLocation();
 
   if(auth) {
@@ -91,7 +92,7 @@ export function AuthenticationRoute({children}) {
 }
 
 export function AuthenticatedRoute({children }) {
-  let auth = fetchToken();
+  let auth = getToken();
   let location = useLocation();
 
   if (!auth) {

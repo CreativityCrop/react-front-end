@@ -1,17 +1,17 @@
 import Filters  from "./Filter";
 import { useParams } from 'react-router-dom';
 import { React, useState, useEffect } from 'react';
-import { fetchToken } from '../AuthAPI'
+import { getToken, MAIN_API_URL } from '../AuthAPI'
 import axios from 'axios';
 
 export default function ListedIdea(props){
     const params = useParams();
-    const auth = fetchToken();
+    const auth = getToken();
     const [idea, setIdea] = useState({});
 
     useEffect(() => {
         const req = async () => {
-            const response = await axios.get("http://localhost:8000/api/idea/" + params.ideaID, {
+            const response = await axios.get(MAIN_API_URL + "/idea/" + params.ideaID, {
                 headers: {
                     "Token": auth,
                     "Content-Type": "application/json"

@@ -1,4 +1,4 @@
-import { setToken } from '../AuthAPI';
+import { setToken, MAIN_API_URL } from '../AuthAPI';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
@@ -15,7 +15,7 @@ export default function Login() {
       return;
     } else {
       axios
-      .post("http://localhost:8000/api/auth/login", {
+      .post(MAIN_API_URL + "/auth/login", {
         username: username,
         pass_hash: sha3_256(password)
       })
