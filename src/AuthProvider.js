@@ -13,7 +13,7 @@ export default function AuthProvider() {
         else {
             setAuthContext("unathenticated");
         }
-        console.log(getToken() + " " + authContext);
+        //console.log(getToken() + " " + authContext);
     }, [authContext, setAuthContext]);
     return(<></>);
-}
+} 

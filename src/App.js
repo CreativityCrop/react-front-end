@@ -1,6 +1,6 @@
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { getToken } from './AuthAPI';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { AuthContext } from './Context';
 
@@ -25,6 +25,22 @@ import Logout from './routes/Logout';
 
 export default function App() {
   const [authContext, setAuthContext] = useState("unauthenticated");
+  let location = useLocation();
+
+  useEffect(() => {
+    let title;
+    switch(location.pathname) {
+      case "/": title = "CreativityCrop"; break;
+      case "/marketplace": title = "Marketplace"; break;
+      case "/about-us": title = "About us"; break;
+      case "/account": title = "Account"; break;
+      case "/login": title = "Login"; break;
+      case "/register": title = "Register"; break;
+      case "/idea": title = "Idea"; break;
+      default: title = "CreativityCrop"; break;
+    }
+    document.title = title;
+  }, [location]);
 
   return (
     <div>

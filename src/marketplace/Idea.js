@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { React, useState, useEffect } from 'react';
 import { getToken, MAIN_API_URL } from '../AuthAPI'
 import axios from 'axios';
+import AuthProvider from '../AuthProvider';
+
 
 export default function ListedIdea(props){
     const params = useParams();
@@ -24,6 +26,7 @@ export default function ListedIdea(props){
 
     return(
         <div>
+            <AuthProvider/>
             <div className="w-20">
                 <img src="" alt=""/>
             </div>

@@ -15,7 +15,7 @@ export const removeToken = () => {
 }
 
 export const verifyToken = async () => {
-  console.log("Checking token");
+  //console.log("Checking token");
   if(getToken() !== null) {
     await axios.get(MAIN_API_URL + "/auth/verify", {
       headers: {
