@@ -7,7 +7,7 @@ export default function FirstSection(){
                         <div className="max-w-30 content-center">
                             <h2 className="text-5xl text-extrabold mb-3 py-2 hover:text-red-600">ideas</h2>
                         </div>
-                        <h3 className="text-2xl">insparational quote here</h3>
+                        <h3 className="text-xl">insparational quote here</h3>
                     </div>
                     <div className="bg-violet-600 grid gird-cols-6 p-10 w-96 h-72">
                         {/* <p>this is a cool picture, imagine it</p> */}
