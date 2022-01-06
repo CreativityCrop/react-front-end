@@ -5,9 +5,9 @@ import AuthProvider from '../AuthProvider';
 export default function Marketplace() {
 
     return (
-        <div>
+        <div id="marketplace">
             <AuthProvider/>
-            <h1 className="">Marketplace</h1>
+            <h1 className="text-center">Marketplace</h1>
 
             <div className="flex flex-col sm:flex-row justify-center">
                 <NavLink

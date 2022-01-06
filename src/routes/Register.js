@@ -20,7 +20,8 @@ export default function Register() {
       return true;
   }
 
-  const register = () => {
+  const register = (event) => {
+    event.preventDefault();
     if (!isFormValid) {
       return;
     } else {
@@ -55,36 +56,41 @@ export default function Register() {
     <div>
       <AuthProvider/>
       <h1>Register</h1>
-      <form className="justify justify-center">
-        <label>
-          <p>First name</p>
-          <input type="text" onChange={(e) => setFirstName(e.target.value)} />
-        </label>
-        <label>
-          <p>Last name</p>
-          <input type="text" onChange={(e) => setLastName(e.target.value)} />
-        </label>
-        <label>
-          <p>Email address</p>
-          <input type="email" onChange={(e) => setEmail(e.target.value)} />
-        </label>
-        <label>
-          <p>Username</p>
-          <input type="text" onChange={(e) => setUsername(e.target.value)} />
-        </label>
-        <label>
-          <p>Password</p>
-          <input
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
+      <div className="flex flex-row">
         <div>
-          <button type="button" onClick={register}>
-            Submit
-          </button>
+          <img alt="nice img"/>
         </div>
-      </form>
+        <div>
+          <form className="justify justify-center" onSubmit={register}>
+            <label>
+              <p>First name</p>
+              <input type="text" onChange={(e) => setFirstName(e.target.value)} />
+            </label>
+            <label>
+              <p>Last name</p>
+              <input type="text" onChange={(e) => setLastName(e.target.value)} />
+            </label>
+            <label>
+              <p>Email address</p>
+              <input type="email" onChange={(e) => setEmail(e.target.value)} />
+            </label>
+            <label>
+              <p>Username</p>
+              <input type="text" onChange={(e) => setUsername(e.target.value)} />
+            </label>
+            <label>
+              <p>Password</p>
+              <input
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </label>
+            <div>
+              <button type="submit" onClick={register}>Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }

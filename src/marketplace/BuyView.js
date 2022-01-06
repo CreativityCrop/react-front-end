@@ -5,7 +5,7 @@ import AuthProvider from '../AuthProvider';
 export default function BuyView() {
 
     return (
-        <div>
+        <div id="buy-view">
             <AuthProvider/>
             <Outlet/>
         </div>

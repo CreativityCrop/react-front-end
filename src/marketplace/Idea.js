@@ -13,7 +13,7 @@ export default function ListedIdea(props){
 
     useEffect(() => {
         const req = async () => {
-            const response = await axios.get(MAIN_API_URL + "/idea/" + params.ideaID, {
+            const response = await axios.get(MAIN_API_URL + "/ideas/get/" + params.ideaID, {
                 headers: {
                     "Token": auth,
                     "Content-Type": "application/json"

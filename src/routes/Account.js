@@ -2,7 +2,7 @@ import AuthProvider from '../AuthProvider';
 
 export default function Account() {
   return (
-    <div>
+    <div id="account" className="">
       <AuthProvider/>
       <h1>Dashboard</h1>
       <Preferences />

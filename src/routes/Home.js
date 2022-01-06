@@ -5,7 +5,7 @@ import SecondSection from '../homepage/SecondSection';
 
 export default function Home() {
     return (
-        <div>
+        <div id="home">
             <AuthProvider/>
             <FirstSection/>
             <SecondSection/>

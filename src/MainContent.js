@@ -6,7 +6,7 @@ export default function MainContent() {
     return (
         <div >
             <Header/>
-            <div className="flex flex-col items-center">
+            <div id="main-content" className="flex flex-col items-center">
                 <Outlet/>
             </div>
             <Footer/>

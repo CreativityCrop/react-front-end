@@ -6,7 +6,7 @@ import SubmitTutorial from './sellview/SubmitTutorial'
 export default function SellView() {
 
     return (
-        <div className="flex flex-row">
+        <div id="sellview" className="flex flex-row">
             <AuthProvider/>
             <div className="basis-3/4">
                 <SubmitIdea/>
