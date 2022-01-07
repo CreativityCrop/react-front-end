@@ -16,7 +16,8 @@ export default function ListedIdea(props){
             const response = await axios.get(MAIN_API_URL + "/ideas/get/" + params.ideaID, {
                 headers: {
                     "Token": auth,
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*"
                 }
             });
             setIdea(response.data);
