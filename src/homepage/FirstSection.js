@@ -1,6 +1,6 @@
 export default function FirstSection(){
     return(
-        <div className="pt-28 select-none">
+        <div className="pt-28 select-none w-full">
                 <div id="holder" className="flex flex-row">
                     <div className="grid gird-cols-6 text-center p-8 mr-20 ml-5 mt-8 w-auto h-56">
                         <h1 className="text-5xl tetx-extrabold mb-2">A marketplace for</h1>
