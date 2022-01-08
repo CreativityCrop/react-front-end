@@ -32,6 +32,8 @@ export default function App() {
     switch(location.pathname) {
       case "/": title = ""; break;
       case "/marketplace": title = "Marketplace"; break;
+      case "/marketplace/buy": title = "Buy"; break;
+      case "/marketplace/sell": title = "Sell"; break;
       case "/about-us": title = "About us"; break;
       case "/account": title = "Account"; break;
       case "/login": title = "Login"; break;
