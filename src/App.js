@@ -30,16 +30,18 @@ export default function App() {
   useEffect(() => {
     let title;
     switch(location.pathname) {
-      case "/": title = "CreativityCrop"; break;
+      case "/": title = ""; break;
       case "/marketplace": title = "Marketplace"; break;
+      case "/marketplace/buy": title = "Buy"; break;
+      case "/marketplace/sell": title = "Sell"; break;
       case "/about-us": title = "About us"; break;
       case "/account": title = "Account"; break;
       case "/login": title = "Login"; break;
       case "/register": title = "Register"; break;
       case "/idea": title = "Idea"; break;
-      default: title = "CreativityCrop"; break;
+      default: title = "Not found"; break;
     }
-    document.title = title;
+    document.title = title + (title.length === 0 ? "" : " - ") + "CreativityCrop";
   }, [location]);
 
   return (
