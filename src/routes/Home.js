@@ -2,6 +2,8 @@ import AuthProvider from '../AuthProvider';
 
 import FirstSection from "../homepage/FirstSection";
 import SecondSection from '../homepage/SecondSection';
+import ThirdSection from '../homepage/ThirdSection';
+import FourthSection from '../homepage/FourthSection';
 
 export default function Home() {
     return (
@@ -9,6 +11,8 @@ export default function Home() {
             <AuthProvider/>
             <FirstSection/>
             <SecondSection/>
+            <ThirdSection/>
+            <FourthSection/>
         </div>
     );
 }

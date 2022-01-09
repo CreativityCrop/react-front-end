@@ -9,8 +9,8 @@ export default function FirstSection(){
                     </div>
                     <h3 className="text-xl">insparational quote here</h3>
                 </div>
-                <div className="bg-violet-600 grid gird-cols-6 p-10 w-96 h-72">
-                    {/* <p>this is a cool picture, imagine it</p> */}
+                <div className="bg-slate-300 grid gird-cols-6 w-96 h-72">
+                    <p>img</p>
                 </div>
             </div>
             {/* <div className="bg-pink-300 w-10 h-10">
