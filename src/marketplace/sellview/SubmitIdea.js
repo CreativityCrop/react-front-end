@@ -79,7 +79,7 @@ export default function SubmitIdea() {
                     <textarea placeholder={longDesc} onChange={(e) => setLongDesc(e.target.value)} />
                 </div>
                 <div className="flex flex-col mb-4">
-                    <input type="text" placeholder={categories} onChange={(e) => setCategories(e.target.value)} />
+                    <input type="text" placeholder={categories} value={'{"categories": ["funny", "stupid"]}'} onChange={(e) => setCategories(e.target.value)} />
                 </div>
                 <div className="flex flex-col mb-4">
                     <input type="text" placeholder={price + " $"} onChange={(e) => setPrice(e.target.value)} />
