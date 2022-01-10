@@ -4,23 +4,23 @@ import React, { useState, useEffect } from 'react'
 
 import { AuthContext } from './Context';
 
-import MainContent from './MainContent';
 import Home from './routes/Home';
+import Marketplace from './routes/Marketplace';
+import Aboutus from './routes/Aboutus';
 import Login from './routes/Login';
 import Register from './routes/Register';
-import Aboutus from './routes/Aboutus';
 import Account from './routes/Account';
+import Logout from './routes/Logout';
 
 import NotFound from './NotFound';
+import MainContent from './MainContent';
 
-import Marketplace from './routes/Marketplace';
-import MarketplaceIndex from './marketplace/MarketplaceIndex';
 import BuyView from './marketplace/BuyView';
-import SellView from './marketplace/SellView';
 import IdeasForSale from './marketplace/buyview/IdeasForSale';
-import Idea from './marketplace/Idea';
 import ListedIdea from './marketplace/buyview/ListedIdea';
-import Logout from './routes/Logout';
+import Idea from './marketplace/Idea';
+
+import SellView from './marketplace/SellView';
 
 
 export default function App() {
@@ -53,7 +53,7 @@ export default function App() {
             <Route index element={<Home/>}/>
             {/* Marketplace routes */}
             <Route path="marketplace" element={<Marketplace/>}>
-              <Route index element={<MarketplaceIndex/>}/>
+              <Route index element={<Navigate to="./buy"/>}/>
               <Route path="buy" element={<BuyView/>}>
                 <Route index element={ <IdeasForSale/> } />
                 <Route path=":ideaID" element={

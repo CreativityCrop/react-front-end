@@ -1,9 +1,9 @@
 
 
-export default function Filters(){
+export default function Filters(props){
     return(
         <div className="bg-green-300">
-            <p>filter</p>
+            <p>{props.category}</p>
         </div>
     );
 }

@@ -33,9 +33,9 @@ export default function Login() {
         }
       })
       .then(function (response) {
-        //console.log(response.data.access_token, "response.data.access_token");
-        if (response.data.access_token) {
-          setToken(response.data.access_token);
+        //console.log(response.data.accessToken, "response.data.accessToken");
+        if (response.data.accessToken) {
+          setToken(response.data.accessToken);
           if(navigateBack) {
             localStorage.removeItem("redirect-back");
             navigate(navigateBack);
