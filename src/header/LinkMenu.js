@@ -1,6 +1,5 @@
 import { useContext } from 'react';
-
-import { AuthContext } from '../Context';
+import { AuthContext } from '../AuthAPI';
 
 import Link from './Link';
 

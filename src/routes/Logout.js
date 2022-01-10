@@ -1,8 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 
-import { removeToken } from '../AuthAPI';
-import { AuthContext } from '../Context';
+import { removeToken, AuthContext } from '../AuthAPI';
 
 export default function Logout() {
     const [ , setAuthContext ] = useContext(AuthContext);

@@ -1,8 +1,7 @@
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
-import { getToken } from './AuthAPI';
+import { getToken, AuthContext } from './AuthAPI';
 import React, { useState, useEffect } from 'react'
 
-import { AuthContext } from './Context';
 
 import Home from './routes/Home';
 import Marketplace from './routes/Marketplace';

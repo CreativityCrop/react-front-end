@@ -1,20 +1,20 @@
 import { useContext, useEffect } from 'react';
 
 import { getToken, verifyToken } from './AuthAPI';
-import { AuthContext } from './Context';
+import { AuthContext } from './AuthAPI';
 
 export default function AuthProvider() {
     const [ authContext , setAuthContext ] = useContext(AuthContext);
     useEffect(() => {
         verifyToken().then( () => {
             if(getToken() != null ) {
-                setAuthContext("authenticated")
+                setAuthContext("authenticated");
             }
             else {
                 setAuthContext("unathenticated");
             }
         });
-        //console.log(getToken() + " " + authContext);
+        //console.log("Token: " + getToken() + "\nStatus: " + authContext);
     }, [authContext, setAuthContext]);
     return(<></>);
 } 
