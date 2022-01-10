@@ -2,6 +2,7 @@ import AuthProvider from '../AuthProvider';
 import FirstSec from '../about us/FirstSec';
 import SecSec from '../about us/SecSec';
 import ThirdSec from '../about us/ThirdSec';
+import FourthSec from '../about us/FourthSec';
 
 export default function Aboutus() {
     return (
@@ -10,6 +11,7 @@ export default function Aboutus() {
             <FirstSec/>
             <SecSec/>
             <ThirdSec/>
+            <FourthSec/>
         </div>
     );
 }
