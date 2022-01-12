@@ -1,8 +1,7 @@
 import { useState, useContext } from 'react';
 import axios from 'axios';
 
-import { getToken, removeToken, AuthContext, MAIN_API_URL } from '../../AuthAPI';
-import AuthProvider from '../../AuthProvider';
+import AuthProvider, { getToken, removeToken, AuthContext, MAIN_API_URL } from '../../AuthAPI';
 
 export default function SubmitIdea() {
     const [, setAuthContext] = useContext(AuthContext);
@@ -10,7 +9,7 @@ export default function SubmitIdea() {
     const [title, setTitle] = useState("Title");
     const [shortDesc, setShortDesc] = useState("Short description");
     const [longDesc, setLongDesc] = useState("Long description");
-    const [categories, setCategories] = useState("Categories");
+    const [categories, setCategories] = useState('{"categories": ["funny", "stupid"]}');
     const [price, setPrice] = useState(0);
     const [success, setSuccess] = useState(false);
 
@@ -79,7 +78,7 @@ export default function SubmitIdea() {
                     <textarea placeholder={longDesc} onChange={(e) => setLongDesc(e.target.value)} />
                 </div>
                 <div className="flex flex-col mb-4">
-                    <input type="text" placeholder={categories} value={'{"categories": ["funny", "stupid"]}'} onChange={(e) => setCategories(e.target.value)} />
+                    <input type="text" placeholder={categories} onChange={(e) => setCategories(e.target.value)} />
                 </div>
                 <div className="flex flex-col mb-4">
                     <input type="text" placeholder={price + " $"} onChange={(e) => setPrice(e.target.value)} />

@@ -1,4 +1,4 @@
-import AuthProvider from '../AuthProvider';
+import AuthProvider from '../AuthAPI';
 import SubmitIdea from './sellview/SubmitIdea'
 import SubmitTutorial from './sellview/SubmitTutorial'
 

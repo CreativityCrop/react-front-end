@@ -1,4 +1,4 @@
-import AuthProvider from "./AuthProvider";
+import AuthProvider from "./AuthAPI";
 
 export default function NotFound() {
     return (

@@ -1,29 +1,32 @@
 import { React, useState, useEffect } from 'react';
-import AuthProvider, { MAIN_API_URL } from '../../AuthAPI';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
+
+import AuthProvider, { getToken, MAIN_API_URL } from '../../AuthAPI';
 
 import Idea from '../../idea/Idea';
 
-export default function IdeasForSale() {
-    const [ideas, setIdeas] = useState([]);
+export default function IdeaBuy() {
+    let params = useParams();
+    const [idea, setIdea] = useState({});
 
     useEffect(() => {
-        loadIdeas();
-    }, []);
+        getIdea(params.ideaID);
+    }, [params]);
 
-    const loadIdeas = async () => {
-        const response = await axios.get(MAIN_API_URL + "/ideas/get", {
+    const getIdea = async (id) => {
+        const response = await axios.get(MAIN_API_URL + "/ideas/get/" + id, {
             headers: {
+                "Token": getToken(),
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "*"
             }
-        });
-        setIdeas(response.data);
+        })
+        setIdea(response.data);
     }
 
-    const listIdeas = ideas.map((idea) => {
-        return (
-            <Idea
+    const ideaEntry = () => {
+        return <Idea
                 key={idea.id}
                 id={idea.id}
                 title={idea.title}
@@ -31,15 +34,13 @@ export default function IdeasForSale() {
                 categories={idea.categories}
                 price={idea.price}
                 likes={idea.likes}
-            />
-        );
-    });
+        />;
+    }
 
     return (
-        <div id="ideas-list">
+        <div>
             <AuthProvider/>
-            <h1>Ideas for sale</h1>
-            {listIdeas}
+            {ideaEntry}
         </div>
     );
 }

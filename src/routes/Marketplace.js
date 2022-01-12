@@ -1,12 +1,9 @@
 import { Outlet, NavLink } from 'react-router-dom';
 
-import AuthProvider from '../AuthProvider';
-
 export default function Marketplace() {
 
     return (
         <div id="marketplace">
-            <AuthProvider/>
             <h1 className="text-center">Marketplace</h1>
 
             <div className="flex flex-col sm:flex-row justify-center">

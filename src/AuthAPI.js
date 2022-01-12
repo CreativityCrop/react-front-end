@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Cookies from 'universal-cookie';
-import React from "react";
+import React, { useContext, useEffect } from "react";
 
 export const AuthContext = React.createContext();
 const cookies = new Cookies();
@@ -41,3 +41,19 @@ export const verifyToken = async () => {
     });
   }
 }
+
+export default function AuthProvider() {
+  const [ authContext , setAuthContext ] = useContext(AuthContext);
+  useEffect(() => {
+      verifyToken().then( () => {
+          if(getToken() != null ) {
+              setAuthContext("authenticated");
+          }
+          else {
+              setAuthContext("unathenticated");
+          }
+      });
+      //console.log("Token: " + getToken() + "\nStatus: " + authContext);
+  }, [authContext, setAuthContext]);
+  return(<></>);
+} 

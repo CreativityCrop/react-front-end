@@ -1,7 +1,6 @@
+import React, { useState, useEffect } from 'react'
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { getToken, AuthContext } from './AuthAPI';
-import React, { useState, useEffect } from 'react'
-
 
 import Home from './routes/Home';
 import Marketplace from './routes/Marketplace';
@@ -14,12 +13,10 @@ import Logout from './routes/Logout';
 import NotFound from './NotFound';
 import MainContent from './MainContent';
 
+import SellView from './marketplace/SellView';
 import BuyView from './marketplace/BuyView';
 import IdeasForSale from './marketplace/buyview/IdeasForSale';
-import ListedIdea from './marketplace/buyview/ListedIdea';
-import Idea from './marketplace/Idea';
-
-import SellView from './marketplace/SellView';
+import IdeaBuy from './marketplace/buyview/IdeaBuy';
 
 
 export default function App() {
@@ -57,7 +54,7 @@ export default function App() {
                 <Route index element={ <IdeasForSale/> } />
                 <Route path=":ideaID" element={
                   <AuthenticatedRoute>
-                    <ListedIdea/>
+                    <IdeaBuy/>
                   </AuthenticatedRoute>
                 }/>
               </Route>
@@ -88,7 +85,7 @@ export default function App() {
             }/>
             <Route path="/idea/:ideaID" element={
               <AuthenticatedRoute>
-                <Idea/>
+                <Account/>
               </AuthenticatedRoute>
             }/>
             <Route path="logout" element={ <Logout /> }/>

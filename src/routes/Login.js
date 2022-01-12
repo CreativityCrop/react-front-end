@@ -4,9 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import { sha3_256 } from 'js-sha3';
 
-import { setToken, MAIN_API_URL } from '../AuthAPI';
-import AuthProvider from '../AuthProvider';
-
+import AuthProvider, { setToken, MAIN_API_URL } from '../AuthAPI';
 
 export default function Login() {
   const navigate = useNavigate();

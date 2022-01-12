@@ -522,6 +522,39 @@ select {
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
 }
+.container {
+  width: 100%;
+}
+@media (min-width: 640px) {
+
+  .container {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+
+  .container {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+
+  .container {
+    max-width: 1024px;
+  }
+}
+@media (min-width: 1280px) {
+
+  .container {
+    max-width: 1280px;
+  }
+}
+@media (min-width: 1536px) {
+
+  .container {
+    max-width: 1536px;
+  }
+}
 .float-left {
   float: left;
 }
@@ -536,6 +569,10 @@ select {
 .mx-20 {
   margin-left: 5rem;
   margin-right: 5rem;
+}
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
 }
 .ml-20 {
   margin-left: 5rem;
@@ -831,6 +868,9 @@ select {
 .p-6 {
   padding: 1.5rem;
 }
+.p-4 {
+  padding: 1rem;
+}
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
@@ -911,6 +951,9 @@ select {
 .font-medium {
   font-weight: 500;
 }
+.uppercase {
+  text-transform: uppercase;
+}
 .text-red-700 {
   --tw-text-opacity: 1;
   color: rgb(185 28 28 / var(--tw-text-opacity));
@@ -922,6 +965,10 @@ select {
 .text-gray-600 {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 .hover\:cursor-pointer:hover {
   cursor: pointer;
@@ -950,5 +997,12 @@ select {
 
   .sm\:flex-row {
     flex-direction: row;
+  }
+}
+@media (min-width: 1024px) {
+
+  .lg\:px-20 {
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 }

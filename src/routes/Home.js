@@ -1,4 +1,4 @@
-import AuthProvider from '../AuthProvider';
+import AuthProvider from '../AuthAPI';
 
 import FirstSection from "../homepage/FirstSection";
 import SecondSection from '../homepage/SecondSection';

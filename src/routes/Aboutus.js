@@ -1,4 +1,4 @@
-import AuthProvider from '../AuthProvider';
+import AuthProvider from '../AuthAPI';
 import FirstSec from '../about us/FirstSec';
 import SecSec from '../about us/SecSec';
 import ThirdSec from '../about us/ThirdSec';

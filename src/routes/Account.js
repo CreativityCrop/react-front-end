@@ -1,4 +1,4 @@
-import AuthProvider from '../AuthProvider';
+import AuthProvider from '../AuthAPI';
 import Dashboard from '../account/Dashboard';
 
 export default function Account() {
