@@ -24,6 +24,7 @@ export default function IdeasForSale() {
     const listIdeas = ideas.map((idea) => {
         return (
             <Idea
+                listView={true}
                 key={idea.id}
                 id={idea.id}
                 title={idea.title}
@@ -38,7 +39,6 @@ export default function IdeasForSale() {
     return (
         <div id="ideas-list">
             <AuthProvider/>
-            <h1>Ideas for sale</h1>
             {listIdeas}
         </div>
     );

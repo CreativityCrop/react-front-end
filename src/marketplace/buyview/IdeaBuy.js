@@ -27,6 +27,7 @@ export default function IdeaBuy() {
 
     const ideaEntry = () => {
         return <Idea
+                buyView={true}
                 key={idea.id}
                 id={idea.id}
                 title={idea.title}

@@ -15,7 +15,7 @@ import MainContent from './MainContent';
 
 import SellView from './marketplace/SellView';
 import BuyView from './marketplace/BuyView';
-import IdeasForSale from './marketplace/buyview/IdeasForSale';
+import IdeasList from './marketplace/buyview/IdeasList';
 import IdeaBuy from './marketplace/buyview/IdeaBuy';
 
 
@@ -51,7 +51,7 @@ export default function App() {
             <Route path="marketplace" element={<Marketplace/>}>
               <Route index element={<Navigate to="./buy"/>}/>
               <Route path="buy" element={<BuyView/>}>
-                <Route index element={ <IdeasForSale/> } />
+                <Route index element={ <IdeasList/> } />
                 <Route path=":ideaID" element={
                   <AuthenticatedRoute>
                     <IdeaBuy/>
