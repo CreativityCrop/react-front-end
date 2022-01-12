@@ -40,7 +40,7 @@ export default function IdeaBuy() {
     return (
         <div>
             <AuthProvider/>
-            {ideaEntry}
+            {ideaEntry()}
         </div>
     );
 }

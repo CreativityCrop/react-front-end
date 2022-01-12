@@ -1,11 +1,13 @@
 import Filters  from "./Filter";
 
 import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import { getToken, removeToken, AuthContext, MAIN_API_URL } from '../AuthAPI';
 
 export default function Idea(props) {
+    const navigate = useNavigate();
     const [, setAuthContext] = useContext(AuthContext);
     const [likeCount, setLikeCount] = useState(null);
 
@@ -41,9 +43,20 @@ export default function Idea(props) {
         });
     };
 
-    const categList = JSON.parse(props.categories).categories.map((category) => {
-        return <Filters key={category} category={category}/>
-    });
+    // const categList = JSON.parse(props.categories).categories.map((category) => {
+    //     return <Filters key={category} category={category}/>
+    // });
+
+    function getCateg() {
+        if(props.categories === undefined) {
+            return;
+        }
+        const categList = JSON.parse(props.categories).categories.map((category) => {
+            return <Filters key={category} category={category}/>
+        });
+        return categList;
+    };
+
     return (
         <div id="idea" className="bg-yellow-300 mb-20" key={props.title}>
             <div className="w-20">
@@ -63,7 +76,7 @@ export default function Idea(props) {
                 : ""
             }
             <div id="filters" className="grid grid-cols-10 gap-4">
-                {categList}
+                {getCateg()}
             </div>
             <h4>{props.price}$</h4>
             <div className="flex ">
@@ -73,7 +86,7 @@ export default function Idea(props) {
                 }}>👍</button>
             </div>
             <div className="bg-green-300">
-                <p>buy it!!!</p>
+                <button onClick={(e) => {navigate("/marketplace/buy/" + props.id)}}>See more</button>
             </div>
         </div>
     );
