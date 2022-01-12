@@ -1,26 +1,25 @@
 import Bought from "./Bought";
-import Sold from "./Sold";
 
 export default function Dashboard(){
     return(
         <div className="mt-14 select-none">
             <div id="holder-of-the-acc" className="flex flex-row mb-4">
-                <div id="left" className="w-44 h-44 mr-4 bg-slate-300">
+                <div id="left" className="w-48 h-48 mr-4 bg-slate-300">
                     <p>img</p>
                 </div>
-                <div id="middle" className="mr-4 mt-2">
+                <div id="middle" className="mr-4 mt-3">
                     <div className="flex flex-row mb-3">
-                        <div className="border-4 w-60 h-10">
+                        <div className="border-4 w-56 h-10 mr-36">
                             <p>Username</p>
                         </div>
-                        <div className="ml-3 w-28 h-10 bg-green-200 hover:bg-purple-200">
+                        {/* <div className="ml-3 w-28 h-10 bg-green-200 hover:bg-purple-200">
                             <p>log out</p>
-                        </div>
+                        </div> */}
                         <div className="ml-3 w-10 h-10 bg-green-200 hover:bg-purple-200">
                             <p>S</p>
                         </div>
                     </div>
-                    <div className="border-4 w-auto h-28">
+                    <div className="border-4 w-auto h-32">
                         <p>short bio</p>
                     </div>
                 </div>
@@ -45,12 +44,12 @@ export default function Dashboard(){
                     </div>
                 </div>
                 <div id="Your sold ideas">
-                    <div className="ml-[69px] w-5/6 border-x-4 border-b-4">
+                    <div className="mb-4 ml-[69px] w-5/6 border-x-4 border-b-4">
                         <div className="w-full h-16 bg-green-200">
                             <h1 className="text-3xl p-2">Your Sold Ideas</h1>
                         </div>
-                       <Sold/>
-                       <Sold/>
+                        <Bought/>
+                        <Bought/>
                     </div>
                 </div>
             </div>

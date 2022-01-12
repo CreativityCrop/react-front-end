@@ -1,4 +1,4 @@
-import HottestIdeas from "./HottestIdeas";
+import HottestIdeas from "../marketplace/buyview/HottestIdeas";
 
 export default function ThirdSection(){
     return(

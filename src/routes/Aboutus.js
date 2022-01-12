@@ -1,8 +1,8 @@
 import AuthProvider from '../AuthAPI';
-import FirstSec from '../about us/FirstSec';
-import SecSec from '../about us/SecSec';
-import ThirdSec from '../about us/ThirdSec';
-import FourthSec from '../about us/FourthSec';
+import FirstSec from '../aboutus/FirstSec';
+import SecSec from '../aboutus/SecSec';
+import ThirdSec from '../aboutus/ThirdSec';
+import FourthSec from '../aboutus/FourthSec';
 
 export default function Aboutus() {
     return (
