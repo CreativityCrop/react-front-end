@@ -36,7 +36,7 @@ export default function Dashboard(){
                     <h1 className="text-3xl">Library Overview</h1>
                 </div>
                 <div id="Your bought ideas">
-                    <div className="ml-[69px] w-5/6 border-x-4">
+                    <div className="ml-[69px] w-5/6 border-x-4 border-b-4">
                         <div className="w-full h-16 bg-purple-200">
                             <h1 className="text-3xl p-2">Your Bought Ideas</h1>
                         </div>
@@ -45,7 +45,7 @@ export default function Dashboard(){
                     </div>
                 </div>
                 <div id="Your sold ideas">
-                    <div className="ml-[69px] w-5/6 border-x-4">
+                    <div className="ml-[69px] w-5/6 border-x-4 border-b-4">
                         <div className="w-full h-16 bg-green-200">
                             <h1 className="text-3xl p-2">Your Sold Ideas</h1>
                         </div>
