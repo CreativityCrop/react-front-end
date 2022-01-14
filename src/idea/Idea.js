@@ -76,7 +76,7 @@ export default function Idea(props) {
                 </div>
                 {
                     props.shortDesc !== undefined ?
-                    <div className="ml-2 mb-3 w-[30rem]">
+                    <div id="short-desc" className="ml-2 mb-3 w-[30rem]">
                         <p className="text-base">{
                             props.listView ?
                             props.shortDesc.substring(0, 150) + (props.shortDesc.length<=150 ? "" : " ...")  
@@ -87,10 +87,9 @@ export default function Idea(props) {
                 }
                 {
                     props.longDesc !== undefined ?
-                        <div id="long-desc">
-                            <h5 className="pt-3 pb-3">Long description</h5>
-                            <p>{props.longDesc}</p>
-                        </div>
+                    <div id="long-desc" className="ml-2 mb-3 w-[30rem]">
+                        <p>{props.longDesc}</p>
+                    </div>
                     : ""
                 }
                 <div className="flex flex-row space-x-3 ml-2">
