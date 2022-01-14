@@ -55,17 +55,17 @@ export default function Idea(props) {
     };
 
     return (
-        <div className="flex flex-row m-4 border-4 p-2" key={props.title}>
-            <div className="bg-slate-300 w-40 h-40 ">
+        <div className="flex flex-row m-4 border-4 p-3 w-[44rem]" key={props.title}>
+            <div className="bg-slate-300 w-40 h-40 mr-3 ">
                 <p>img</p>
             </div>
             <div>
-                <div className="flex">
-                    <div className="ml-2 break-all">
-                        <h3 className="text-2xl">{props.title}</h3>
+                <div className="flex mb-2">
+                    <div className="ml-2 break-all mr-12">
+                        <h3 className="text-2xl w-[24rem]">{props.title}</h3>
                     </div>
-                    {   authContext==="authenticated" ? <div className="flex w-fit">
-                            <button type="button" onClick={(e) => {
+                    {   authContext==="authenticated" ? <div className="flex w-fit h-8 object-right-top">
+                            <button className="text-xl" type="button" onClick={(e) => {
                                  likeIdea(e, props.id);
                              }}>👍</button>
                             <div>
@@ -106,11 +106,11 @@ export default function Idea(props) {
                         </div>
                         : ""
                     }
-                    <div className="w-48 h-8 bg-green-200 hover:bg-purple-200">
+                    <div className="w-48 h-8">
                         {
                             props.listView 
                             ? <button 
-                                className="text-lg text-center w-48 h-8" 
+                                className="text-lg text-center w-48 h-8 ml-12 bg-green-200 hover:bg-purple-200" 
                                 onClick={() => {navigate("/marketplace/buy/" + props.id)}}
                             >
                                 See more
@@ -120,7 +120,7 @@ export default function Idea(props) {
                         {
                             props.buyView
                             ? <button
-                                className="text-lg text-center w-48 h-8"
+                                className="text-lg text-center w-48 h-8 ml-12 bg-green-200 hover:bg-purple-200"
                                 onClick={() => {navigate("/marketplace/buy/" + props.id + "/checkout")}}
                             >
                                 Buy Now

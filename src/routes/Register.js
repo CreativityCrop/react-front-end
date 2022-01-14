@@ -55,7 +55,7 @@ export default function Register() {
     <div>
       <AuthProvider/>
       <div className="grid grid-cols-2 my-14">
-        <div className="w-96 h-96 mr-2 mt-20 bg-blue-500">
+        <div className="w-96 h-80 mr-2 mt-28 bg-blue-500">
           <img alt="nice img"/>
         </div>
         <div className="ml-2 p-4 border-4">
