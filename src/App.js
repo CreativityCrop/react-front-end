@@ -17,6 +17,7 @@ import SellView from './marketplace/SellView';
 import BuyView from './marketplace/BuyView';
 import IdeasList from './marketplace/buyview/IdeasList';
 import IdeaBuy from './marketplace/buyview/IdeaBuy';
+import Checkout from './idea/Checkout';
 
 
 export default function App() {
@@ -45,18 +46,20 @@ export default function App() {
       <AuthContext.Provider value={[authContext, setAuthContext]}>
         <Routes>
           {/* Main route */}
-          <Route path="/" element={<MainContent/>}>
-            <Route index element={<Home/>}/>
+          <Route path="/" element={ <MainContent/> }>
+            <Route index element={ <Home/> }/>
             {/* Marketplace routes */}
-            <Route path="marketplace" element={<Marketplace/>}>
-              <Route index element={<Navigate to="./buy"/>}/>
-              <Route path="buy" element={<BuyView/>}>
+            <Route path="marketplace" element={ <Marketplace/> }>
+              <Route index element={ <Navigate to="./buy"/> }/>
+              <Route path="buy" element={ <BuyView/> }>
                 <Route index element={ <IdeasList/> } />
                 <Route path=":ideaID" element={
                   <AuthenticatedRoute>
                     <IdeaBuy/>
                   </AuthenticatedRoute>
-                }/>
+                }>
+                  <Route path="checkout" element={ <Checkout/> } />
+                </Route>
               </Route>
               <Route path="sell" element={
                 <AuthenticatedRoute>
@@ -65,7 +68,7 @@ export default function App() {
               }/>
             </Route>
             {/* All other first level routes */}
-            <Route path="about-us" element={<Aboutus/>}/>
+            <Route path="about-us" element={ <Aboutus/> }/>
 
             <Route path="login" element={
               <AuthenticationRoute>
@@ -88,7 +91,7 @@ export default function App() {
                 <Account/>
               </AuthenticatedRoute>
             }/>
-            <Route path="logout" element={ <Logout /> }/>
+            <Route path="logout" element={ <Logout/> }/>
             {/* Route to display some error page when the route is not defined */}
             <Route path="*" element={<NotFound/>}/>
           </Route>

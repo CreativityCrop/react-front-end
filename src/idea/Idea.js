@@ -14,7 +14,7 @@ export default function Idea(props) {
 
     const likeIdea = (event, id) => {
         event.preventDefault();
-        axios.put(MAIN_API_URL + "/ideas/like?id=" + id, {}, {
+        axios.put(MAIN_API_URL + "/ideas/like?idea_id=" + id, {}, {
             headers: {
                 "Token": getToken(),
                 "Content-Type": "application/json",
@@ -106,10 +106,24 @@ export default function Idea(props) {
                     }
                     <div className="w-48 h-8 bg-green-200 hover:bg-purple-200">
                         {
-                            props.listView ? <button className="text-lg text-center w-48 h-8" onClick={(e) => {navigate("/marketplace/buy/" + props.id)}}>See more</button> : ""
+                            props.listView 
+                            ? <button 
+                                className="text-lg text-center w-48 h-8" 
+                                onClick={() => {navigate("/marketplace/buy/" + props.id)}}
+                            >
+                                See more
+                            </button>
+                            : ""
                         }
                         {
-                            props.buyView ? <button className="text-lg text-center w-48 h-8" onClick={(e) => {console.log("YOU BOUGHT THE IDEA")}}>Buy Now</button> : ""
+                            props.buyView
+                            ? <button
+                                className="text-lg text-center w-48 h-8"
+                                onClick={() => {navigate("/marketplace/buy/" + props.id + "/checkout")}}
+                            >
+                                Buy Now
+                            </button>
+                            : ""
                         
                         }
                         

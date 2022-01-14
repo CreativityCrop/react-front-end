@@ -4,12 +4,20 @@ import React, { useContext, useEffect } from "react";
 
 export const AuthContext = React.createContext();
 const cookies = new Cookies();
+const cookieParams = {
+  path: '/',
+  //expires: ,
+  //domain: "creativitycrop.tech",
+  secure: false, // in development, for production set to TRUE
+  sameSite: "strict"
+};
+
 
 export const MAIN_API_URL = 'http://creativitycrop.tech:8000/api';
 
 export const setToken = (token) => {
   //localStorage.setItem("access_token", token);
-  cookies.set('accessToken', token, { path: '/' });
+  cookies.set('accessToken', token, cookieParams);
 };
 
 export const getToken = () => {
@@ -19,7 +27,7 @@ export const getToken = () => {
 
 export const removeToken = () => {
   //return localStorage.removeItem("access_token");
-  return cookies.remove('accessToken', { path: '/' });
+  return cookies.remove('accessToken', cookieParams);
 }
 
 export const verifyToken = async () => {

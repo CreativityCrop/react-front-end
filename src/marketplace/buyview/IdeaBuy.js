@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Outlet, useParams, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 import AuthProvider, { getToken, MAIN_API_URL } from '../../AuthAPI';
@@ -7,7 +7,8 @@ import AuthProvider, { getToken, MAIN_API_URL } from '../../AuthAPI';
 import Idea from '../../idea/Idea';
 
 export default function IdeaBuy() {
-    let params = useParams();
+    const params = useParams();
+    let location = useLocation();
     const [idea, setIdea] = useState({});
 
     useEffect(() => {
@@ -27,7 +28,7 @@ export default function IdeaBuy() {
 
     const ideaEntry = () => {
         return <Idea
-                buyView={true}
+                buyView={location.pathname!=="/marketplace/buy/" + idea.id + "/checkout"}
                 key={idea.id}
                 id={idea.id}
                 title={idea.title}
@@ -42,6 +43,7 @@ export default function IdeaBuy() {
         <div>
             <AuthProvider/>
             {ideaEntry()}
+            <Outlet/>
         </div>
     );
 }
