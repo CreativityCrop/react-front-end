@@ -48,7 +48,7 @@ export default function Idea(props) {
         if(props.categories === undefined) {
             return;
         }
-        const categList = JSON.parse(props.categories).categories.map((category) => {
+        const categList = JSON.parse(props.categories).map((category) => {
             return <Filters key={category} category={category}/>
         });
         return categList;
