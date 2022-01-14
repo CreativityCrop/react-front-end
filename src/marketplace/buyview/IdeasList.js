@@ -38,6 +38,14 @@ export default function IdeasForSale() {
 
     return (
         <div id="ideas-list">
+            <div className="flex flex-row my-5">
+                <div className="mr-4 bg-green-200">
+                    <h1 className="text-2xl w-36 mt-2 text-center">Buy an idea</h1>
+                </div>
+                <div className="break-words w-[23rem]">
+                    <p className="text-xl">browse ideas up for sell and decide which one you need right now!</p>
+                </div>
+            </div>
             <AuthProvider/>
             {listIdeas}
         </div>

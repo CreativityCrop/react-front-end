@@ -40,6 +40,7 @@ export default function IdeaBuy() {
         />;
     }
 
+    // this is to see the full idea dont get them mixed up plz - me to me
     return (
         <div>
             <AuthProvider/>
