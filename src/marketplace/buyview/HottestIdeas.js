@@ -2,8 +2,8 @@
 
 export default function HottestIdeas() {
     return (
-        <div>
-            
+        <div className="w-36 h-36 bg-slate-200">
+            <p>img</p>
         </div>
     );
 }
