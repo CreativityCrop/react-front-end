@@ -52,23 +52,25 @@ export default function Login() {
   return (
     <div id="login">
       <AuthProvider/>
-      <h1>Login</h1>
-      <div className="flex flex-row">
-        <div className="basis-7/12 bg-blue-500">
+      <div className="grid grid-cols-2 mt-24">
+        <div className="w-96 h-80 mr-2 bg-blue-500">
           <img alt="nice img"/>
         </div>
-        <div className="basis-5/12">
-          <form className="justify justify-center" onSubmit={login}>
+        <div className="ml-2 p-4 border-4">
+          <div className="w-44 ml-[4.5rem] mb-4 text-center">
+            <h1 className="text-2xl break-words">Log into your account</h1>
+          </div>
+          <form className="ml-6" onSubmit={login}>
             <label>
-              <p>Input Username</p>
-              <input type="text" onChange={(e) => setUsername(e.target.value)} />
+              <h3>Username or e-mail</h3>
+              <input className="w-72 mb-2" type="text" onChange={(e) => setUsername(e.target.value)} />
             </label>
             <label>
               <p>Input Password</p>
-              <input type="password" onChange={(e) => setPassword(e.target.value)} />
+              <input className="w-72" type="password" onChange={(e) => setPassword(e.target.value)} />
             </label>
-            <div>
-              <button type="submit" >Submit</button>
+            <div className="border-4 w-24 mt-4 text-center bg-green-200 hover:bg-purple-200">
+              <button type="submit">Log in</button>
             </div>
           </form>
         </div>

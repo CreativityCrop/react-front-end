@@ -54,38 +54,40 @@ export default function Register() {
   return (
     <div>
       <AuthProvider/>
-      <h1>Register</h1>
-      <div className="flex flex-row">
-        <div>
+      <div className="grid grid-cols-2 my-14">
+        <div className="w-96 h-96 mr-2 mt-20 bg-blue-500">
           <img alt="nice img"/>
         </div>
-        <div>
-          <form className="justify justify-center" onSubmit={register}>
+        <div className="ml-2 p-4 border-4">
+          <div className="w-44 ml-[4.5rem] mb-4 text-center">
+            <h1 className="text-2xl break-words">create your account</h1>
+          </div>
+          <form className="ml-6" onSubmit={register}>
             <label>
               <p>First name</p>
-              <input type="text" onChange={(e) => setFirstName(e.target.value)} />
+              <input className="w-72 mb-2" type="text" onChange={(e) => setFirstName(e.target.value)} />
             </label>
             <label>
               <p>Last name</p>
-              <input type="text" onChange={(e) => setLastName(e.target.value)} />
+              <input className="w-72 mb-2" type="text" onChange={(e) => setLastName(e.target.value)} />
             </label>
             <label>
               <p>Email address</p>
-              <input type="email" onChange={(e) => setEmail(e.target.value)} />
+              <input className="w-72 mb-2" type="email" onChange={(e) => setEmail(e.target.value)} />
             </label>
             <label>
               <p>Username</p>
-              <input type="text" onChange={(e) => setUsername(e.target.value)} />
+              <input className="w-72 mb-2" type="text" onChange={(e) => setUsername(e.target.value)} />
             </label>
             <label>
               <p>Password</p>
-              <input
+              <input className="w-72 mb-2"
                 type="password"
                 onChange={(e) => setPassword(e.target.value)}
               />
             </label>
-            <div>
-              <button type="submit" onClick={register}>Submit</button>
+            <div className="border-4 w-24 mt-4 text-center bg-green-200 hover:bg-purple-200">
+              <button type="submit" onClick={register}>Register</button>
             </div>
           </form>
         </div>

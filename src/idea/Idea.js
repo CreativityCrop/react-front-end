@@ -60,15 +60,17 @@ export default function Idea(props) {
                 <p>img</p>
             </div>
             <div>
-                <div className="flex flex-row">
-                    <div className="ml-2">
+                <div className="flex">
+                    <div className="ml-2 break-all">
                         <h3 className="text-2xl">{props.title}</h3>
                     </div>
-                    {   authContext==="authenticated" ? <div className="flex ">
-                            <h3>{ likeCount===null ? props.likes : likeCount}</h3>
+                    {   authContext==="authenticated" ? <div className="flex w-fit">
                             <button type="button" onClick={(e) => {
-                                likeIdea(e, props.id);
-                            }}>👍</button>
+                                 likeIdea(e, props.id);
+                             }}>👍</button>
+                            <div>
+                                <h3 className="ml-1 mt-[0.10rem] text-xl">{ likeCount===null ? props.likes : likeCount}</h3>
+                            </div>
                         </div> : ""
                     }
                 </div>

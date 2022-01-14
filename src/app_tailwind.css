@@ -664,6 +664,24 @@ select {
 .ml-2 {
   margin-left: 0.5rem;
 }
+.ml-1 {
+  margin-left: 0.25rem;
+}
+.mt-\[0\.10rem\] {
+  margin-top: 0.10rem;
+}
+.mt-24 {
+  margin-top: 6rem;
+}
+.mr-2 {
+  margin-right: 0.5rem;
+}
+.ml-\[4\.5rem\] {
+  margin-left: 4.5rem;
+}
+.mt-4 {
+  margin-top: 1rem;
+}
 .block {
   display: block;
 }
@@ -708,6 +726,12 @@ select {
 }
 .h-40 {
   height: 10rem;
+}
+.h-80 {
+  height: 20rem;
+}
+.h-full {
+  height: 100%;
 }
 .w-96 {
   width: 24rem;
@@ -767,6 +791,9 @@ select {
 .w-\[30rem\] {
   width: 30rem;
 }
+.w-24 {
+  width: 6rem;
+}
 .w-\[32rem\] {
   width: 32rem;
 }
@@ -778,12 +805,6 @@ select {
 }
 .basis-1\/4 {
   flex-basis: 25%;
-}
-.basis-7\/12 {
-  flex-basis: 58.333333%;
-}
-.basis-5\/12 {
-  flex-basis: 41.666667%;
 }
 .select-none {
   -webkit-user-select: none;
@@ -825,6 +846,9 @@ select {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.75rem * var(--tw-space-x-reverse));
   margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
+}
+.break-words {
+  overflow-wrap: break-word;
 }
 .rounded {
   border-radius: 0.25rem;
@@ -1002,6 +1026,10 @@ select {
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 .text-base {
   font-size: 1rem;
