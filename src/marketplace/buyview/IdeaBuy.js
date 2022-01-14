@@ -33,6 +33,7 @@ export default function IdeaBuy() {
                 id={idea.id}
                 title={idea.title}
                 shortDesc={idea.short_desc}
+                // longDesc={idea.long_desc}
                 categories={idea.categories}
                 price={idea.price}
                 likes={idea.likes}

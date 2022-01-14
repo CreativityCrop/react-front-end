@@ -35,7 +35,7 @@ export default function SubmitIdea() {
                 "title": title,
                 "short_desc": shortDesc,
                 "long_desc": longDesc,
-                "categories": JSON.stringify(categoriesInputData.value.map(item => {return {name: item.value}})),
+                "categories": categoriesInputData.value.map(item => item.value),
                 "price": price
             }, {
                 headers: {
