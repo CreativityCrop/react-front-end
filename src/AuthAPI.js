@@ -1,5 +1,7 @@
 import axios from 'axios';
 import Cookies from 'universal-cookie';
+import jwt_decode from "jwt-decode";
+
 import React, { useContext, useEffect } from "react";
 
 export const AuthContext = React.createContext();
@@ -33,6 +35,10 @@ export const removeToken = () => {
 export const verifyToken = async () => {
   //console.log("Checking token");
   if(getToken() != null) {
+    if(jwt_decode(getToken()).exp <= Math.round(Date.now() / 1000)) {
+      removeToken();
+      return;
+    }
     //console.log("Making a request to verify token!");
     await axios.get(MAIN_API_URL + "/auth/verify", {
       headers: {
