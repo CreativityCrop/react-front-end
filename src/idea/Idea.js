@@ -55,7 +55,7 @@ export default function Idea(props) {
     };
 
     return (
-        <div className="flex flex-row m-4 border-4 p-3 w-[44rem]" key={props.title}>
+        <div className="flex flex-row mb-4 border-4 p-3 w-[44rem]" key={props.title}>
             <div className="bg-slate-300 w-40 h-40 mr-3 ">
                 <p>img</p>
             </div>
@@ -92,7 +92,8 @@ export default function Idea(props) {
                     </div>
                     : ""
                 }
-                <div className="flex flex-row space-x-3 ml-2">
+                {/* npm install tailwind-scrollbar-hide */}
+                <div className="flex flex-row space-x-3 w-[30rem] ml-2 overflow-y-auto">
                     {
                         getCateg()
                     }
