@@ -66,7 +66,7 @@ export default function Login() {
               <input className="w-72 mb-2" type="text" onChange={(e) => setUsername(e.target.value)} />
             </label>
             <label>
-              <p>Input Password</p>
+              <p>Password</p>
               <input className="w-72" type="password" onChange={(e) => setPassword(e.target.value)} />
             </label>
             <div className="border-4 w-24 mt-4 text-center bg-green-200 hover:bg-purple-200">
