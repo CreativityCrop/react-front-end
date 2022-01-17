@@ -111,24 +111,33 @@ export default function SubmitIdea() {
     return (<>
         <AuthProvider/>
         { success ? <h1>Idea posted!</h1> :
-        <div className="container items-center px-5 py-12 lg:px-20 w-[32rem]">
+        <div className="container items-center p-8 ml-24 w-[46rem] border-4">
+            {/* here */}
             <form className="" onSubmit={postIdea}>
-                <div className="flex flex-col mb-4">
-                    <input 
-                        className="border py-2 px-3 text-grey-darkest"
-                        type="text"
-                        placeholder={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                    />
-                </div>
-                <div className="flex flex-col mb-4">
-                    <textarea placeholder={shortDesc} onChange={(e) => setShortDesc(e.target.value)} />
-                </div>
-                <div className="flex flex-col mb-4">
-                    <textarea placeholder={longDesc} onChange={(e) => setLongDesc(e.target.value)} />
+                <div className="flex flex-row">
+                    <div className="w-40 h-40 bg-slate-200">
+                        <p>img upload</p>
+                    </div>
+                    <div className="ml-3">
+                        <div className="mb-3">
+                            <input 
+                                className="w-[25rem] border py-2 px-3 text-grey-darkest"
+                                type="text"
+                                placeholder={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <textarea placeholder={shortDesc} onChange={(e) => setShortDesc(e.target.value)} className="w-[30.6rem] h-[6.55rem]"/>
+                        </div>
+                    </div>
                 </div>
                 
-                <div className="flex flex-col mb-4 outline-none">
+                <div className="mb-3">
+                    <textarea placeholder={longDesc} onChange={(e) => setLongDesc(e.target.value)} className="w-[41.5rem] h-52"/>
+                </div>
+                
+                <div className="mb-3">
                     <CreatableSelect
                         theme={(theme) => ({
                             ...theme,
@@ -147,14 +156,16 @@ export default function SubmitIdea() {
                         value={categoriesInputData.value}
                     />                
                 </div>
-                <div className="flex flex-col mb-4">
-                    <input type="text" placeholder={price + " $"} onChange={(e) => setPrice(e.target.value)} />
+                <div className="flex flex-row">
+                    <div>
+                        <input type="text" placeholder={price + " $"} onChange={(e) => setPrice(e.target.value)} className="w-60 mr-36"/>
+                    </div>
+                    <button className="ml-36 py-[0.4rem] px-9 uppercase text-lg bg-green-200 hover:bg-purple-200" 
+                            type="submit" onClick={postIdea}
+                    >
+                        Submit
+                    </button>
                 </div>
-                <button className="block bg-teal hover:bg-teal-dark text-black uppercase text-lg mx-auto p-4 rounded" 
-                        type="submit" onClick={postIdea}
-                >
-                    Submit
-                </button>
             </form>
             
         </div>

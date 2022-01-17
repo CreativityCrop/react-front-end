@@ -4,9 +4,8 @@ export default function Marketplace() {
 
     return (
         <div id="marketplace">
-            <h1 className="text-center">Marketplace</h1>
-
-            <div className="flex flex-col sm:flex-row justify-center">
+            <div className="flex flex-col ml-24">
+                <div className="flex flex-row mt-10">
                 <NavLink
                     className={({ isActive }) => isActive 
                     ? "text-blue-500 py-4 px-6 block hover:text-blue-500 focus:outline-none border-b-2 font-medium border-blue-500"
@@ -23,6 +22,7 @@ export default function Marketplace() {
                 >
                     Sell
                 </NavLink>
+                </div>
             </div>
             <Outlet/>
         </div>

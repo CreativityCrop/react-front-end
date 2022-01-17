@@ -52,7 +52,7 @@ export default function Login() {
   return (
     <div id="login">
       <AuthProvider/>
-      <div className="grid grid-cols-2 mt-24">
+      <div className="grid grid-cols-2 mt-24 mb-10">
         <div className="w-96 h-80 mr-2 bg-blue-500">
           <img alt="nice img"/>
         </div>
