@@ -92,15 +92,16 @@ export default function SubmitIdea() {
         const { inputValue, value } = categoriesInputData;
         if (!inputValue) return;
         switch (event.key) {
-          case 'Enter':
-          case 'Tab':
-            // console.group('Value Added');
-            // console.log(value);
-            // console.groupEnd();
-            setCategoriesInputData({
-                inputValue: "",
-                value: [...value, createOption(inputValue)]
-              });
+            case 'Enter':
+            case 'Tab':
+                // console.group('Value Added');
+                // console.log(value);
+                // console.groupEnd();
+                if(value.map(item => item.value).indexOf(inputValue) !== -1) return;
+                setCategoriesInputData({
+                    inputValue: "",
+                    value: [...value, createOption(inputValue)]
+                });
             event.preventDefault();
           break;
           default: break;
@@ -127,8 +128,13 @@ export default function SubmitIdea() {
                     <textarea placeholder={longDesc} onChange={(e) => setLongDesc(e.target.value)} />
                 </div>
                 
-                <div className="flex flex-col mb-4">
+                <div className="flex flex-col mb-4 outline-none">
                     <CreatableSelect
+                        theme={(theme) => ({
+                            ...theme,
+                            borderRadius: 0,
+                            outlineColor: 'black'
+                        })}
                         components={components}
                         inputValue={categoriesInputData.inputValue}
                         isClearable

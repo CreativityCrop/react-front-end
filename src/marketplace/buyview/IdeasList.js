@@ -3,7 +3,6 @@ import AuthProvider, { MAIN_API_URL } from '../../AuthAPI';
 import axios from 'axios';
 
 import Idea from '../../idea/Idea';
-import HottestIdeas from './HottestIdeas';
 
 export default function IdeasForSale() {
     const [ideas, setIdeas] = useState([]);
