@@ -58,7 +58,7 @@ export default function Login() {
         </div>
         <div className="ml-2 p-4 border-4">
           <div className="w-44 ml-[4.5rem] mb-4 text-center">
-            <h1 className="text-2xl break-words">Log into your account</h1>
+            <h1 className="text-2xl break-words">Log in to your account</h1>
           </div>
           <form className="ml-6" onSubmit={login}>
             <label>
