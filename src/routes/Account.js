@@ -6,15 +6,6 @@ export default function Account() {
     <div id="account" className="">
       <AuthProvider/>
       <Dashboard/>
-      <Preferences />
-    </div>
-  );
-}
-
-function Preferences() {
-  return (
-    <div>
-      {/* <h2>Preferences</h2> */}
     </div>
   );
 }

@@ -1,10 +1,10 @@
 
 
-export default function AccountSettings() {
+export default function AccountSettings(props) {
     return (
         <div id="holder-of-the-acc" className="flex flex-row mb-4">
             <div id="left" className="w-48 h-48 mr-4 bg-slate-300">
-                <p>img</p>
+                <img src={props.avatarUrl} alt="user avatar"/>
             </div>
             <div id="middle" className="mr-4 mt-3">
                 <div className="flex flex-row mb-3">
