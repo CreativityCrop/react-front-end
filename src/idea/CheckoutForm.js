@@ -75,7 +75,6 @@ export default function CheckoutForm() {
 
     setIsLoading(false);
   };
-  console.log("HERE");
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
       <PaymentElement id="payment-element" />

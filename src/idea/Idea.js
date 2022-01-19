@@ -65,14 +65,19 @@ export default function Idea(props) {
                     <div className="ml-2 break-all mr-12">
                         <h3 className="text-2xl w-[24rem]">{props.title}</h3>
                     </div>
-                    {   authContext==="authenticated" ? <div className="flex w-fit h-8 object-right-top">
-                            <button className="text-xl" type="button" onClick={(e) => {
-                                 likeIdea(e, props.id);
-                             }}>👍</button>
+                    {   authContext==="authenticated" && props.likes !== undefined 
+                        ? 
+                        <div className="flex w-fit h-8 object-right-top">
+                            <button className="text-xl" type="button" onClick={
+                                    (e) => likeIdea(e, props.id)
+                                }>
+                                👍
+                            </button>
                             <div>
                                 <h3 className="ml-1 mt-[0.10rem] text-xl">{ likeCount===null ? props.likes : likeCount}</h3>
                             </div>
-                        </div> : ""
+                        </div> 
+                        : ""
                     }
                 </div>
                 {
