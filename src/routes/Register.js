@@ -86,8 +86,8 @@ export default function Register() {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </label>
-            <div className="border-4 w-24 mt-4 text-center bg-green-200 hover:bg-purple-200">
-              <button type="submit" onClick={register}>Register</button>
+            <div>
+              <button className="border-4 w-24 mt-4 text-center bg-green-200 hover:bg-purple-200" type="submit" onClick={register}>Register</button>
             </div>
           </form>
         </div>

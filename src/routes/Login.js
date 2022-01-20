@@ -69,8 +69,8 @@ export default function Login() {
               <p>Password</p>
               <input className="w-72" type="password" onChange={(e) => setPassword(e.target.value)} />
             </label>
-            <div className="border-4 w-24 mt-4 text-center bg-green-200 hover:bg-purple-200">
-              <button type="submit">Log in</button>
+            <div>
+              <button className="border-4 w-24 mt-4 text-center bg-green-200 hover:bg-purple-200" type="submit">Log in</button>
             </div>
           </form>
         </div>

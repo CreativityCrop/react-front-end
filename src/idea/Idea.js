@@ -57,8 +57,17 @@ export default function Idea(props) {
 
     return (
         <div className="flex flex-row mb-4 border-4 p-3 min-w-[44rem]" key={props.title}>
-            <div className="bg-slate-300 w-40 h-40 mr-3 ">
-                <p>img</p>
+            <div 
+                className="bg-slate-300 w-40 h-40 mr-3 "
+                style={
+                    { 
+                        backgroundImage: `url(${props.imgUrl})`,
+                        backgroundSize: "cover",
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "center center"
+                    }
+                }
+            >
             </div>
             <div>
                 <div className="flex mb-2">
