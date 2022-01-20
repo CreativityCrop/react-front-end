@@ -8,16 +8,16 @@ export default function Marketplace() {
                 <div className="flex flex-row mt-10">
                 <NavLink
                     className={({ isActive }) => isActive 
-                    ? "text-blue-500 py-4 px-6 block hover:text-blue-500 focus:outline-none border-b-2 font-medium border-blue-500"
-                    : "text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"}
+                    ? "text-blue-500 py-4 px-6 block hover:text-blue-500 focus:outline-none border-b-2 font-medium text-lg border-blue-500"
+                    : "text-gray-600 py-5 px-6 block hover:text-blue-500 focus:outline-none"}
                     to="/marketplace/buy"
                 >
                     Buy
                 </NavLink>
                 <NavLink
                     className={({ isActive }) => isActive 
-                    ? "text-blue-500 py-4 px-6 block hover:text-blue-500 focus:outline-none border-b-2 font-medium border-blue-500"
-                    : "text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"}
+                    ? "text-blue-500 py-4 px-6 block hover:text-blue-500 focus:outline-none border-b-2 font-medium text-lg border-blue-500"
+                    : "text-gray-600 py-5 px-6 block hover:text-blue-500 focus:outline-none"}
                     to="/marketplace/sell"
                 >
                     Sell
