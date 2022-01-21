@@ -5,7 +5,7 @@ import AuthProvider, { getToken, removeToken, AuthContext, MAIN_API_URL } from '
 
 import { FileUploader } from "react-drag-drop-files";
 
-const fileTypes = ["JPG", "PNG", "GIF", "docx"];
+const fileTypes = ["svg", "jpg", "png", "mp3", "mp4", "mpeg", "txt", "csv", "pdf", "json", "xml", "doc", "docx", "ppt", "pptx", "xls", "xlsx", "rar", "zip"];
 
 
 const components = {
@@ -145,9 +145,6 @@ export default function SubmitIdea() {
         switch (event.key) {
             case 'Enter':
             case 'Tab':
-                // console.group('Value Added');
-                // console.log(value);
-                // console.groupEnd();
                 if(value.map(item => item.value).indexOf(inputValue) !== -1) return;
                 setCategoriesInputData({
                     inputValue: "",
@@ -165,8 +162,15 @@ export default function SubmitIdea() {
 
     const filesList = files.map((file) => {
         return(
-            <div key={file.name}>
+            <div key={file.name} className="flex my-3">
                 <p>{file.name}</p>
+                <button
+                    type="button"
+                    className="ml-10 p-30 uppercase text-lg text-white bg-red-400 hover:bg-red-600"
+                    onClick={() => setFiles(files.filter(item => item !==file))}
+                >
+                    ×
+                </button>
             </div>
         );
     });
@@ -178,9 +182,10 @@ export default function SubmitIdea() {
             {/* here */}
             <form className="" onSubmit={postIdea}>
                 <div className="flex flex-row">
-                    <div className="w-40 h-40 bg-slate-200"
+                    <div className="w-40 h-40 bg-slate-200 cursor-pointer relative "
                         style={
-                            { 
+                            {
+                                bacgroundColor: 'none',
                                 backgroundImage: `url(${picVisual})`,
                                 backgroundSize: "cover",
                                 backgroundRepeat: "no-repeat",
@@ -190,12 +195,15 @@ export default function SubmitIdea() {
                         onClick={ (e) => document.getElementById("select-image").click() }
                     >
                         <input id="select-image" hidden type="file" onChange={onChangePicture} />
+                        <div className="absolute top-1/2 left-1/2 translate-x-[-30%] translate-y-[-50%] cursor-pointer text-red-500">
+                            Click to upload!
+                        </div>
                     </div>
 
                     <div className="ml-3">
                         <div className="mb-3">
                             <input 
-                                className="w-[25rem] border py-2 px-3 text-grey-darkest"
+                                className="w-full border py-2 px-3 text-grey-darkest"
                                 type="text"
                                 placeholder={title}
                                 onChange={(e) => setTitle(e.target.value)}
@@ -241,7 +249,17 @@ export default function SubmitIdea() {
                     />                
                 </div>
                 <div id="file-upload">
-                    <FileUploader handleChange={handleFileUploadChange} name="file" types={fileTypes} />
+                    <FileUploader
+                        children={
+                            <div className="h-10 mb-3 border py-2 px-3 text-grey-darkest cursor-pointer ">
+                                Click or drop to upload!<span className="text-xs right-0">{fileTypes.map((item) => " "+item)}</span>
+                            </div>
+                        }
+                        handleChange={handleFileUploadChange}
+                        onDrop={handleFileUploadChange}
+                        name="file"
+                        types={fileTypes} 
+                    />
                     {filesList}
                 </div>
                 <div className="flex flex-row">

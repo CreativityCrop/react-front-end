@@ -16,7 +16,7 @@ import MainContent from './MainContent';
 import SellView from './marketplace/SellView';
 import BuyView from './marketplace/BuyView';
 import IdeasList from './marketplace/buyview/IdeasList';
-import IdeaBuy from './marketplace/buyview/IdeaBuy';
+import BuyIdea from './marketplace/buyview/BuyIdea';
 import Checkout from './idea/Checkout';
 
 
@@ -55,7 +55,7 @@ export default function App() {
                 <Route index element={ <IdeasList/> } />
                 <Route path=":ideaID" element={
                   <AuthenticatedRoute>
-                    <IdeaBuy/>
+                    <BuyIdea/>
                   </AuthenticatedRoute>
                 }>
                   <Route path="checkout" element={ <Checkout/> } />

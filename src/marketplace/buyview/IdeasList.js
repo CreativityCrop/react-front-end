@@ -27,7 +27,7 @@ export default function IdeasForSale() {
                 listView={true}
                 key={idea.id}
                 id={idea.id}
-                imgUrl={idea.public_path}
+                imgUrl={idea.image_url}
                 title={idea.title}
                 shortDesc={idea.short_desc}
                 categories={idea.categories}

@@ -5,7 +5,7 @@ export default function Filters(props) {
 
     const redirect = (event) => {
         event.preventDefault();
-        navigate('/marketplace/buy?cat=' + props.category, { replace: true })
+        navigate('/marketplace/buy?cat=' + props.category, { replace: false })
     };
     
     return(

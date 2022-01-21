@@ -1,4 +1,4 @@
-import SmallIdea from "./SmallIdea";
+import SmallIdea from "../../idea/SmallIdea";
 
 export default function HottestIdeas() {
     return (

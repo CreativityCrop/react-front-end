@@ -5,7 +5,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import AuthProvider, { getToken, MAIN_API_URL } from '../AuthAPI';
 import axios from 'axios';
 import CheckoutForm from './CheckoutForm';
-import './ProcessBuyRequest.css';
+import './Checkout.css';
 
 // Make sure to call loadStripe outside of a component’s render to avoid
 // recreating the Stripe object on every render.
@@ -18,7 +18,8 @@ export default function Checkout() {
 
   useEffect(() => {
     const url = location.pathname;
-    const idea_id = url.substring(url.indexOf("buy/") + 4, url.indexOf("/checkout"));
+    const idea_id = url.match(/[0-9a-fA-F]{32}/g)[0];
+    console.log(idea_id);
     // Create PaymentIntent as soon as the page loads
     axios.get(MAIN_API_URL + "/payment/create?idea_id=" + idea_id, {
         headers: {

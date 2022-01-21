@@ -1,4 +1,4 @@
-import SmallIdea from "../marketplace/buyview/SmallIdea";
+import SmallIdea from "../idea/SmallIdea";
 
 export default function ThirdSection(){
     return(

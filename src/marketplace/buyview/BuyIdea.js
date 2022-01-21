@@ -31,9 +31,12 @@ export default function IdeaBuy() {
                 buyView={location.pathname!=="/marketplace/buy/" + idea.id + "/checkout"}
                 key={idea.id}
                 id={idea.id}
+                imgUrl={idea.image_url}
                 title={idea.title}
                 shortDesc={idea.short_desc}
+                longDesc={idea.long_desc}
                 categories={idea.categories}
+                files={idea.files}
                 price={idea.price}
                 likes={idea.likes}
         />;
@@ -41,7 +44,7 @@ export default function IdeaBuy() {
 
     // this is to see the full idea dont get them mixed up plz - me to me
     return (
-        <div>
+        <div id="ideas-list" className="border-4 p-3 min-w-[46rem]">
             <AuthProvider/>
             {ideaEntry()}
             <Outlet/>
