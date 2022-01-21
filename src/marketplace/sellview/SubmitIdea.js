@@ -5,7 +5,7 @@ import AuthProvider, { getToken, removeToken, AuthContext, MAIN_API_URL } from '
 
 import { FileUploader } from "react-drag-drop-files";
 
-const fileTypes = ["svg", "jpg", "png", "mp3", "mp4", "mpeg", "txt", "csv", "pdf", "json", "xml", "doc", "docx", "ppt", "pptx", "xls", "xlsx", "rar", "zip"];
+const fileTypes = ["svg", "jpeg", "jpg", "png", "mp3", "mp4", "mpeg", "txt", "csv", "pdf", "json", "xml", "doc", "docx", "ppt", "pptx", "xls", "xlsx", "rar", "zip"];
 
 
 const components = {
@@ -24,22 +24,11 @@ export default function SubmitIdea() {
     const [picture, setPicture] = useState(null);
     const [picVisual, setPicVisual] = useState(null);
 
-    const onChangePicture = (e) => {
-        if(e.target.files[0]) {
-            //console.log("picture: ", e.target.files);
-            setPicture(e.target.files[0]);
-            const reader = new FileReader();
-            reader.addEventListener("load", () => {
-                setPicVisual(reader.result);
-            });
-        reader.readAsDataURL(e.target.files[0]);
-        }
-    };
-
+    
     const isFormValid = () => {
         return true;
     }
-
+    
     const postIdea = (event) => {
         event.preventDefault();
         if(!isFormValid()) {
@@ -78,38 +67,38 @@ export default function SubmitIdea() {
                             switch(response.status) {
                                 case 200:
                                     setSuccess(true);
-                                break;
-                                default: break;
-                            }
-                        }).catch((error) => {
-                            console.log(error) 
-                            switch(error.response.status) {
+                                    break;
+                                    default: break;
+                                }
+                            }).catch((error) => {
+                                console.log(error) 
+                                switch(error.response.status) {
                                 case 401:
                                     switch(error.response.data.detail.errno) {
                                         case 103: 
-                                            setSuccess(false);
-                                            removeToken();
-                                            setAuthContext("unathenticated");
+                                        setSuccess(false);
+                                        removeToken();
+                                        setAuthContext("unathenticated");
                                         break;
                                         default: break;
                                     }
-                                break;
-                                default: break;
-                            }
-                        })
-                    break;
-                    default: setSuccess(false); break;
-                }
-            })
-            .catch((error) => {
-                console.log(error) 
-                switch(error.response.status) {
+                                    break;
+                                    default: break;
+                                }
+                            })
+                            break;
+                            default: setSuccess(false); break;
+                        }
+                    })
+                    .catch((error) => {
+                        console.log(error) 
+                        switch(error.response.status) {
                     case 401:
                         switch(error.response.data.detail.errno) {
                             case 103: 
-                                setSuccess(false);
-                                removeToken();
-                                setAuthContext("unathenticated");
+                            setSuccess(false);
+                            removeToken();
+                            setAuthContext("unathenticated");
                             break;
                             default: break;
                         }
@@ -118,27 +107,33 @@ export default function SubmitIdea() {
                 }
             });
         }
-
+        
     }  
+    
+    const onChangePicture = (e) => {
+        if(["png", "jpg", "jpeg", "svg"].indexOf(e.target.files[0].name.match(/\.[0-9a-z]+$/i)[0].replace(".","")) === -1) {
+            alert("Filetype not allowed!");
+            return;
+        }
+        if(e.target.files[0]) {
+            //console.log("picture: ", e.target.files);
+            setPicture(e.target.files[0]);
+            const reader = new FileReader();
+            reader.addEventListener("load", () => {
+                setPicVisual(reader.result);
+            });
+        reader.readAsDataURL(e.target.files[0]);
+        }
+    };
 
     const createOption = (label) => ({
         label,
         value: label
     });
 
-    const handleCategoriesChange = (
-        value,
-        actionMeta
-      ) => {
-        // console.log("Value Changed");
-        // console.log(value);
-        // console.log(`action: ${actionMeta.action}`);
-        setCategoriesInputData({ value });
-      };
-    const handleCategoriesInputChange = (inputValue) => {
-        setCategoriesInputData({inputValue: inputValue, value: categoriesInputData.value});
-      };
-    
+    const handleCategoriesChange = (value) => setCategoriesInputData({ value });
+    const handleCategoriesInputChange = (inputValue) =>
+                setCategoriesInputData({inputValue: inputValue, value: categoriesInputData.value});    
     const handleCategoriesKeyDown = (event) => {
         const { inputValue, value } = categoriesInputData;
         if (!inputValue) return;
@@ -157,6 +152,14 @@ export default function SubmitIdea() {
     };
 
     const handleFileUploadChange = (file) => {
+        if(fileTypes.indexOf(file.name.match(/\.[0-9a-z]+$/i)[0].replace(".","")) === -1) {
+            alert("Filetype not allowed!");
+            return;
+        }
+        if(files.map(function(e) { return e.name; }).indexOf(file.name) !== -1) {
+            alert("Please don't duplicate files!");
+            return;
+        }
         setFiles([file, ...files]);
     };
 
@@ -256,9 +259,7 @@ export default function SubmitIdea() {
                             </div>
                         }
                         handleChange={handleFileUploadChange}
-                        onDrop={handleFileUploadChange}
                         name="file"
-                        types={fileTypes} 
                     />
                     {filesList}
                 </div>

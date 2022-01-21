@@ -2,11 +2,11 @@ import { React, useState, useEffect } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 import axios from 'axios';
 
-import AuthProvider, { getToken, MAIN_API_URL } from '../../AuthAPI';
+import AuthProvider, { getToken, MAIN_API_URL } from '../AuthAPI';
 
-import Idea from '../../idea/Idea';
+import Idea from '../idea/Idea';
 
-export default function IdeaBuy() {
+export default function ViewIdea() {
     const params = useParams();
     const [idea, setIdea] = useState({});
 
@@ -27,7 +27,6 @@ export default function IdeaBuy() {
 
     const ideaEntry = () => {
         return <Idea
-                buyView={true}
                 key={idea.id}
                 id={idea.id}
                 imgUrl={idea.image_url}
@@ -41,9 +40,8 @@ export default function IdeaBuy() {
         />;
     }
 
-    // this is to see the full idea dont get them mixed up plz - me to me
-    return (
-        <div id="ideas-list" className="border-4 p-3 min-w-[46rem]">
+    return(
+        <div id="ideas-list" className="border-4 p-3">
             <AuthProvider/>
             {ideaEntry()}
             <Outlet/>

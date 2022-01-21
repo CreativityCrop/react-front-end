@@ -5,7 +5,6 @@ import axios from 'axios';
 import { getToken, removeToken, AuthContext, MAIN_API_URL } from '../AuthAPI';
 
 import CategoryButton  from "./CategoryButton";
-import FileList from "./FileList";
 
 export default function Idea(props) {
     return (
@@ -14,19 +13,21 @@ export default function Idea(props) {
             <div>
                 <div className="flex mb-2">
                     <Title title={props.title} />
-                    <Likes likes={props.likes} ideaID={props.id} />
+                    <Likes likes={props.likes} ideaID={props.id} boughtView={props.boughtView} />
                 </div>
                 <ShortDescription text={props.shortDesc} listView={props.listView} />
-                <LongDescription text={props.longDesc} />
+                <LongDescription text={props.longDesc} listView={props.listView} />
                 <CategoriesList categories={props.categories} />
-                <div className="ml-2 mb-3 w-[30rem]">
-                    <FileList files={props.files}/>
-                </div>
+                <FileList files={props.files}/>
                 <div className="grid grid-cols-2 mt-3 ml-2">
                     <Price price={props.price} />
-                    <div className="w-48 h-8">
-                        <Button listView={props.listView} buyView={props.buyView} ideaID={props.id} />
-                    </div>
+                    <Button 
+                        className="w-48 h-8" 
+                        listView={props.listView} 
+                        buyView={props.buyView}
+                        boughtView={props.boughtView}
+                        ideaID={props.id}
+                    />
                 </div>
             </div>
         </div>
@@ -104,6 +105,7 @@ function Likes(props) {
                 className="text-xl"
                 type="button"
                 onClick={ (e) => likeIdea(e, props.ideaID) }
+                disabled={props.boughtView}
             >
                 👍
             </button>
@@ -133,7 +135,11 @@ function LongDescription(props) {
     }
     return(
         <div id="long-desc" className="ml-2 mb-3 w-[30rem]">
-            <p>{props.text}</p>
+            <p>
+                { props.listView ?
+                        props.text.substring(0, 150) + (props.text.length<=150 ? "" : " ...") :
+                        props.text }
+            </p>
         </div>
     );
 }
@@ -168,7 +174,12 @@ function Button(props) {
     }
     let url, text
     if(props.listView) {
-        url = "/marketplace/buy/" + props.ideaID;
+        if(props.boughtView) {
+            url = "/idea/" + props.ideaID;
+        }
+        else {
+            url = "/marketplace/buy/" + props.ideaID;
+        }
         text = "See More";
     }
     else if(props.buyView) {
@@ -182,5 +193,73 @@ function Button(props) {
         >
             {text}
         </button>
+    );
+}
+
+function FileList(props) {
+    function getFiles() {
+        if(props.files === undefined) {
+            return;
+        }
+        const filesArr = props.files.map( file => {
+            return <File key={file.id} file={file}/>;
+        });
+        return filesArr;
+    };
+    return(
+        <div className="ml-2 mb-3 w-[30rem]">
+            {getFiles()}
+        </div>
+    );
+}
+
+const downloadLink = (file_id) => MAIN_API_URL + "/files/download?file_id=" + file_id + "&token=" + getToken();
+
+function File(props) {
+    const getIcon = (contentType) => {
+        switch(contentType) {
+            case "image/svg+xml":
+            case "image/jpeg":
+            case "image/png":
+                return "image.svg";
+            case "audio/mpeg":
+                return "audio.svg";
+            case "video/mp4":
+            case "video/mpeg":
+                return "video.svg";
+            case "text/plain":
+            case "text/csv":
+            case "application/json":
+            case "application/xml":
+                return "text.svg";
+            case "application/pdf":
+                return "pdf.svg";
+            case "application/msword":
+            case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+                return "word.svg";
+            case "application/vnd.ms-powerpoint":
+            case "application/vnd.openxmlformats-officedocument.presentationml.presentation":
+                return "powerpoint.svg";
+            case "application/vnd.ms-excel":
+            case "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
+                return "excel.svg";
+            case "application/vnd.rar":
+            case "application/zip":
+                return "archive.svg"
+            default: return "text.svg"
+        }
+    }
+    return(
+        <div className="flex">
+            <img 
+                className="mr-4 flex-none w-10 h-10" 
+                src={"/assets/icons/" + getIcon(props.file.content_type)} 
+                alt={props.file.content_type}
+            />
+            <p className="mr-4 flex-auto w-64 self-center">
+                {props.file.name.substring(0, 25) + (props.file.name.length<=25 ? "" : " ...")}
+            </p>
+            <a className="flex-initial self-center" href={downloadLink(props.file.id)} download>Download</a>
+        </div>
     );
 }

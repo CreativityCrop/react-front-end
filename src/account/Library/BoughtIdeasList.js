@@ -24,13 +24,18 @@ export default function BoughtIdeasList() {
     const listIdeas = ideas.map((idea) => {
         return (
             <Idea
+                listView={true}
+                boughtView={true}
                 key={idea.id}
                 id={idea.id}
+                imgUrl={idea.image_url}
                 title={idea.title}
                 shortDesc={idea.short_desc}
                 longDesc={idea.long_desc}
                 categories={idea.categories}
+                files={idea.files}
                 price={idea.price}
+                likes={idea.likes}
             />
         );
     });

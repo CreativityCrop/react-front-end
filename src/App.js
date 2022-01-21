@@ -9,6 +9,7 @@ import Login from './routes/Login';
 import Register from './routes/Register';
 import Account from './routes/Account';
 import Logout from './routes/Logout';
+import ViewIdea from './routes/ViewIdea';
 
 import NotFound from './NotFound';
 import MainContent from './MainContent';
@@ -88,7 +89,7 @@ export default function App() {
             }/>
             <Route path="/idea/:ideaID" element={
               <AuthenticatedRoute>
-                <Account/>
+                <ViewIdea/>
               </AuthenticatedRoute>
             }/>
             <Route path="logout" element={ <Logout/> }/>
