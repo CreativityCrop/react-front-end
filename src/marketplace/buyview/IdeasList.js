@@ -1,25 +1,39 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import AuthProvider, { MAIN_API_URL } from '../../AuthAPI';
 import axios from 'axios';
 
 import Idea from '../../idea/Idea';
 
 export default function IdeasForSale() {
+    const [start, setStart] = useState(0);
+    const [end, setEnd] = useState(10);
     const [ideas, setIdeas] = useState([]);
-
+    const query = new URLSearchParams(useLocation().search);
+    const cat = query.get("cat");
+    
     useEffect(() => {
-        loadIdeas();
-    }, []);
-
-    const loadIdeas = async () => {
-        const response = await axios.get(MAIN_API_URL + "/ideas/get", {
-            headers: {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*"
+        const loadIdeas = async (cat) => {
+            let url;
+            if(cat !== null) {
+                console.log(cat);
+                url = MAIN_API_URL + `/ideas/get?cat=${cat}`;
             }
-        });
-        setIdeas(response.data);
-    }
+            else {
+                url = MAIN_API_URL + `/ideas/get`;
+            }
+            const response = await axios.get(url, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*"
+                }
+            });
+            setIdeas(response.data);
+        }
+        loadIdeas(cat);
+    },[end, start, cat]);
+
+    
 
     const listIdeas = ideas.map((idea) => {
         return (

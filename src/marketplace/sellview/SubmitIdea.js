@@ -108,7 +108,7 @@ export default function SubmitIdea() {
             });
         }
         
-    }  
+    }
     
     const onChangePicture = (e) => {
         if(["png", "jpg", "jpeg", "svg"].indexOf(e.target.files[0].name.match(/\.[0-9a-z]+$/i)[0].replace(".","")) === -1) {
@@ -274,8 +274,7 @@ export default function SubmitIdea() {
                             className="w-60 mr-36"/>
                     </div>
                     <button className="ml-36 py-[0.4rem] px-9 uppercase text-lg bg-green-200 hover:bg-purple-200" 
-                            type="submit" onClick={postIdea}
-                    >
+                            type="submit" onClick={postIdea}>
                         Submit
                     </button>
                 </div>
