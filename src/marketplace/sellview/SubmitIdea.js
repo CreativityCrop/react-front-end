@@ -247,7 +247,7 @@ export default function SubmitIdea() {
                         onChange={handleCategoriesChange}
                         onInputChange={handleCategoriesInputChange}
                         onKeyDown={handleCategoriesKeyDown}
-                        placeholder="Type and press enter"
+                        placeholder="Categories: Type and press enter"
                         value={categoriesInputData.value}
                     />                
                 </div>

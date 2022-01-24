@@ -809,6 +809,9 @@ select {
 .min-h-max {
   min-height: max-content;
 }
+.min-h-\[37rem\] {
+  min-height: 37rem;
+}
 .w-96 {
   width: 24rem;
 }

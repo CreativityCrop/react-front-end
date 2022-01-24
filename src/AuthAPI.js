@@ -69,5 +69,5 @@ export default function AuthProvider() {
       });
       //console.log("Token: " + getToken() + "\nStatus: " + authContext);
   }, [authContext, setAuthContext]);
-  return(<></>);
+  return(null);
 } 

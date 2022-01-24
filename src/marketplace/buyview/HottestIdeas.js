@@ -22,7 +22,6 @@ export default function HottestIdeas() {
     }
 
     const listIdeas = ideas.map((idea) => {
-        console.log(idea);
         return (
             <SmallIdea
                 key={idea.id}

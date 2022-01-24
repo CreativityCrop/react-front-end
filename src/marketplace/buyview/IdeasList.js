@@ -52,7 +52,7 @@ export default function IdeasForSale() {
     });
 
     return (
-        <div id="ideas-list" className="border-4 p-3 min-w-[46rem] min-h-max">
+        <div id="ideas-list" className="border-4 p-3 min-w-[46rem] min-h-[37rem]">
             <AuthProvider/>
             {listIdeas}
         </div>
