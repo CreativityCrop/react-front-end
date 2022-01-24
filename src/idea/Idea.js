@@ -77,6 +77,7 @@ function Likes(props) {
             }
         })
         .then(function (response) {
+            console.log(response.data.is_liked);
             switch(response.status) {
                 case 200: setLikeCount(response.data.likes); break;
                 default: break;
@@ -98,14 +99,13 @@ function Likes(props) {
             }
         });
     };
-    
     return(
         <div className="flex w-fit h-8 object-right-top">
             <button
                 className="text-xl"
                 type="button"
                 onClick={ (e) => likeIdea(e, props.ideaID) }
-                disabled={props.boughtView}
+                disabled={(props.boughtView || authContext !== "authenticated")}
             >
                 👍
             </button>

@@ -39,6 +39,7 @@ export default function IdeasForSale() {
         return (
             <Idea
                 listView={true}
+                boughtView={false}
                 key={idea.id}
                 id={idea.id}
                 imgUrl={idea.image_url}
