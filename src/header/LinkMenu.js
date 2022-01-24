@@ -7,18 +7,30 @@ export function LinkMenu() {
 	const [authContext, ] = useContext(AuthContext);
 	
 	return (
-		<ul className="flex">
-			<Link addr="/marketplace" text="Marketplace"/>
-			<Link addr="/about-us" text="About us"/>
+		<ul className="flex space-x-4">
+			<div className="border-4 h-12 py-1 pl-5 text-lg">
+				<Link addr="/marketplace" text="Marketplace"/>
+			</div>
+			<div className="border-4 h-12 py-1 pl-5 text-lg">
+				<Link addr="/about-us" text="About us"/>
+			</div>
 			{
 				authContext === "authenticated" ?
 				<>
-					<Link addr="/account" text="Account"/>
-      				<Link addr="/logout" text="Sign out"></Link>
+					<div className="border-4 h-10 py-1 pl-5 mt-1">
+						<Link addr="/account" text="Account"/>
+					</div>
+					<div className="border-4 h-10 py-1 pl-5 mt-1">
+      					<Link addr="/logout" text="Sign out"></Link>
+					</div>
 				</> :
 				<>
-					<Link addr="/login" text="Login"/>
-					<Link addr="/register" text="Register"/>
+					<div className="border-4 h-10 py-1 pl-5 mt-1">
+						<Link addr="/login" text="Login"/>
+					</div>
+					<div className="border-4 h-10 py-1 pl-5 mt-1">
+						<Link addr="/register" text="Register"/>
+					</div>
 				</>
 			}
 		</ul>

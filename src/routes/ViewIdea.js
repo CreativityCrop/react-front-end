@@ -41,7 +41,7 @@ export default function ViewIdea() {
     }
 
     return(
-        <div id="ideas-list" className="border-4 p-3">
+        <div id="ideas-list" className="border-4 mt-12 p-3">
             <AuthProvider/>
             {ideaEntry()}
             <Outlet/>
