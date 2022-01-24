@@ -64,7 +64,7 @@ export default function AuthProvider() {
               setAuthContext("authenticated");
           }
           else {
-              setAuthContext("unathenticated");
+              setAuthContext("unauthenticated");
           }
       });
       //console.log("Token: " + getToken() + "\nStatus: " + authContext);

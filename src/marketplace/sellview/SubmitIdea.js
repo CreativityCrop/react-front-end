@@ -78,7 +78,7 @@ export default function SubmitIdea() {
                                         case 103: 
                                         setSuccess(false);
                                         removeToken();
-                                        setAuthContext("unathenticated");
+                                        setAuthContext("unauthenticated");
                                         break;
                                         default: break;
                                     }
@@ -98,7 +98,7 @@ export default function SubmitIdea() {
                             case 103: 
                             setSuccess(false);
                             removeToken();
-                            setAuthContext("unathenticated");
+                            setAuthContext("unauthenticated");
                             break;
                             default: break;
                         }

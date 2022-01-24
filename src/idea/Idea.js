@@ -90,7 +90,7 @@ function Likes(props) {
                     switch(error.response.data.detail.errno) {
                         case 103: 
                             removeToken();
-                            setAuthContext("unathenticated");
+                            setAuthContext("unauthenticated");
                         break;
                         default: break;
                     }
