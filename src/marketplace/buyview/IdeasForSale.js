@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import AuthProvider from '../../AuthAPI';
 
@@ -9,6 +9,10 @@ export default function IdeasForSale() {
     const [pageNumber, setPageNumber] = useState(0);
     const query = new URLSearchParams(useLocation().search);
     const category = query.get("cat");
+
+    useEffect(() => {
+        setPageNumber(0);
+    }, [category])
 
     const {
         ideas,
@@ -51,7 +55,9 @@ export default function IdeasForSale() {
     return (
         <div id="ideas-list" className="border-4 p-3 min-w-[46rem] min-h-[37rem]">
             <AuthProvider/>
-            {error ? "Error" : listIdeas}
+            {listIdeas}
+            {loading && "Loading..."}
+            {error && "Error"}
         </div>
     );
 }

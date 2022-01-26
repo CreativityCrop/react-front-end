@@ -9,24 +9,21 @@ import CategoryButton  from "./CategoryButton";
 export default function Idea(props) {
     return (
         <div className="flex flex-row mb-4 border-4 p-3 min-w-[44rem]" key={props.title} ref={props.innerRef}>
-            <Image imgUrl={props.imgUrl} />
+            <Image {...props} />
             <div>
                 <div className="flex mb-2">
-                    <Title title={props.title} />
-                    <Likes likes={props.likes} ideaID={props.id} boughtView={props.boughtView} />
+                    <Title {...props} />
+                    <Likes {...props} />
                 </div>
-                <ShortDescription text={props.shortDesc} listView={props.listView} />
-                <LongDescription text={props.longDesc} listView={props.listView} />
-                <CategoriesList categories={props.categories} />
-                <FileList files={props.files}/>
+                <ShortDescription {...props} />
+                <LongDescription {...props} />
+                <CategoriesList {...props} />
+                <FileList {...props} />
                 <div className="grid grid-cols-2 mt-3 ml-2">
-                    <Price price={props.price} />
+                    <Price {...props} />
                     <Button 
                         className="w-48 h-8" 
-                        listView={props.listView} 
-                        buyView={props.buyView}
-                        boughtView={props.boughtView}
-                        ideaID={props.id}
+                        {...props}
                     />
                 </div>
             </div>
@@ -63,7 +60,7 @@ function Likes(props) {
     const [authContext, setAuthContext] = useContext(AuthContext);
     const [likeCount, setLikeCount] = useState(null);
 
-    if(authContext !=="authenticated" && props.likes === undefined) {
+    if(authContext !=="authenticated" || props.likes === undefined) {
         return(null);
     }
 
@@ -77,7 +74,7 @@ function Likes(props) {
             }
         })
         .then(function (response) {
-            console.log(response.data.is_liked);
+            // console.log(response.data.is_liked);
             switch(response.status) {
                 case 200: setLikeCount(response.data.likes); break;
                 default: break;
@@ -104,8 +101,8 @@ function Likes(props) {
             <button
                 className="text-xl"
                 type="button"
-                onClick={ (e) => likeIdea(e, props.ideaID) }
-                disabled={(props.boughtView || authContext !== "authenticated")}
+                onClick={ (e) => likeIdea(e, props.id) }
+                disabled={(props.boughtView || props.soldView || authContext !== "authenticated")}
             >
                 👍
             </button>
@@ -115,30 +112,30 @@ function Likes(props) {
 }
 
 function ShortDescription(props) {
-    if(props.text === undefined) {
+    if(props.shortDesc === undefined) {
         return(null);
     }
     return(
         <div id="short-desc" className="ml-2 mb-3 w-[30rem]">
             <p className="text-base">
                 { props.listView ?
-                    props.text.substring(0, 150) + (props.text.length<=150 ? "" : " ...") :
-                    props.text }
+                    props.shortDesc.substring(0, 150) + (props.shortDesc.length<=150 ? "" : " ...") :
+                    props.shortDesc }
             </p>
         </div>
     );
 }
 
 function LongDescription(props) {
-    if(props.text === undefined) {
+    if(props.longDesc === undefined) {
         return(null);
     }
     return(
         <div id="long-desc" className="ml-2 mb-3 w-[30rem]">
             <p>
                 { props.listView ?
-                        props.text.substring(0, 150) + (props.text.length<=150 ? "" : " ...") :
-                        props.text }
+                        props.longDesc.substring(0, 150) + (props.longDesc.length<=150 ? "" : " ...") :
+                        props.longDesc }
             </p>
         </div>
     );
@@ -175,15 +172,15 @@ function Button(props) {
     let url, text
     if(props.listView) {
         if(props.boughtView) {
-            url = "/idea/" + props.ideaID;
+            url = "/idea/" + props.id;
         }
         else {
-            url = "/marketplace/buy/" + props.ideaID;
+            url = "/marketplace/buy/" + props.id;
         }
         text = "See More";
     }
     else if(props.buyView) {
-        url = "/marketplace/buy/" + props.ideaID + "/checkout";
+        url = "/marketplace/buy/" + props.id + "/checkout";
         text = "Buy Now!";
     }
     return(

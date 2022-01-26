@@ -12,24 +12,29 @@ import './Checkout.css';
 // This is your test publishable API key.
 const stripePromise = loadStripe("pk_test_51Jx4d2Ldhfi7be410LUMAYrElAWn9sf4uB1ulyZrYU8F0qgSUFC9bS4TQ8LNTwDx9N1MOI4rc82OHZR07ZrJQMp600LkklOSo9");
 
-export default function Checkout() {
+export default function Checkout(props) {
   const [clientSecret, setClientSecret] = useState("");
   let location = useLocation();
 
   useEffect(() => {
-    const url = location.pathname;
-    const idea_id = url.match(/[0-9a-fA-F]{32}/g)[0];
-    console.log(idea_id);
-    // Create PaymentIntent as soon as the page loads
-    axios.get(MAIN_API_URL + "/payment/create?idea_id=" + idea_id, {
-        headers: {
-            "Token": getToken(),
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*"
-        }
-    })
-    .then((res) => setClientSecret(res.data.clientSecret));
-  }, [location]);
+    if(props.clientSecret === undefined || props.clientSecret === null) {
+      const url = location.pathname;
+      const idea_id = url.match(/[0-9a-fA-F]{32}/g)[0];
+      console.log(idea_id);
+      // Create PaymentIntent as soon as the page loads
+      axios.get(MAIN_API_URL + "/payment/create?idea_id=" + idea_id, {
+          headers: {
+              "Token": getToken(),
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "*"
+          }
+      })
+      .then((res) => setClientSecret(res.data.clientSecret));
+    }
+    else {
+      setClientSecret(props.clientSecret);
+    }
+  }, [location, props.clientSecret]);
 
   const appearance = {
     theme: 'stripe',

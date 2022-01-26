@@ -7,6 +7,10 @@ export default function useLoadIdeas(pageNumber, category) {
     const [error, setError] = useState(false);
     const [ideas, setIdeas] = useState([]);
     const [hasMore, setHasMore] = useState(false);
+
+    useEffect(() => {
+        setIdeas([]);
+    }, [category]);
     
     useEffect(() => {
         setLoading(true);

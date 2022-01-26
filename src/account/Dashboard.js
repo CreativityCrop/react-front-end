@@ -4,9 +4,12 @@ import axios from 'axios';
 
 import AccountSettings from './AccountSettings';
 import Library from './Library';
+import Checkout from '../idea/Checkout';
+import Idea from '../idea/Idea';
 
 export default function Dashboard() {
     const [userData, setUserData] = useState({});
+    const [finishPayment, setFinishPayment] = useState(false);
 
     useEffect(() => {
         loadUserData();
@@ -25,10 +28,33 @@ export default function Dashboard() {
 
     return(
         <div className="mt-14 select-none">
-            <AccountSettings
-                avatarUrl={userData.avatar_url}
-            />
-            <Library/>
+            { !finishPayment ?
+                <div>
+                    {
+                        userData.unfinished_intent !== undefined && userData.unfinished_intent !== null ?
+                        <div> 
+                            <p>You have unfinished payment for idea: {userData.title}!</p>
+                            <button onClick={() => setFinishPayment(true) }>Retry payment</button>
+                        </div>
+                        : null
+                    }
+                    <AccountSettings
+                        avatarUrl={userData.avatar_url}
+                    />
+                    <Library/>
+                </div>
+                : <div>
+                    <Idea
+                        key={userData.unfinished_payment_idea}
+                        id={userData.unfinished_payment_idea}
+                        imgUrl={userData.idea_img}
+                        title={userData.title}
+                        shortDesc={userData.short_desc}
+                        price={userData.price}
+                    />
+                    <Checkout clientSecret={userData.unfinished_intent_secret}/>
+                </div>
+            }
         </div>
     );
 }
