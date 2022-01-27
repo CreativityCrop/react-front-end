@@ -24,13 +24,10 @@ export default function HottestIdeas() {
     const listIdeas = ideas.map((idea) => {
         return (
             <div className="relative group">
-                <div className="w-36 text-center h-36 absolute invisible font-medium
-                group-hover:visible top-0 hover:bg-slate-200 hover:bg-opacity-60">    
-                    {idea.title}
-                </div>
                     <SmallIdea
                         key={idea.id}
                         id={idea.id}
+                        title={idea.title}
                         imgUrl={idea.image_url}
                         likes={idea.likes}
                     />

@@ -14,6 +14,10 @@ export default function BuyIdea() {
         getIdea(params.ideaID);
     }, [params]);
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     const getIdea = async (id) => {
         const response = await axios.get(MAIN_API_URL + "/ideas/get/" + id, {
             headers: {

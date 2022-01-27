@@ -174,6 +174,9 @@ function Button(props) {
         if(props.boughtView) {
             url = "/idea/" + props.id;
         }
+        else if(props.soldView) {
+            return(null);
+        }
         else {
             url = "/marketplace/buy/" + props.id;
         }
@@ -183,6 +186,7 @@ function Button(props) {
         url = "/marketplace/buy/" + props.id + "/checkout";
         text = "Buy Now!";
     }
+
     return(
         <button 
             className="text-lg text-center w-48 h-8 ml-12 bg-green-200 hover:bg-purple-200" 
