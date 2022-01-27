@@ -13,7 +13,7 @@ export default function AccountSettings(props) {
             </div>}
             <div id="middle" className="mr-4 mt-3">
                 <div className="flex flex-row mb-3">
-                    <div className="border-4 w-56 h-10 mr-36">
+                    <div className="border-4 w-56 h-10 p-1 mr-36">
                         <p>Username</p>
                     </div>
                     {/* <div className="ml-3 w-28 h-10 bg-green-200 hover:bg-purple-200">
@@ -23,7 +23,7 @@ export default function AccountSettings(props) {
                         <p>S</p>
                     </div>
                 </div>
-                <div className="border-4 w-auto h-32">
+                <div className="border-4 w-auto p-1 h-32">
                     <p>short bio</p>
                 </div>
             </div>

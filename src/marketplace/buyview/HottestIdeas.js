@@ -23,18 +23,23 @@ export default function HottestIdeas() {
 
     const listIdeas = ideas.map((idea) => {
         return (
-            <SmallIdea
-                key={idea.id}
-                id={idea.id}
-                imgUrl={idea.image_url}
-                title={idea.title}
-                likes={idea.likes}
-            />
+            <div className="relative group">
+                <div className="w-36 text-center h-36 absolute invisible font-medium
+                group-hover:visible top-0 hover:bg-slate-200 hover:bg-opacity-60">    
+                    {idea.title}
+                </div>
+                    <SmallIdea
+                        key={idea.id}
+                        id={idea.id}
+                        imgUrl={idea.image_url}
+                        likes={idea.likes}
+                    />
+            </div>
         );
     });
 
     return (
-        <div className="ml-4 w-52 -mt-[6.51rem] pt-6 px-4 bg-red-200">
+        <div className="ml-4 w-52 h-fit -mt-[6.51rem] py-6 px-4 bg-red-200">
                 <h1 className="text-center text-2xl">Hottest ideas right now!</h1>
             <div className="space-y-3 ml-4 mt-3">
                 {listIdeas}
