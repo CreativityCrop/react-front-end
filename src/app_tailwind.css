@@ -576,11 +576,17 @@ select {
 .visible {
   visibility: visible;
 }
+.invisible {
+  visibility: hidden;
+}
 .absolute {
   position: absolute;
 }
 .relative {
   position: relative;
+}
+.top-0 {
+  top: 0px;
 }
 .top-1\/2 {
   top: 50%;
@@ -816,11 +822,18 @@ select {
 .h-\[90\%\] {
   height: 90%;
 }
+.h-full {
+  height: 100%;
+}
 .h-80 {
   height: 20rem;
 }
 .h-16 {
   height: 4rem;
+}
+.h-fit {
+  height: -moz-fit-content;
+  height: fit-content;
 }
 .h-\[6\.55rem\] {
   height: 6.55rem;
@@ -1004,6 +1017,9 @@ select {
 .self-center {
   align-self: center;
 }
+.overflow-hidden {
+  overflow: hidden;
+}
 .overflow-y-auto {
   overflow-y: auto;
 }
@@ -1099,14 +1115,14 @@ select {
 .object-right-top {
   object-position: right top;
 }
+.p-1 {
+  padding: 0.25rem;
+}
 .p-10 {
   padding: 2.5rem;
 }
 .p-6 {
   padding: 1.5rem;
-}
-.p-1 {
-  padding: 0.25rem;
 }
 .p-3 {
   padding: 0.75rem;
@@ -1279,9 +1295,16 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(192 132 252 / var(--tw-bg-opacity));
 }
+.hover\:bg-slate-200:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+}
 .hover\:bg-red-600:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+}
+.hover\:bg-opacity-60:hover {
+  --tw-bg-opacity: 0.6;
 }
 .hover\:text-red-600:hover {
   --tw-text-opacity: 1;
@@ -1294,4 +1317,7 @@ select {
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+.group:hover .group-hover\:visible {
+  visibility: visible;
 }

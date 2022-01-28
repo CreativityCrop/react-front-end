@@ -23,15 +23,13 @@ export default function HottestIdeas() {
 
     const listIdeas = ideas.map((idea) => {
         return (
-            <div className="relative group">
-                    <SmallIdea
-                        key={idea.id}
-                        id={idea.id}
-                        title={idea.title}
-                        imgUrl={idea.image_url}
-                        likes={idea.likes}
-                    />
-            </div>
+            <SmallIdea
+                key={idea.id}
+                id={idea.id}
+                title={idea.title}
+                imgUrl={idea.image_url}
+                likes={idea.likes}
+            />
         );
     });
 
