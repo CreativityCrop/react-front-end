@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import AuthProvider, { getToken, MAIN_API_URL } from '../../AuthAPI';
 
-import IdeaBuy from '../../idea/Idea';
+import Idea from '../../idea/Idea';
 
 export default function BuyIdea() {
     const params = useParams();
@@ -30,7 +30,7 @@ export default function BuyIdea() {
     }
 
     const ideaEntry = () => {
-        return <IdeaBuy
+        return <Idea
                 buyView={true}
                 key={idea.id}
                 id={idea.id}

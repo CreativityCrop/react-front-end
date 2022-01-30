@@ -39,6 +39,7 @@ export default function Dashboard() {
                         : null
                     }
                     <AccountSettings
+                        userData={userData}
                         avatarUrl={userData.avatar_url}
                     />
                     <Library/>

@@ -613,9 +613,9 @@ select {
   margin-left: 5rem;
   margin-right: 5rem;
 }
-.my-14 {
-  margin-top: 3.5rem;
-  margin-bottom: 3.5rem;
+.my-6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 .my-3 {
   margin-top: 0.75rem;
@@ -720,6 +720,9 @@ select {
 .ml-6 {
   margin-left: 1.5rem;
 }
+.ml-4 {
+  margin-left: 1rem;
+}
 .mr-3 {
   margin-right: 0.75rem;
 }
@@ -738,6 +741,9 @@ select {
 .ml-24 {
   margin-left: 6rem;
 }
+.-mt-\[6\.51rem\] {
+  margin-top: -6.51rem;
+}
 .mt-24 {
   margin-top: 6rem;
 }
@@ -755,12 +761,6 @@ select {
 }
 .mt-12 {
   margin-top: 3rem;
-}
-.ml-4 {
-  margin-left: 1rem;
-}
-.-mt-\[6\.51rem\] {
-  margin-top: -6.51rem;
 }
 .ml-10 {
   margin-left: 2.5rem;
@@ -825,15 +825,15 @@ select {
 .h-full {
   height: 100%;
 }
+.h-fit {
+  height: -moz-fit-content;
+  height: fit-content;
+}
 .h-80 {
   height: 20rem;
 }
 .h-16 {
   height: 4rem;
-}
-.h-fit {
-  height: -moz-fit-content;
-  height: fit-content;
 }
 .h-\[6\.55rem\] {
   height: 6.55rem;
@@ -999,15 +999,15 @@ select {
   margin-right: calc(2rem * var(--tw-space-x-reverse));
   margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
 }
-.space-x-3 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(0.75rem * var(--tw-space-x-reverse));
-  margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
-}
 .space-y-3 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
+}
+.space-x-3 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.75rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
 }
 .divide-y-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0;
@@ -1168,6 +1168,10 @@ select {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
 }
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -1175,10 +1179,6 @@ select {
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
-}
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
 }
 .py-\[0\.4rem\] {
   padding-top: 0.4rem;
@@ -1214,6 +1214,9 @@ select {
 }
 .pb-5 {
   padding-bottom: 1.25rem;
+}
+.pb-3 {
+  padding-bottom: 0.75rem;
 }
 .pb-\[3\.8rem\] {
   padding-bottom: 3.8rem;

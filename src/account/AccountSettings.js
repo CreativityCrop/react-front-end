@@ -1,13 +1,15 @@
-import { useState, useContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
 
 import { MAIN_API_URL, getToken, removeToken, AuthContext } from '../AuthAPI';
 import axios from 'axios';
 
 export default function AccountSettings(props) {
+    const [editMode, setEditMode] = useState(false);
+
 
     return (
         <div id="holder-of-the-acc" className="flex flex-row mb-4">
-            { props.edit ? <AvatarUpload/> : 
+            { editMode ? <AvatarUpload/> : 
             <div id="left" className="w-48 h-48 mr-4 bg-slate-300">
                 <img src={props.avatarUrl} alt="user avatar"/>
             </div>}
@@ -19,9 +21,11 @@ export default function AccountSettings(props) {
                     {/* <div className="ml-3 w-28 h-10 bg-green-200 hover:bg-purple-200">
                         <p>log out</p>
                     </div> */}
-                    <div className="ml-3 w-10 h-10 bg-green-200 hover:bg-purple-200">
-                        <p>S</p>
-                    </div>
+                    <button 
+                        type="button"
+                        className="ml-3 w-10 h-10 bg-green-200 hover:bg-purple-200"
+                        onClick={() => setEditMode(!editMode)}
+                    >{editMode ? "Save" : "Edit"}</button>
                 </div>
                 <div className="border-4 w-auto p-1 h-32">
                     <p>short bio</p>
@@ -102,11 +106,11 @@ function AvatarUpload() {
                 }
             }
             onClick={ (e) => document.getElementById("select-image").click() }
-                >
-                    <input id="select-image" hidden type="file" onChange={onChangePicture} />
-                    <div className="cursor-pointer text-red-500">
-                        Click to upload!
-                    </div>
+        >
+            <input id="select-image" hidden type="file" onChange={onChangePicture} />
+            <div className="cursor-pointer text-red-500">
+                Click to upload!
+            </div>
         </div>
     );
 }
