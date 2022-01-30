@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { MAIN_API_URL, getToken } from '../AuthAPI';
+import AuthProvider, { MAIN_API_URL, getToken } from '../AuthAPI';
 import axios from 'axios';
 
 import AccountSettings from './AccountSettings';
@@ -28,6 +28,7 @@ export default function Dashboard() {
 
     return(
         <div className="mt-14 select-none">
+            <AuthProvider/>
             { !finishPayment ?
                 <div>
                     {

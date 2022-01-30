@@ -67,9 +67,9 @@ export default function SubmitIdea() {
                             switch(response.status) {
                                 case 200:
                                     console.log("Files uploaded!");
-                                    break;
-                                    default: break;
-                                }
+                                break;
+                                default: break;
+                            }
                         })
                         .catch((error) => {
                             console.log(error);
@@ -85,7 +85,7 @@ export default function SubmitIdea() {
                                 break;
                                 default: break;
                             }
-                        })
+                        });
                     break;
                     default: break;
                 }

@@ -70,4 +70,8 @@ export default function AuthProvider() {
         //console.log("Token: " + getToken() + "\nStatus: " + authContext);
     }, [authContext, setAuthContext]);
     return (null);
-} 
+}
+
+export const regex_name = /^[a-zA-Z ,.'-]+$/i;
+export const regex_user = /^(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/i;
+export const regex_email = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;

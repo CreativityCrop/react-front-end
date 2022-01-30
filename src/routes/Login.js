@@ -4,9 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import { sha3_256 } from 'js-sha3';
 
-import AuthProvider, { setToken, MAIN_API_URL } from '../AuthAPI';
+import AuthProvider, { setToken, MAIN_API_URL, regex_user } from '../AuthAPI';
 
-const regex_user = /^(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/i;
 
 export default function Login() {
     const navigate = useNavigate();
