@@ -46,7 +46,9 @@ export default function BoughtIdeasList() {
                 <h1 className="text-3xl p-2">Your Bought Ideas</h1>
             </div>
             {listIdeas}
-            <button onClick={(e) => e.preventDefault}>Load more</button>
+            <div className="text-lg ml-[19rem] pb-1">
+                <button onClick={(e) => e.preventDefault}>Load more</button>
+            </div>
         </div>
     );
 }

@@ -116,7 +116,7 @@ function ShortDescription(props) {
         return(null);
     }
     return(
-        <div id="short-desc" className="ml-2 mb-3 w-[30rem]">
+        <div id="short-desc" className="ml-2 mb-3 break-words w-[30rem]">
             <p className="text-base">
                 { props.listView ?
                     props.shortDesc.substring(0, 150) + (props.shortDesc.length<=150 ? "" : " ...") :
@@ -131,7 +131,7 @@ function LongDescription(props) {
         return(null);
     }
     return(
-        <div id="long-desc" className="ml-2 mb-3 w-[30rem]">
+        <div id="long-desc" className="ml-2 mb-3 break-words w-[30rem]">
             <p>
                 { props.listView ?
                         props.longDesc.substring(0, 150) + (props.longDesc.length<=150 ? "" : " ...") :

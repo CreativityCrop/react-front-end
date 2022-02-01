@@ -51,8 +51,7 @@ export default function Register() {
                     </div>
                     <form className="ml-6" onSubmit={handleSubmit(postUser)}>
                         <label>
-                            <p>First name</p>
-                            <input className="w-72 mb-2" 
+                            <input className="mt-6 w-72 mb-2" 
                                 type="text" placeholder="First name" 
                                 {...register("firstName", {required: true, minLength: 2, maxLength: 30, pattern: regex_name })} />
                             <div id="first-name-error" className="text-red-500 pb-3">
@@ -63,7 +62,6 @@ export default function Register() {
                             </div>
                         </label>
                         <label>
-                            <p>Last name</p>
                             <input className="w-72 mb-2" 
                                 type="text" placeholder="Last name" 
                                 {...register("lastName", {required: true, minLength: 2, maxLength: 30, pattern: regex_name })} />
@@ -75,7 +73,6 @@ export default function Register() {
                             </div>
                         </label>
                         <label>
-                            <p>Email address</p>
                             <input className="w-72 mb-2" 
                                 type="email" placeholder="Email" 
                                 {...register("email", {required: true, pattern: regex_email })} />
@@ -85,7 +82,6 @@ export default function Register() {
                             </div>                        
                         </label>
                         <label>
-                            <p>Username</p>
                             <input className="w-72 mb-2" 
                                 type="text" placeholder="Username" 
                                 {...register("username", { required: true, minLength: 4, maxLength: 18, pattern: regex_user })} />
@@ -97,7 +93,6 @@ export default function Register() {
                             </div>
                         </label>
                         <label>
-                            <p>Password</p>
                             <input className="w-72 mb-2"
                                 type="password" placeholder="Password" {...register("password", {required: true, minLength: 6})} />
                             <div id="password-error" className="text-red-500 pb-3">

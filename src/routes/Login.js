@@ -54,8 +54,7 @@ export default function Login() {
                     </div>
                     <form className="ml-6" onSubmit={handleSubmit(postLogin)}>
                         <label>
-                            <p>Username</p>
-                            <input className="w-72" 
+                            <input className="mt-6 w-72" 
                                 type="text" placeholder="Username" 
                                 {...register("username", { required: true, minLength: 4, maxLength: 18, pattern: regex_user })} />
                             <div id="username-error" className="text-red-500 pb-3">
@@ -66,8 +65,7 @@ export default function Login() {
                             </div>
                         </label>
                         <label>
-                        <p>Password</p>
-                            <input className="w-72"
+                            <input className="mt-2 w-72"
                                 type="password" placeholder="Password" 
                                 {...register("password", {required: true, minLength: 6})} />
                             <div id="password-error" className="text-red-500 pb-3">
