@@ -9,6 +9,7 @@ import Idea from '../idea/Idea';
 
 export default function Dashboard() {
     const [userData, setUserData] = useState({});
+    const [loading, setLoading] = useState(true);
     const [finishPayment, setFinishPayment] = useState(false);
 
     useEffect(() => {
@@ -24,6 +25,7 @@ export default function Dashboard() {
             }
         });
         setUserData(response.data);
+        setLoading(false);
     }
 
     return(
@@ -39,10 +41,10 @@ export default function Dashboard() {
                         </div>
                         : null
                     }
-                    <AccountSettings
+                    {!loading && <AccountSettings
                         userData={userData}
                         avatarUrl={userData.avatar_url}
-                    />
+                    /> }
                     <Library/>
                 </div>
                 : <div>

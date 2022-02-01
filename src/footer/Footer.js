@@ -43,9 +43,8 @@ export default function Footer() {
             </div>
             <div className="flex flex-row space-x-8">
                 <h1 className="text-left mx-10 mt-3">© { (new Date()).getFullYear()} CreativityCrop</h1>
-                <h1 className="mt-3">Pricay Policy</h1>
+                <h1 className="mt-3">Privacy Policy</h1>
                 <h1 className="mt-3">Terms and Conditions</h1>
-                <h1 className="mt-3">Terms of Use</h1>
             </div>
         </div>
     );

@@ -25,6 +25,7 @@ export default function Idea(props) {
                         className="w-48 h-8" 
                         {...props}
                     />
+                    <PayoutButton {...props} />
                 </div>
             </div>
         </div>
@@ -152,51 +153,6 @@ function CategoriesList(props) {
     );
 }
 
-function Price(props) {
-    if(props.price === undefined) {
-        return(null);
-    }
-    return(
-        <div className="w-48 h-8 bg-red-200">
-            <h3 className="text-lg text-center">${props.price}</h3>
-        </div>
-    );
-}
-
-function Button(props) {
-    const navigate = useNavigate();
-
-    if(props.listView === undefined && props.buyView === undefined) {
-        return(null);
-    }
-    let url, text
-    if(props.listView) {
-        if(props.boughtView) {
-            url = "/idea/" + props.id;
-        }
-        else if(props.soldView) {
-            return(null);
-        }
-        else {
-            url = "/marketplace/buy/" + props.id;
-        }
-        text = "See More";
-    }
-    else if(props.buyView) {
-        url = "/marketplace/buy/" + props.id + "/checkout";
-        text = "Buy Now!";
-    }
-
-    return(
-        <button 
-            className="text-lg text-center w-48 h-8 ml-12 bg-green-200 hover:bg-purple-200" 
-            onClick={() => {navigate(url)}}
-        >
-            {text}
-        </button>
-    );
-}
-
 function FileList(props) {
     function getFiles() {
         if(props.files === undefined) {
@@ -263,4 +219,100 @@ function File(props) {
             <a className="flex-initial self-center" href={downloadLink(props.file.id)} download>Download</a>
         </div>
     );
+}
+
+function Price(props) {
+    if(props.price === undefined) {
+        return(null);
+    }
+    return(
+        <div className="w-48 h-8 bg-red-200">
+            <h3 className="text-lg text-center">${props.price}</h3>
+        </div>
+    );
+}
+
+function Button(props) {
+    const navigate = useNavigate();
+
+    if(props.listView === undefined && props.buyView === undefined) {
+        return(null);
+    }
+    let url, text
+    if(props.listView) {
+        if(props.boughtView) {
+            url = "/idea/" + props.id;
+        }
+        else if(props.soldView) {
+            return(null);
+        }
+        else {
+            url = "/marketplace/buy/" + props.id;
+        }
+        text = "See More";
+    }
+    else if(props.buyView) {
+        url = "/marketplace/buy/" + props.id + "/checkout";
+        text = "Buy Now!";
+    }
+
+    return(
+        <button
+            type="button"
+            className="text-lg text-center w-48 h-8 ml-12 bg-green-200 hover:bg-purple-200" 
+            onClick={() => {navigate(url)}}
+        >
+            {text}
+        </button>
+    );
+}
+
+function PayoutButton(props) {
+    if(props.payoutStatus === undefined) {
+        return(null);
+    }
+    switch(props.payoutStatus) {
+        case "created":
+            return(
+                <button
+                    type="button"
+                    className="text-lg text-center w-48 h-8 ml-12 bg-orange-200 hover:bg-purple-200"
+                >
+                    Request payout
+                </button>
+            );
+
+        case "processing":
+            return(
+                <button
+                    type="button"
+                    className="text-lg text-center w-48 h-8 ml-12 bg-yellow-200 hover:bg-purple-200"
+                    disabled
+                >
+                    Payout in progress
+                </button>
+            );
+
+        case "completed":
+            return(
+                <button
+                    type="button"
+                    className="text-lg text-center w-48 h-8 ml-12 bg-green-500 hover:bg-purple-200"
+                    disabled
+                >
+                    Payout completed
+                </button>
+            );
+
+        case "denied":
+            return(
+                <button
+                    type="button"
+                    className="text-lg text-center w-48 h-8 ml-12 bg-red-400 hover:bg-red-700"
+                >
+                    Contact us
+                </button>
+            );
+        default: return(null);
+    }
 }

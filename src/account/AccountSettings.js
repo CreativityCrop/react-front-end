@@ -1,3 +1,4 @@
+// ---------------- Account Settings Component ---------------- \\
 import { useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -10,12 +11,20 @@ import { ReactComponent as UploadIcon } from '../assets/icons/upload-image.svg'
 
 export default function AccountSettings(props) {
     const [, setAuthContext] = useContext(AuthContext);
+    // var to determine if settings are in edit mode
     const [editMode, setEditMode] = useState(false);
+    // helper var to visualize avatar
     const [imgVisual, setImgVisual] = useState(null);
+    // react-hook-form used for validation
     const { register, formState: { errors }, handleSubmit } = useForm();
 
+    // function called when form is submitted
     const updateUser = (data) => {
+        // console.log(data);
+
+        // data is send as formdata, allowing one request to send the text and file 
         const formData = new FormData();
+        // checks which fields have been altered
         if(data.avatar.length !== 0) {
             formData.append("avatar", data.avatar[0], data.avatar[0]?.name);
         }
@@ -28,6 +37,10 @@ export default function AccountSettings(props) {
         if(data.password !== undefined) {
             formData.append("pass_hash", sha3_256(data.password));
         }
+        // if formData is empty don't send a request
+        if(formData.entries().next().done) {
+            return;
+        }
         axios.put(MAIN_API_URL + "/account", formData, {
             headers: {
                 "Token": getToken(),
@@ -38,9 +51,11 @@ export default function AccountSettings(props) {
         }).then((response) => {
             switch(response.status) {
                 case 200:
+                    // if username has been changed we need a new token
                     if(response.data.token !== undefined) {
                         setToken(response.data.token);
                     }
+                    // refresh page just in case
                     window.location.reload(false);
                 break;
                 default: break;
@@ -50,9 +65,10 @@ export default function AccountSettings(props) {
             switch(error.response.status) {
                 case 401:
                     switch(error.response.data.detail.errno) {
+                        // token expired
                         case 103:
-                        removeToken();
-                        setAuthContext("unauthenticated");
+                            removeToken();
+                            setAuthContext("unauthenticated");
                         break;
                         default: break;
                     }
@@ -60,6 +76,7 @@ export default function AccountSettings(props) {
                 default: break;
             }
         });
+        // reset the image visualizer
         setImgVisual(null);
     };
 
@@ -119,6 +136,7 @@ export default function AccountSettings(props) {
                             {...register("username", { minLength: 4, maxLength: 18, pattern: regex_user })}
                             type="text"
                             className="text-lg w-64 h-10 p-1"
+                            placeholder="Change Username"
                             defaultValue={props.userData.username}
                             disabled={!editMode}
                         />
@@ -130,6 +148,7 @@ export default function AccountSettings(props) {
                             {...register("email", { pattern: regex_email })}
                             type="email"
                             className="w-64 h-10 p-1 mt-3"
+                            placeholder="Change Email"
                             defaultValue={props.userData.email}
                             disabled={!editMode}
                         />
