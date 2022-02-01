@@ -113,12 +113,12 @@ export default function AccountSettings(props) {
             
             <form className="" onSubmit={handleSubmit(updateUser)}>
             <div id="middle" className="mr-4">
-                <div className="flex flex-row mt-1">
+                <div>
                     <div>
                         <input
                             {...register("username", { minLength: 4, maxLength: 18, pattern: regex_user })}
                             type="text"
-                            className=" text-lg font-medium w-56 h-10 p-1"
+                            className="text-lg w-64 h-10 p-1"
                             defaultValue={props.userData.username}
                             disabled={!editMode}
                         />
@@ -129,7 +129,7 @@ export default function AccountSettings(props) {
                         <input
                             {...register("email", { pattern: regex_email })}
                             type="email"
-                            className="w-56 h-10 p-1 mt-3"
+                            className="w-64 h-10 p-1 mt-3"
                             defaultValue={props.userData.email}
                             disabled={!editMode}
                         />
@@ -140,7 +140,7 @@ export default function AccountSettings(props) {
                         <input
                             {...register("password", { minLength: 6 })}
                             type="password"
-                            className="w-56 h-10 p-1 mt-3"
+                            className="w-64 h-10 p-1 mt-3"
                             placeholder="Change password"
                             disabled={!editMode}
                         />
@@ -154,7 +154,7 @@ export default function AccountSettings(props) {
                     <button 
                         type={!editMode ? "submit" : "button"}
                         button="submit"
-                        className="ml-3 w-10 h-10 bg-green-200 hover:bg-purple-200"
+                        className="mt-2 w-20 h-10 ml-44 bg-green-200 hover:bg-purple-200"
                         onClick={() => setEditMode(!editMode)}
                     >{editMode ? "Save" : "Edit"}</button>
                 </div>
