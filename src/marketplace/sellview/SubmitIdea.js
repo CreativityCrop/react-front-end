@@ -18,6 +18,7 @@ import AuthProvider, { getToken, removeToken, AuthContext, MAIN_API_URL } from '
 import { ReactComponent as UploadIcon } from '../../assets/icons/upload-image.svg'
 
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const fileTypes = ["svg", "jpeg", "jpg", "png", "mp3", "mp4", "mpeg", "txt", "csv", "pdf", "json", "xml", "doc", "docx", "ppt", "pptx", "xls", "xlsx", "rar", "zip"];
 
@@ -25,11 +26,18 @@ export default function SubmitIdea() {
     // Inter component context for authentication status
     const [, setAuthContext] = useContext(AuthContext);
     // Hook for handling form and validation
-    const { register,control, formState: { errors }, handleSubmit } = useForm();
+    const { register, control, formState: { errors }, handleSubmit, reset } = useForm();
     // Logic help variables
     const [categoriesInputData, setCategoriesInputData] = useState({inputValue: "", value: []});
     const [files, setFiles] = useState([]);
     const [imgVisual, setImgVisual] = useState(null);
+
+    const clearForm = () => {
+        setCategoriesInputData({inputValue: "", value: []});
+        setFiles([]);
+        setImgVisual(null);
+        reset();
+    };
 
     const postIdea = (data) => {
         axios
@@ -55,7 +63,7 @@ export default function SubmitIdea() {
                             formData.append("files", file, file.name);
                         });
                         console.log(data.image);
-                        formData.append("files", data.image[0], "img-" + response.data + data.image[0].name.match(/\.[0-9a-z]+$/i)[0]);
+                        formData.append("files", data.image[0], "title-" + data.image[0].name);
                         axios.post(MAIN_API_URL + "/files/upload?idea_id=" + response.data, formData, {
                             headers: {
                                 "Token": getToken(),
@@ -67,6 +75,8 @@ export default function SubmitIdea() {
                             switch(response.status) {
                                 case 200:
                                     console.log("Files uploaded!");
+                                    clearForm();
+                                    toast("Idea uploaded successfully!");
                                 break;
                                 default: break;
                             }
@@ -110,6 +120,7 @@ export default function SubmitIdea() {
     // Function to visualise the uploaded Image
     const handleImageChange = (e) => {
         if(e.target.files.length === 0 ) return;
+        console.log("NEW FILE");
         if(["png", "jpg", "jpeg"].indexOf(e.target.files[0].name.match(/\.[0-9a-z]+$/i)[0].replace(".","")) === -1) {
             alert("Filetype not allowed!");
             return;
@@ -201,10 +212,11 @@ export default function SubmitIdea() {
                             <UploadIcon className="absolute w-1/4 top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] cursor-pointer" />
                         </div>
                         <input 
-                            id="select-image" 
-                            hidden type="file" 
-                            {...register("image", {required: true})}
-                            onChange={handleImageChange}
+                            {...register("image", {required: true, onChange: (e) => handleImageChange(e)})}
+                            id="select-image"
+                            type="file"
+                            hidden
+                            // onChange={handleImageChange}
                         />
                         <div id="image-error" className="break-words text-red-500">
                             {errors.image?.type === 'required' && "Cover image is reqiured."}
@@ -302,15 +314,15 @@ export default function SubmitIdea() {
                             }}
                             render={({ field }) => (
                             <CurrencyInput
-                                className="w-60 mr-36"
-                                id="input-example"
-                                name="input-name"
+                                className="w-60"
+                                id="price-input"
+                                name="price"
                                 prefix='$ '
                                 allowNegativeValue={false}
                                 decimalSeparator="."
                                 groupSeparator=" "
                                 placeholder="Please enter a number"
-                                defaultValue={40}
+                                defaultValue={undefined}
                                 decimalsLimit={2}
                                 onValueChange={(value) => field.onChange(value)}
                             />)}
@@ -322,15 +334,19 @@ export default function SubmitIdea() {
                             {errors.price?.type === 'max' && "Price must be below $ 999 999.99 ."}    
                         </div>
                     </div>
+                    <div className="grow"></div>
+                    <button type="button" 
+                        className="py-[0.4rem] px-9 uppercase text-lg bg-red-200 hover:bg-purple-200"
+                        onClick={clearForm}>Reset</button>
                     <button
                         type="submit" 
-                        className="ml-36 py-[0.4rem] px-9 uppercase text-lg bg-green-200 hover:bg-purple-200"
+                        className="ml-5 right-0 py-[0.4rem] px-9 uppercase text-lg bg-green-200 hover:bg-purple-200"
                     >
                         Submit
                     </button>
                 </div>
             </form>
-            
+
         </div>
     </>
     );

@@ -12,6 +12,7 @@ export default function IdeasForSale() {
 
     useEffect(() => {
         setPageNumber(0);
+        window.scrollTo(0, 0);
     }, [category])
 
     const {

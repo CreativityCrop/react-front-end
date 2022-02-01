@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import { toast  } from 'react-toastify';
 
 import { getToken, removeToken, AuthContext, MAIN_API_URL } from '../AuthAPI';
 
@@ -67,7 +68,7 @@ function Likes(props) {
 
     const likeIdea = (event, id) => {
         event.preventDefault();
-        axios.put(MAIN_API_URL + "/ideas/like?idea_id=" + id, {}, {
+        axios.put(MAIN_API_URL + `/ideas/like?idea_id=${id}`, {}, {
             headers: {
                 "Token": getToken(),
                 "Content-Type": "application/json",
@@ -268,15 +269,51 @@ function Button(props) {
 }
 
 function PayoutButton(props) {
-    if(props.payoutStatus === undefined) {
-        return(null);
-    }
-    switch(props.payoutStatus) {
+    const [, setAuthContext] = useContext(AuthContext);
+    const [payoutStatus, setPayoutStatus] = useState(props.payoutStatus);
+
+    const putPayout = () => {
+        axios
+            .put(MAIN_API_URL + `/account/request-payout?idea_id=${props.id}`, {}, {
+                headers: {
+                    "Token": getToken(),
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*"
+                }
+            }).then(function (response) {
+                // console.log(response.data.is_liked);
+                switch(response.status) {
+                    case 200: 
+                        setPayoutStatus(response.data.payoutStatus);
+                        toast("Wow so easy!");
+                    break;
+                    default: break;
+                }
+            })
+            .catch(function (error) {
+                console.log(error) 
+                switch(error.response.status) {
+                    case 401:
+                        switch(error.response.data.detail.errno) {
+                            case 103: 
+                                removeToken();
+                                setAuthContext("unauthenticated");
+                            break;
+                            default: break;
+                        }
+                    break;
+                    default: break;
+                }
+            });
+    };
+
+    switch(payoutStatus) {
         case "created":
             return(
                 <button
                     type="button"
                     className="text-lg text-center w-48 h-8 ml-12 bg-orange-200 hover:bg-purple-200"
+                    onClick={putPayout}
                 >
                     Request payout
                 </button>
@@ -306,12 +343,16 @@ function PayoutButton(props) {
 
         case "denied":
             return(
-                <button
-                    type="button"
+                <Link
                     className="text-lg text-center w-48 h-8 ml-12 bg-red-400 hover:bg-red-700"
+                    to='#'
+                    onClick={(e) => {
+                        window.open("mailto:contact@creativitycrop.tech");
+                        e.preventDefault();
+                    }}
                 >
                     Contact us
-                </button>
+                </Link>
             );
         default: return(null);
     }

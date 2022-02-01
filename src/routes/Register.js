@@ -42,10 +42,10 @@ export default function Register() {
         <div>
             <AuthProvider />
             <div className="grid grid-cols-2 my-6">
-                <div className="w-96 h-80 mr-2 mt-28 bg-blue-500">
+                <div id="image" className="w-96 h-80 mr-2 mt-28 bg-blue-500">
                     <img alt="nice img" />
                 </div>
-                <div className="ml-2 p-4 border-4">
+                <div id="form" className="ml-2 p-4 border-4">
                     <div className="w-44 ml-[4.5rem] mb-4 text-center">
                         <h1 className="text-2xl break-words">create your account</h1>
                     </div>
