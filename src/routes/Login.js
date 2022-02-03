@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 import axios from 'axios';
 import { sha3_256 } from 'js-sha3';
@@ -73,6 +73,7 @@ export default function Login() {
                             {errors.password?.type === 'required' && "Password is required."}
                             </div>
                         </label>
+                        <Link to="/password-reset" >Can't remember you password?</Link>
                         <div>
                             <button className="border-4 w-24 mt-4 text-center bg-green-200 hover:bg-purple-200" type="submit">Log in</button>
                         </div>

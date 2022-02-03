@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import AuthProvider, { MAIN_API_URL, getToken } from '../AuthAPI';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 import AccountSettings from './AccountSettings';
 import Library from './Library';
@@ -15,6 +16,12 @@ export default function Dashboard() {
     useEffect(() => {
         loadUserData();
     }, []);
+
+    useEffect(() => {
+        if(userData.unfinished_intent !== undefined && userData.unfinished_intent !== null) {
+            toast("You have unfinished payment for idea!", { draggable: true });
+        }
+    }, [userData]);
 
     const loadUserData = async () => {
         const response = await axios.get(MAIN_API_URL + "/account", {

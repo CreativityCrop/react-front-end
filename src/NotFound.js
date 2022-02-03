@@ -1,6 +1,9 @@
 import AuthProvider from "./AuthAPI";
 
 export default function NotFound() {
+    
+    document.title = "Not found - CreativityCrop";
+
     return (
         <div>
             <AuthProvider/>

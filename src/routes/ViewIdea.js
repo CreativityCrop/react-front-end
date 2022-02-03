@@ -22,7 +22,8 @@ export default function ViewIdea() {
                 "Access-Control-Allow-Origin": "*"
             }
         })
-        setIdea(response.data);
+        setIdea(response.data);  
+        document.title = response.data.title + " - CreativityCrop";
     }
 
     const ideaEntry = () => {

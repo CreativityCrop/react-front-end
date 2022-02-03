@@ -9,12 +9,15 @@ import Marketplace from './routes/Marketplace';
 import Aboutus from './routes/Aboutus';
 import Login from './routes/Login';
 import Register from './routes/Register';
+import PasswordReset from './routes/PasswordReset';
 import Account from './routes/Account';
 import Logout from './routes/Logout';
 import ViewIdea from './routes/ViewIdea';
 
 import NotFound from './NotFound';
 import MainContent from './MainContent';
+import TermsAndConditions from './routes/TermsAndConditions';
+import PrivacyPolicy from './routes/PrivacyPolicy';
 
 import SellView from './marketplace/SellView';
 import BuyView from './marketplace/BuyView';
@@ -38,14 +41,18 @@ export default function App() {
             case "/account": title = "Account"; break;
             case "/login": title = "Login"; break;
             case "/register": title = "Register"; break;
+            case "/password-reset": title = "Password reset"; break;
+            case "/terms-conditions": title = " Terms and Conditions"; break;
+            case "/privacy-policy": title = "Privacy Policy"; break;
             case "/idea": title = "Idea"; break;
-            default: title = "Not found"; break;
+            default: title = ""; break;
         }
         document.title = title + (title.length === 0 ? "" : " - ") + "CreativityCrop";
     }, [location]);
 
     return (
         <div>
+            <ScrollToTop/>
             <ToastContainer/>
             <AuthContext.Provider value={[authContext, setAuthContext]}>
                 <Routes>
@@ -85,6 +92,13 @@ export default function App() {
                                 <Register/>
                             </AuthenticationRoute>
                         }/>
+                        <Route path="password-reset" element={
+                            <AuthenticationRoute>
+                                <PasswordReset/>
+                            </AuthenticationRoute>
+                        }/>
+
+                        <Route path="logout" element={ <Logout/> }/>
                 
                         <Route path="account" element={
                             <AuthenticatedRoute>
@@ -96,9 +110,12 @@ export default function App() {
                                 <ViewIdea/>
                             </AuthenticatedRoute>
                         }/>
-                        <Route path="logout" element={ <Logout/> }/>
+
+                        <Route path="/terms-conditions" element={ <TermsAndConditions/> } />
+                        <Route path="/privacy-policy" element={ <PrivacyPolicy/> } />
+
                         {/* Route to display some error page when the route is not defined */}
-                        <Route path="*" element={<NotFound/>}/>
+                        <Route path="*" element={ <NotFound/> } />
                     </Route>
                 </Routes>
             </AuthContext.Provider>
@@ -127,4 +144,14 @@ export function AuthenticatedRoute({children }) {
     }
 
     return children;
+}
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
 }
