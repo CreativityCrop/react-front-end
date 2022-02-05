@@ -22,7 +22,7 @@ export default function Checkout(props) {
             const idea_id = url.match(/[0-9a-fA-F]{32}/g)[0];
             console.log(idea_id);
             // Create PaymentIntent as soon as the page loads
-            axios.get(MAIN_API_URL + "/payment/create?idea_id=" + idea_id, {
+            axios.post(MAIN_API_URL + "/payment/create?idea_id=" + idea_id, {
                 headers: {
                     "Token": getToken(),
                     "Content-Type": "application/json",
