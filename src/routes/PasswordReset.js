@@ -53,7 +53,7 @@ export default function PasswordReset() {
 
     const updatePassword = (data) => {
         axios
-            .post(MAIN_API_URL + "/account/password-reset", {
+            .put(MAIN_API_URL + "/account/password-reset", {
                 pass_hash: sha3_256(data.password)
             }, {
                 headers: {
