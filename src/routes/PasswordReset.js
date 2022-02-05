@@ -1,17 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 import axios from 'axios';
+import { sha3_256 } from 'js-sha3';
 
-import AuthProvider, { MAIN_API_URL, regex_email } from '../AuthAPI';
+import AuthProvider, { MAIN_API_URL, regex_email, setToken } from '../AuthAPI';
 
 
 export default function PasswordReset() {
     const navigate = useNavigate();
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const query = new URLSearchParams(useLocation().search);
+    const { register, formState: { errors }, handleSubmit, watch } = useForm();
+    const password = useRef({});
+    password.current = watch("password", "");
     const [success, setSuccess] = useState(false);
     const [timer, setTimer] = useState(5);
+    const resetToken = query.get("token");
 
     useEffect(() => {
         if(success) {
@@ -29,7 +34,7 @@ export default function PasswordReset() {
 
     const postPasswordReset = (data) => {
         axios
-            .post(MAIN_API_URL + "/account/password-reset", {
+            .post(MAIN_API_URL + "/account/request-password-reset", {
                 email: data.email,
             }, {
                 headers: {
@@ -46,8 +51,69 @@ export default function PasswordReset() {
             });
     };
 
+    const updatePassword = (data) => {
+        axios
+            .post(MAIN_API_URL + "/account/password-reset", {
+                pass_hash: sha3_256(data.password)
+            }, {
+                headers: {
+                    "Token":  resetToken,
+                    "Access-Control-Allow-Origin": "*"
+                }
+            })
+            .then(function (response) {
+                if(response.status === 200) {
+                    setSuccess(true);
+                    setToken(response.data.accessToken);
+                }
+            })
+            .catch(function (error) {
+                console.log(error, "error");
+            });
+    };
+
+    if(resetToken !== undefined && resetToken !== null) {
+        return(
+            <div id="password-reset">
+                <AuthProvider />
+                <div className="ml-2 p-4 border-4 mt-24">
+                    <div className=" mb-10 text-center">
+                        <h1 className="text-2xl break-words">Reset your forgotten password</h1>
+                    </div>
+                        { success ? 
+                        <div>
+                        <p>Password was changed successfully!</p>
+                        <p>Redirecting to Account in {timer}.</p>
+                        </div> :
+                        <form className="ml-6 mr-6" onSubmit={handleSubmit(updatePassword)}>
+                            <label>
+                                <input className="mt-2 w-72"
+                                    type="password" placeholder="Password" 
+                                    {...register("password", {required: true, minLength: 6})} />
+                                <div id="password-error" className="text-red-500 pb-3">
+                                {errors.password?.type === 'minLength' && "Password must be at least 6 characters."}
+                                {errors.password?.type === 'required' && "Password is required."}
+                                </div>
+                            </label>
+                            <label>
+                                <input className="mt-2 w-72"
+                                    type="password" placeholder="Confirm password" 
+                                    {...register("confirmPassword", {required: true, validate: value => value===password.current || "The passwords do not match"})} />
+                                <div id="password-error" className="text-red-500 pb-3">
+                                    {errors.password?.type === 'required' && "Confirm password is required."}
+                                    {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
+                                </div>
+                            </label>
+                            <button className="border-4 mt-4 text-center bg-green-200 hover:bg-purple-200" type="submit">Save Password</button>
+                        </form>
+                        }
+                </div>
+            </div>
+        );
+    }
+
     return(
-        <div id="login">
+        <div id="password-reset">
             <AuthProvider />
             <div className="ml-2 p-4 border-4 mt-24">
                 <div className=" mb-10 text-center">
