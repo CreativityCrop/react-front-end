@@ -5,7 +5,7 @@ export default function SecondSection(){
         <div className="mt-32 select-none">
             <div className="flex flex-row">
                 <div id="Buy an idea" className="grid grid-cols-2 bg-purple-300 w-auto p-6">
-                    <Illustrations/>
+                    <Illustrations alt="img"/>
                     <div className="w-52">
                         <h1 className="mb-3 text-3xl">Buy an idea</h1>
                         <h3>you browse ideas for selling and depending on the description
@@ -18,7 +18,7 @@ export default function SecondSection(){
                         <h3>you have an awesome idea that you want to sell on
                             the marketplace for others to buy</h3>
                     </div>
-                    <Illustrations/>
+                    <Illustrations alt="img"/>
                 </div>
             </div>
             <div id="Register" className="grid grid-cols-2 w-auto bg-green-600 p-6">

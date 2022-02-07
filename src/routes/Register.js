@@ -4,11 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { sha3_256 } from 'js-sha3';
 
-import AuthProvider, { setToken, MAIN_API_URL, regex_user, regex_name, regex_email } from '../AuthAPI';
+import AuthProvider, { MAIN_API_URL, regex_user, regex_name, regex_email } from '../AuthAPI';
 
 export default function Register() {
     const navigate = useNavigate();
-    const navigateBack = localStorage.getItem("redirect-back");
     const { register, formState: { errors }, handleSubmit } = useForm();
 
     const postUser = (data) => {
@@ -22,15 +21,8 @@ export default function Register() {
             })
             .then(function (response) {
                 //console.log(response.data.accessToken, "response.data.accessToken");
-                if (response.data.accessToken) {
-                    setToken(response.data.accessToken);
-                    if (navigateBack) {
-                        localStorage.removeItem("redirect-back");
-                        navigate(navigateBack);
-                    }
-                    else {
-                        navigate("/account");
-                    }
+                if (response.status === 200) {
+                    navigate("/login");
                 }
             })
             .catch(function (error) {

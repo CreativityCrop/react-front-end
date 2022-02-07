@@ -1,4 +1,4 @@
-export default function FirstSection(){
+export default function FirstSection() {
     return(
         <div className="pt-28 select-none">
             <div id="holder" className="flex flex-row">
@@ -10,7 +10,7 @@ export default function FirstSection(){
                     <h3 className="text-lg">insparational quote here</h3>
                 </div>
                 <div className="bg-slate-300 w-96 h-72">
-                    <p>img</p>
+                    <img alt="img" src=""/>
                 </div>
             </div>
             {/* <div className="bg-pink-300 w-10 h-10">

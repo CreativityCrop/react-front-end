@@ -54,18 +54,25 @@ export default function Dashboard() {
                     /> }
                     <Library/>
                 </div>
-                : <div>
-                    <Idea
-                        key={userData.unfinished_payment_idea}
-                        id={userData.unfinished_payment_idea}
-                        imgUrl={userData.idea_img}
-                        title={userData.title}
-                        shortDesc={userData.short_desc}
-                        price={userData.price}
-                    />
-                    <Checkout clientSecret={userData.unfinished_intent_secret}/>
-                </div>
+                : <UnpaidOrder userData={userData}/>
             }
         </div>
     );
+}
+
+function UnpaidOrder(props) {
+    const userData = props.userData;
+    return (
+        <div>
+            <Idea
+                key={userData.unfinished_payment_idea}
+                id={userData.unfinished_payment_idea}
+                imgUrl={userData.idea_img}
+                title={userData.title}
+                shortDesc={userData.short_desc}
+                price={userData.price}
+            />
+            <Checkout clientSecret={userData.unfinished_intent_secret}/>
+        </div>
+    )
 }

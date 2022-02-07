@@ -16,6 +16,7 @@
     "js-sha3": "^0.8.0",
     "jwt-decode": "^3.1.2",
     "react": "^17.0.2",
+    "react-app-polyfill": "^3.0.0",
     "react-currency-input-field": "^3.6.4",
     "react-dom": "^17.0.2",
     "react-drag-drop-files": "^2.2.5",
@@ -45,12 +46,14 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "ie 11"
     ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 safari version",
+      "ie 11"
     ]
   },
   "devDependencies": {

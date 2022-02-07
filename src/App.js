@@ -64,20 +64,20 @@ export default function App() {
                         <Route path="marketplace" element={ <Marketplace/> }>
                             <Route index element={ <Navigate to="./buy"/> }/>
                             <Route path="buy" element={ <BuyView/> }>
-                            <Route index element={ <IdeasForSale/> } />
-                            <Route path=":ideaID" element={
-                                <AuthenticatedRoute>
-                                    <BuyIdea/>
-                                </AuthenticatedRoute>
-                            }>
-                                <Route path="checkout" element={ <Checkout/> } />
+                                <Route index element={ <IdeasForSale/> } />
+                                <Route path=":ideaID" element={
+                                    <AuthenticatedRoute>
+                                        <BuyIdea/>
+                                    </AuthenticatedRoute>
+                                }>
+                                    <Route path="checkout" element={ <Checkout/> } />
+                                </Route>
                             </Route>
-                        </Route>
                         <Route path="sell" element={
                             <AuthenticatedRoute>
                                 <SellView/>
                             </AuthenticatedRoute>
-                            }/>
+                        }/>
                         </Route>
                         {/* All other first level routes */}
                         <Route path="about-us" element={ <Aboutus/> }/>

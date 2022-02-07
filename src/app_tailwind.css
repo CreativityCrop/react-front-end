@@ -309,6 +309,11 @@ textarea {
 2. Set the default placeholder color to the user's configured gray 400 color.
 */
 
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
+
 input::placeholder,
 textarea::placeholder {
   opacity: 1; /* 1 */
@@ -396,6 +401,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: #2563eb;
 }
 
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  color: #6b7280;
+  opacity: 1;
+}
+
 input::placeholder,textarea::placeholder {
   color: #6b7280;
   opacity: 1;
@@ -439,6 +449,7 @@ select {
   vertical-align: middle;
   background-origin: border-box;
   -webkit-user-select: none;
+      -ms-user-select: none;
           user-select: none;
   flex-shrink: 0;
   height: 1rem;
@@ -972,6 +983,7 @@ select {
 }
 .select-none {
   -webkit-user-select: none;
+      -ms-user-select: none;
           user-select: none;
 }
 .resize-none {

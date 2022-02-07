@@ -1,4 +1,4 @@
-export default function Sponsors(){
+export default function Sponsors() {
     return(
         <div >
             <div className="w-32 h-32 bg-slate-300">
