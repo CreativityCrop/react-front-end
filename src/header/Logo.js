@@ -5,8 +5,6 @@ import { useNavigate } from 'react-router-dom';
 export default function Logo() {
     const navigate = useNavigate();
     return(
-        <div className = "w-20 hover:cursor-pointer">
-            <LogoSVG className="w-[19rem]" onClick={ () => navigate("/") }/>
-        </div>
+        <LogoSVG className="w-72 hover:cursor-pointer" onClick={ () => navigate("/") }/>
     );
 }

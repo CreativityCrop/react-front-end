@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export default function Footer() {
     return (
-        <div id="footer" className="select-none mt-10 p-10 divide-y-2 bg-blue-400">
+        <div id="footer" className="shrink-0 select-none mt-10 p-10 divide-y-2 bg-blue-400">
             <div className="grid grid-cols-3 mb-5">
                 <div className="ml-11">
                     <h1 className="text-xl font-medium mb-2">Stay Connected</h1>

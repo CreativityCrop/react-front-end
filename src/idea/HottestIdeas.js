@@ -34,7 +34,7 @@ export default function HottestIdeas(props) {
     });
 
     return (
-        <div className={props.homepage===undefined ? "space-y-3 ml-4 mt-3" : "flex flex-row space-x-3 ml-4 mt-3"} >
+        <div className={props.className}>
             {listIdeas}
         </div>
     );
