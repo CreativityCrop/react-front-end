@@ -33,15 +33,15 @@ export default function Register() {
     return (
         <div>
             <AuthProvider />
-            <div className="grid grid-cols-2 my-6">
-                <div id="image" className="w-96 h-80 mr-2 mt-28 bg-blue-500">
+            <div className="grid grid-cols-2 mt-24 mb-10 sm:mt-20">
+                <div id="image" className="w-96 h-80 mr-2 mt-28 bg-blue-500 sm:hidden">
                     <img alt="nice img" />
                 </div>
-                <div id="form" className="ml-2 p-4 border-4">
-                    <div className="w-44 ml-[4.5rem] mb-4 text-center">
-                        <h1 className="text-2xl break-words">create your account</h1>
+                <div id="form" className="ml-2 p-4 border-2 sm:w-80 sm:py-3 sm:p-0 sm:ml-5">
+                    <div className="w-44 ml-[4.5rem] mb-4 text-center sm:w-48 sm:mb-0">
+                        <h1 className="text-2xl break-words sm:text-xl">Create your account</h1>
                     </div>
-                    <form className="ml-6" onSubmit={handleSubmit(postUser)}>
+                    <form className="ml-6 mt-2 sm:ml-4" onSubmit={handleSubmit(postUser)}>
                         <label>
                             <input className="mt-6 w-72 mb-2" 
                                 type="text" placeholder="First name" 
@@ -93,7 +93,7 @@ export default function Register() {
                             </div>
                         </label>
                         <div>
-                            <button className="border-4 w-24 mt-4 text-center bg-green-200 hover:bg-purple-200" type="submit">Register</button>
+                            <button className="border-2 w-24 mt-1 mb-1 text-center bg-green-200 hover:bg-purple-200" type="submit">Register</button>
                         </div>
                     </form>
                 </div>
