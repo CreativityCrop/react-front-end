@@ -13,7 +13,7 @@ export default function LinkMenu(props) {
         variable = "sm:hidden";
     }
 	return(
-		<div className={"flex xl:flex-row sm:flex-col xl:space-x-4 md:space-x-3 sm:space-y-4 text-center sm:my-3 " + variable}>
+		<div className={"flex xl:flex-row sm:flex-col xl:space-x-4 md:space-x-3 sm:space-y-4 text-center sm:my-3 " + variable + " " + props.className}>
 			<div className="h-12 border-4 py-1 px-5 text-lg">
 				<Link addr="/marketplace" text="Marketplace"/>
 			</div>

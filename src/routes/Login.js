@@ -77,6 +77,7 @@ export default function Login() {
                         <div>
                             <button className="border-2 w-24 mt-4 text-center bg-green-200 hover:bg-purple-200" type="submit">Log in</button>
                         </div>
+                        <Link to="/register">Don't have an account?</Link>
                     </form>
                 </div>
             </div>
