@@ -52,8 +52,8 @@ export default function App() {
 
     return (
         <div>
-            <ScrollToTop/>
             <ToastContainer/>
+            <ScrollToTop/>
             <AuthContext.Provider value={[authContext, setAuthContext]}>
                 <Routes>
                     {/* Main route */}
@@ -147,7 +147,7 @@ export function AuthenticatedRoute({children }) {
 }
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const pathname  = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
