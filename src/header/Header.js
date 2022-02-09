@@ -8,7 +8,7 @@ export default function Header() {
     return (
         <div id="header"
         className="flex flex-row flex-wrap py-2 px-10 sm:pl-5 border-b-4 justify-between place-items-center select-none">
-            <Logo className="w-44"/>
+            <Logo className="w-44 md:w-40"/>
             <button className="hidden sm:block w-12 h-12" onClick={() => setOpened(prevOpened => !prevOpened)}><HamburgerSVG/></button>
             <LinkMenu className="sm:m-auto" opened={opened}/>
         </div>
