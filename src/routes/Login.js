@@ -56,7 +56,7 @@ export default function Login() {
                         <label>
                             <input className="mt-6 w-72" 
                                 type="text" placeholder="Username"
-                                autocomplete="on"
+                                autoComplete="on"
                                 {...register("username", { required: true, minLength: 4, maxLength: 18, pattern: regex_user })} />
                             <div id="username-error" className="text-red-500 pb-3">
                             {errors.username?.type === 'minLength' && "Username must be at least 4 characters."}
@@ -68,7 +68,7 @@ export default function Login() {
                         <label>
                             <input className="mt-1 w-72"
                                 type="password" placeholder="Password" 
-                                autocomplete="on"
+                                autoComplete="on"
                                 {...register("password", {required: true, minLength: 6})} />
                             <div id="password-error" className="text-red-500 pb-1">
                             {errors.password?.type === 'minLength' && "Password must be at least 6 characters."}
