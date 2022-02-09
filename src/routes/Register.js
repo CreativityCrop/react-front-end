@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import axios from 'axios';
 import { sha3_256 } from 'js-sha3';
@@ -33,18 +33,19 @@ export default function Register() {
     return (
         <div>
             <AuthProvider />
-            <div className="grid grid-cols-2 mt-24 mb-10 sm:mt-20">
-                <div id="image" className="w-96 h-80 mr-2 mt-28 bg-blue-500 sm:hidden">
+            <div className="flex justify-center items-center gap-4 sm:gap-0 mt-24 mb-10 sm:mt-20">
+                <div id="image" className="w-96 h-80 bg-blue-500 sm:hidden">
                     <img alt="nice img" />
                 </div>
-                <div id="form" className="ml-2 p-4 border-2 sm:w-80 sm:py-3 sm:p-0 sm:ml-5">
-                    <div className="w-44 ml-[4.5rem] mb-4 text-center sm:w-48 sm:mb-0">
+                <div id="form" className="sm:w-80 sm:p-4 p-6 border-2 ">
+                    <div className="w-full mt-6 mb-4 text-center">
                         <h1 className="text-2xl break-words sm:text-xl">Create your account</h1>
                     </div>
-                    <form className="ml-6 mt-2 sm:ml-4" onSubmit={handleSubmit(postUser)}>
+                    <form className="max-w-max" onSubmit={handleSubmit(postUser)}>
                         <label>
                             <input className="mt-6 w-72 mb-2" 
-                                type="text" placeholder="First name" 
+                                type="text" placeholder="First name"
+                                autocomplete="on"
                                 {...register("firstName", {required: true, minLength: 2, maxLength: 30, pattern: regex_name })} />
                             <div id="first-name-error" className="text-red-500 pb-3">
                             {errors.firstName?.type === 'minLength' && "First name must be at least 2 characters."}
@@ -55,7 +56,8 @@ export default function Register() {
                         </label>
                         <label>
                             <input className="w-72 mb-2" 
-                                type="text" placeholder="Last name" 
+                                type="text" placeholder="Last name"
+                                autocomplete="on"
                                 {...register("lastName", {required: true, minLength: 2, maxLength: 30, pattern: regex_name })} />
                             <div id="last-name-error" className="text-red-500 pb-3">
                             {errors.lastName?.type === 'minLength' && "Last name must be at least 2 characters."}
@@ -66,7 +68,8 @@ export default function Register() {
                         </label>
                         <label>
                             <input className="w-72 mb-2" 
-                                type="email" placeholder="Email" 
+                                type="email" placeholder="Email"
+                                autocomplete="on"
                                 {...register("email", {required: true, pattern: regex_email })} />
                             <div id="email-error" className="text-red-500 pb-3">
                             {errors.email?.type === 'pattern' && "Email must be valid."}
@@ -75,7 +78,8 @@ export default function Register() {
                         </label>
                         <label>
                             <input className="w-72 mb-2" 
-                                type="text" placeholder="Username" 
+                                type="text" placeholder="Username"
+                                autocomplete="on"
                                 {...register("username", { required: true, minLength: 4, maxLength: 18, pattern: regex_user })} />
                             <div id="username-error" className="text-red-500 pb-3">
                             {errors.username?.type === 'minLength' && "Username must be at least 4 characters."}
@@ -86,14 +90,18 @@ export default function Register() {
                         </label>
                         <label>
                             <input className="w-72 mb-2"
-                                type="password" placeholder="Password" {...register("password", {required: true, minLength: 6})} />
+                                type="password" placeholder="Password"
+                                autocomplete="off"
+                                {...register("password", {required: true, minLength: 6})} />
                             <div id="password-error" className="text-red-500 pb-3">
                             {errors.password?.type === 'minLength' && "Password must be at least 6 characters."}
                             {errors.password?.type === 'required' && "Password is required."}
                             </div>
                         </label>
-                        <div>
-                            <button className="border-2 w-24 mt-1 mb-1 text-center bg-green-200 hover:bg-purple-200" type="submit">Register</button>
+                        <div className="text-center ">
+                            <button className="border-2 w-24 mb-2 text-center bg-green-200 hover:bg-purple-200" type="submit">Register</button>
+                            <br/>
+                            <Link to="/login">Already have an account?</Link>
                         </div>
                     </form>
                 </div>

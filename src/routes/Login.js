@@ -44,18 +44,19 @@ export default function Login() {
     return (
         <div id="login">
             <AuthProvider />
-            <div className="grid grid-cols-2 mt-24 mb-10 sm:mt-20">
-                <div className="w-96 h-82 mr-2 bg-blue-500 sm:hidden">
+            <div className="flex justify-center gap-4 mt-24 mb-10 sm:mt-20">
+                <div id="img" className="w-96 h-82 bg-blue-500 sm:hidden">
                     <img alt="nice img" />
                 </div>
-                <div className="ml-2 p-4 border-2 sm:w-80 sm:py-3 sm:p-0 sm:ml-5">
-                    <div className="w-44 ml-[4.5rem] mb-4 text-center sm:w-48 sm:mb-0">
+                <div id="form" className="p-4 border-2 sm:w-80">
+                    <div className="w-full mb-4 text-center">
                         <h1 className="text-2xl break-words sm:text-xl">Log in to your account</h1>
                     </div>
-                    <form className="ml-6 sm:ml-4" onSubmit={handleSubmit(postLogin)}>
+                    <form className="max-w-max" onSubmit={handleSubmit(postLogin)}>
                         <label>
                             <input className="mt-6 w-72" 
-                                type="text" placeholder="Username" 
+                                type="text" placeholder="Username"
+                                autocomplete="on"
                                 {...register("username", { required: true, minLength: 4, maxLength: 18, pattern: regex_user })} />
                             <div id="username-error" className="text-red-500 pb-3">
                             {errors.username?.type === 'minLength' && "Username must be at least 4 characters."}
@@ -67,6 +68,7 @@ export default function Login() {
                         <label>
                             <input className="mt-1 w-72"
                                 type="password" placeholder="Password" 
+                                autocomplete="on"
                                 {...register("password", {required: true, minLength: 6})} />
                             <div id="password-error" className="text-red-500 pb-1">
                             {errors.password?.type === 'minLength' && "Password must be at least 6 characters."}
@@ -74,10 +76,12 @@ export default function Login() {
                             </div>
                         </label>
                         <Link to="/password-reset" >Can't remember you password?</Link>
-                        <div>
-                            <button className="border-2 w-24 mt-4 text-center bg-green-200 hover:bg-purple-200" type="submit">Log in</button>
+                        <br/>
+                        <div className="text-center mt-8 ">
+                            <button className="border-2 w-24 mb-2 text-center bg-green-200 hover:bg-purple-200" type="submit">Log in</button>
+                            <br/>
+                            <Link to="/register">Don't have an account?</Link>
                         </div>
-                        <Link to="/register">Don't have an account?</Link>
                     </form>
                 </div>
             </div>
