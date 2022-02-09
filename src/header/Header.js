@@ -7,7 +7,7 @@ export default function Header() {
     const [opened, setOpened] = useState(false);
     return (
         <div id="header"
-        className="flex flex-row flex-wrap py-2 px-10 border-b-4 justify-between place-items-center select-none">
+        className="flex flex-row flex-wrap py-2 px-10 sm:pl-5 border-b-4 justify-between place-items-center select-none">
             <Logo className="w-44"/>
             <button className="hidden sm:block w-12 h-12" onClick={() => setOpened(prevOpened => !prevOpened)}><HamburgerSVG/></button>
             <LinkMenu className="sm:m-auto" opened={opened}/>
