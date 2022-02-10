@@ -98,7 +98,7 @@ export default function Register() {
                             {errors.password?.type === 'required' && "Password is required."}
                             </div>
                         </label>
-                        <div className="text-center ">
+                        <div>
                             <button className="border-2 w-24 mb-2 text-center bg-green-200 hover:bg-purple-200" type="submit">Register</button>
                             <br/>
                             <Link to="/login">Already have an account?</Link>

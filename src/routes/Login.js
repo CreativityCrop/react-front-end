@@ -77,7 +77,7 @@ export default function Login() {
                         </label>
                         <Link to="/password-reset" >Can't remember you password?</Link>
                         <br/>
-                        <div className="text-center mt-8 ">
+                        <div className="mt-4">
                             <button className="border-2 w-24 mb-2 text-center bg-green-200 hover:bg-purple-200" type="submit">Log in</button>
                             <br/>
                             <Link to="/register">Don't have an account?</Link>
