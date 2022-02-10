@@ -694,9 +694,6 @@ select {
 .ml-11 {
   margin-left: 2.75rem;
 }
-.ml-2 {
-  margin-left: 0.5rem;
-}
 .-ml-14 {
   margin-left: -3.5rem;
 }
@@ -711,6 +708,9 @@ select {
 }
 .mt-32 {
   margin-top: 8rem;
+}
+.ml-2 {
+  margin-left: 0.5rem;
 }
 .mr-3 {
   margin-right: 0.75rem;
@@ -1383,9 +1383,26 @@ select {
     margin: auto;
   }
 
+  .sm\:mx-5 {
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+  }
+
   .sm\:my-3 {
     margin-top: 0.75rem;
     margin-bottom: 0.75rem;
+  }
+
+  .sm\:ml-2 {
+    margin-left: 0.5rem;
+  }
+
+  .sm\:ml-0 {
+    margin-left: 0px;
+  }
+
+  .sm\:ml-16 {
+    margin-left: 4rem;
   }
 
   .sm\:mt-16 {
@@ -1428,6 +1445,10 @@ select {
     display: none;
   }
 
+  .sm\:w-44 {
+    width: 11rem;
+  }
+
   .sm\:w-80 {
     width: 20rem;
   }
@@ -1440,8 +1461,18 @@ select {
     max-width: 24rem;
   }
 
+  .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .sm\:flex-col {
     flex-direction: column;
+  }
+
+  .sm\:space-x-1 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(0.25rem * var(--tw-space-x-reverse));
+    margin-left: calc(0.25rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
   .sm\:space-y-4 > :not([hidden]) ~ :not([hidden]) {
@@ -1462,6 +1493,10 @@ select {
     margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
   }
 
+  .sm\:p-3 {
+    padding: 0.75rem;
+  }
+
   .sm\:p-0 {
     padding: 0px;
   }
@@ -1471,12 +1506,44 @@ select {
     padding-bottom: 0.75rem;
   }
 
+  .sm\:pt-3 {
+    padding-top: 0.75rem;
+  }
+
+  .sm\:pl-5 {
+    padding-left: 1.25rem;
+  }
+
   .sm\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
   }
 }
 @media (min-width: 766px) and (max-width: 1023px) {
+
+  .md\:ml-6 {
+    margin-left: 1.5rem;
+  }
+
+  .md\:-ml-5 {
+    margin-left: -1.25rem;
+  }
+
+  .md\:ml-8 {
+    margin-left: 2rem;
+  }
+
+  .md\:ml-3 {
+    margin-left: 0.75rem;
+  }
+
+  .md\:w-\[11\.7rem\] {
+    width: 11.7rem;
+  }
+
+  .md\:w-64 {
+    width: 16rem;
+  }
 
   .md\:w-11\/12 {
     width: 91.666667%;
@@ -1496,6 +1563,10 @@ select {
     --tw-space-x-reverse: 0;
     margin-right: calc(4rem * var(--tw-space-x-reverse));
     margin-left: calc(4rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .md\:p-6 {
+    padding: 1.5rem;
   }
 }
 @media (min-width: 1024px) {
