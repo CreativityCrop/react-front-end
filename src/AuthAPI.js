@@ -15,7 +15,7 @@ const cookieParams = {
 };
 
 
-export const MAIN_API_URL = 'http://creativitycrop.tech:8000/api';
+export const MAIN_API_URL = 'http://creativitycrop.tech/api';
 
 export const setToken = (token) => {
     //localStorage.setItem("access_token", token);
