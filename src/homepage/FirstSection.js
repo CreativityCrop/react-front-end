@@ -10,7 +10,7 @@ export default function FirstSection() {
                 </div>
                 <h3 className="text-lg">insparational quote here</h3>
             </div>
-            <div id="right" className="xl:basis-1/2 m-auto bg-slate-300 w-80 h-72">
+            <div id="right" className="xl:basis-1/2 m-auto bg-slate-300 w-64 h-72 md:h-64 sm:w-72">
                 <p>img</p>
             </div>
         </div>
