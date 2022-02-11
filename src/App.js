@@ -24,6 +24,7 @@ import BuyView from './marketplace/BuyView';
 import IdeasForSale from './marketplace/buyview/IdeasForSale';
 import BuyIdea from './marketplace/buyview/BuyIdea';
 import Checkout from './idea/Checkout';
+import Invoice from './account/Invoice';
 
 
 export default function App() {
@@ -108,6 +109,11 @@ export default function App() {
                         <Route path="/idea/:ideaID" element={
                             <AuthenticatedRoute>
                                 <ViewIdea/>
+                            </AuthenticatedRoute>
+                        }/>
+                        <Route path="/invoice/:invoiceID" element={
+                            <AuthenticatedRoute>
+                                <Invoice/>
                             </AuthenticatedRoute>
                         }/>
 

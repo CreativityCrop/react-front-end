@@ -11,11 +11,11 @@ export default function ViewIdea() {
     const [idea, setIdea] = useState({});
 
     useEffect(() => {
-        getIdea(params.ideaID);
-    }, [params]);
+        getIdea();
+    });
 
-    const getIdea = async (id) => {
-        const response = await axios.get(MAIN_API_URL + "/ideas/get/" + id, {
+    const getIdea = async () => {
+        const response = await axios.get(MAIN_API_URL + "/ideas/get/" + params.ideaID, {
             headers: {
                 "Token": getToken(),
                 "Content-Type": "application/json",
