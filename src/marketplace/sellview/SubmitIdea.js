@@ -192,7 +192,7 @@ export default function SubmitIdea() {
     return(
     <>
         <AuthProvider/>
-        <div className="container items-center p-8 ml-24 w-[46rem] border-4">
+        <div className="container items-center p-8 ml-24 w-[46rem] border-2 md:ml-3 sm:ml-2">
             <form className="" onSubmit={handleSubmit(postIdea)}>
                 <div className="flex flex-row max-h-96 mb-4">
                     {/* Container to visualise Image and input for uploading it */}
@@ -293,8 +293,8 @@ export default function SubmitIdea() {
                 <div id="file-upload" className="mb-4">
                     <FileUploader
                         children={
-                            <div className="h-10 mb-3 border py-2 px-3 text-grey-darkest cursor-pointer ">
-                                Click or drop to upload!<span className="text-xs right-0">{fileTypes.map((item) => " "+item)}</span>
+                            <div className="h-10 mb-3 border py-2 px-3 text-grey-darkest cursor-pointer truncate">
+                                Click or drop to upload!<span className="text-xs right-0 ">{fileTypes.map((item) => " "+item)}</span>
                             </div>
                         }
                         handleChange={handleFileUploadChange}
@@ -321,7 +321,7 @@ export default function SubmitIdea() {
                                 allowNegativeValue={false}
                                 decimalSeparator="."
                                 groupSeparator=" "
-                                placeholder="Please enter a number"
+                                placeholder="Please enter a price"
                                 defaultValue={undefined}
                                 decimalsLimit={2}
                                 onValueChange={(value) => field.onChange(value)}
