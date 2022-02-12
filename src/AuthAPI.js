@@ -1,8 +1,9 @@
+import React, { useContext, useEffect } from "react";
+import { useLocation } from 'react-router-dom';
+
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import jwt_decode from "jwt-decode";
-
-import React, { useContext, useEffect } from "react";
 
 export const AuthContext = React.createContext();
 const cookies = new Cookies();
@@ -56,20 +57,39 @@ export const verifyToken = async () => {
     }
 }
 
+// export default function AuthProvider() {
+//     const [authContext, setAuthContext] = useContext(AuthContext);
+//     useEffect(() => {
+//         verifyToken().then(() => {
+//             if (getToken() != null) {
+//                 setAuthContext("authenticated");
+//             }
+//             else {
+//                 setAuthContext("unauthenticated");
+//             }
+//         });
+//         //console.log("Token: " + getToken() + "\nStatus: " + authContext);
+//     }, [authContext, setAuthContext]);
+//     return(<TokenProvider/>);
+// }
+
 export default function AuthProvider() {
-    const [authContext, setAuthContext] = useContext(AuthContext);
+    let location = useLocation();
+    const [, setAuthContext] = useContext(AuthContext);
+
     useEffect(() => {
         verifyToken().then(() => {
             if (getToken() != null) {
+                // return <ContextChanger value="authenticated"/>
                 setAuthContext("authenticated");
             }
             else {
+                // return <ContextChanger value="unauthenticated"/>
                 setAuthContext("unauthenticated");
             }
         });
-        //console.log("Token: " + getToken() + "\nStatus: " + authContext);
-    }, [authContext, setAuthContext]);
-    return (null);
+    }, [location, setAuthContext]);
+    return(null);
 }
 
 export const regex_name = /^[a-zA-Z ,.'-]+$/i;

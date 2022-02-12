@@ -32,14 +32,13 @@ export default function Invoice() {
     const [printing, setPrinting] = useState(false);
   
     const handleAfterPrint = useCallback(() => {
-        console.log("`onAfterPrint` called"); // tslint:disable-line no-console
-
+        // console.log("`onAfterPrint` called"); // tslint:disable-line no-console
     }, []);
     const handleBeforePrint = useCallback(() => {
-        console.log("`onBeforePrint` called"); // tslint:disable-line no-console
+        // console.log("`onBeforePrint` called"); // tslint:disable-line no-console
     }, []);
     const handleOnBeforeGetContent = useCallback(() => {
-        console.log("`onBeforeGetContent` called"); // tslint:disable-line no-console
+        // console.log("`onBeforeGetContent` called"); // tslint:disable-line no-console
         setLoading(true);
         setPrinting(true);
         return new Promise((resolve) => {

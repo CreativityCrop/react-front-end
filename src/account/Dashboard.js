@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import AuthProvider, { MAIN_API_URL, getToken } from '../AuthAPI';
+import { MAIN_API_URL, getToken } from '../AuthAPI';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
@@ -18,7 +18,7 @@ export default function Dashboard() {
     }, []);
 
     useEffect(() => {
-        if(userData.unfinished_intent !== undefined && userData.unfinished_intent !== null) {
+        if(userData.unfinishedPaymentIntent !== undefined && userData.unfinishedPaymentIntent !== null) {
             toast("You have unfinished payment for idea!", { draggable: true });
         }
     }, [userData]);
@@ -37,20 +37,19 @@ export default function Dashboard() {
 
     return(
         <div className="mt-14 select-none">
-            <AuthProvider/>
             { !finishPayment ?
                 <div>
                     {
-                        userData.unfinished_intent !== undefined && userData.unfinished_intent !== null ?
+                        userData.unfinishedPaymentIntent !== undefined && userData.unfinishedPaymentIntent !== null ?
                         <div> 
-                            <p>You have unfinished payment for idea: {userData.title}!</p>
+                            <p>You have unfinished payment for idea: {userData.unfinishedPaymentIdeaTitle}!</p>
                             <button onClick={() => setFinishPayment(true) }>Retry payment</button>
                         </div>
                         : null
                     }
                     {!loading && <AccountSettings
                         userData={userData}
-                        avatarUrl={userData.avatar_url}
+                        avatarUrl={userData.avatarURL}
                     /> }
                     <Library/>
                 </div>
@@ -65,14 +64,14 @@ function UnpaidOrder(props) {
     return (
         <div>
             <Idea
-                key={userData.unfinished_payment_idea}
-                id={userData.unfinished_payment_idea}
-                imgUrl={userData.idea_img}
-                title={userData.title}
-                shortDesc={userData.short_desc}
-                price={userData.price}
+                key={userData.unfinishedPaymentIdeaID}
+                id={userData.unfinishedPaymentIdeaID}
+                imgUrl={userData.unfinishedPaymentIdeaPictureURL}
+                title={userData.unfinishedPaymentIdeaTitle}
+                shortDesc={userData.unfinishedPaymentIdeaShortDesc}
+                price={userData.unfinishedPaymentIdeaPrice}
             />
-            <Checkout clientSecret={userData.unfinished_intent_secret}/>
+            <Checkout clientSecret={userData.unfinishedPaymentIntentSecret}/>
         </div>
     )
 }

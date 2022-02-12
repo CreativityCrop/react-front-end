@@ -11,20 +11,21 @@ export default function ViewIdea() {
     const [idea, setIdea] = useState({});
 
     useEffect(() => {
+        const getIdea = async () => {
+            const response = await axios.get(MAIN_API_URL + "/ideas/get/" + params.ideaID, {
+                headers: {
+                    "Token": getToken(),
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*"
+                }
+            })
+            setIdea(response.data);  
+            document.title = response.data.title + " - CreativityCrop";
+        }
         getIdea();
-    });
+    }, [params.ideaID]);
 
-    const getIdea = async () => {
-        const response = await axios.get(MAIN_API_URL + "/ideas/get/" + params.ideaID, {
-            headers: {
-                "Token": getToken(),
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*"
-            }
-        })
-        setIdea(response.data);  
-        document.title = response.data.title + " - CreativityCrop";
-    }
+    
 
     const ideaEntry = () => {
         return <Idea

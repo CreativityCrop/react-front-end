@@ -52,8 +52,8 @@ export default function AccountSettings(props) {
             switch(response.status) {
                 case 200:
                     // if username has been changed we need a new token
-                    if(response.data.token !== undefined) {
-                        setToken(response.data.token);
+                    if(response.data.accessToken !== undefined) {
+                        setToken(response.data.accessToken);
                     }
                     // refresh page just in case
                     window.location.reload(false);
