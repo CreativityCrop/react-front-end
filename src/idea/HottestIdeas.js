@@ -18,7 +18,7 @@ export default function HottestIdeas(props) {
                 "Access-Control-Allow-Origin": "*"
             }
         });
-        setIdeas(response.data);
+        setIdeas(response.data.ideas);
     }
 
     const listIdeas = ideas.map((idea) => {
@@ -27,7 +27,7 @@ export default function HottestIdeas(props) {
                 key={idea.id}
                 id={idea.id}
                 title={idea.title}
-                imgUrl={idea.image_url}
+                imgUrl={idea.imageURL}
                 likes={idea.likes}
             />
         );

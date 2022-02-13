@@ -31,10 +31,10 @@ export default function ViewIdea() {
         return <Idea
                 key={idea.id}
                 id={idea.id}
-                imgUrl={idea.image_url}
+                imgUrl={idea.imageURL}
                 title={idea.title}
-                shortDesc={idea.short_desc}
-                longDesc={idea.long_desc}
+                shortDesc={idea.shortDesc}
+                longDesc={idea.longDesc}
                 categories={idea.categories}
                 files={idea.files}
                 price={idea.price}

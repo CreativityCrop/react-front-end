@@ -149,7 +149,7 @@ function CategoriesList(props) {
     }
     return(
         <div className="flex flex-row space-x-3 w-[30rem] ml-2 mb-3 overflow-y-auto">
-            { props.categories.map( (category) => <CategoryButton key={category} category={category}/> ) }
+            { props.categories?.map( (category) => <CategoryButton key={category} category={category}/> ) }
         </div>
     );
 }

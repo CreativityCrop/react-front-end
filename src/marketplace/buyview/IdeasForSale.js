@@ -43,9 +43,9 @@ export default function IdeasForSale() {
                 key={idea.id}
                 innerRef={ideas.length === index + 1 ? lastIdeaElement : undefined}
                 id={idea.id}
-                imgUrl={idea.image_url}
+                imgUrl={idea.imageURL}
                 title={idea.title}
-                shortDesc={idea.short_desc}
+                shortDesc={idea.shortDesc}
                 categories={idea.categories}
                 price={idea.price}
                 likes={idea.likes}
