@@ -159,7 +159,7 @@ function FileList(props) {
         if(props.files === undefined) {
             return;
         }
-        const filesArr = props.files.map( file => {
+        const filesArr = props.files?.map( file => {
             return <File key={file.id} file={file}/>;
         });
         return filesArr;
