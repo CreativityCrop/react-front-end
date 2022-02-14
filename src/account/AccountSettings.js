@@ -99,8 +99,8 @@ export default function AccountSettings(props) {
         <div id="holder-of-the-acc" className="">
             <div id="pfp-and-options" className="flex flex-row mb-5">
                 { editMode ? 
-                    <div id="image" className="w-48 h-48 mr-4 flex flex-col flex-none">
-                        <div className="w-48 h-48 bg-slate-200 cursor-pointer relative"
+                    <div id="image" className="mr-4 flex flex-col flex-none sm:ml-4">
+                        <div className="w-48 h-48 bg-slate-200 cursor-pointer relative mr-1 md:mr-1 sm:w-36 sm:h-36 sm:mr-[0.4rem]"
                             style={
                                 {
                                     bacgroundColor: 'none',
