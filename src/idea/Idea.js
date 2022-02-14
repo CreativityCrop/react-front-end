@@ -60,7 +60,7 @@ function Title(props) {
 
 function Likes(props) {
     const [authContext, setAuthContext] = useContext(AuthContext);
-    const [likeCount, setLikeCount] = useState(null);
+    const [like, setLike] = useState({});
 
     if(authContext !=="authenticated" || props.likes === undefined) {
         return(null);
@@ -78,7 +78,7 @@ function Likes(props) {
         .then(function (response) {
             // console.log(response.data.is_liked);
             switch(response.status) {
-                case 200: setLikeCount(response.data.likes); break;
+                case 200: setLike(response.data); break;
                 default: break;
             }
         })
@@ -108,7 +108,7 @@ function Likes(props) {
             >
                 👍
             </button>
-            <h3 className="ml-1 mt-[0.10rem] text-xl sm:mt-1">{ likeCount===null ? props.likes : likeCount }</h3>
+            <h3 className="ml-1 mt-[0.10rem] text-xl sm:mt-1">{ like.count===undefined ? props.likes : like?.count }</h3>
         </div> 
     );
 }
