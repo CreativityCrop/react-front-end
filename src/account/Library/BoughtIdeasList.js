@@ -54,7 +54,7 @@ export default function BoughtIdeasList() {
     });
 
     return(
-        <div id="bought-ideas-list" className="border-4 p-3 min-w-[46rem] min-h-max">
+        <div id="bought-ideas-list" className="border-4 p-3 w-[46rem] min-h-max sm:w-[23.5rem]">
             <div className="w-full h-16 bg-purple-200">
                 <h1 className="text-3xl p-2">Your Bought Ideas</h1>
             </div>

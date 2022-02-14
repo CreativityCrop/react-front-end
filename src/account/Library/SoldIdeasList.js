@@ -53,7 +53,7 @@ export default function SoldIdeasList() {
     });
 
     return(
-        <div id="sold-ideas" className="border-4 border-t-0 p-3 min-w-[46rem] min-h-max">
+        <div id="sold-ideas" className="border-4 border-t-0 p-3 w-[46rem] min-h-max sm:w-[23.5rem]">
             <div className="w-full h-16 bg-green-200">
                 <h1 className="text-3xl p-2">Your Sold Ideas</h1>
             </div>

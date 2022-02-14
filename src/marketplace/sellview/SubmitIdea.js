@@ -190,12 +190,12 @@ export default function SubmitIdea() {
     });
 
     return(
-        <div className="container items-center p-8 ml-24 w-[46rem] border-2 md:ml-3 sm:ml-2">
+        <div className="container items-center p-8 ml-24 w-[46rem] border-2 md:ml-3 sm:ml-2 sm:p-4">
             <form className="" onSubmit={handleSubmit(postIdea)}>
                 <div className="flex flex-row max-h-96 mb-4">
                     {/* Container to visualise Image and input for uploading it */}
-                    <div id="image" className="w-40 h-40 flex flex-col flex-none">
-                        <div className="w-40 h-40 bg-slate-200 cursor-pointer relative "
+                    <div id="image" className="w-40 h-40 flex flex-col flex-none sm:w-32 sm:h-32">
+                        <div className="w-40 h-40 bg-slate-200 cursor-pointer relative sm:w-32 sm:h-32"
                             style={
                                 {
                                     bacgroundColor: 'none',
@@ -222,9 +222,9 @@ export default function SubmitIdea() {
                     </div>
 
                     {/* Title and short description */}
-                    <div className="grow ml-3">
+                    <div className="grow ml-3 sm:ml-4">
                         <input 
-                            className="w-full mb-3"
+                            className="w-full mb-3 sm:w-48"
                             type="text"
                             placeholder="Title"
                             {...register("title", {required: true, minLength: 5, maxLength: 50})}
@@ -236,7 +236,7 @@ export default function SubmitIdea() {
                         </div>
                         
                         <textarea
-                            className="w-full h-24 resize-none"
+                            className="w-full h-24 resize-none  sm:w-48"
                             placeholder="Short description"
                             {...register("shortDescription", {required: true, minLength: 10, maxLength: 300})}
                         />
