@@ -8,7 +8,7 @@ export default function SecondSection(){
         <div id="second-section" className="mt-32 select-none">
             <div id="top" className="flex xl:flex-row sm:flex-col">
                 <div id="buy" className="flex flex-row w-auto p-6 space-x-4 md:basis-1/2 bg-purple-300 ">
-                    <div className="bg-slate-300 w-60 h-64 md:w-36 md:h-56">
+                    <div className="bg-slate-300 w-60 h-64 md:w-32 md:h-56">
                         <img alt="" src={test} />
                     </div>
                     <div className="w-52 m-auto md:w-48">
@@ -23,7 +23,7 @@ export default function SecondSection(){
                         <h3>you have an awesome idea that you want to sell on
                             the marketplace for others to buy</h3>
                     </div>
-                    <div className="bg-slate-300 w-60 h-64 md:w-36 md:h-56">
+                    <div className="bg-slate-300 w-60 h-64 md:w-32 md:h-56">
                         <img alt="" src={test} />
                     </div>
                 </div>
