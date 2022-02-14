@@ -46,7 +46,6 @@ export default function BuyIdea() {
         />;
     }
 
-    // this is to see the full idea dont get them mixed up plz - me to me
     return (
         <div id="ideas-list" className="border-2 p-3 w-[46rem] sm:w-[23.5rem]">
             <AuthProvider/>

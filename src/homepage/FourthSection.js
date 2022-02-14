@@ -15,10 +15,10 @@ export default function FourthSection() {
                         Learn more about us!
                     </div>
                 </div>
-                <div className="order-1 sm:order-2 sm:mt-10 m-auto bg-slate-300 w-44 h-64 ">
+                <div className="order-1 sm:order-2 m-auto bg-slate-300 w-44 h-64 sm:mt-10 sm:w-40 sm:h-56">
                     <img alt="" src={test} />
                 </div>
-                <div className="order-3 sm:ml-6 sm:mt-10 m-auto bg-slate-300 w-44 h-64 ">
+                <div className="order-3 m-auto bg-slate-300 w-44 h-64 sm:ml-6 sm:mt-10 sm:w-40 sm:h-56">
                     <img alt="" src={test} />
                 </div>
             </div>

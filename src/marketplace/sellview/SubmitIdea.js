@@ -190,7 +190,7 @@ export default function SubmitIdea() {
     });
 
     return(
-        <div className="container items-center p-8 ml-24 w-[46rem] border-2 md:ml-3 sm:ml-2 sm:p-4">
+        <div className="container items-center p-8 ml-24 w-[46rem] border-4 md:ml-3 sm:ml-2 sm:p-4 sm:w-[23.5rem]">
             <form className="" onSubmit={handleSubmit(postIdea)}>
                 <div className="flex flex-row max-h-96 mb-4">
                     {/* Container to visualise Image and input for uploading it */}
@@ -236,7 +236,7 @@ export default function SubmitIdea() {
                         </div>
                         
                         <textarea
-                            className="w-full h-24 resize-none  sm:w-48"
+                            className="w-full h-24 resize-none sm:w-48"
                             placeholder="Short description"
                             {...register("shortDescription", {required: true, minLength: 10, maxLength: 300})}
                         />
@@ -249,7 +249,7 @@ export default function SubmitIdea() {
                 </div>
                 
                 <textarea 
-                    className="w-[41.5rem] h-52 mb-3"
+                    className="w-[41.5rem] h-52 mb-3 sm:w-[21rem]"
                     placeholder={"Long description"}
                     {...register("longDescription", {required: true, minLength: 300})}
                 />
@@ -268,7 +268,7 @@ export default function SubmitIdea() {
                             borderRadius: 0,
                             outlineColor: 'black'
                         })}
-                        className="mb-4"
+                        className="mb-4 sm:w-[21rem]"
                         components={{DropdownIndicator: null,}}
                         inputValue={categoriesInputData.inputValue}
                         isClearable = {true}
@@ -288,7 +288,7 @@ export default function SubmitIdea() {
                     />
                     )}
                 />
-                <div id="file-upload" className="mb-4">
+                <div id="file-upload" className="mb-4 sm:w-[21rem]">
                     <FileUploader
                         children={
                             <div className="h-10 mb-3 border py-2 px-3 text-grey-darkest cursor-pointer truncate">
@@ -300,7 +300,7 @@ export default function SubmitIdea() {
                     />
                     {filesList}
                 </div>
-                <div className="flex flex-row">
+                <div className="flex flex-row sm:flex-col sm:w-[21rem]">
                     <div className="flex flex-col">
                         <Controller
                             name="price"
@@ -312,7 +312,7 @@ export default function SubmitIdea() {
                             }}
                             render={({ field }) => (
                             <CurrencyInput
-                                className="w-60"
+                                className="w-60 sm:w-[21rem]"
                                 id="price-input"
                                 name="price"
                                 prefix='$ '
@@ -333,15 +333,17 @@ export default function SubmitIdea() {
                         </div>
                     </div>
                     <div className="grow"></div>
+                    <div className='sm:mt-4'>
                     <button type="button" 
-                        className="py-[0.4rem] px-9 uppercase text-lg bg-red-200 hover:bg-purple-200"
+                        className="py-[0.4rem] px-9 uppercase text-lg bg-red-200 hover:bg-purple-200 sm:w-32"
                         onClick={clearForm}>Reset</button>
                     <button
                         type="submit" 
-                        className="ml-5 right-0 py-[0.4rem] px-9 uppercase text-lg bg-green-200 hover:bg-purple-200"
+                        className="ml-5 right-0 py-[0.4rem] px-9 uppercase text-lg bg-green-200 hover:bg-purple-200 sm:w-[11.7rem]"
                     >
                         Submit
                     </button>
+                    </div>
                 </div>
             </form>
         </div>
