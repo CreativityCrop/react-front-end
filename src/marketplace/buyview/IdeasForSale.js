@@ -54,7 +54,7 @@ export default function IdeasForSale() {
     });
 
     return (
-        <div id="ideas-list" className="border-4 p-3 min-w-[46rem] min-h-[37rem]">
+        <div id="ideas-list" className="border-4 p-3 w-[46rem] min-h-[37rem] sm:w-[23.5rem]">
             <AuthProvider/>
             {listIdeas}
             {loading && "Loading..."}

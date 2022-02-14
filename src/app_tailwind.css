@@ -1800,6 +1800,14 @@ select {
 }
 @media (min-width: 1024px) {
 
+  .xl\:block {
+    display: block;
+  }
+
+  .xl\:hidden {
+    display: none;
+  }
+
   .xl\:basis-1\/2 {
     flex-basis: 50%;
   }

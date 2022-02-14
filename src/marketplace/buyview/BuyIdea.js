@@ -48,7 +48,7 @@ export default function BuyIdea() {
 
     // this is to see the full idea dont get them mixed up plz - me to me
     return (
-        <div id="ideas-list" className="border-4 p-3 min-w-[46rem]">
+        <div id="ideas-list" className="border-2 p-3 min-w-[46rem]">
             <AuthProvider/>
             {ideaEntry()}
             <Outlet/>
