@@ -12,12 +12,12 @@ export default function Invoice() {
     const params = useParams();
     const [invoice, setInvoice] = useState(
         {
-            "user_name": "Test Testov", 
+            "name": "Test Testov", 
             "id": params.invoiceID,
             "date": new Date().toLocaleString(),
-            "idea_name": "test idea bruh",
-            "idea_short_desc": "short desc bruh",
-            "idea_price": "69420"
+            "ideaTitle": "test idea bruh",
+            "ideaShortDesc": "short desc bruh",
+            "ideaPrice": "69420"
         }
     );
 
@@ -65,7 +65,7 @@ export default function Invoice() {
 
     useEffect(() => {
         const getInvoice = async () => {
-            const response = await axios.get(MAIN_API_URL + "/account/invoices/get/" + params.invoiceID, {
+            const response = await axios.get(MAIN_API_URL + "/account/invoice/" + params.invoiceID, {
                 headers: {
                     "Token": getToken(),
                     "Content-Type": "application/json",
@@ -73,7 +73,7 @@ export default function Invoice() {
                 }
             })
             setInvoice(response.data);  
-            document.title = response.data.title + " - CreativityCrop";
+            document.title = "Invoice - " + response.data.ideaTitle + " - CreativityCrop";
         }
         getInvoice();
     }, [params.invoiceID]);
@@ -101,14 +101,14 @@ export default function Invoice() {
                         <p>Bulgaria</p>
                         </div>
                         {!printing&&<div className="mt-16">
-                            <p className="font-bold">Bill To: <span className="font-normal">{invoice.user_name}</span></p>
+                            <p className="font-bold">Bill To: <span className="font-normal">{invoice.userName}</span></p>
                             <input onChange={(e) => setAddr1(e.target.value)} type="text" className="block h-8 sm:w-36 mb-1" placeholder="Address Line 1"></input>
                             <input onChange={(e) => setAddr2(e.target.value)} type="text" className="block h-8 sm:w-36 mb-1" placeholder="Address Line 2"></input>
                             <input onChange={(e) => setCity(e.target.value)} type="text" className="block h-8 sm:w-36 mb-1" placeholder="City"></input>
                             <input onChange={(e) => setCountry(e.target.value)} type="text" className="block h-8 sm:w-36 mb-1" placeholder="Country"></input>
                         </div>}
                         {printing && <div className="mt-16">
-                            <p className="font-bold">Bill To: <span className="font-normal">{invoice.user_name}</span></p>
+                            <p className="font-bold">Bill To: <span className="font-normal">{invoice.userName}</span></p>
                             <p>{addr1}</p>
                             <p>{addr2}</p>
                             <p>{city}</p>
@@ -126,21 +126,20 @@ export default function Invoice() {
                     <div className="flex flex-col gap-5">
                         <div className="flex flex-col ">
                             <p className="font-bold">Idea ID:</p>
-                            <p className="break-words">eeeeb37c81e2943baef6835c3aa0c0fa</p>
+                            <p className="break-words">{invoice.ideaID}</p>
                         </div>
                         <div className="flex flex-col ">
-                            <p className="font-bold">Idea name:</p>
-                            <p>{invoice.idea_name}</p>
+                            <p className="font-bold">Idea Title:</p>
+                            <p>{invoice.ideaTitle}</p>
                         </div>
-                        <div className="flex flex-col ">
+                        {invoice.ideaShortDesc&&<div className="flex flex-col ">
                             <p className="font-bold">Idea Short Description:</p>
-                            <p>{invoice.idea_short_desc}</p>
-
-                        </div>
+                            <p>{invoice.ideaShortDesc}</p>
+                        </div>}
                         <div className="flex flex-col ">
                             <p className="font-bold">Idea Price:</p>
                             <NumberFormat
-                                value={invoice.idea_price}
+                                value={invoice.ideaPrice}
                                 displayType="text"
                                 prefix="$ "
                                 thousandsGroupStyle="thousand"
@@ -156,8 +155,8 @@ export default function Invoice() {
 
                 <div id="price-calculation" className="flex flex-col mt-8 items-end">
                     <p>
-                        Base Idea Price: <NumberFormat
-                            value={invoice.idea_price}
+                        Idea Price: <NumberFormat
+                            value={invoice.ideaPrice}
                             displayType="text"
                             prefix="$ "
                             thousandsGroupStyle="thousand"
@@ -170,7 +169,7 @@ export default function Invoice() {
                     </p>
                     <p>
                         3% Platform Commission: <NumberFormat
-                            value={ (invoice.idea_price * 100 * 0.03)/100 }
+                            value={ (invoice.ideaPrice * 100 * 0.03)/100 }
                             displayType="text"
                             prefix="$ "
                             thousandsGroupStyle="thousand"
@@ -183,7 +182,7 @@ export default function Invoice() {
                     </p>
                     <p>
                         20% VAT Deduction: <NumberFormat
-                            value={ (invoice.idea_price * 100 * 0.2)/100}
+                            value={ (invoice.ideaPrice * 100 * 0.2)/100}
                             displayType="text"
                             prefix="$ "
                             thousandsGroupStyle="thousand"
@@ -195,8 +194,10 @@ export default function Invoice() {
                         />
                     </p>
                     <p>
-                        Total Payout: <NumberFormat
-                            value={ ((invoice.idea_price * 100) - (invoice.idea_price * 100 * 0.03) - (invoice.idea_price * 100 * 0.2))/100 }
+                        {invoice.userType==="seller"&&"Total Payout: "}
+                        {invoice.userType==="buyer"&&"Total Payout To Seller: "}
+                        <NumberFormat
+                            value={ ((invoice.ideaPrice * 100) - (invoice.ideaPrice * 100 * 0.03) - (invoice.ideaPrice * 100 * 0.2))/100 }
                             displayType="text"
                             prefix="$ "
                             thousandsGroupStyle="thousand"
