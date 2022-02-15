@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 
 import axios from 'axios';
 import { sha3_256 } from 'js-sha3';
+import { isValid } from 'iban';
 
 import { MAIN_API_URL, AuthContext, setToken, getToken, removeToken, regex_user, regex_email } from '../AuthAPI';
 
@@ -33,6 +34,9 @@ export default function AccountSettings(props) {
         }
         if(data.email !== undefined) {
             formData.append("email", data.email);
+        }
+        if(data.iban !== undefined) {
+            formData.append("iban", data.iban);
         }
         if(data.password !== undefined) {
             formData.append("pass_hash", sha3_256(data.password));
@@ -93,6 +97,10 @@ export default function AccountSettings(props) {
             setImgVisual(reader.result);
         });
         reader.readAsDataURL(e.target.files[0]);
+    }    
+
+    const isIbanValid = (value) => {
+        return isValid(value);
     };
 
     return (
@@ -155,6 +163,15 @@ export default function AccountSettings(props) {
                             />
                             <div id="title-error" className="text-red-500">
                                 {errors.email?.type === 'pattern' && "Email must be valid."}
+                            </div>
+                            {/* IBAN */}
+                            <input
+                                type="text" placeholder="IBAN"
+                                className="w-64 h-10 p-1 mt-3 sm:w-44 sm:text-clip"
+                                autoComplete="on"
+                                {...register("iban", {validate: isIbanValid})} />
+                            <div id="iban-error" className="text-red-500">
+                            {errors.iban?.type === "validate" && "IBAN must be valid."}
                             </div>
 
                             <input

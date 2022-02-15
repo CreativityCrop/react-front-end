@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate, Link } from 'react-router-dom';
 import { getToken, AuthContext } from './AuthAPI';
 import { ToastContainer } from 'react-toastify';
 import ScrollToTop from "react-scroll-to-top";
+import CookieConsent from "react-cookie-consent";
 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -58,6 +59,17 @@ export default function App() {
             <ToastContainer/>
             <ScrollToTop smooth />
             <ScrollToTopOnURL/>
+            <CookieConsent
+                location="bottom"
+                buttonText="I consenst!"
+                cookieName="cookie-consent"
+                style={{ background: "#2B373B" }}
+                buttonStyle={{ color: "#4e503b", fontSize: "13px", marginRight: '3rem' }}
+                expires={150}
+                >
+                This website uses cookies. By using it, you agree to the Terms of Service and Privacy Policy.{" "}
+                <span className="text-xs"><Link to="/privacy-policy">Privacy Policy</Link></span>
+            </CookieConsent>
             <AuthContext.Provider value={[authContext, setAuthContext]}>
                 <Routes>
                     {/* Main route */}

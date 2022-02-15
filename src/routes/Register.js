@@ -89,7 +89,7 @@ export default function Register() {
                                 type="text" placeholder="IBAN"
                                 autoComplete="on"
                                 {...register("iban", {required: true, validate: isIbanValid})} />
-                            <div id="email-error" className="text-red-500 pb-3">
+                            <div id="iban-error" className="text-red-500 pb-3">
                             {errors.iban?.type === "validate" && "IBAN must be valid."}
                             {errors.iban?.type === 'required' && "IBAN is required."}
                             </div>                        
