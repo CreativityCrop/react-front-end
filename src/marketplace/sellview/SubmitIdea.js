@@ -55,64 +55,50 @@ export default function SubmitIdea() {
                 }
             })
             .then((response) => {
-                switch(response.status) {
-                    case 200:
-                        console.log("Idea text uploaded");
-                        const formData = new FormData();
-                        files.forEach( file => {
-                            formData.append("files", file, file.name);
-                        });
-                        console.log(data.image);
-                        formData.append("files", data.image[0], "title-" + data.image[0].name);
-                        axios.post(MAIN_API_URL + "/files/upload?idea_id=" + response.data, formData, {
-                            headers: {
-                                "Token": getToken(),
-                                "Content-type": "multipart/form-data",
-                                "Access-Control-Allow-Origin": "*"
-                            }
-                        })
-                        .then((response) => {
-                            switch(response.status) {
-                                case 200:
-                                    console.log("Files uploaded!");
-                                    clearForm();
-                                    toast("Idea uploaded successfully!");
-                                break;
-                                default: break;
-                            }
-                        })
-                        .catch((error) => {
-                            console.log(error);
-                            switch(error.response.status) {
-                                case 401:
-                                    switch(error.response.data.detail.errno) {
-                                        case 103:
-                                        removeToken();
-                                        setAuthContext("unauthenticated");
-                                        break;
-                                        default: break;
-                                    }
-                                break;
-                                default: break;
-                            }
-                        });
-                    break;
-                    default: break;
-                }
+                const formData = new FormData();
+                files.forEach( file => {
+                    formData.append("files", file, file.name);
+                });
+                formData.append("files", data.image[0], "title-" + data.image[0].name);
+                axios.post(MAIN_API_URL + "/files/upload?idea_id=" + response.data, formData, {
+                    headers: {
+                        "Token": getToken(),
+                        "Content-type": "multipart/form-data",
+                        "Access-Control-Allow-Origin": "*"
+                    }
+                })
+                .then(() => {
+                    toast.success("Idea was uploaded successfully!");
+                })
+                .catch((error) => {
+                    if(error.response.status === 401) {
+                        removeToken();
+                        setAuthContext("unauthenticated");
+                    }
+                    else if (error.response) {
+                        toast.error(error.response.data.detail.msg);
+                    }
+                    else if (error.request) {
+                        // client never received a response, or request never left
+                    }
+                    else {
+                        // anything else
+                    }
+                });
             })
             .catch((error) => {
-                console.log(error);
-                switch(error.response.status) {
-                    case 401:
-                        switch(error.response.data.detail.errno) {
-                            case 103:
-                                removeToken();
-                                setAuthContext("unauthenticated");
-                            break;
-                            default: break;
-                        }
-                    break;
-                    default: break;
+                if(error.response.status === 401) {
+                    removeToken();
+                    setAuthContext("unauthenticated");
+                }
+                else if (error.response) {
+                    toast.error(error.response.data.detail.msg);
+                }
+                else if (error.request) {
+                    // client never received a response, or request never left
+                }
+                else {
+                    // anything else
                 }
             });
     }

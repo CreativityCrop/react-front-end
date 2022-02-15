@@ -17,7 +17,10 @@ export default function FirstSection() {
             </div>
             <div className="w-12 h-12 text-center rounded-full m-auto mt-28 pt-2 opacity-80 bg-purple-400
             select-none transition delay-100 hover:scale-105 hover:opacity-100">
-                <a href="#second-section" className="text-2xl scroll-smooth transition duration-100">↓</a>
+                <a 
+                    href="#second-section"
+                    className="block text-2xl scroll-smooth transition duration-100"
+                >↓</a>
             </div>
         </div>
     );

@@ -24,7 +24,7 @@ export default function Login() {
                     "Access-Control-Allow-Origin": "*"
                 }
             })
-            .then(function (response) {
+            .then((response) => {
                 //console.log(response.data.accessToken, "response.data.accessToken");
                 if (response.data.accessToken) {
                     setToken(response.data.accessToken);
@@ -33,26 +33,21 @@ export default function Login() {
                         navigate(navigateBack);
                     }
                     else {
+                        toast.success("Successful login!", {autoClose: 1000})
                         navigate("/account");
                     }
                 }
             })
-            .catch(function (error) {
+            .catch((error) => {
                 if (error.response) {
-                    toast.error(error.response.data.detail.msg, {
-                        position: "top-center",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                    });
-                  } else if (error.request) {
+                    toast.error(error.response.data.detail.msg);
+                }
+                else if (error.request) {
                     // client never received a response, or request never left
-                  } else {
+                }
+                else {
                     // anything else
-                  }
+                }
             });
     }
 

@@ -1,34 +1,47 @@
-import { React, useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
 import axios from 'axios';
 
-import AuthProvider, { getToken, MAIN_API_URL } from '../../AuthAPI';
+import AuthProvider, { MAIN_API_URL, getToken, removeToken, AuthContext } from '../../AuthAPI';
 
 import Idea from '../../idea/Idea';
 
 export default function BuyIdea() {
+    const [, setAuthContext] = useContext(AuthContext);
     const params = useParams();
     const [idea, setIdea] = useState({});
 
     useEffect(() => {
-        getIdea(params.ideaID);
-    }, [params]);
-
-    // useEffect(() => {
-    //     window.scrollTo(0, 0)
-    // }, [])
-
-    const getIdea = async (id) => {
-        const response = await axios.get(MAIN_API_URL + "/ideas/get/" + id, {
-            headers: {
-                "Token": getToken(),
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*"
-            }
-        })
-        setIdea(response.data);
-        document.title = response.data.title + " - Buy - CreativityCrop";
-    }
+        axios
+            .get(MAIN_API_URL + "/ideas/get/" + params.ideaID, {
+                headers: {
+                    "Token": getToken(),
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*"
+                }
+            })
+            .then((response) => {
+                setIdea(response.data);
+                document.title = response.data.title + " - Buy - CreativityCrop";
+            })
+            .catch((error) => {
+                if(error.response.status === 401) {
+                    removeToken();
+                    setAuthContext("unauthenticated");
+                }
+                else if (error.response) {
+                    toast.error(error.response.data.detail.msg);
+                }
+                else if (error.request) {
+                    // client never received a response, or request never left
+                }
+                else {
+                    // anything else
+                }            
+            });
+    }, [params, setAuthContext]);
 
     const ideaEntry = () => {
         return <Idea

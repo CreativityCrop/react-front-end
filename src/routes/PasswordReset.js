@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useLocation } from 'react-router-dom'
+import { toast } from 'react-toastify';
 
 import axios from 'axios';
 import { sha3_256 } from 'js-sha3';
@@ -34,26 +35,33 @@ export default function PasswordReset() {
 
     const postPasswordReset = (data) => {
         axios
-            .post(MAIN_API_URL + "/account/request-password-reset", {
+            .post(MAIN_API_URL + "/auth/request-password-reset", {
                 email: data.email,
             }, {
                 headers: {
                     "Access-Control-Allow-Origin": "*"
                 }
             })
-            .then(function (response) {
-                if (response.status === 200) {
-                    setSuccess(true);
-                }
+            .then((response) => {
+                setSuccess(true);
+                
             })
-            .catch(function (error) {
-                console.log(error, "error");
+            .catch((error) => {
+                if (error.response) {
+                    toast.error(error.response.data.detail.msg);
+                }
+                else if (error.request) {
+                    // client never received a response, or request never left
+                }
+                else {
+                    // anything else
+                }            
             });
     };
 
     const updatePassword = (data) => {
         axios
-            .put(MAIN_API_URL + "/account/password-reset", {
+            .put(MAIN_API_URL + "/auth/password-reset", {
                 pass_hash: sha3_256(data.password)
             }, {
                 headers: {
@@ -61,14 +69,21 @@ export default function PasswordReset() {
                     "Access-Control-Allow-Origin": "*"
                 }
             })
-            .then(function (response) {
-                if (response.status === 200) {
-                    setSuccess(true);
-                    setToken(response.data.accessToken);
-                }
+            .then((response) => {
+                setSuccess(true);
+                setToken(response.data.accessToken);
             })
-            .catch(function (error) {
-                console.log(error, "error");
+            .catch((error) => {
+                if (error.response) {
+                    toast.error(error.response.data.detail.msg);
+                }
+                else if (error.request) {
+                    // client never received a response, or request never left
+                }
+                else {
+                    // anything else
+                }
+            
             });
     };
 

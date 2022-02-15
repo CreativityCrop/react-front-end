@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom';
 import { isValid } from 'iban';
+import { toast } from 'react-toastify';
 
 import axios from 'axios';
 import { sha3_256 } from 'js-sha3';
@@ -17,18 +18,27 @@ export default function Register() {
                 first_name: data.firstName,
                 last_name: data.lastName,
                 email: data.email,
-                iban: data.iban,
+                iban: data.iban.split(' ').join(''),
                 username: data.username,
                 pass_hash: sha3_256(data.password)
             })
-            .then(function (response) {
-                //console.log(response.data.accessToken, "response.data.accessToken");
+            .then((response) => {
                 if (response.status === 200) {
+                    toast.success("Great! Now check your inbox for verification email!")
                     navigate("/login");
                 }
             })
-            .catch(function (error) {
-                console.log(error, "error");
+            .catch((error) => {
+                if (error.response) {
+                    console.log(error.response);
+                    toast.error(error.response.data.detail.msg);
+                }
+                else if (error.request) {
+                    // client never received a response, or request never left
+                }
+                else {
+                    // anything else
+                }
             });
     };
 
@@ -38,16 +48,16 @@ export default function Register() {
     
     return (
         <div>
-            <AuthProvider />
-            <div className="flex justify-center items-center gap-4 sm:gap-0 mt-24 mb-10 sm:mt-20">
+            <AuthProvider/>
+            <div className="flex justify-center items-center gap-4 sm:gap-0 mt-16 mb-10 sm:mt-20">
                 <div id="image" className="w-96 h-80 bg-blue-500 sm:hidden">
                     <img alt="nice img" />
                 </div>
-                <div id="form" className="sm:w-80 sm:p-4 p-6 border-2 ">
-                    <div className="w-full mt-6 mb-4 text-center">
+                <div id="form" className="sm:w-80 sm:p-4 p-6 border-2 max-w-min">
+                    <div className="w-full mb-4 text-center">
                         <h1 className="text-2xl break-words sm:text-xl">Create your account</h1>
                     </div>
-                    <form className="max-w-max" onSubmit={handleSubmit(postUser)}>
+                    <form className="" onSubmit={handleSubmit(postUser)}>
                         <label>
                             <input className="mt-6 w-72 mb-2" 
                                 type="text" placeholder="First name"
@@ -117,8 +127,11 @@ export default function Register() {
                             {errors.password?.type === 'required' && "Password is required."}
                             </div>
                         </label>
+                        <p>
+                            By clicking register you agree to the <Link className="text-blue-500 hover:text-purple-600" to="/terms-conditions" target="_blank">Terms and Conditions</Link>
+                        </p>
                         <div>
-                            <button className="border-2 w-24 mb-2 text-center bg-green-200 hover:bg-purple-200" type="submit">Register</button>
+                            <button className="border-2 w-24 mt-4 mb-2 text-center bg-green-200 hover:bg-purple-200" type="submit">Register</button>
                             <br/>
                             <Link to="/login">Already have an account?</Link>
                         </div>

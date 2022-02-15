@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import { MAIN_API_URL, getToken } from '../AuthAPI';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { MAIN_API_URL, getToken, removeToken, AuthContext } from '../AuthAPI';
 
 import AccountSettings from './AccountSettings';
 import Library from './Library';
@@ -9,13 +9,42 @@ import Checkout from '../idea/Checkout';
 import Idea from '../idea/Idea';
 
 export default function Dashboard() {
+    const [, setAuthContext] = useContext(AuthContext);
     const [userData, setUserData] = useState({});
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState();
     const [finishPayment, setFinishPayment] = useState(false);
 
     useEffect(() => {
-        loadUserData();
-    }, []);
+        axios
+            .get(MAIN_API_URL + "/account", {
+                headers: {
+                    "Token": getToken(),
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*"
+                }
+            })
+            .then((response) => {
+                setUserData(response.data);
+                setLoading(false);
+            })
+            .catch((err) => {
+                if(err.response.status === 401) {
+                    removeToken();
+                    setAuthContext("unauthenticated");
+                }
+                else if (err.response) {
+                    setError(err.response.data.detail);
+                }
+                else if (err.request) {
+                    // client never received a response, or request never left
+                }
+                else {
+                    // anything else
+                }
+            
+            });
+    }, [setAuthContext]);
 
     useEffect(() => {
         if(userData.unfinishedPaymentIntent !== undefined && userData.unfinishedPaymentIntent !== null) {
@@ -23,27 +52,34 @@ export default function Dashboard() {
         }
     }, [userData]);
 
-    const loadUserData = async () => {
-        const response = await axios.get(MAIN_API_URL + "/account", {
-            headers: {
-                "Token": getToken(),
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*"
-            }
-        });
-        setUserData(response.data);
-        setLoading(false);
-    };
+    const cancelPayment = (idea_id) => {
+        axios
+            .delete(MAIN_API_URL + `/payment/cancel?idea_id=${idea_id}`, {
+                headers: {
+                    "Token": getToken(),
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*"
+                }
+            })
+            .then((response) => {
 
-    const cancelPayment = async (idea_id) => {
-        const response = await axios.delete(MAIN_API_URL + `/payment/cancel?idea_id=${idea_id}`, {
-            headers: {
-                "Token": getToken(),
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*"
-            }
-        });
-        loadUserData();
+            })
+            .catch((error) => {
+                if(error.response.status === 401) {
+                    removeToken();
+                    setAuthContext("unauthenticated");
+                }
+                else if (error.response) {
+                    toast.error(error.response.data.detail.msg);
+                }
+                else if (error.request) {
+                    // client never received a response, or request never left
+                }
+                else {
+                    // anything else
+                }
+            
+            });
     };
 
     return(
@@ -59,10 +95,19 @@ export default function Dashboard() {
                         </div>
                         : null
                     }
-                    {!loading && <AccountSettings
-                        userData={userData}
-                        avatarUrl={userData.avatarURL}
-                    /> }
+                    {
+                        !loading && 
+                            <AccountSettings
+                                userData={userData}
+                                avatarUrl={userData.avatarURL}
+                            /> 
+                    }
+                    {
+                        error && <div>
+                            <h1>{error.title}</h1>
+                            <p>{error.msg}</p>
+                        </div>
+                    }
                     <Library/>
                 </div>
                 : <UnpaidOrder userData={userData}/>

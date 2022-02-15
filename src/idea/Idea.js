@@ -68,35 +68,32 @@ function Likes(props) {
 
     const likeIdea = (event, id) => {
         event.preventDefault();
-        axios.put(MAIN_API_URL + `/ideas/like?idea_id=${id}`, {}, {
-            headers: {
-                "Token": getToken(),
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*"
-            }
-        })
-        .then(function (response) {
-            // console.log(response.data.is_liked);
-            switch(response.status) {
-                case 200: setLike(response.data); break;
-                default: break;
-            }
-        })
-        .catch(function (error) {
-            console.log(error) 
-            switch(error.response.status) {
-                case 401:
-                    switch(error.response.data.detail.errno) {
-                        case 103: 
-                            removeToken();
-                            setAuthContext("unauthenticated");
-                        break;
-                        default: break;
-                    }
-                break;
-                default: break;
-            }
-        });
+        axios
+            .put(MAIN_API_URL + `/ideas/like?idea_id=${id}`, {}, {
+                headers: {
+                    "Token": getToken(),
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*"
+                }
+            })
+            .then((response) => {
+                setLike(response.data);
+            })
+            .catch((error) => {
+                if(error.response.status === 401) {
+                    removeToken();
+                    setAuthContext("unauthenticated");
+                }
+                else if (error.response) {
+                    toast.error(error.response.data.detail.msg);
+                }
+                else if (error.request) {
+                    // client never received a response, or request never left
+                }
+                else {
+                    // anything else
+                }        
+            });
     };
     return(
         <div className="flex w-fit h-8 object-right-top sm:-mt-[5.2rem] sm:ml-1">
@@ -165,7 +162,7 @@ function FileList(props) {
         return filesArr;
     };
     return(
-        <div className="ml-2 mb-3 w-[30rem] sm:w-72">
+        <div className="flex flex-col gap-2 ml-2 mb-3 w-[30rem] sm:w-72">
             {getFiles()}
         </div>
     );
@@ -217,7 +214,7 @@ function File(props) {
             <p className="mr-4 flex-auto w-64 self-center sm:mr-0 sm:w-44">
                 {props.file.name.substring(0, 25) + (props.file.name.length<=25 ? "" : " ...")}
             </p>
-            <a className="flex-initial self-center" href={downloadLink(props.file.id)} download>Download</a>
+            <a className="block bg-amber-300 hover:bg-orange-400 px-3 py-2 flex-initial self-center" href={downloadLink(props.file.id)} download>Download</a>
         </div>
     );
 }
@@ -280,30 +277,25 @@ function PayoutButton(props) {
                     "Content-Type": "application/json",
                     "Access-Control-Allow-Origin": "*"
                 }
-            }).then(function (response) {
-                // console.log(response.data.is_liked);
-                switch(response.status) {
-                    case 200: 
-                        setPayoutStatus(response.data.payoutStatus);
-                        toast("Wow so easy!");
-                    break;
-                    default: break;
-                }
+            }).then((response) => {
+                setPayoutStatus(response.data.payoutStatus);
+                toast("Wow so easy!");
+                
             })
-            .catch(function (error) {
-                console.log(error) 
-                switch(error.response.status) {
-                    case 401:
-                        switch(error.response.data.detail.errno) {
-                            case 103: 
-                                removeToken();
-                                setAuthContext("unauthenticated");
-                            break;
-                            default: break;
-                        }
-                    break;
-                    default: break;
+            .catch((error) => {
+                if(error.response.status === 401) {
+                    removeToken();
+                    setAuthContext("unauthenticated");
                 }
+                else if (error.response) {
+                    toast.error(error.response.data.detail.msg);
+                }
+                else if (error.request) {
+                    // client never received a response, or request never left
+                }
+                else {
+                    // anything else
+                }            
             });
     };
 

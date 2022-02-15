@@ -5,23 +5,33 @@ import axios from 'axios';
 import SmallIdea from "./SmallIdea";
 
 export default function HottestIdeas(props) {
-    const [ideas, setIdeas] = useState([]);
+    const [ideas, setIdeas] = useState(null);
+    const [error, setError] = useState();
 
     useEffect(() => {
-        loadIdeas();
-    }, []);
-
-    const loadIdeas = async () => {
-        const response = await axios.get(MAIN_API_URL + "/ideas/get-hottest", {
+        axios.get(MAIN_API_URL + "/ideas/get-hottest", {
             headers: {
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "*"
             }
+        })
+        .then((response) => {
+            setIdeas(response.data.ideas);
+        })
+        .catch((err) => {
+            if (err.response) {
+                setError(err.response.data.detail);
+            }
+            else if (err.request) {
+                // client never received a response, or request never left
+            }
+            else {
+                // anything else
+            }        
         });
-        setIdeas(response.data.ideas);
-    }
+    }, []);
 
-    const listIdeas = ideas.map((idea) => {
+    const listIdeas = ideas?.map((idea) => {
         return (
             <SmallIdea
                 key={idea.id}
@@ -35,7 +45,13 @@ export default function HottestIdeas(props) {
 
     return (
         <div className={props.className}>
-            {listIdeas}
+            {ideas && listIdeas}
+            {
+                error && <div>
+                    <h1>{error.title}</h1>
+                    <p>{error.msg}</p>
+                </div>
+            }
         </div>
     );
 }

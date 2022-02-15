@@ -56,8 +56,18 @@ export default function App() {
 
     return (
         <div>
-            <ToastContainer/>
-            <ScrollToTop smooth />
+            <ToastContainer
+                position="top-center"
+                closeOnClick
+                pauseOnHover
+            />
+            <ScrollToTop 
+                style={{}}
+                component={
+                    <div className="text-4xl font-bold">↑</div>
+                }
+                smooth
+            />
             <ScrollToTopOnURL/>
             <CookieConsent
                 location="bottom"
@@ -66,7 +76,7 @@ export default function App() {
                 style={{ background: "#2B373B" }}
                 buttonStyle={{ color: "#4e503b", fontSize: "13px", marginRight: '3rem' }}
                 expires={150}
-                >
+            >
                 This website uses cookies. By using it, you agree to the Terms of Service and Privacy Policy.{" "}
                 <span className="text-xs"><Link to="/privacy-policy">Privacy Policy</Link></span>
             </CookieConsent>
