@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom';
+import { isValid } from 'iban';
 
 import axios from 'axios';
 import { sha3_256 } from 'js-sha3';
@@ -16,6 +17,7 @@ export default function Register() {
                 first_name: data.firstName,
                 last_name: data.lastName,
                 email: data.email,
+                iban: data.iban,
                 username: data.username,
                 pass_hash: sha3_256(data.password)
             })
@@ -30,6 +32,10 @@ export default function Register() {
             });
     };
 
+    const isIbanValid = (value) => {
+        return isValid(value);
+    };
+    
     return (
         <div>
             <AuthProvider />
@@ -45,7 +51,7 @@ export default function Register() {
                         <label>
                             <input className="mt-6 w-72 mb-2" 
                                 type="text" placeholder="First name"
-                                autocomplete="on"
+                                autoComplete="on"
                                 {...register("firstName", {required: true, minLength: 2, maxLength: 30, pattern: regex_name })} />
                             <div id="first-name-error" className="text-red-500 pb-3">
                             {errors.firstName?.type === 'minLength' && "First name must be at least 2 characters."}
@@ -57,7 +63,7 @@ export default function Register() {
                         <label>
                             <input className="w-72 mb-2" 
                                 type="text" placeholder="Last name"
-                                autocomplete="on"
+                                autoComplete="on"
                                 {...register("lastName", {required: true, minLength: 2, maxLength: 30, pattern: regex_name })} />
                             <div id="last-name-error" className="text-red-500 pb-3">
                             {errors.lastName?.type === 'minLength' && "Last name must be at least 2 characters."}
@@ -69,17 +75,30 @@ export default function Register() {
                         <label>
                             <input className="w-72 mb-2" 
                                 type="email" placeholder="Email"
-                                autocomplete="on"
+                                autoComplete="on"
                                 {...register("email", {required: true, pattern: regex_email })} />
                             <div id="email-error" className="text-red-500 pb-3">
                             {errors.email?.type === 'pattern' && "Email must be valid."}
                             {errors.email?.type === 'required' && "Email is required."}
                             </div>                        
                         </label>
+
+                        {/* IBAN */}
+                        <label>
+                            <input className="w-72 mb-2" 
+                                type="text" placeholder="IBAN"
+                                autoComplete="on"
+                                {...register("iban", {required: true, validate: isIbanValid})} />
+                            <div id="email-error" className="text-red-500 pb-3">
+                            {errors.iban?.type === "validate" && "IBAN must be valid."}
+                            {errors.iban?.type === 'required' && "IBAN is required."}
+                            </div>                        
+                        </label>
+
                         <label>
                             <input className="w-72 mb-2" 
                                 type="text" placeholder="Username"
-                                autocomplete="on"
+                                autoComplete="on"
                                 {...register("username", { required: true, minLength: 4, maxLength: 18, pattern: regex_user })} />
                             <div id="username-error" className="text-red-500 pb-3">
                             {errors.username?.type === 'minLength' && "Username must be at least 4 characters."}
@@ -91,7 +110,7 @@ export default function Register() {
                         <label>
                             <input className="w-72 mb-2"
                                 type="password" placeholder="Password"
-                                autocomplete="off"
+                                autoComplete="off"
                                 {...register("password", {required: true, minLength: 6})} />
                             <div id="password-error" className="text-red-500 pb-3">
                             {errors.password?.type === 'minLength' && "Password must be at least 6 characters."}

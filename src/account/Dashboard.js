@@ -43,7 +43,8 @@ export default function Dashboard() {
                         userData.unfinishedPaymentIntent !== undefined && userData.unfinishedPaymentIntent !== null ?
                         <div> 
                             <p>You have unfinished payment for idea: {userData.unfinishedPaymentIdeaTitle}!</p>
-                            <button onClick={() => setFinishPayment(true) }>Retry payment</button>
+                            <button type="button" onClick={() => setFinishPayment(true) }>Retry payment</button>
+                            <button type="button">Cancel payment</button>
                         </div>
                         : null
                     }

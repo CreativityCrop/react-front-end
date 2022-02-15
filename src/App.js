@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { getToken, AuthContext } from './AuthAPI';
 import { ToastContainer } from 'react-toastify';
+import ScrollToTop from "react-scroll-to-top";
+
 import 'react-toastify/dist/ReactToastify.css';
 
 import Home from './routes/Home';
@@ -54,7 +56,8 @@ export default function App() {
     return (
         <div>
             <ToastContainer/>
-            <ScrollToTop/>
+            <ScrollToTop smooth />
+            <ScrollToTopOnURL/>
             <AuthContext.Provider value={[authContext, setAuthContext]}>
                 <Routes>
                     {/* Main route */}
@@ -152,7 +155,7 @@ export function AuthenticatedRoute({children }) {
     return children;
 }
 
-function ScrollToTop() {
+function ScrollToTopOnURL() {
   const pathname  = useLocation();
 
   useEffect(() => {

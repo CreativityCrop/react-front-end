@@ -19,7 +19,7 @@ export default function Checkout(props) {
     useEffect(() => {
         if (props.clientSecret === undefined || props.clientSecret === null) {
             const url = location.pathname;
-            const idea_id = url.match(/[0-9a-fA-F]{32}/g)[0];
+            const idea_id = url.match(/[0-9a-fA-F]{64}/g)[0];
             console.log(getToken());
             // Create PaymentIntent as soon as the page loads
             axios.get(MAIN_API_URL + "/payment/create?idea_id=" + idea_id, {
