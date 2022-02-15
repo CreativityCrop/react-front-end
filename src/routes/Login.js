@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom'
+import { toast } from 'react-toastify';
 
 import axios from 'axios';
 import { sha3_256 } from 'js-sha3';
@@ -37,7 +38,21 @@ export default function Login() {
                 }
             })
             .catch(function (error) {
-                console.log(error, "error");
+                if (error.response) {
+                    toast.error(error.response.data.detail.msg, {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
+                  } else if (error.request) {
+                    // client never received a response, or request never left
+                  } else {
+                    // anything else
+                  }
             });
     }
 

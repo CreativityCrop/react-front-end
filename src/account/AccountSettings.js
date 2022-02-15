@@ -100,6 +100,7 @@ export default function AccountSettings(props) {
     }    
 
     const isIbanValid = (value) => {
+        if(value === undefined) return true;
         return isValid(value);
     };
 
@@ -166,9 +167,11 @@ export default function AccountSettings(props) {
                             </div>
                             {/* IBAN */}
                             <input
-                                type="text" placeholder="IBAN"
+                                type="text"
                                 className="w-64 h-10 p-1 mt-3 sm:w-44 sm:text-clip"
-                                autoComplete="on"
+                                placeholder="IBAN"
+                                defaultValue={props.userData.iban}
+                                disabled={!editMode}
                                 {...register("iban", {validate: isIbanValid})} />
                             <div id="iban-error" className="text-red-500">
                             {errors.iban?.type === "validate" && "IBAN must be valid."}
