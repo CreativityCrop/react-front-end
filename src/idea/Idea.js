@@ -260,7 +260,7 @@ function Button(props) {
     return(
         <button
             type="button"
-            className="text-lg text-center w-48 h-8 ml-12 bg-green-200 hover:bg-purple-200 sm:w-36 sm:ml-2" 
+            className="text-lg text-center w-48 h-8 ml-12 bg-green-200 hover:bg-purple-200 sm:w-36 sm:ml-2 hover:scale-105 transition" 
             onClick={() => {navigate(url)}}
         >
             {text}

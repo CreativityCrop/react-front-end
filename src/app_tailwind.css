@@ -740,9 +740,6 @@ select {
 .ml-9 {
   margin-left: 2.25rem;
 }
-.mt-32 {
-  margin-top: 8rem;
-}
 .ml-36 {
   margin-left: 9rem;
 }
@@ -1091,6 +1088,9 @@ select {
 .overflow-y-auto {
   overflow-y: auto;
 }
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
 .truncate {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1099,8 +1099,14 @@ select {
 .break-words {
   overflow-wrap: break-word;
 }
+.rounded-full {
+  border-radius: 9999px;
+}
 .border-4 {
   border-width: 4px;
+}
+.border-\[3px\] {
+  border-width: 3px;
 }
 .border-2 {
   border-width: 2px;
@@ -1145,6 +1151,10 @@ select {
 .bg-red-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(254 202 202 / var(--tw-bg-opacity));
+}
+.bg-purple-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(192 132 252 / var(--tw-bg-opacity));
 }
 .bg-slate-400 {
   --tw-bg-opacity: 1;
@@ -1233,13 +1243,17 @@ select {
   padding-left: 1rem;
   padding-right: 1rem;
 }
-.py-1 {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
+.py-\[6px\] {
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 .px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+}
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 .px-0 {
   padding-left: 0px;
@@ -1813,12 +1827,12 @@ select {
     margin-top: 1rem;
   }
 
-  .md\:mt-8 {
-    margin-top: 2rem;
-  }
-
   .md\:flex {
     display: flex;
+  }
+
+  .md\:hidden {
+    display: none;
   }
 
   .md\:h-64 {
