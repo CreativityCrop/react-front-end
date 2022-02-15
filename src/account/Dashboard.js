@@ -33,7 +33,18 @@ export default function Dashboard() {
         });
         setUserData(response.data);
         setLoading(false);
-    }
+    };
+
+    const cancelPayment = async (idea_id) => {
+        const response = await axios.delete(MAIN_API_URL + `/payment/cancel?idea_id=${idea_id}`, {
+            headers: {
+                "Token": getToken(),
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*"
+            }
+        });
+        loadUserData();
+    };
 
     return(
         <div className="mt-14 select-none">
@@ -44,7 +55,7 @@ export default function Dashboard() {
                         <div> 
                             <p>You have unfinished payment for idea: {userData.unfinishedPaymentIdeaTitle}!</p>
                             <button type="button" onClick={() => setFinishPayment(true) }>Retry payment</button>
-                            <button type="button">Cancel payment</button>
+                            <button type="button" onClick={() => cancelPayment(userData.unfinishedPaymentIdeaID)}>Cancel payment</button>
                         </div>
                         : null
                     }
@@ -63,7 +74,7 @@ export default function Dashboard() {
 function UnpaidOrder(props) {
     const userData = props.userData;
     return (
-        <div>
+        <div className="m-auto">
             <Idea
                 key={userData.unfinishedPaymentIdeaID}
                 id={userData.unfinishedPaymentIdeaID}
