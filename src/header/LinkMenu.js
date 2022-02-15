@@ -14,10 +14,10 @@ export default function LinkMenu(props) {
     }
 	return(
 		<div className={"flex flex-row sm:flex-col gap-3 text-center sm:my-3 " + variable + " " + props.className}>
-			<div className="h-12 border-4 py-1 px-5 text-lg">
+			<div className="h-12 border-[3px] py-[6px] px-5 text-lg">
 				<Link addr="/marketplace" text="Marketplace"/>
 			</div>
-			<div className="h-12 border-4 py-1 px-5 text-lg">
+			<div className="h-12 border-[3px] py-[6px] px-5 text-lg">
 				<Link addr="/about-us" text="About us"/>
 			</div>
 			{ authContext === "authenticated" ? <AuthenticatedLinks/>: <UnauthenticatedLinks/> }
@@ -28,10 +28,10 @@ export default function LinkMenu(props) {
 function AuthenticatedLinks() {
     return(
         <>
-            <div className="h-10 border-4 py-1 px-5 mt-1">
+            <div className="h-10 border-[3px] py-1 px-5 mt-1">
                 <Link addr="/account" text="Account"/>
             </div>
-            <div className="h-10 border-4 py-1 px-5 mt-1">
+            <div className="h-10 border-[3px] py-1 px-5 mt-1">
                 <Link addr="/logout" text="Sign out"></Link>
             </div>
         </>
@@ -41,10 +41,10 @@ function AuthenticatedLinks() {
 function UnauthenticatedLinks() {
     return(
         <>
-            <div className="h-10 border-4 py-1 px-5 mt-1">
+            <div className="h-10 border-[3px] py-1 px-5 mt-1">
                 <Link addr="/login" text="Login"/>
             </div>
-            <div className="h-10 border-4 py-1 px-5 mt-1">
+            <div className="h-10 border-[3px] py-1 px-5 mt-1">
                 <Link addr="/register" text="Register"/>
             </div>
         </>

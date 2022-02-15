@@ -11,7 +11,7 @@ export default function SellView() {
             <div className="basis-3/4">
                 <SubmitIdea/>
             </div>
-            <div>
+            <div className='sm:hidden md:hidden'>
                 <SubmitTutorial/>
             </div>
         </div>
