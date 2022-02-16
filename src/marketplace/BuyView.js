@@ -6,12 +6,11 @@ export default function BuyView() {
 
     return (
         <div id="buy-view">
-            <div id="whole-container" className="flex flex-row ml-24 md:flex-col md:ml-3 md:w-64 sm:flex-col sm:ml-4 sm:w-44">
+            <div id="whole-container" className="flex flex-row ml-24 md:flex-col md:ml-3 sm:flex-col sm:m-auto">
                 <div className="sm:order-2"><Outlet/></div>
-                <div className="w-52 hidden xl:block h-fit -mt-[6.51rem] py-6 px-4 bg-gradient-to-b via-yankeesblue from-yankeesblue
-                md:w-[46rem] md:mt-0 sm:w-[23.4rem] sm:order-1 sm:mt-0">
-                    <h1 className="text-center text-2xl mb-3 text-slate-300">Hottest ideas right now!</h1>
-                    <HottestIdeas className="md:flex sm:flex md:overflow-auto sm:overflow-auto md:space-x-3 sm:space-x-3"/>
+                <div className="hidden xl:flex flex-col justify-center items-center h-fit -mt-24 bg-gradient-to-b via-yankeesblue from-yankeesblue">
+                    <h1 className="flex-none text-center text-2xl  mt-4 mb-3 text-slate-300">Hottest ideas right now!</h1>
+                    <HottestIdeas className="md:flex sm:flex px-3 md:overflow-auto sm:overflow-auto gap-3"/>
                 </div>
             </div>
             

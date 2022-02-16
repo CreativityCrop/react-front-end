@@ -5,9 +5,9 @@ export default function Marketplace() {
 
     return (
         <div id="marketplace">
-            <div className="w-52 block xl:hidden h-fit -mt-[6.51rem] py-6 px-4 bg-gradient-to-b from-yankeesblue
-                md:w-[46rem] md:mt-4 md:ml-3 sm:w-[23.4rem] sm:order-1 sm:mt-3 sm:ml-4">
-                    <h1 className="text-center text-2xl mb-3">Hottest ideas right now!</h1>
+            <div className="block xl:hidden py-6 px-4 bg-gradient-to-b from-yankeesblue
+                md:mt-4 sm:mt-3">
+                    <h1 className="text-center text-white text-2xl mb-3">Hottest ideas right now!</h1>
                     <HottestIdeas className="md:flex sm:flex md:overflow-auto sm:overflow-auto md:space-x-3 sm:space-x-3"/>
                 </div>
             <div className="flex flex-col ml-24 md:ml-3 sm:ml-4">
