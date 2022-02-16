@@ -6,7 +6,7 @@ export default function BuyView() {
 
     return (
         <div id="buy-view">
-            <div id="whole-container" className="flex flex-row ml-24 md:flex-col md:ml-3 md:w-64 sm:flex-col sm:ml-2 sm:w-44">
+            <div id="whole-container" className="flex flex-row ml-24 md:flex-col md:ml-3 md:w-64 sm:flex-col sm:ml-4 sm:w-44">
                 <div className="sm:order-2"><Outlet/></div>
                 <div className="w-52 hidden xl:block h-fit -mt-[6.51rem] py-6 px-4 bg-gradient-to-b from-red-200
                 md:w-[46rem] md:mt-0 sm:w-[23.4rem] sm:order-1 sm:mt-0">

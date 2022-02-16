@@ -176,7 +176,7 @@ export default function SubmitIdea() {
     });
 
     return(
-        <div className="container items-center p-8 ml-24 w-[46rem] border-4 md:ml-3 sm:ml-2 sm:p-4 sm:w-[23.5rem]">
+        <div className="container items-center p-8 ml-24 w-[46rem] border-4 md:ml-3 sm:ml-4 sm:p-4 sm:w-[23.5rem]">
             <form className="" onSubmit={handleSubmit(postIdea)}>
                 <div className="flex flex-row max-h-96 mb-4">
                     {/* Container to visualise Image and input for uploading it */}

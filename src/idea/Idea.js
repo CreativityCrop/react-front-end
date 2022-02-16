@@ -9,7 +9,7 @@ import CategoryButton  from "./CategoryButton";
 
 export default function Idea(props) {
     return (
-        <div className="xl:flex md:flex mb-4 border-4 p-3 w-[44rem] sm:border-2 sm:w-[21.5rem]" key={props.title} ref={props.innerRef}>
+        <div className="xl:flex md:flex mb-4 border-2 p-3 w-[44rem] sm:border-2 sm:w-[21.5rem]" key={props.title} ref={props.innerRef}>
             <Image {...props} className="sm:w-20 sm:h-20"/>
             <div>
                 <div className="flex mb-2">

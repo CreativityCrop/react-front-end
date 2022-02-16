@@ -76,7 +76,7 @@ export default function BoughtIdeasList() {
             {listIdeas}
             {
                 listIdeas.length===0 &&
-                <p className="text-center">You haven't bought any ideas yet! Go buy some at the <Link className="text-blue-400" to="/marketplace/buy">Marketplace</Link>.</p>
+                <p className="text-center text-lg">You haven't bought any ideas yet! Go buy some at the <Link className="text-blue-400" to="/marketplace/buy">Marketplace</Link>.</p>
             }
             {
                 error && <div>

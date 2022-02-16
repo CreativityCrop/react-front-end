@@ -48,7 +48,7 @@ export default function Dashboard() {
 
     useEffect(() => {
         if(userData.unfinishedPaymentIntent !== undefined && userData.unfinishedPaymentIntent !== null) {
-            toast("You have unfinished payment for idea!", { draggable: true });
+            // toast("You have unfinished payment for idea!", { draggable: true });
         }
     }, [userData]);
 
@@ -88,10 +88,16 @@ export default function Dashboard() {
                 <div>
                     {
                         userData.unfinishedPaymentIntent !== undefined && userData.unfinishedPaymentIntent !== null ?
-                        <div> 
-                            <p>You have unfinished payment for idea: {userData.unfinishedPaymentIdeaTitle}!</p>
-                            <button type="button" onClick={() => setFinishPayment(true) }>Retry payment</button>
-                            <button type="button" onClick={() => cancelPayment(userData.unfinishedPaymentIdeaID)}>Cancel payment</button>
+                        <div className="sm:ml-7 sm:w-[21.5rem]"> 
+                            <p className="mb-3 sm:mb-4">You have unfinished payment for idea: {userData.unfinishedPaymentIdeaTitle}!</p>
+                            <div className="ml-[29.7rem] sm:ml-20"> 
+                                <button type="button" onClick={() => setFinishPayment(true) } 
+                                className="bg-green-200 hover:bg-purple-200 p-1 mb-5 px-2 mr-4
+                                hover:rotate-3 hover:drop-shadow-xl transition duration-150">Retry payment</button>
+                                <button type="button" onClick={() => cancelPayment(userData.unfinishedPaymentIdeaID)} 
+                                className="bg-red-200 hover:bg-purple-200 p-1 mb-5 px-2
+                                hover:-rotate-3 hover:drop-shadow-xl transition duration-150">Cancel payment</button>
+                            </div>
                         </div>
                         : null
                     }

@@ -91,11 +91,11 @@ export default function AccountSettings(props) {
     };
 
     return(
-        <div id="holder-of-the-acc" className="">
-            <div id="pfp-and-options" className="flex flex-row mb-5">
+        <div id="holder-of-the-acc" className="sm:ml-[7%]">
+            <div id="pfp-and-options" className="flex flex-row mb-5 ">
                 {editMode ?
-                    <div id="image" className="mr-4 flex flex-col flex-none sm:ml-4">
-                        <div className="w-48 h-48 bg-slate-200 cursor-pointer relative mr-1 md:mr-1 sm:w-36 sm:h-36 sm:mr-[0.4rem]"
+                    <div id="image" className="mr-4 flex flex-col flex-none">
+                        <div className="w-48 h-48 bg-slate-200 cursor-pointer mr-1 md:mr-1 sm:w-36 sm:h-36 sm:mr-[0.4rem]"
                             style={
                                 {
                                     bacgroundColor: 'none',
@@ -119,7 +119,7 @@ export default function AccountSettings(props) {
                         </div>
                     </div>
                     :
-                    <div id="left" className="w-48 h-48 mr-5 bg-slate-300 sm:w-[13.6rem] sm:h-36 sm:ml-4">
+                    <div id="left" className="w-48 h-48 mr-5 bg-slate-300 sm:w-[13.6rem] sm:h-36">
                         <img src={props.avatarUrl} alt="user avatar" />
                     </div>
                 }
@@ -180,7 +180,8 @@ export default function AccountSettings(props) {
                             <button
                                 type={!editMode ? "submit" : "button"}
                                 button="submit"
-                                className="mt-2 w-20 h-10 ml-44 bg-green-200 hover:bg-purple-200 sm:ml-24"
+                                className="mt-2 w-20 h-10 ml-44 bg-green-200 hover:bg-purple-200 sm:ml-24
+                                hover:-rotate-3 hover:drop-shadow-xl transition duration-150"
                                 onClick={() => setEditMode(!editMode)}
                             >{editMode ? "Save" : "Edit"}</button>
                         </div>
@@ -189,9 +190,10 @@ export default function AccountSettings(props) {
                 </form>
             </div>
             <div id="right" className="w-56 -mt-[11.5rem] mr-40 text-center float-right md:mr-10
-            sm:float-none sm:mt-0 sm:mb-4 sm:ml-4 sm:w-[21.5rem] sm:text-left sm:border-y-2 sm:py-3">
+            sm:float-none sm:mt-0 sm:mb-4 sm:w-[21.5rem] sm:text-left sm:border-y-2 sm:py-3">
                 <h3 className="text-2xl mb-4">Don't know where to start?</h3>
-                <div className="w-44 h-9 ml-7 bg-green-200 hover:bg-purple-200 sm:ml-[10.5rem]">
+                <div className="w-44 h-9 ml-7 bg-green-200 hover:bg-purple-200 sm:ml-[10.5rem] 
+                hover:rotate-3 hover:drop-shadow-xl transition duration-150">
                     <p className="pt-1 text-lg text-center">Read the manual!</p>
                 </div>
             </div>
