@@ -48,7 +48,7 @@ export default function Dashboard() {
 
     useEffect(() => {
         if(userData.unfinishedPaymentIntent !== undefined && userData.unfinishedPaymentIntent !== null) {
-            // toast("You have unfinished payment for idea!", { draggable: true });
+            toast("You have unfinished payment for idea!", { draggable: true });
         }
     }, [userData]);
 

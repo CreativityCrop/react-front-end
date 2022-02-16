@@ -5,7 +5,7 @@ export default function FourthSection() {
     const navigate = useNavigate();
 
     return(
-        <div className="my-8 select-none bg-blue-400">
+        <div className="my-8 select-none bg-maxbluepurple">
             <div className="flex flex-row flex-wrap place-content-center py-6 px-0">
                 <div className="text-center flex-initial w-64 order-2 sm:order-1">
                     <h1 className="mb-2 mt-8 text-3xl">About us</h1>

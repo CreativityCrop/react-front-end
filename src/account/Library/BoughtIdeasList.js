@@ -68,10 +68,11 @@ export default function BoughtIdeasList() {
     });
 
     return(
-        <div id="bought-ideas-list" className="border-4 p-3 w-[46rem] min-h-max sm:w-[23.5rem]">
+        <div id="bought-ideas-list" className="border-4 w-[46rem] min-h-max sm:w-[23.5rem]">
             <div className="w-full h-16 bg-purple-200">
                 <h1 className="text-3xl p-2">Your Bought Ideas</h1>
             </div>
+            <div className="p-3 bg-yankeesblue">
             {loading && "Loading..."}
             {listIdeas}
             {
@@ -84,7 +85,8 @@ export default function BoughtIdeasList() {
                     <p>{error.msg}</p>
                 </div>
             }
-            {hasMore&&<button className="text-lg ml-[19rem] pb-1" onClick={() => setPage((prevPage) => prevPage + 1)}>Load more</button> }
+            {hasMore&&<button className="text-lg ml-[19rem]" onClick={() => setPage((prevPage) => prevPage + 1)}>Load more</button> }
+            </div>
         </div>
     );
 }

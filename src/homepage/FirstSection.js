@@ -6,8 +6,8 @@ export default function FirstSection() {
             ">
                 <div id="left" className="text-center xl:basis-1/2 m-auto">
                     <h1 className="text-4xl mb-2">A marketplace for</h1>
-                    <div className=" content-center">
-                        <h2 className="text-4xl mb-3 py-2 hover:text-red-600">ideas</h2>
+                    <div className="w-36 content-center xl:ml-[11.5rem] ml-[4.3rem] hover:bg-maxbluepurple hover:text-slate-100 transition-colors delay-110 rounded-sm">
+                        <h2 className="text-4xl mb-3 py-2">ideas</h2>
                     </div>
                     <h3 className="text-lg">insparational quote here</h3>
                 </div>
@@ -15,7 +15,7 @@ export default function FirstSection() {
                     <p>img</p>
                 </div>
             </div>
-            <div className="w-12 h-12 text-center rounded-full m-auto mt-28 pt-2 opacity-80 bg-purple-400
+            <div className="w-12 h-12 text-center rounded-full m-auto mt-28 pt-2 opacity-80 bg-maxbluepurple
             select-none transition delay-100 hover:scale-105 hover:opacity-100 md:hidden sm:hidden">
                 <a 
                     href="#second-section"

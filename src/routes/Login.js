@@ -54,13 +54,13 @@ export default function Login() {
     return (
         <div id="login">
             <AuthProvider />
-            <div className="flex justify-center gap-4 mt-24 mb-10 sm:mt-20">
+            <div className="flex justify-center gap-4 mt-28 mb-24 sm:mt-20">
                 <div id="img" className="w-96 h-82 bg-blue-500 sm:hidden">
                     <img alt="nice img" />
                 </div>
-                <div id="form" className="p-4 border-2 sm:w-80">
+                <div id="form" className="p-4 border-2 sm:w-80 bg-yankeesblue">
                     <div className="w-full mb-4 text-center">
-                        <h1 className="text-2xl break-words sm:text-xl">Log in to your account</h1>
+                        <h1 className="text-2xl break-words sm:text-xl text-slate-300">Log in to your account</h1>
                     </div>
                     <form className="max-w-max" onSubmit={handleSubmit(postLogin)}>
                         <label>
@@ -85,12 +85,12 @@ export default function Login() {
                             {errors.password?.type === 'required' && "Password is required."}
                             </div>
                         </label>
-                        <Link to="/password-reset" >Can't remember you password?</Link>
+                        <Link to="/password-reset" className='text-slate-300' >Can't remember you password?</Link>
                         <br/>
                         <div className="mt-4">
-                            <button className="border-2 w-24 mb-2 text-center bg-green-200 hover:bg-purple-200" type="submit">Log in</button>
+                            <button className="border-2 w-24 mb-2 text-cente bg-green-200 hover:bg-purple-200" type="submit">Log in</button>
                             <br/>
-                            <Link to="/register">Don't have an account?</Link>
+                            <Link to="/register" className='text-slate-300'>Don't have an account?</Link>
                         </div>
                     </form>
                 </div>

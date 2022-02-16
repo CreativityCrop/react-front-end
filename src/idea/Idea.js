@@ -9,7 +9,7 @@ import CategoryButton  from "./CategoryButton";
 
 export default function Idea(props) {
     return (
-        <div className="xl:flex md:flex mb-4 border-2 p-3 w-[44rem] sm:border-2 sm:w-[21.5rem]" key={props.title} ref={props.innerRef}>
+        <div className="xl:flex md:flex mt-1 border-2 p-3 w-[44rem] sm:border-2 sm:w-[21.5rem] bg-white" key={props.title} ref={props.innerRef}>
             <Image {...props} className="sm:w-20 sm:h-20"/>
             <div>
                 <div className="flex mb-2">
@@ -257,7 +257,7 @@ function Button(props) {
     return(
         <button
             type="button"
-            className="text-lg text-center w-48 h-8 ml-12 bg-green-200 hover:bg-purple-200 sm:w-36 sm:ml-2 hover:scale-105 transition" 
+            className="text-lg text-center w-48 h-8 ml-12 bg-green-200 hover:bg-purple-200 sm:w-36 sm:ml-2 hover:scale-105 hover:shadow-lg transition" 
             onClick={() => {navigate(url)}}
         >
             {text}
@@ -304,7 +304,8 @@ function PayoutButton(props) {
             return(
                 <button
                     type="button"
-                    className="text-lg text-center w-48 h-8 ml-12 bg-orange-200 hover:bg-purple-200 sm:ml-0 sm:w-40"
+                    className="text-lg text-center w-48 h-8 ml-12 bg-jasmine hover:bg-purple-200 sm:ml-0 sm:w-40
+                    hover:scale-105 hover:shadow-lg transition"
                     onClick={putPayout}
                 >
                     Request payout
@@ -315,7 +316,8 @@ function PayoutButton(props) {
             return(
                 <button
                     type="button"
-                    className="text-lg text-center w-48 h-8 ml-12 bg-yellow-200 hover:bg-purple-200 sm:ml-0 sm:w-40"
+                    className="text-lg text-center w-48 h-8 ml-12 bg-jasmine hover:bg-purple-200 sm:ml-0 sm:w-40
+                    hover:scale-105 hover:shadow-lg transition"
                     disabled
                 >
                     Payout in progress

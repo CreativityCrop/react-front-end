@@ -15,7 +15,7 @@ module.exports = {
         extend: {
             colors: {
                 'yankeesblue': '#1a2238',
-                'jasmine': '#f4db7d',
+                'jasmine': '#FFDF67',
                 'maxbluepurple': '#9daaf2'
             }
         }
