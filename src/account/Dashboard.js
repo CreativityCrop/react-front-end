@@ -13,7 +13,7 @@ export default function Dashboard() {
     const [userData, setUserData] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState();
-    const [finishPayment, setFinishPayment] = useState(false);
+    const [finishPayment, setFinishPayment] = useState(null);
 
     useEffect(() => {
         axios
@@ -44,7 +44,7 @@ export default function Dashboard() {
                 }
             
             });
-    }, [setAuthContext]);
+    }, [setAuthContext, finishPayment]);
 
     useEffect(() => {
         if(userData.unfinishedPaymentIntent !== undefined && userData.unfinishedPaymentIntent !== null) {
@@ -63,6 +63,7 @@ export default function Dashboard() {
             })
             .then((response) => {
                 toast.success("Idea payment is canceled!");
+                setFinishPayment(false);
             })
             .catch((error) => {
                 if(error.response.status === 401) {

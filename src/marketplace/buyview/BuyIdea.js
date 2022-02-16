@@ -41,7 +41,7 @@ export default function BuyIdea() {
                     // anything else
                 }            
             });
-    }, [params, setAuthContext]);
+    }, [params.ideaID, setAuthContext]);
 
     const ideaEntry = () => {
         return <Idea

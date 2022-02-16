@@ -37,7 +37,7 @@ export default function Footer() {
                         </div>
                         <div className="-ml-14 text-[1.05rem] md:ml-3 sm:ml-16">
                             <p></p>
-                            <Link to="/about-us">Aboutus</Link>
+                            <Link to="/about-us">About us</Link>
                             <p></p>
                             <Link to="/login">Login</Link>
                             <p></p>
