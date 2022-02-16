@@ -60,6 +60,7 @@ export default function App() {
                 position="top-center"
                 closeOnClick
                 pauseOnHover
+                autoClose={5000}
             />
             <ScrollToTop 
                 style={{}}

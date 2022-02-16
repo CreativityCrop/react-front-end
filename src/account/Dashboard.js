@@ -48,7 +48,7 @@ export default function Dashboard() {
 
     useEffect(() => {
         if(userData.unfinishedPaymentIntent !== undefined && userData.unfinishedPaymentIntent !== null) {
-            toast("You have unfinished payment for idea!", { draggable: true });
+            toast.warning("You have unfinished payment for idea!");
         }
     }, [userData]);
 
@@ -62,7 +62,7 @@ export default function Dashboard() {
                 }
             })
             .then((response) => {
-
+                toast.success("Idea payment is canceled!");
             })
             .catch((error) => {
                 if(error.response.status === 401) {

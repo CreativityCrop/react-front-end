@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import jwt_decode from "jwt-decode";
+import { toast } from "react-toastify";
 
 export const AuthContext = React.createContext();
 const cookies = new Cookies();
@@ -15,8 +16,10 @@ const cookieParams = {
     sameSite: "strict"
 };
 
-
+//DEV
 export const MAIN_API_URL = 'http://creativitycrop.tech/api';
+//PROD
+//export const MAIN_API_URL = '/api';
 
 export const setToken = (token) => {
     //localStorage.setItem("access_token", token);
@@ -37,6 +40,7 @@ export const verifyToken = async () => {
     //console.log("Checking token");
     if (getToken() != null) {
         if (jwt_decode(getToken()).exp <= Math.round(Date.now() / 1000)) {
+            toast.info("Your session expired, please login!")
             removeToken();
             return;
         }

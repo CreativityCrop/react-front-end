@@ -172,6 +172,7 @@ const downloadLink = (file_id) => MAIN_API_URL + "/files/download?file_id=" + fi
 
 function File(props) {
     const getIcon = (contentType) => {
+        console.log(contentType)
         switch(contentType) {
             case "image/svg+xml":
             case "image/jpeg":
@@ -208,8 +209,8 @@ function File(props) {
         <div className="flex">
             <img 
                 className="mr-4 flex-none w-10 h-10 sm:mr-0" 
-                src={"/assets/icons/" + getIcon(props.file.content_type)} 
-                alt={props.file.content_type}
+                src={"/assets/icons/" + getIcon(props.file.contentType)} 
+                alt={props.file.contentType}
             />
             <p className="mr-4 flex-auto w-64 self-center sm:mr-0 sm:w-44">
                 {props.file.name.substring(0, 25) + (props.file.name.length<=25 ? "" : " ...")}
