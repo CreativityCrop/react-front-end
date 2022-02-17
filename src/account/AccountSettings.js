@@ -95,7 +95,7 @@ export default function AccountSettings(props) {
     };
 
     return(
-        <div id="holder-of-the-acc" className="">
+        <div id="holder-of-the-acc" className="sm:ml-8">
             <div id="pfp-and-options" className="flex flex-row mb-5">
                 {editMode ?
                     <div id="image" className="mr-4 flex flex-col flex-none">
