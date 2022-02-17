@@ -97,7 +97,7 @@ export default function Invoice() {
                     <span>{loading ? "Prepairing print" : "Print"}</span><PrintIcon className="w-12"/>
                 </button>
             </div>
-            <div className="flex flex-col w-10/12 m-auto mt-4 p-6 border-4" ref={componentRef}>
+            <div className="flex flex-col w-10/12 m-auto mt-4 p-6 border-4 sm:border-2 sm:p-4" ref={componentRef}>
                 {
                     error && <div>
                         <h1>{error.title}</h1>
@@ -106,17 +106,17 @@ export default function Invoice() {
                 }
                 {invoice&&<div>
                     <div id="heading" className="flex flex-row sm:text-center justify-between">
-                        <div id="logo" className="w-60 h-40 bg-slate-300 "></div>
+                        <div id="logo" className="w-60 h-40 bg-slate-300 sm:w-40 sm:h-20"></div>
                         <h1 className="text-6xl sm:text-4xl sm:mt-4 sm:mb-10">Invoice</h1>
                     </div>
-                    <div className="grid grid-flow-col gap-4 mt-10">
+                    <div className="grid grid-col gap-4 mt-10 sm:mt-3">
                         <div id="address" className="font-bold">
                             <div>
                             <p>CreativityCrop LLC</p>
                             <p>Stara Zagora</p>
                             <p>Bulgaria</p>
                             </div>
-                            {!printing&&<div className="mt-16">
+                            {!printing&&<div className="mt-16 sm:mt-12">
                                 <p className="font-bold">Bill To: <span className="font-normal">{invoice?.userName}</span></p>
                                 <input onChange={(e) => setAddr1(e.target.value)} type="text" className="block h-8 sm:w-36 mb-1" placeholder="Address Line 1"></input>
                                 <input onChange={(e) => setAddr2(e.target.value)} type="text" className="block h-8 sm:w-36 mb-1" placeholder="Address Line 2"></input>
@@ -131,7 +131,7 @@ export default function Invoice() {
                                 <p>{country}</p>
                             </div>}
                         </div>
-                        <div id="details" className="row-span-2 text-right">
+                        <div id="details" className="row-span-2 text-right -mt-[18.5rem] sm:mt-4 sm:text-left">
                             <p className="font-bold">Invoice ID: <span className="font-normal">{invoice?.id}</span></p>
                             <p className="font-bold">Invoice Date: <span className="font-normal">{invoice?.date}</span></p>
                             <p className="mt-5">This invoice is generated for a processed payment on an idea item from the CreativityCrop platform </p>

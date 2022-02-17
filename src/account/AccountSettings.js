@@ -91,8 +91,8 @@ export default function AccountSettings(props) {
     };
 
     return(
-        <div id="holder-of-the-acc" className="sm:ml-[7%]">
-            <div id="pfp-and-options" className="flex flex-row mb-5 ">
+        <div id="holder-of-the-acc" className="">
+            <div id="pfp-and-options" className="flex flex-row mb-5">
                 {editMode ?
                     <div id="image" className="mr-4 flex flex-col flex-none">
                         <div className="w-48 h-48 bg-slate-200 cursor-pointer mr-1 md:mr-1 sm:w-36 sm:h-36 sm:mr-[0.4rem]"
@@ -190,7 +190,7 @@ export default function AccountSettings(props) {
                 </form>
             </div>
             <div id="right" className="w-56 -mt-[11.5rem] mr-40 text-center float-right md:mr-10
-            sm:float-none sm:mt-0 sm:mb-4 sm:w-[21.5rem] sm:text-left sm:border-y-2 sm:py-3">
+            sm:float-none sm:mt-0 sm:mb-4 sm:w-fit sm:items-center sm:text-left sm:border-y-2 sm:py-3">
                 <h3 className="text-2xl mb-4">Don't know where to start?</h3>
                 <div className="w-44 h-9 ml-7 bg-maxbluepurple hover:bg-purple-200 sm:ml-[10.5rem] 
                 hover:rotate-3 hover:drop-shadow-xl transition duration-150">

@@ -1588,6 +1588,10 @@ select {
     margin-bottom: 0.75rem;
   }
 
+  .sm\:ml-2 {
+    margin-left: 0.5rem;
+  }
+
   .sm\:ml-7 {
     margin-left: 1.75rem;
   }
@@ -1606,10 +1610,6 @@ select {
 
   .sm\:mt-2 {
     margin-top: 0.5rem;
-  }
-
-  .sm\:ml-2 {
-    margin-left: 0.5rem;
   }
 
   .sm\:mt-3 {
@@ -1634,6 +1634,14 @@ select {
 
   .sm\:mr-\[0\.4rem\] {
     margin-right: 0.4rem;
+  }
+
+  .sm\:ml-10 {
+    margin-left: 2.5rem;
+  }
+
+  .sm\:mt-8 {
+    margin-top: 2rem;
   }
 
   .sm\:ml-24 {
