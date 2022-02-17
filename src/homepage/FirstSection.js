@@ -1,4 +1,7 @@
+
+
 export default function FirstSection() {
+
     return(
         <div>
             <div id="first-section" className="mt-28 sm:mt-16 sm:mb-20 md:w-11/12 md:mb-20 select-none
@@ -15,12 +18,14 @@ export default function FirstSection() {
                     <p>img</p>
                 </div>
             </div>
-            <div className="w-12 h-12 text-center rounded-full m-auto mt-28 pt-2 opacity-80 bg-maxbluepurple
-            select-none transition delay-100 hover:scale-105 hover:opacity-100 md:hidden sm:hidden">
-                <a 
-                    href="#second-section"
-                    className="block text-2xl scroll-smooth transition duration-100"
-                >↓</a>
+            <div className="flex justify-center">
+                <button
+                className="block md:hidden sm:hidden w-12 h-12 text-center text-2xl rounded-full m-auto mt-28 pt-2 opacity-80 bg-maxbluepurple delay-100 hover:scale-105 hover:opacity-100"
+                onClick={
+                    () => { document.getElementById("second-section").scrollIntoView({ behavior: "smooth" });}
+                }>
+                    ↓
+                </button>
             </div>
         </div>
     );

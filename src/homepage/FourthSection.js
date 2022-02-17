@@ -7,7 +7,7 @@ export default function FourthSection() {
     return(
         <div className="my-8 select-none bg-maxbluepurple">
             <div className="flex flex-row flex-wrap place-content-center py-6 px-0">
-                <div className="text-center flex-initial w-64 order-2 sm:order-1">
+                <div className="text-center flex-initial w-64 order-2 sm:order-1 sm:mx-6">
                     <h1 className="mb-2 mt-8 text-3xl">About us</h1>
                     <h3 className="mb-8">very very short description about us and our idea</h3>
                     <button type="button" className="w-44 h-8 text-center bg-slate-400 hover:bg-purple-400

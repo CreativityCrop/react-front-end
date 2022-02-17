@@ -108,7 +108,7 @@ export default function SubmitIdea() {
         if(e.target.files.length === 0 ) return;
         console.log("NEW FILE");
         if(["png", "jpg", "jpeg"].indexOf(e.target.files[0].name.match(/\.[0-9a-z]+$/i)[0].replace(".","")) === -1) {
-            alert("Filetype not allowed!");
+            toast.error("Filetype not allowed! Only jpeg, jpg and png.");
             return;
         }
         //console.log("picture: ", e.target.files);
@@ -149,11 +149,11 @@ export default function SubmitIdea() {
     // Logic for file upload field
     const handleFileUploadChange = (file) => {
         if(fileTypes.indexOf(file.name.match(/\.[0-9a-z]+$/i)[0].replace(".","")) === -1) {
-            alert("Filetype not allowed!");
+            toast.error("Filetype not allowed!");
             return;
         }
         if(files.map(function(e) { return e.name; }).indexOf(file.name) !== -1) {
-            alert("Please don't duplicate files!");
+            toast.error("Please don't duplicate files!");
             return;
         }
         setFiles([file, ...files]);

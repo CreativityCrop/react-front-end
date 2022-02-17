@@ -1,5 +1,6 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { toast } from 'react-toastify';
 
 import axios from 'axios';
@@ -12,7 +13,13 @@ export default function Login() {
     const navigate = useNavigate();
     const navigateBack = localStorage.getItem("redirect-back");
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const query = new URLSearchParams(useLocation().search);
 
+    useEffect(() => {
+        if(query.get("email_verified")) {
+            toast.success("Email is verified! You can login now.")
+        }
+    });
     
     const postLogin = (data) => {
         axios

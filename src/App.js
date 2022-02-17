@@ -16,11 +16,12 @@ import PasswordReset from './routes/PasswordReset';
 import Account from './routes/Account';
 import Logout from './routes/Logout';
 import ViewIdea from './routes/ViewIdea';
+import TermsAndConditions from './routes/TermsAndConditions';
+import PrivacyPolicy from './routes/PrivacyPolicy';
+import Admin from './routes/Admin';
 
 import NotFound from './NotFound';
 import MainContent from './MainContent';
-import TermsAndConditions from './routes/TermsAndConditions';
-import PrivacyPolicy from './routes/PrivacyPolicy';
 
 import SellView from './marketplace/SellView';
 import BuyView from './marketplace/BuyView';
@@ -140,6 +141,12 @@ export default function App() {
                         <Route path="/invoice/:invoiceID" element={
                             <AuthenticatedRoute>
                                 <Invoice/>
+                            </AuthenticatedRoute>
+                        }/>
+
+                        <Route path="/admin" element={
+                            <AuthenticatedRoute>
+                                <Admin/>
                             </AuthenticatedRoute>
                         }/>
 

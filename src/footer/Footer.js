@@ -24,7 +24,7 @@ export default function Footer() {
                         </p>
                     </div>
                 </div>
-                <div className="ml-11 md:ml-8 sm:ml-2">
+                <div className="ml-11 md:ml-8 sm:ml-2 sm:col-span-2">
                     <h1 className="mb-2 text-xl font-medium">Navigate</h1>
                     <div className="grid grid-cols-2 ml-3">
                         <div className="text-[1.05rem]">

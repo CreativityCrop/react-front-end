@@ -172,7 +172,6 @@ const downloadLink = (file_id) => MAIN_API_URL + "/files/download?file_id=" + fi
 
 function File(props) {
     const getIcon = (contentType) => {
-        console.log(contentType)
         switch(contentType) {
             case "image/svg+xml":
             case "image/jpeg":

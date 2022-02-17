@@ -23,17 +23,21 @@ export default function AccountSettings(props) {
         if (data.avatar.length !== 0) {
             formData.append("avatar", data.avatar[0], data.avatar[0]?.name);
         }
-        if (data.username !== undefined) {
+        if (data.username !== undefined && props.userData.username !== data.username) {
             formData.append("username", data.username);
+            // console.log("USERNAME CHANGED");
         }
-        if (data.email !== undefined) {
+        if (data.email !== undefined  && props.userData.email !== data.email) {
             formData.append("email", data.email);
+            // console.log("EMAIL CHANGED");
         }
-        if (data.iban !== undefined) {
+        if (data.iban !== undefined  && props.userData.iban !== data.iban) {
             formData.append("iban", data.iban);
+            // console.log("IBAN CHANGED");
         }
-        if (data.password !== undefined) {
+        if (data.password !== undefined  && props.userData.password !== data.password) {
             formData.append("pass_hash", sha3_256(data.password));
+            // console.log("PAASS CHANGED");
         }
         if (formData.entries().next().done) {    // if formData is empty don't send a request
             return;
@@ -48,7 +52,7 @@ export default function AccountSettings(props) {
                 }
             }).then((response) => {
                 if (response.data.accessToken !== undefined) {   // if username has been changed we need a new token
-                    setToken(response.data.accessToken);
+                    setToken(response.data.token.accessToken);
                 }
                 window.location.reload(false);      // refresh page just in case
             })
@@ -74,7 +78,7 @@ export default function AccountSettings(props) {
     const handleImageChange = (e) => {    // Function to visualise the uploaded Image
         if (e.target.files.length === 0) return;
         if (["png", "jpg", "jpeg"].indexOf(e.target.files[0].name.match(/\.[0-9a-z]+$/i)[0].replace(".", "")) === -1) {
-            alert("Filetype not allowed!");
+            toast.error("Filetype not allowed! Only jpeg, jpg and png.");
             return;
         }
         //console.log("picture: ", e.target.files);
