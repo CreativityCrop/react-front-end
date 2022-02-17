@@ -107,7 +107,7 @@ export default function AccountSettings(props) {
                             }
                             onClick={(e) => document.getElementById("select-image").click()}
                         >
-                            <UploadIcon className="absolute w-1/4 top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] cursor-pointer" />
+                            <UploadIcon className="w-1/2 top-1/2 left-1/2 ml-12 mt-11 cursor-pointer sm:ml-10 sm:mt-8"/>
                         </div>
                         <input
                             id="select-image"
@@ -180,7 +180,7 @@ export default function AccountSettings(props) {
                             <button
                                 type={!editMode ? "submit" : "button"}
                                 button="submit"
-                                className="mt-2 w-20 h-10 ml-44 bg-green-200 hover:bg-purple-200 sm:ml-24
+                                className="mt-2 w-20 h-10 ml-44 bg-maxbluepurple hover:bg-purple-200 sm:ml-24
                                 hover:-rotate-3 hover:drop-shadow-xl transition duration-150"
                                 onClick={() => setEditMode(!editMode)}
                             >{editMode ? "Save" : "Edit"}</button>
@@ -192,7 +192,7 @@ export default function AccountSettings(props) {
             <div id="right" className="w-56 -mt-[11.5rem] mr-40 text-center float-right md:mr-10
             sm:float-none sm:mt-0 sm:mb-4 sm:w-[21.5rem] sm:text-left sm:border-y-2 sm:py-3">
                 <h3 className="text-2xl mb-4">Don't know where to start?</h3>
-                <div className="w-44 h-9 ml-7 bg-green-200 hover:bg-purple-200 sm:ml-[10.5rem] 
+                <div className="w-44 h-9 ml-7 bg-maxbluepurple hover:bg-purple-200 sm:ml-[10.5rem] 
                 hover:rotate-3 hover:drop-shadow-xl transition duration-150">
                     <p className="pt-1 text-lg text-center">Read the manual!</p>
                 </div>

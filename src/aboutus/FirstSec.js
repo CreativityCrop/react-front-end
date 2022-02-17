@@ -1,6 +1,6 @@
 export default function FirstSec(){
     return(
-        <div className="flex flex-row pt-28 select-none sm:flex-col sm:pt-4">
+        <div className="flex flex-row pt-28 select-none sm:flex-col sm:pt-4 sm:ml-2">
             <div className="bg-slate-300 ml-20 w-96 h-64 sm:order-2 sm:ml-7 sm:w-[21rem]">
                 <p>img</p>
             </div>

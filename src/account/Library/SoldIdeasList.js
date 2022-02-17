@@ -63,8 +63,8 @@ export default function SoldIdeasList() {
     });
 
     return(
-        <div id="sold-ideas" className="border-4 border-t-0 w-[46rem] min-h-max sm:w-[23.5rem]">
-            <div className="w-full h-16 bg-green-200">
+        <div id="sold-ideas" className="border-4 border-black border-t-0 w-[46rem] min-h-max sm:w-[23.5rem]">
+            <div className="w-full h-16 bg-maxbluepurple">
                 <h1 className="text-3xl p-2">Your Sold Ideas</h1>
             </div>
             <div className="p-3 bg-yankeesblue">
