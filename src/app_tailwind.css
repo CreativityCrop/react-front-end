@@ -605,6 +605,9 @@ select {
 .order-3 {
   order: 3;
 }
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
 .row-span-2 {
   grid-row: span 2 / span 2;
 }
@@ -711,6 +714,9 @@ select {
 .ml-\[29\.7rem\] {
   margin-left: 29.7rem;
 }
+.mb-20 {
+  margin-bottom: 5rem;
+}
 .mb-10 {
   margin-bottom: 2.5rem;
 }
@@ -780,6 +786,9 @@ select {
 .mt-\[0\.10rem\] {
   margin-top: 0.10rem;
 }
+.mr-0 {
+  margin-right: 0px;
+}
 .ml-24 {
   margin-left: 6rem;
 }
@@ -788,9 +797,6 @@ select {
 }
 .ml-4 {
   margin-left: 1rem;
-}
-.mb-24 {
-  margin-bottom: 6rem;
 }
 .mt-24 {
   margin-top: 6rem;
@@ -1219,6 +1225,10 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(248 113 113 / var(--tw-bg-opacity));
 }
+.bg-cyan-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(6 182 212 / var(--tw-bg-opacity));
+}
 .bg-blue-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(59 130 246 / var(--tw-bg-opacity));
@@ -1435,6 +1445,10 @@ select {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
 }
+.text-jasmine {
+  --tw-text-opacity: 1;
+  color: rgb(255 223 103 / var(--tw-text-opacity));
+}
 .text-blue-400 {
   --tw-text-opacity: 1;
   color: rgb(96 165 250 / var(--tw-text-opacity));
@@ -1509,6 +1523,10 @@ select {
 .hover\:bg-red-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(185 28 28 / var(--tw-bg-opacity));
+}
+.hover\:bg-cyan-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(14 116 144 / var(--tw-bg-opacity));
 }
 .hover\:bg-jasmine:hover {
   --tw-bg-opacity: 1;
@@ -1717,6 +1735,10 @@ select {
     margin-top: 0.25rem;
   }
 
+  .sm\:ml-5 {
+    margin-left: 1.25rem;
+  }
+
   .sm\:mt-20 {
     margin-top: 5rem;
   }
@@ -1895,6 +1917,10 @@ select {
     padding: 0.75rem;
   }
 
+  .sm\:p-\[0\.3rem\] {
+    padding: 0.3rem;
+  }
+
   .sm\:py-3 {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
@@ -1982,12 +2008,12 @@ select {
     margin-bottom: 5rem;
   }
 
-  .md\:ml-4 {
-    margin-left: 1rem;
+  .md\:mt-8 {
+    margin-top: 2rem;
   }
 
-  .md\:mt-4 {
-    margin-top: 1rem;
+  .md\:ml-4 {
+    margin-left: 1rem;
   }
 
   .md\:mt-0 {
@@ -2006,8 +2032,8 @@ select {
     height: 16rem;
   }
 
-  .md\:h-56 {
-    height: 14rem;
+  .md\:h-52 {
+    height: 13rem;
   }
 
   .md\:w-56 {

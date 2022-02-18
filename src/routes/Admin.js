@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import AuthProvider from "../AuthAPI";
 
-const URL = "ws://creativitycrop.tech:8000/admin/log";
+const URL = "ws://creativitycrop.tech/api/";
 
 export default function Admin() {
     const [messages, setMessages] = useState([]);
@@ -26,7 +26,7 @@ export default function Admin() {
     }, [ws]);
 
     return(
-        <div>
+        <div className="mb-20">
             <AuthProvider/>
             {messages}
         </div>

@@ -49,7 +49,7 @@ export default function Register() {
     return (
         <div>
             <AuthProvider/>
-            <div className="flex justify-center items-center gap-4 sm:gap-0 mt-16 mb-10 sm:mt-20">
+            <div className="flex justify-center items-center gap-4 sm:gap-0 mt-16 mb-20 sm:mt-20">
                 <div id="image" className="w-96 h-80 bg-slate-300 sm:hidden">
                     <img alt="nice img" />
                 </div>

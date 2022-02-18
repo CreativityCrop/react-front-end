@@ -61,7 +61,7 @@ export default function Login() {
     return (
         <div id="login">
             <AuthProvider />
-            <div className="flex justify-center gap-4 mt-28 mb-24 sm:mt-20">
+            <div className="flex justify-center gap-4 mt-28 mb-20 sm:mt-20">
                 <div id="img" className="w-96 h-82 bg-slate-300 sm:hidden">
                     <img alt="nice img" />
                 </div>

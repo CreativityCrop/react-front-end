@@ -91,7 +91,7 @@ export default function PasswordReset() {
         return (
             <div id="password-reset">
                 <AuthProvider />
-                <div className="flex justify-center gap-4 mt-24 mb-10 sm:mt-20">
+                <div className="flex justify-center gap-4 mt-24 mb-20 sm:mt-20">
                     <div id="img" className="w-96 h-82 bg-blue-500 sm:hidden">
                         <img alt="nice img" />
                     </div>

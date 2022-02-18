@@ -72,7 +72,7 @@ export default function SoldIdeasList() {
             {listIdeas}
             {
                 listIdeas.length===0 &&
-                <p className="text-center text-lg">You haven't sold any ideas yet! Go sell some at the <Link className="text-blue-400" to="/marketplace/sell">Marketplace</Link>.</p>
+                <p className="text-center text-lg">You don't thave any sold ideas yet! Go sell some at the <Link className="text-blue-400" to="/marketplace/sell">Marketplace</Link>.</p>
             }
             {
                 error && <div>

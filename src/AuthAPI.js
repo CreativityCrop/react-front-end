@@ -40,7 +40,7 @@ export const verifyToken = async () => {
     //console.log("Checking token");
     if (getToken() != null) {
         if (jwt_decode(getToken()).exp <= Math.round(Date.now() / 1000)) {
-            toast.info("Your session expired, please login!")
+            toast.info("Your session has expired!")
             removeToken();
             return;
         }
@@ -48,6 +48,7 @@ export const verifyToken = async () => {
         await axios.get(MAIN_API_URL + "/auth/verify", {
             headers: {
                 "Token": getToken(),
+                "Access-Control-Allow-Origin": "*",
                 "Content-Type": "application/json"
             }
         }).catch(function (error) {

@@ -7,7 +7,7 @@ import FourthSection from '../homepage/FourthSection';
 
 export default function Home() {
     return (
-        <div id="home">
+        <div id="home" className="mb-20">
             <AuthProvider/>
             <FirstSection/>
             <SecondSection/>

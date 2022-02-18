@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { toast  } from 'react-toastify';
 
@@ -22,11 +22,9 @@ export default function Idea(props) {
                 <FileList {...props} />
                 <div className="grid grid-cols-2 mt-3 ml-2 sm:ml-0">
                     <Price {...props} />
-                    <Button 
-                        className="w-48 h-8 sm:w-36"
-                        {...props}
-                    />
+                    <MainButton {...props} />
                     <PayoutButton {...props} />
+                    <InvoiceButton {...props} />
                 </div>
             </div>
         </div>
@@ -230,9 +228,7 @@ function Price(props) {
     );
 }
 
-function Button(props) {
-    const navigate = useNavigate();
-
+function MainButton(props) {
     if(props.listView === undefined && props.buyView === undefined) {
         return(null);
     }
@@ -255,13 +251,12 @@ function Button(props) {
     }
 
     return(
-        <button
-            type="button"
+        <Link
             className="text-lg text-center w-48 h-8 ml-12 bg-green-200 hover:bg-purple-200 sm:w-36 sm:ml-2 hover:scale-105 hover:shadow-lg transition" 
-            onClick={() => {navigate(url)}}
+            to={url}
         >
             {text}
-        </button>
+        </Link>
     );
 }
 
@@ -350,4 +345,20 @@ function PayoutButton(props) {
             );
         default: return(null);
     }
+}
+
+function InvoiceButton(props) {
+    if(!props.soldView) {
+        return(null);
+    }
+    return(
+        <Link
+            className="text-lg text-center w-48 h-8 ml-auto mr-0 mt-3 col-span-2 bg-cyan-500 hover:bg-cyan-700
+            sm:ml-0 sm:w-40 hover:scale-105 hover:shadow-lg transition"
+            to={`/invoice/${props.id}`}
+        >
+            Invoice
+        </Link>
+        
+    );
 }

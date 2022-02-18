@@ -90,7 +90,7 @@ export default function Invoice() {
     
 
     return(
-        <div>
+        <div className="mb-20">
             <AuthProvider/>
             <div className="mt-6 mb-10 flex flex-row justify-center">
                 <button onClick={handlePrint} className="flex flex-row items-center gap-4 p-3 border-4">

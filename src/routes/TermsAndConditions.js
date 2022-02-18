@@ -2,7 +2,7 @@
 
 export default function TermsAndConditions() {
     return (
-        <div id="terms-conditions" className="flex flex-col gap-4 p-3 sm: pr-4">
+        <div id="terms-conditions" className="flex flex-col gap-4 p-3 sm: pr-4 mb-20">
             <h1 className="text-4xl font-bold text-center">Terms of Service</h1>
             <div id="introduction">
                 <h2 className="text-2xl font-bold mb-4">Introduction</h2>
