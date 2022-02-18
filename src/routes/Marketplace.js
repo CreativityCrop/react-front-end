@@ -5,8 +5,7 @@ export default function Marketplace() {
 
     return (
         <div id="marketplace" className="mb-20">
-            <div className="block xl:hidden py-6 px-4 bg-gradient-to-b from-yankeesblue
-                md:mt-4 sm:mt-3">
+            <div className="block xl:hidden py-6 px-4 bg-gradient-to-b via-yankeesblue from-yankeesblue">
                     <h1 className="text-center text-white text-2xl mb-3">Hottest ideas right now!</h1>
                     <HottestIdeas className="md:flex sm:flex md:overflow-auto sm:overflow-auto md:space-x-3 sm:space-x-3"/>
                 </div>
