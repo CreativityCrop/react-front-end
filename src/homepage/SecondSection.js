@@ -8,20 +8,20 @@ export default function SecondSection(){
         <div id="second-section" className="bg-yankeesblue md:p-6 xl:p-6 sm:py-6">
             <div id="top" className="flex xl:flex-row sm:flex-col justify-center gap-5 m-auto">
                 <div id="buy" className="flex flex-row w-auto p-4 xl:p-6 gap-4 md:basis-1/2 bg-jasmine hover:scale-105 transition">
-                    <img alt="" src={test} className="bg-slate-300 w-52 h-60 md:w-32 md:h-52"/>
+                    <img alt="" src={test} className="bg-slate-300 xl:w-52 xl:h-60 w-32 h-52"/>
                     <div className="w-52 m-auto md:w-44">
                         <h1 className="mb-3 text-3xl">Buy an idea</h1>
                         <h3>you browse ideas for selling and depending on the description
                         you have the option to buy it</h3>
                     </div>
                 </div>
-                <div id="sell" className="flex flex-row w-auto p-6 gap-4 md:p-4 md:basis-1/2 bg-jasmine hover:scale-105 transition">
+                <div id="sell" className="flex flex-row w-auto p-4 xl:p-6 gap-4 md:basis-1/2 bg-jasmine hover:scale-105 transition">
                     <div className="w-52 m-auto md:w-44">
                         <h1 className="mb-3 text-3xl">Sell an idea</h1>
                         <h3>you have an awesome idea that you want to sell on
                             the marketplace for others to buy</h3>
                     </div>
-                    <img alt="" src={test} className="bg-slate-300 w-52 h-60 md:w-32 md:h-52"/>
+                    <img alt="" src={test} className="bg-slate-300 xl:w-52 xl:h-60 w-32 h-52"/>
                 </div>
             </div>
             <div id="bottom" className="flex sm:flex-col justify-center items-center gap-16 mt-6">
