@@ -50,10 +50,10 @@ export default function Register() {
         <div>
             <AuthProvider/>
             <div className="flex justify-center items-center gap-4 sm:gap-0 mt-16 mb-10 sm:mt-20">
-                <div id="image" className="w-96 h-80 bg-blue-500 sm:hidden">
+                <div id="image" className="w-96 h-80 bg-slate-300 sm:hidden">
                     <img alt="nice img" />
                 </div>
-                <div id="form" className="sm:w-80 sm:p-4 p-6 border-2 max-w-min">
+                <div id="form" className="sm:w-80 sm:p-4 p-6 max-w-min bg-maxbluepurple">
                     <div className="w-full mb-4 text-center">
                         <h1 className="text-2xl break-words sm:text-xl">Create your account</h1>
                     </div>
@@ -128,10 +128,11 @@ export default function Register() {
                             </div>
                         </label>
                         <p>
-                            By clicking register you agree to the <Link className="text-blue-500 hover:text-purple-600" to="/terms-conditions" target="_blank">Terms and Conditions</Link>
+                            By clicking register you agree to the <Link className="text-jasmine hover:text-purple-600" to="/terms-conditions" target="_blank">Terms and Conditions</Link>
                         </p>
                         <div>
-                            <button className="border-2 w-24 mt-4 mb-2 text-center bg-green-200 hover:bg-purple-200" type="submit">Register</button>
+                            <button className="w-24 mt-4 mb-2 py-1 text-center bg-jasmine hover:bg-purple-200 
+                            hover:scale-105 hover:origin-bottom hover:-rotate-3 hover:drop-shadow-xl transition duration-150" type="submit">Register</button>
                             <br/>
                             <Link to="/login">Already have an account?</Link>
                         </div>

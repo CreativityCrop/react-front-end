@@ -7,24 +7,24 @@ export default function SecondSection(){
     return (
         <div className='bg-yankeesblue w-screen xl:-ml-64'>
         <div id="second-section" className="mt-5 select-none xl:ml-64">
-            <div id="top" className="flex xl:flex-row space-x-1 xl:ml-6 xl:pt-4 sm:flex-col sm:space-y-1 sm:space-x-0">
-                <div id="buy" className="flex flex-row w-auto p-6 space-x-4 md:basis-1/2 bg-jasmine hover:scale-105 transition">
-                    <div className="bg-slate-300 w-52 h-60 md:w-32 md:h-56">
+            <div id="top" className="flex xl:flex-row space-x-1 xl:ml-6 xl:pt-4 md:p-4 sm:p-[0.3rem] sm:flex-col sm:space-y-1 sm:space-x-0">
+                <div id="buy" className="flex flex-row w-auto p-6 space-x-4 md:p-4 md:basis-1/2 bg-jasmine hover:scale-105 transition">
+                    <div className="bg-slate-300 w-52 h-60 md:w-32 md:h-52">
                         <img alt="" src={test} />
                     </div>
-                    <div className="w-52 m-auto md:w-44">
+                    <div className="w-52 m-auto md:w-44 md:mt-8">
                         <h1 className="mb-3 text-3xl">Buy an idea</h1>
                         <h3>you browse ideas for selling and depending on the description
                         you have the option to buy it</h3>
                     </div>
                 </div>
-                <div id="sell" className="flex flex-row w-auto p-6 space-x-4 md:basis-1/2 bg-jasmine hover:scale-105 transition">
-                    <div className="w-52 m-auto md:w-44">
+                <div id="sell" className="flex flex-row w-auto p-6 space-x-4 md:p-4 md:basis-1/2 bg-jasmine hover:scale-105 transition">
+                    <div className="w-52 m-auto md:w-44 md:mt-8">
                         <h1 className="mb-3 text-3xl">Sell an idea</h1>
                         <h3>you have an awesome idea that you want to sell on
                             the marketplace for others to buy</h3>
                     </div>
-                    <div className="bg-slate-300 w-52 h-60 md:w-32 md:h-56">
+                    <div className="bg-slate-300 w-52 h-60 md:w-32 md:h-52">
                         <img alt="" src={test} />
                     </div>
                 </div>

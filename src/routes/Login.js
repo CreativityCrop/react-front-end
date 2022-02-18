@@ -62,10 +62,10 @@ export default function Login() {
         <div id="login">
             <AuthProvider />
             <div className="flex justify-center gap-4 mt-28 mb-24 sm:mt-20">
-                <div id="img" className="w-96 h-82 bg-blue-500 sm:hidden">
+                <div id="img" className="w-96 h-82 bg-slate-300 sm:hidden">
                     <img alt="nice img" />
                 </div>
-                <div id="form" className="p-4 border-2 sm:w-80 bg-yankeesblue">
+                <div id="form" className="p-4 sm:w-80 bg-yankeesblue">
                     <div className="w-full mb-4 text-center">
                         <h1 className="text-2xl break-words sm:text-xl text-slate-300">Log in to your account</h1>
                     </div>
@@ -95,7 +95,8 @@ export default function Login() {
                         <Link to="/password-reset" className='text-slate-300' >Can't remember you password?</Link>
                         <br/>
                         <div className="mt-4">
-                            <button className="border-2 w-24 mb-2 text-cente bg-green-200 hover:bg-purple-200" type="submit">Log in</button>
+                            <button className="w-24 mb-2 py-1 text-center bg-jasmine hover:bg-purple-200
+                            hover:scale-105 hover:origin-bottom hover:rotate-3 hover:drop-shadow-xl transition duration-150" type="submit">Log in</button>
                             <br/>
                             <Link to="/register" className='text-slate-300'>Don't have an account?</Link>
                         </div>

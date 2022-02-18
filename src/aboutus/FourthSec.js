@@ -11,7 +11,7 @@ export default function FourthSec(){
                 <div className="w-44 h-32 ml-[19rem] bg-slate-300 md:ml-40 sm:ml-2">
                     <p>img</p>
                 </div>
-                <h3 className="w-[24rem] mt-6 xl:-ml-44 text-center md:ml-2 sm:w-44 sm:mt-3 sm:ml-1">and how we worked on it, what we used and how long
+                <h3 className="w-[24rem] mt-6 xl:-ml-44 text-center md:ml-2 md:w-60 sm:w-44 sm:mt-3 sm:ml-1">and how we worked on it, what we used and how long
                 it took more things to add text</h3>
             </div>
         </div>
