@@ -20,7 +20,7 @@ export default function FirstSection() {
             </div>
             <div className="flex justify-center">
                 <button
-                className="block md:hidden sm:hidden w-12 h-12 text-center text-2xl rounded-full m-auto mt-28 pt-2 opacity-80 bg-maxbluepurple delay-100 hover:scale-105 hover:opacity-100"
+                className="block md:hidden sm:hidden w-12 h-12 text-center text-2xl rounded-full m-auto mt-28 opacity-80 bg-maxbluepurple delay-100 hover:scale-105 hover:opacity-100"
                 onClick={
                     () => { document.getElementById("second-section").scrollIntoView({ behavior: "smooth" });}
                 }>

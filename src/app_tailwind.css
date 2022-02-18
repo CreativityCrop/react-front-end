@@ -1635,6 +1635,10 @@ select {
     margin-left: 1.5rem;
   }
 
+  .sm\:ml-8 {
+    margin-left: 2rem;
+  }
+
   .sm\:mr-\[0\.4rem\] {
     margin-right: 0.4rem;
   }
