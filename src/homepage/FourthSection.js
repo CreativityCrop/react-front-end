@@ -6,8 +6,8 @@ export default function FourthSection() {
 
     return(
         <div className="p-6 sm:px-2 bg-maxbluepurple">
-            <div className="flex flex-row flex-wrap gap-16 sm:gap-6 justify-center">
-                <div className="text-center flex-initial sm:grow sm:w-full order-2 sm:order-1">
+            <div className="flex flex-row flex-wrap gap-16 md:gap-8 sm:gap-6 justify-center">
+                <div className="text-center flex-initial sm:grow sm:w-full w-60 order-2 sm:order-1">
                     <h1 className="mb-2 mt-8 text-3xl">About us</h1>
                     <h3 className="mb-8">very very short description about us and our idea</h3>
                     <button type="button" className="w-44 h-8 text-center bg-jasmine hover:bg-purple-400
@@ -16,8 +16,8 @@ export default function FourthSection() {
                         Learn more about us!
                     </button>
                 </div>
-                <img alt="" src={test} className="grow-0 order-1 sm:order-2  bg-slate-300 w-44 h-64 sm:mt-10 sm:w-40 sm:h-56"/>
-                <img alt="" src={test} className="grow-0 order-3 bg-slate-300 w-44 h-64 sm:mt-10 sm:w-40 sm:h-56"/>
+                <img alt="" src={test} className="grow order-1 sm:order-2  bg-slate-300 w-44 h-64 sm:mt-10 sm:w-40 sm:h-56"/>
+                <img alt="" src={test} className="grow order-3 bg-slate-300 w-44 h-64 sm:mt-10 sm:w-40 sm:h-56"/>
             </div>
         </div>
     );
