@@ -6,7 +6,7 @@ import FourthSec from '../aboutus/FourthSec';
 
 export default function Aboutus() {
     return (
-        <div id="aboutus" className="mb-20">
+        <div id="aboutus" className="flex flex-col gap-8 mt-28 mb-20 select-none">
             <AuthProvider/>
             <FirstSec/>
             <SecSec/>

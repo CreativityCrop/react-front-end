@@ -1,19 +1,17 @@
-import Illustrations from "../homepage/Illustrations";
+
 
 export default function SecSec(){
     return(
-        <div className="w-screen xl:-ml-64 bg-yankeesblue">
-            <div className="mt-28 select-none xl:-ml-2 text-slate-300">
-                <div className="flex flex-row py-6 place-content-center sm:flex-col">
-                    <Illustrations alt="img" src="" className="sm:ml-[7.1rem]"/>
-                    <div className="text-center w-72 mx-16 my-8 md:mx-9 sm:order-2">
-                        <h1 className="mb-4  text-3xl">Our Team</h1>
-                        <h3 className="">a little about each of us :)
-                            like a little bio or our background and what we studied, etc.</h3>
-                    </div>
-                    <Illustrations alt="img" src="" className="sm:hidden"/>
-                </div>
+        <div className="mt-28 flex flex-row sm:flex-col justify-center items-center p-6 gap-16 md:gap-9 bg-yankeesblue text-slate-300"> 
+            <img alt="" className="order-1 sm:order-2  bg-slate-300 w-44 h-64 "/>
+            <div className="order-2 sm:order-1 text-center w-72 sm:mt-16">
+                <h1 className="text-3xl mb-4">Our Team</h1>
+                <h3 className="">
+                    a little about each of us :)
+                    like a little bio or our background and what we studied, etc.
+                </h3>
             </div>
+            <img alt="" className="order-3 sm:order-3 bg-slate-300 w-44 h-64 "/>
         </div>
     );
 }

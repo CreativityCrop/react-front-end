@@ -7,7 +7,7 @@ import FourthSection from '../homepage/FourthSection';
 
 export default function Home() {
     return (
-        <div id="home" className="mb-20">
+        <div id="home" className="flex flex-col gap-8 mt-28 mb-20 select-none">
             <AuthProvider/>
             <FirstSection/>
             <SecondSection/>

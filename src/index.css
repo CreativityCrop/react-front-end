@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 body {
-    overflow-y: overlay;
+    /*overflow-y: overlay;*/
     height: 100%;
 }

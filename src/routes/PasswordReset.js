@@ -91,16 +91,16 @@ export default function PasswordReset() {
         return (
             <div id="password-reset">
                 <AuthProvider />
-                <div className="flex justify-center gap-4 mt-24 mb-20 sm:mt-20">
+                <div className="flex justify-center gap-4 mt-28 mb-20 sm:mt-20">
                     <div id="img" className="w-96 h-82 bg-blue-500 sm:hidden">
                         <img alt="nice img" />
                     </div>
-                    <div className="p-4 border-2 sm:w-80">
+                    <div className="p-4 border-2 sm:w-80 bg-yankeesblue">
                         <div className=" mb-10 text-center">
-                            <h1 className="text-2xl break-words">Reset your password</h1>
+                            <h1 className="text-2xl break-words text-slate-300">Reset your password</h1>
                         </div>
                         {success ?
-                            <div className="text-center">
+                            <div className="text-center text-slate-300">
                                 <p>Password was changed successfully!</p>
                                 <p>Redirecting to Account in {timer}.</p>
                             </div> 
@@ -138,16 +138,16 @@ export default function PasswordReset() {
     return (
         <div id="password-reset">
                 <AuthProvider />
-                <div className="flex justify-center gap-4 mt-24 mb-10 sm:mt-20">
+                <div className="flex justify-center gap-4 mt-28 mb-20 sm:mt-20">
                     <div id="img" className="w-96 h-82 bg-blue-500 sm:hidden">
                         <img alt="nice img" />
                     </div>
-                    <div className="p-4 border-2 sm:w-80">
+                    <div className="p-4 border-2 sm:w-80 bg-yankeesblue">
                         <div className=" mb-10 text-center">
-                            <h1 className="text-2xl break-words">Reset your password</h1>
+                            <h1 className="text-2xl break-words text-slate-300">Reset your password</h1>
                         </div>
                     {success ?
-                        <div className="text-center">
+                        <div className="text-center text-slate-300">
                             <p>Please check your inbox!</p>
                             <p>Redirecting to Login in {timer}.</p>
                         </div> :
