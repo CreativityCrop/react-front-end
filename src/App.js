@@ -66,7 +66,7 @@ export default function App() {
             <ScrollToTop 
                 style={{borderRadius: "9999px"}}
                 component={
-                    <button className="w-full h-full text-center text-3xl rounded-full opacity-80 bg-maxbluepurple">↑</button>
+                    <button className="w-full h-full text-white text-center text-3xl rounded-full opacity-80 bg-maxbluepurple">↑</button>
                 }
                 smooth
             />

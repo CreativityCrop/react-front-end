@@ -47,7 +47,7 @@ export default function Dashboard() {
     }, [setAuthContext, finishPayment]);
 
     useEffect(() => {
-        if(userData.unfinishedPaymentIntent !== undefined && userData.unfinishedPaymentIntent !== null) {
+        if(userData.unfinishedPaymentIntent && !finishPayment) {
             toast.warning("You have unfinished payment for an idea!");
         }
     }, [userData]);
@@ -93,15 +93,15 @@ export default function Dashboard() {
         <div className="flex flex-col gap-8 select-none">
             {
                 userData.unfinishedPaymentIntent &&
-                <div className=""> 
-                    <p className="mb-3 sm:mb-4">You have unfinished payment for idea: {userData.unfinishedPaymentIdeaTitle}!</p>
-                    <div className=""> 
+                <div id="finish-payment" className="w-fit bg-maxbluepurple p-6 m-auto   "> 
+                    <p className="mb-6 sm:mb-4"><strong>You have unfinished payment for idea:</strong> {userData.unfinishedPaymentIdea.title}</p>
+                    <div className="flex flex-row justify-between"> 
                         <button type="button" onClick={() => setFinishPayment(true) } 
-                        className="bg-green-200 hover:bg-purple-200 p-1 mb-5 px-2 mr-4
-                        hover:rotate-3 hover:drop-shadow-xl transition duration-150">Retry payment</button>
-                        <button type="button" onClick={() => cancelPayment(userData.unfinishedPaymentIdeaID)} 
-                        className="bg-red-200 hover:bg-purple-200 p-1 mb-5 px-2
-                        hover:-rotate-3 hover:drop-shadow-xl transition duration-150">Cancel payment</button>
+                        className="bg-green-200 hover:bg-purple-200 p-1 px-2
+                            hover:rotate-3 hover:drop-shadow-xl transition duration-150">Retry payment</button>
+                        <button type="button" onClick={() => cancelPayment(userData.unfinishedPaymentIdea.id)} 
+                        className="bg-red-200 hover:bg-purple-200 p-1 px-2
+                            hover:-rotate-3 hover:drop-shadow-xl transition duration-150">Cancel payment</button>
                     </div>
                 </div>
             }
@@ -125,16 +125,17 @@ export default function Dashboard() {
 function UnpaidOrder(props) {
     const userData = props.userData;
     return (
-        <div className="m-auto select-none">
+        <div className="flex flex-col justify-center gap-16 m-auto w-fit select-none">
             <Idea
-                key={userData.unfinishedPaymentIdeaID}
-                id={userData.unfinishedPaymentIdeaID}
-                imgUrl={userData.unfinishedPaymentIdeaPictureURL}
-                title={userData.unfinishedPaymentIdeaTitle}
-                shortDesc={userData.unfinishedPaymentIdeaShortDesc}
-                price={userData.unfinishedPaymentIdeaPrice}
+                key={userData.unfinishedPaymentIdea.id}
+                id={userData.unfinishedPaymentIdea.id}
+                imgUrl={userData.unfinishedPaymentIdea.imageURL}
+                title={userData.unfinishedPaymentIdea.title}
+                shortDesc={userData.unfinishedPaymentIdea.shortDesc}
+                price={userData.unfinishedPaymentIdea.price}
+                likes={userData.unfinishedPaymentIdea.likes}
             />
-            <Checkout clientSecret={userData.unfinishedPaymentIntentSecret}/>
+            <Checkout className="" clientSecret={userData.unfinishedPaymentIntentSecret}/>
         </div>
     )
 }

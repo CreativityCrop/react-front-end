@@ -273,8 +273,8 @@ function PayoutButton(props) {
                     "Access-Control-Allow-Origin": "*"
                 }
             }).then((response) => {
-                setPayoutStatus(response.data.payoutStatus);
-                toast("Wow so easy!");
+                setPayoutStatus(response.data.status);
+                toast.success("Payout requested successfully!");
                 
             })
             .catch((error) => {
@@ -311,7 +311,7 @@ function PayoutButton(props) {
             return(
                 <button
                     type="button"
-                    className="text-lg text-center w-48 h-8 ml-12 bg-jasmine hover:bg-purple-200 sm:ml-0 sm:w-40
+                    className="text-lg text-center w-48 h-8 ml-12 bg-jasmine sm:ml-0 sm:w-40
                     hover:scale-105 hover:shadow-lg transition"
                     disabled
                 >
@@ -323,7 +323,8 @@ function PayoutButton(props) {
             return(
                 <button
                     type="button"
-                    className="text-lg text-center w-48 h-8 ml-12 bg-green-500 hover:bg-purple-200"
+                    className="text-lg text-center w-48 h-8 ml-12 bg-green-500  sm:ml-0 sm:w-40
+                    hover:scale-105 hover:shadow-lg transition"
                     disabled
                 >
                     Payout completed
@@ -333,7 +334,8 @@ function PayoutButton(props) {
         case "denied":
             return(
                 <Link
-                    className="text-lg text-center w-48 h-8 ml-12 bg-red-400 hover:bg-red-700"
+                    className="text-lg text-center w-48 h-8 ml-12 bg-red-400 sm:ml-0 sm:w-40
+                    hover:scale-105 hover:shadow-lg transition"
                     to='#'
                     onClick={(e) => {
                         window.open("mailto:contact@creativitycrop.tech");

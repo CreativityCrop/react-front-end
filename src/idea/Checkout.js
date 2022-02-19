@@ -70,7 +70,7 @@ export default function Checkout(props) {
     return (
         <div>
             <AuthProvider />
-            <div id="buy-request" className="">
+            <div id="buy-request" className={props.className}>
                 {
                     clientSecret && <Elements options={options} stripe={stripePromise}><CheckoutForm /></Elements>
                 }
