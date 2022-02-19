@@ -68,24 +68,28 @@ export default function BoughtIdeasList() {
     });
 
     return(
-        <div id="bought-ideas-list" className="border-4 border-black w-[46rem] min-h-max sm:w-[23.5rem]">
-            <div className="w-full h-16 bg-maxbluepurple">
-                <h1 className="text-3xl p-2">Your Bought Ideas</h1>
-            </div>
-            <div className="p-3 bg-yankeesblue">
-            {loading && "Loading..."}
-            {listIdeas}
-            {
-                listIdeas.length===0 &&
-                <p className="text-center text-lg">You haven't bought any ideas yet! Go buy some at the <Link className="text-blue-400" to="/marketplace/buy">Marketplace</Link>.</p>
-            }
-            {
-                error && <div>
-                    <h1>{error.title}</h1>
-                    <p>{error.msg}</p>
-                </div>
-            }
-            {hasMore&&<button className="text-lg ml-[19rem]" onClick={() => setPage((prevPage) => prevPage + 1)}>Load more</button> }
+        <div id="bought-ideas-list" className="xl:w-10/12 m-auto bg-yankeesblue">
+            <h1 className="w-full h-16 bg-maxbluepurple text-white text-3xl p-2">Your Bought Ideas</h1>
+            <div className="flex flex-col gap-4 px-4 py-10 border-4 border-maxbluepurple border-t-0 ">
+                {loading && "Loading..."}
+                {listIdeas}
+                {
+                    listIdeas.length===0 &&
+                    <p className="text-white text-center text-lg">You haven't bought any ideas yet! Go buy some at the <Link className="text-blue-400" to="/marketplace/buy">Marketplace</Link>.</p>
+                }
+                {
+                    error && <div>
+                        <h1>{error.title}</h1>
+                        <p>{error.msg}</p>
+                    </div>
+                }
+                {
+                    hasMore &&
+                    <button
+                        className="text-white text-center text-lg" 
+                        onClick={() => setPage((prevPage) => prevPage + 1)}
+                        >Load more</button>
+                }
             </div>
         </div>
     );

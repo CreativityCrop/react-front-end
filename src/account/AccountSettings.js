@@ -22,22 +22,24 @@ export default function AccountSettings(props) {
         // checks which fields have been altered
         if (data.avatar.length !== 0) {
             formData.append("avatar", data.avatar[0], data.avatar[0]?.name);
+            console.log("AVATAR CHANGED");
         }
         if (data.username !== undefined && props.userData.username !== data.username) {
             formData.append("username", data.username);
-            // console.log("USERNAME CHANGED");
+            console.log("USERNAME CHANGED");
         }
         if (data.email !== undefined  && props.userData.email !== data.email) {
             formData.append("email", data.email);
-            // console.log("EMAIL CHANGED");
+            console.log("EMAIL CHANGED");
         }
         if (data.iban !== undefined  && props.userData.iban !== data.iban) {
             formData.append("iban", data.iban);
-            // console.log("IBAN CHANGED");
+            console.log("IBAN CHANGED");
         }
-        if (data.password !== undefined  && props.userData.password !== data.password) {
+        if (data.password !== undefined  && !!data.password) {
+            console.log(data.password);
             formData.append("pass_hash", sha3_256(data.password));
-            // console.log("PAASS CHANGED");
+            console.log("PAASS CHANGED");
         }
         if (formData.entries().next().done) {    // if formData is empty don't send a request
             return;
@@ -95,11 +97,11 @@ export default function AccountSettings(props) {
     };
 
     return(
-        <div id="holder-of-the-acc" className="sm:ml-8">
-            <div id="pfp-and-options" className="flex flex-row mb-5">
+        <div id="account-settings" className="flex flex-row sm:flex-col w-fit items-center justify-center m-auto gap-16">
+            <div id="settings" className="flex flex-row gap-6">
                 {editMode ?
-                    <div id="image" className="mr-4 flex flex-col flex-none">
-                        <div className="w-48 h-48 bg-slate-200 cursor-pointer mr-1 md:mr-1 sm:w-36 sm:h-36 sm:mr-[0.4rem]"
+                    <div id="upload-avatar" className="flex flex-col flex-none">
+                        <div className="w-48 h-48 sm:w-36 sm:h-36 flex justify-center items-center bg-slate-200 cursor-pointer"
                             style={
                                 {
                                     bacgroundColor: 'none',
@@ -111,95 +113,79 @@ export default function AccountSettings(props) {
                             }
                             onClick={(e) => document.getElementById("select-image").click()}
                         >
-                            <UploadIcon className="w-1/2 top-1/2 left-1/2 ml-12 mt-11 cursor-pointer sm:ml-10 sm:mt-8"/>
+                            <UploadIcon className="w-1/2"/>
                         </div>
                         <input
+                            hidden
+                            type="file"
                             id="select-image"
                             {...register("avatar", { onChange: (e) => handleImageChange(e) })}
-                            hidden type="file"
                         />
-                        <div id="image-error" className="break-words text-red-500">
-                            {/* {errors.image?.type === 'required' && "Cover image is reqiured."} */}
-                        </div>
                     </div>
                     :
-                    <div id="left" className="w-48 h-48 mr-5 bg-slate-300 sm:w-[13.6rem] sm:h-36">
-                        <img src={props.avatarUrl} alt="user avatar" />
-                    </div>
+                    <img src={props.avatarUrl} alt="user avatar" className="w-48 h-48 sm:w-36 sm:h-36 bg-slate-300"/>
                 }
 
-                <form className="" onSubmit={handleSubmit(updateUser)}>
-                    <div id="middle" className="">
-                        <div>
-                            <div>
-                                <input
-                                    {...register("username", { minLength: 4, maxLength: 18, pattern: regex_user })}
-                                    type="text"
-                                    className="text-lg w-64 h-10 p-1 sm:w-44 sm:text-clip"
-                                    placeholder="Change Username"
-                                    defaultValue={props.userData.username}
-                                    disabled={!editMode}
-                                />
-                                <div id="username-error" className="text-red-500">
-                                    {errors.username?.type === 'minLength' && "Username must be at least 4 characters."}
-                                    {errors.username?.type === 'maxLength' && "Username must be at most 18 characters."}
-                                </div>
-                                <input
-                                    {...register("email", { pattern: regex_email })}
-                                    type="email"
-                                    className="w-64 h-10 p-1 mt-3 sm:w-44 sm:text-clip"
-                                    placeholder="Change Email"
-                                    defaultValue={props.userData.email}
-                                    disabled={!editMode}
-                                />
-                                <div id="title-error" className="text-red-500">
-                                    {errors.email?.type === 'pattern' && "Email must be valid."}
-                                </div>
-                                {/* IBAN */}
-                                <input
-                                    type="text"
-                                    className="w-64 h-10 p-1 mt-3 sm:w-44 sm:text-clip"
-                                    placeholder="IBAN"
-                                    defaultValue={props.userData.iban}
-                                    disabled={!editMode}
-                                    {...register("iban", { validate: isIbanValid })} />
-                                <div id="iban-error" className="text-red-500">
-                                    {errors.iban?.type === "validate" && "IBAN must be valid."}
-                                </div>
-
-                                <input
-                                    {...register("password", { minLength: 6 })}
-                                    type="password"
-                                    className="w-64 h-10 p-1 mt-3 sm:w-44 sm:text-clip"
-                                    placeholder="Change password"
-                                    disabled={!editMode}
-                                />
-                                <div id="title-error" className="text-red-500">
-                                    {errors.password?.type === 'minLength' && "Password must be at least 6 characters."}
-                                </div>
-                            </div>
-                            {/* <div className="ml-3 w-28 h-10 bg-green-200 hover:bg-purple-200">
-                            <p>log out</p>
-                        </div> */}
-                            <button
-                                type={!editMode ? "submit" : "button"}
-                                button="submit"
-                                className="mt-2 w-20 h-10 ml-44 bg-maxbluepurple hover:bg-purple-200 sm:ml-24
-                                hover:-rotate-3 hover:drop-shadow-xl transition duration-150"
-                                onClick={() => setEditMode(!editMode)}
-                            >{editMode ? "Save" : "Edit"}</button>
-                        </div>
+                <form className="w-fit" onSubmit={handleSubmit(updateUser)}>
+                    <input
+                        {...register("username", { minLength: 4, maxLength: 18, pattern: regex_user })}
+                        type="text"
+                        className="text-lg w-64 h-10 p-1 sm:w-44 sm:text-clip"
+                        placeholder="Change Username"
+                        defaultValue={props.userData.username}
+                        disabled={!editMode}
+                    />
+                    <div id="username-error" className="text-red-500">
+                        {errors.username?.type === 'minLength' && "Username must be at least 4 characters."}
+                        {errors.username?.type === 'maxLength' && "Username must be at most 18 characters."}
+                    </div>
+                    <input
+                        {...register("email", { pattern: regex_email })}
+                        type="email"
+                        className="w-64 h-10 p-1 mt-3 sm:w-44 sm:text-clip"
+                        placeholder="Change Email"
+                        defaultValue={props.userData.email}
+                        disabled={!editMode}
+                    />
+                    <div id="title-error" className="text-red-500">
+                        {errors.email?.type === 'pattern' && "Email must be valid."}
+                    </div>
+                    {/* IBAN */}
+                    <input
+                        type="text"
+                        className="w-64 h-10 p-1 mt-3 sm:w-44 sm:text-clip"
+                        placeholder="IBAN"
+                        defaultValue={props.userData.iban}
+                        disabled={!editMode}
+                        {...register("iban", { validate: isIbanValid })} />
+                    <div id="iban-error" className="text-red-500">
+                        {errors.iban?.type === "validate" && "IBAN must be valid."}
                     </div>
 
+                    <input
+                        {...register("password", { minLength: 6 })}
+                        type="password"
+                        className="w-64 h-10 p-1 mt-3 sm:w-44 sm:text-clip"
+                        placeholder="Change password"
+                        disabled={!editMode}
+                    />
+                    <div id="title-error" className="text-red-500">
+                        {errors.password?.type === 'minLength' && "Password must be at least 6 characters."}
+                    </div>
+                    <button
+                        type={!editMode ? "submit" : "button"}
+                        // button="submit"
+                        className="mt-2 w-20 h-10 ml-44 bg-maxbluepurple hover:bg-purple-200 sm:ml-24
+                                    hover:-rotate-3 hover:drop-shadow-xl transition duration-150"
+                        onClick={() => setEditMode(!editMode)}
+                    >{editMode ? "Save" : "Edit"}</button>
                 </form>
             </div>
-            <div id="right" className="w-56 -mt-[11.5rem] mr-40 text-center float-right md:mr-10
-            sm:float-none sm:mt-0 sm:mb-4 sm:w-fit sm:items-center sm:text-left sm:border-y-2 sm:py-3">
+            <div id="manual" className="w-56 sm:w-full text-center sm:border-y-2 sm:py-6 ">
                 <h3 className="text-2xl mb-4">Don't know where to start?</h3>
-                <div className="w-44 h-9 ml-7 bg-maxbluepurple hover:bg-purple-200 sm:ml-[10.5rem] 
-                hover:rotate-3 hover:drop-shadow-xl transition duration-150">
-                    <p className="pt-1 text-lg text-center">Read the manual!</p>
-                </div>
+                <button className="w-44 h-9 m-auto text-lg text-center bg-maxbluepurple hover:bg-purple-200 hover:rotate-3 hover:drop-shadow-xl transition duration-150">
+                    Read the manual!
+                </button>
             </div>
         </div>
 

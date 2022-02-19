@@ -48,7 +48,7 @@ export default function Dashboard() {
 
     useEffect(() => {
         if(userData.unfinishedPaymentIntent !== undefined && userData.unfinishedPaymentIntent !== null) {
-            toast.warning("You have unfinished payment for idea!");
+            toast.warning("You have unfinished payment for an idea!");
         }
     }, [userData]);
 
@@ -83,42 +83,41 @@ export default function Dashboard() {
             });
     };
 
+    if(finishPayment) {
+        return(
+        <UnpaidOrder userData={userData}/>
+        );
+    }
+
     return(
-        <div className="mt-14 select-none">
-            { !finishPayment ?
-                <div>
-                    {
-                        userData.unfinishedPaymentIntent !== undefined && userData.unfinishedPaymentIntent !== null ?
-                        <div className="sm:ml-7 sm:w-[21.5rem]"> 
-                            <p className="mb-3 sm:mb-4">You have unfinished payment for idea: {userData.unfinishedPaymentIdeaTitle}!</p>
-                            <div className="ml-[29.7rem] sm:ml-20"> 
-                                <button type="button" onClick={() => setFinishPayment(true) } 
-                                className="bg-green-200 hover:bg-purple-200 p-1 mb-5 px-2 mr-4
-                                hover:rotate-3 hover:drop-shadow-xl transition duration-150">Retry payment</button>
-                                <button type="button" onClick={() => cancelPayment(userData.unfinishedPaymentIdeaID)} 
-                                className="bg-red-200 hover:bg-purple-200 p-1 mb-5 px-2
-                                hover:-rotate-3 hover:drop-shadow-xl transition duration-150">Cancel payment</button>
-                            </div>
-                        </div>
-                        : null
-                    }
-                    {
-                        !loading && 
-                            <AccountSettings
+        <div className="flex flex-col gap-8 select-none">
+            {
+                userData.unfinishedPaymentIntent &&
+                <div className=""> 
+                    <p className="mb-3 sm:mb-4">You have unfinished payment for idea: {userData.unfinishedPaymentIdeaTitle}!</p>
+                    <div className=""> 
+                        <button type="button" onClick={() => setFinishPayment(true) } 
+                        className="bg-green-200 hover:bg-purple-200 p-1 mb-5 px-2 mr-4
+                        hover:rotate-3 hover:drop-shadow-xl transition duration-150">Retry payment</button>
+                        <button type="button" onClick={() => cancelPayment(userData.unfinishedPaymentIdeaID)} 
+                        className="bg-red-200 hover:bg-purple-200 p-1 mb-5 px-2
+                        hover:-rotate-3 hover:drop-shadow-xl transition duration-150">Cancel payment</button>
+                    </div>
+                </div>
+            }
+            {
+                !loading && <AccountSettings
                                 userData={userData}
                                 avatarUrl={userData.avatarURL}
-                            /> 
-                    }
-                    {
-                        error && <div>
+                            />
+            }
+            {
+                error && <div>
                             <h1>{error.title}</h1>
                             <p>{error.msg}</p>
                         </div>
-                    }
-                    <Library/>
-                </div>
-                : <UnpaidOrder userData={userData}/>
             }
+            <Library/>
         </div>
     );
 }
@@ -126,7 +125,7 @@ export default function Dashboard() {
 function UnpaidOrder(props) {
     const userData = props.userData;
     return (
-        <div className="m-auto">
+        <div className="m-auto select-none">
             <Idea
                 key={userData.unfinishedPaymentIdeaID}
                 id={userData.unfinishedPaymentIdeaID}

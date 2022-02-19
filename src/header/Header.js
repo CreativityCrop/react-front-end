@@ -19,7 +19,7 @@ export default function Header() {
                 <Logo className="w-44 md:w-40 ml-3 shrink-0"/>
                 <button className="hidden sm:block shrink-0 mr-3 w-12 h-12 " onClick={() => setOpened(prevOpened => !prevOpened)}><HamburgerSVG/></button>
             </div>
-            <LinkMenu className="sm:m-auto sm:px-20" opened={opened}/>
+            <LinkMenu className="sm:m-auto" opened={opened}/>
         </div>
     );
 }
