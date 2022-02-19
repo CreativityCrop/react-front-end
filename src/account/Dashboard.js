@@ -44,10 +44,10 @@ export default function Dashboard() {
                 }
             
             });
-    }, [setAuthContext, finishPayment]);
+    }, [setAuthContext]);
 
     useEffect(() => {
-        if(userData.unfinishedPaymentIntent && !finishPayment) {
+        if(userData.unfinishedPaymentIntent) {
             toast.warning("You have unfinished payment for an idea!");
         }
     }, [userData]);

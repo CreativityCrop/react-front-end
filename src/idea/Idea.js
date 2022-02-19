@@ -350,7 +350,7 @@ function PayoutButton(props) {
 }
 
 function InvoiceButton(props) {
-    if(!props.soldView) {
+    if(!(props.soldView || props.boughtView)) {
         return(null);
     }
     return(
