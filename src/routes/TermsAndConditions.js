@@ -1,8 +1,9 @@
-
+import AuthProvider from '../AuthAPI';
 
 export default function TermsAndConditions() {
     return (
         <div id="terms-conditions" className="flex flex-col gap-4 p-3 sm: pr-4 mb-20">
+            <AuthProvider/>
             <h1 className="text-4xl font-bold text-center">Terms of Service</h1>
             <div id="introduction">
                 <h2 className="text-2xl font-bold mb-4">Introduction</h2>
@@ -14,7 +15,7 @@ export default function TermsAndConditions() {
             <div id="definitions">
                 <h2 className="text-2xl font-bold mb-4">Definitions</h2>
                 <p>For the purposes of this Terms of Service:</p>
-                <ul>
+                <ul className="list-disc list-inside">
                     <li className="mt-2">
                         <strong>Company</strong> (also referred to as "We", "Us" or "Our") refers to CreativityCrop LLC.
                     </li>
