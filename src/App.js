@@ -64,9 +64,9 @@ export default function App() {
                 autoClose={5000}
             />
             <ScrollToTop 
-                style={{}}
+                style={{borderRadius: "9999px"}}
                 component={
-                    <div className="text-4xl font-bold">↑</div>
+                    <button className="w-full h-full text-center text-3xl rounded-full opacity-80 bg-maxbluepurple">↑</button>
                 }
                 smooth
             />
