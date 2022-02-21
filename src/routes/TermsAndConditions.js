@@ -2,9 +2,9 @@ import AuthProvider from '../AuthAPI';
 
 export default function TermsAndConditions() {
     return (
-        <div id="terms-conditions" className="flex flex-col gap-4 p-3 sm: pr-4 mb-20">
+        <div id="terms-conditions" className="flex flex-col gap-4 p-3 mt-3 pr-4 mb-20">
             <AuthProvider/>
-            <h1 className="text-4xl font-bold text-center">Terms of Service</h1>
+            <h1 className="text-4xl font-bold text-center mb-3">Terms of Service</h1>
             <div id="introduction">
                 <h2 className="text-2xl font-bold mb-4">Introduction</h2>
                 <p>
@@ -16,34 +16,34 @@ export default function TermsAndConditions() {
                 <h2 className="text-2xl font-bold mb-4">Definitions</h2>
                 <p>For the purposes of this Terms of Service:</p>
                 <ul className="list-disc list-inside">
-                    <li className="mt-2">
+                    <li className="mt-3">
                         <strong>Company</strong> (also referred to as "We", "Us" or "Our") refers to CreativityCrop LLC.
                     </li>
-                    <li className="mt-2">
+                    <li className="mt-3">
                         <strong>You </strong> (also referred to as “User”) refers to the individual accessing or using the <strong><em>service</em></strong>, or the company, or other legal entity on behalf of which such individual is accessing or using the <strong><em>service</em></strong>, as applicable.
                     </li>
-                    <li className="mt-2">
+                    <li className="mt-3">
                         <strong>Service</strong> (also referred as “Application”, “Website” or “Product”) refers to the web software program, named CreativityCrop and accessible at <a href="https://creativitycrop.tech/">https://creativitycrop.tech</a>, provided by the <strong><em>company</em> </strong>and used by <strong><em>you</em></strong> on any device
                     </li>
-                    <li className="mt-2">
+                    <li className="mt-3">
                         <strong>Account</strong> means a unique account created for <strong><em>you</em></strong> to access our <strong><em>service</em></strong>.
                     </li>
-                    <li className="mt-2">
+                    <li className="mt-3">
                         <strong>Cookies</strong> are small files that are placed on <strong><em>your</em></strong> device by a website, containing the details of <strong><em>your</em></strong> browsing history on that website among its many uses.
                     </li>
-                    <li className="mt-2">
+                    <li className="mt-3">
                         <strong>Personal Data</strong> is any information that relates to an identified or identifiable individual.
                     </li>
-                    <li className="mt-2">
+                    <li className="mt-3">
                         <strong>Usage Data</strong> refers to data collected automatically, either generated using the<strong><em>service</em></strong> or from the	<strong><em>service</em></strong> infrastructure itself (for example, the duration of a page visit).
                     </li>
-                    <li className="mt-2">
+                    <li className="mt-3">
                         <strong>Privacy Policy </strong> refers to the document published at <a href="https://creativitycrop.tech/privacy-policy">https://creativitycrop.tech/privacy-policy</a>
                     </li>
-                    <li className="mt-2">
+                    <li className="mt-3">
                         <strong>Service Provider</strong> means any natural or legal person who processes data on behalf of the	<strong><em>Company</em></strong>. It refers to third-party companies or individuals employed by the <strong><em>company</em></strong> to facilitate the <strong><em>service</em></strong>, to provide the<strong><em>service</em></strong> on behalf of the<strong><em>company</em></strong>, to perform services related to the<strong><em>service</em></strong> or to assist the<strong><em>company</em></strong> in analyzing how the <strong><em>service</em></strong> is used.<strong></strong>
                     </li>
-                    <li className="mt-2">
+                    <li className="mt-3">
                         <strong>Idea </strong> refers to the representation of thought in written form. On our platform it consists of Title, Image, Short description, Long description, Categories, Uploaded Files and Price.<strong></strong>
                     </li>
                 </ul>

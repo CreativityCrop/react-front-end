@@ -1,5 +1,5 @@
 .payment-form {
-    width: 30vw;
+    width: 28vw;
     min-width: 500px;
     align-self: center;
     box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
@@ -23,9 +23,8 @@
   
   /* Buttons and links */
   #submit {
-    background: #5469d4;
+    background: #FFDF67;
     font-family: Arial, sans-serif;
-    color: #ffffff;
     border-radius: 4px;
     border: 0;
     padding: 12px 16px;
@@ -39,7 +38,7 @@
   }
   
   #submit:hover {
-    filter: contrast(115%);
+    background-color: #f59e0b;
   }
   
   #submit:disabled {

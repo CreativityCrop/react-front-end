@@ -66,7 +66,8 @@ export default function App() {
             <ScrollToTop 
                 style={{borderRadius: "9999px"}}
                 component={
-                    <div className="w-full h-full text-white text-center text-3xl rounded-full opacity-80 bg-maxbluepurple">↑</div>
+                    <div className="w-full h-full text-white text-center text-3xl rounded-full opacity-80 
+                    hover:opacity-100 hover:scale-110 transition bg-maxbluepurple">↑</div>
                 }
                 smooth
             />

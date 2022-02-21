@@ -9,7 +9,7 @@ import CategoryButton  from "./CategoryButton";
 
 export default function Idea(props) {
     return (
-        <div className="m-auto xl:flex md:flex mt-1 border-2 p-3 w-[44rem] sm:border-2 sm:w-[21.5rem] bg-white" key={props.title} ref={props.innerRef}>
+        <div className="m-auto xl:flex md:flex mb-5 border-2 p-3 w-[44rem] sm:border-2 sm:w-[21.5rem] bg-white" key={props.title} ref={props.innerRef}>
             <Image {...props} className="sm:w-20 sm:h-20"/>
             <div>
                 <div className="flex mb-2">
@@ -212,7 +212,7 @@ function File(props) {
             <p className="mr-4 flex-auto w-64 self-center sm:mr-0 sm:w-44">
                 {props.file.name.substring(0, 25) + (props.file.name.length<=25 ? "" : " ...")}
             </p>
-            <a className="block bg-amber-300 hover:bg-orange-400 px-3 py-2 flex-initial self-center" href={downloadLink(props.file.id)} download>Download</a>
+            <a className="block bg-amber-300 hover:bg-amber-500 px-3 py-2 flex-initial self-center" href={downloadLink(props.file.id)} download>Download</a>
         </div>
     );
 }

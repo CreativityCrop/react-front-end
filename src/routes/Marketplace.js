@@ -14,16 +14,16 @@ export default function Marketplace() {
                 <div className="flex flex-row mt-10 md:mt-0 sm:mt-0">
                 <NavLink
                     className={({ isActive }) => isActive 
-                    ? "text-white bg-maxbluepurple py-4 px-6 block hover:text-blue-500 focus:outline-none border-b-2 font-normal text-lg border-maxbluepurple hover:transition duration-300"
-                    : "text-gray-600 bg-jasmine opacity-80 py-2 px-3 h-14 mt-2 block focus:outline-none hover:opacity-100 hover:transition duration-300"}
+                    ? "text-white bg-maxbluepurple py-4 px-6 block hover:text-slate-200 focus:outline-none border-b-2 font-normal text-lg border-maxbluepurple hover:transition duration-300"
+                    : "text-gray-600 bg-jasmine hover:text-amber-800 opacity-80 py-4 px-3 h-14 mt-2 block focus:outline-none hover:opacity-100 hover:transition duration-300"}
                     to="/marketplace/buy"
                 >
                     Buy
                 </NavLink>
                 <NavLink
                     className={({ isActive }) => isActive 
-                    ? "text-white bg-maxbluepurple py-4 px-6 block hover:text-blue-500 focus:outline-none border-b-2 font-medium text-lg border-maxbluepurple hover:transition duration-300"
-                    : "text-gray-600 bg-jasmine opacity-80 py-2 px-3 h-14 mt-2 block focus:outline-none hover:opacity-100 hover:transition duration-300"}
+                    ? "text-white bg-maxbluepurple py-4 px-6 block hover:text-slate-200 focus:outline-none border-b-2 font-medium text-lg border-maxbluepurple hover:transition duration-300"
+                    : "text-gray-600 bg-jasmine hover:text-amber-800 opacity-80 py-4 px-3 h-14 mt-2 block focus:outline-none hover:opacity-100 hover:transition duration-300"}
                     to="/marketplace/sell"
                 >
                     Sell

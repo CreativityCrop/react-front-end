@@ -2,9 +2,9 @@ import AuthProvider from '../AuthAPI';
 
 export default function PrivacyPolicy() {
     return (
-        <div id="privacy-policy" className="flex flex-col gap-4 p-3 sm: pr-4 mb-20">
+        <div id="privacy-policy" className="flex flex-col gap-4 p-3 mt-3 pr-4 mb-20">
             <AuthProvider/>
-            <h1 className="text-4xl font-bold text-center">Privacy policy</h1>
+            <h1 className="text-4xl font-bold text-center mb-3">Privacy policy</h1>
             <div id="introduction">
                 <h2 className="text-2xl font-bold mb-4">Introduction</h2>
                 <p>
@@ -22,7 +22,7 @@ export default function PrivacyPolicy() {
                 <h2 className="text-2xl font-bold mb-4">Definitions</h2>
                 <p>For the purposes of this privacy policy:</p>
                 <ul className="list-disc list-inside">
-                    <li className="mt-2">
+                    <li className="mt-3">
                         <strong>Company</strong> (also referred to as "we", "us" or "our") refers to CreativityCrop LLC.
                     </li>
                     <li className="mt-2">

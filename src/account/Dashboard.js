@@ -99,10 +99,10 @@ export default function Dashboard() {
                     <p className="mb-6 sm:mb-4"><strong>You have unfinished payment for idea:</strong> {userData.unfinishedPaymentIdea.title}</p>
                     <div className="flex flex-row justify-between"> 
                         <button type="button" onClick={() => setRetryPayment(true) } 
-                        className="bg-green-200 hover:bg-purple-200 p-1 px-2
+                        className="bg-jasmine hover:bg-amber-500 p-1 px-2
                             hover:rotate-3 hover:drop-shadow-xl transition duration-150">Retry payment</button>
                         <button type="button" onClick={() => cancelPayment(userData.unfinishedPaymentIdea.id)} 
-                        className="bg-red-200 hover:bg-purple-200 p-1 px-2
+                        className="bg-yankeesblue hover:bg-purple-700 text-slate-200 p-1 px-2
                             hover:-rotate-3 hover:drop-shadow-xl transition duration-150">Cancel payment</button>
                     </div>
                 </div>
