@@ -195,7 +195,7 @@ export default function SubmitIdea() {
     });
 
     return(
-        <div className="container items-center p-8 ml-24 w-[46rem] border-4 md:ml-3 sm:ml-4 sm:p-4 sm:w-[23.5rem]">
+        <div className="container items-center p-8 ml-24 w-[46rem] border-4 md:ml-3 sm:ml-4 sm:p-4 sm:w-[23.5rem] bg-maxbluepurple border-maxbluepurple">
             <form className="" onSubmit={handleSubmit(postIdea)}>
                 <div className="flex flex-row max-h-96 mb-4">
                     {/* Container to visualise Image and input for uploading it */}
@@ -292,7 +292,7 @@ export default function SubmitIdea() {
                     />
                     )}
                 />
-                <div id="file-upload" className="mb-4 sm:w-[21rem]">
+                <div id="file-upload" className="mb-4 sm:w-[21rem] bg-white">
                     <FileUploader
                         children={
                             <div className="h-10 mb-3 border py-2 px-3 text-grey-darkest cursor-pointer truncate">
@@ -339,11 +339,13 @@ export default function SubmitIdea() {
                     <div className="grow"></div>
                     <div className='sm:mt-4'>
                     <button type="button" 
-                        className="py-[0.4rem] px-9 uppercase text-lg bg-red-200 hover:bg-purple-200 sm:w-32"
+                        className="py-[0.4rem] px-9 uppercase text-lg bg-yankeesblue text-slate-200 hover:bg-purple-700 sm:w-32
+                        hover:scale-105 hover:shadow-lg transition hover:rotate-3"
                         onClick={clearForm}>Reset</button>
                     <button
                         type="submit" 
-                        className="ml-5 right-0 py-[0.4rem] px-9 uppercase text-lg bg-green-200 hover:bg-purple-200 sm:w-[11.7rem]"
+                        className="ml-5 right-0 py-[0.4rem] px-9 uppercase text-lg bg-jasmine hover:bg-purple-200 sm:w-[11.7rem]
+                        hover:scale-105 hover:shadow-lg transition hover:rotate-3"
                     >
                         Submit
                     </button>

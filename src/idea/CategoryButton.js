@@ -9,7 +9,7 @@ export default function Filters(props) {
     };
     
     return(
-        <button type="button" className="bg-blue-300 h-8 w-fit p-1 px-3" onClick={(e) => redirect(e)}>
+        <button type="button" className="bg-jasmine opacity-60 hover:opacity-100 transition h-8 w-fit p-1 px-3" onClick={(e) => redirect(e)}>
             {props.category}
         </button>
     );

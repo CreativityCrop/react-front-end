@@ -222,7 +222,7 @@ function Price(props) {
         return(null);
     }
     return(
-        <div className="w-48 h-8 bg-red-200 sm:w-36">
+        <div className="w-48 h-9 pt-[0.15rem] bg-yankeesblue text-slate-300 sm:w-36">
             <h3 className="text-lg text-center">${props.price}</h3>
         </div>
     );
@@ -252,7 +252,7 @@ function MainButton(props) {
 
     return(
         <Link
-            className="text-lg text-center w-48 h-8 ml-12 bg-green-200 hover:bg-purple-200 sm:w-36 sm:ml-2 hover:scale-105 hover:shadow-lg transition" 
+            className="mt-1 text-lg text-center w-48 h-8 ml-12 bg-jasmine hover:bg-purple-200 sm:w-36 sm:ml-2 hover:scale-105 hover:shadow-lg transition" 
             to={url}
         >
             {text}
