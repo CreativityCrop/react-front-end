@@ -13,6 +13,7 @@
     "animate.css": "^4.1.1",
     "axios": "^0.24.0",
     "bcrypt": "^5.0.1",
+    "framer-motion": "^6.2.6",
     "history": "^5.2.0",
     "iban": "^0.0.14",
     "js-sha3": "^0.8.0",

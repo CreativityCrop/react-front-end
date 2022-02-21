@@ -78,7 +78,8 @@ export default function BoughtIdeasList() {
                     <p className="text-white text-center text-lg">You haven't bought any ideas yet! Go buy some at the <Link className="text-blue-400" to="/marketplace/buy">Marketplace</Link>.</p>
                 }
                 {
-                    error && <div>
+                    error &&
+                    <div className="text-white">
                         <h1>{error.title}</h1>
                         <p>{error.msg}</p>
                     </div>

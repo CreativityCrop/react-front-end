@@ -74,7 +74,7 @@ export default function SoldIdeasList() {
                 }
                 {
                     error &&
-                    <div>
+                    <div className="text-white">
                         <h1>{error.title}</h1>
                         <p>{error.msg}</p>
                     </div>

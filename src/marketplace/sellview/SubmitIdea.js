@@ -8,7 +8,7 @@
 // Files - not required
 // Price - min 0.5$ and max is 999 999.99$
 
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import CreatableSelect from 'react-select/creatable';
 import { FileUploader } from "react-drag-drop-files";
@@ -29,6 +29,7 @@ export default function SubmitIdea() {
     const { register, control, formState: { errors }, handleSubmit, reset } = useForm();
     // Logic help variables
     const [categoriesInputData, setCategoriesInputData] = useState({inputValue: "", value: []});
+    const [categoriesInputLastChar, setCategoriesInputLastChar] = useState(null);
     const [files, setFiles] = useState([]);
     const [imgVisual, setImgVisual] = useState(null);
 
@@ -106,7 +107,7 @@ export default function SubmitIdea() {
     // Function to visualise the uploaded Image
     const handleImageChange = (e) => {
         if(e.target.files.length === 0 ) return;
-        console.log("NEW FILE");
+        // console.log("NEW FILE");
         if(["png", "jpg", "jpeg"].indexOf(e.target.files[0].name.match(/\.[0-9a-z]+$/i)[0].replace(".","")) === -1) {
             toast.error("Filetype not allowed! Only jpeg, jpg and png.");
             return;
@@ -125,13 +126,31 @@ export default function SubmitIdea() {
         value: label
     });
 
+    // useEffect(() => {
+    //     document.getElementById("react-select-3-input").addEventListener("input", event => {
+    //         const { inputValue, value } = categoriesInputData;
+    //         if (!inputValue) return;
+    //         const key = event.target.value.slice(event.target.value.length - 1);
+    //         console.log(`"${key}"`);
+    //         if(key === ' ') {
+    //             if(value.map(item => item.value).indexOf(event.target.value) !== -1) return;
+    //             setCategoriesInputData({
+    //                 inputValue: "",
+    //                 value: [...value, createOption(event.target.value)]
+    //             });
+    //         }
+    //     });
+    //   }, [categoriesInputData]);
+
     const handleCategoriesChange = (value) => setCategoriesInputData({ value });
     const handleCategoriesInputChange = (inputValue) =>
                 setCategoriesInputData({inputValue: inputValue, value: categoriesInputData.value});    
     const handleCategoriesKeyDown = (event) => {
         const { inputValue, value } = categoriesInputData;
         if (!inputValue) return;
+        // console.log(event.key);
         switch (event.key) {
+            case ' ':
             case 'Enter':
             case 'Tab':
                 if(value.map(item => item.value).indexOf(inputValue) !== -1) return;
@@ -260,7 +279,6 @@ export default function SubmitIdea() {
                         isClearable = {true}
                         isMulti
                         menuIsOpen={false}
-                        
                         onChange={handleCategoriesChange}
                         onKeyDown={handleCategoriesKeyDown}
                         onInputChange={
