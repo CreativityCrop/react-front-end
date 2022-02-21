@@ -13,7 +13,8 @@ export default function Dashboard() {
     const [userData, setUserData] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState();
-    const [finishPayment, setFinishPayment] = useState(null);
+    const [retryPayment, setRetryPayment] = useState(null);
+    const [unfinishedPaymentChanged, setUnfinishedPaymentChanged] = useState(false);
 
     useEffect(() => {
         axios
@@ -44,7 +45,7 @@ export default function Dashboard() {
                 }
             
             });
-    }, [setAuthContext]);
+    }, [setAuthContext, unfinishedPaymentChanged]);
 
     useEffect(() => {
         if(userData.unfinishedPaymentIntent) {
@@ -63,7 +64,8 @@ export default function Dashboard() {
             })
             .then((response) => {
                 toast.success("Idea payment is canceled!");
-                setFinishPayment(false);
+                setRetryPayment(false);
+                setUnfinishedPaymentChanged(true);
             })
             .catch((error) => {
                 if(error.response.status === 401) {
@@ -83,7 +85,7 @@ export default function Dashboard() {
             });
     };
 
-    if(finishPayment) {
+    if(retryPayment) {
         return(
         <UnpaidOrder userData={userData}/>
         );
@@ -96,7 +98,7 @@ export default function Dashboard() {
                 <div id="finish-payment" className="w-fit bg-maxbluepurple p-6 m-auto   "> 
                     <p className="mb-6 sm:mb-4"><strong>You have unfinished payment for idea:</strong> {userData.unfinishedPaymentIdea.title}</p>
                     <div className="flex flex-row justify-between"> 
-                        <button type="button" onClick={() => setFinishPayment(true) } 
+                        <button type="button" onClick={() => setRetryPayment(true) } 
                         className="bg-green-200 hover:bg-purple-200 p-1 px-2
                             hover:rotate-3 hover:drop-shadow-xl transition duration-150">Retry payment</button>
                         <button type="button" onClick={() => cancelPayment(userData.unfinishedPaymentIdea.id)} 

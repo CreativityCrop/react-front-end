@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Routes, Route, useLocation, Navigate, Link, Outlet } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate, Link } from 'react-router-dom';
 import { getToken, AuthContext } from './AuthAPI';
 import { ToastContainer } from 'react-toastify';
 import ScrollToTop from "react-scroll-to-top";
 import CookieConsent from "react-cookie-consent";
-import { AnimatePresence, motion } from "framer-motion";
 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -31,31 +30,6 @@ import BuyIdea from './marketplace/buyview/BuyIdea';
 import Checkout from './idea/Checkout';
 import Invoice from './account/Invoice';
 
-//https://www.framer.com/docs/transition/
-const Wrapper = () => {
-    return (
-        <motion.div
-            initial="initial"
-            animate="in"
-            exit="out"
-            variants={{
-                initial: {
-                opacity: 0
-            },
-            in: {
-                opacity: 1
-            },
-            out: {
-                opacity: 0
-            }
-            }}
-            
-            transition={{ duration: 0.15, type: "tween" }}
-        >
-            <Outlet />
-        </motion.div>
-    );
-};
 
 export default function App() {
     const [authContext, setAuthContext] = useState("unauthenticated");
@@ -108,11 +82,9 @@ export default function App() {
                 This website uses cookies. By using it, you agree to the Terms of Service and Privacy Policy.{" "}
                 <span className="text-xs"><Link to="/privacy-policy">Privacy Policy</Link></span>
             </CookieConsent>
-            <AuthContext.Provider value={[authContext, setAuthContext]}>    
-            <AnimatePresence exitBeforeEnter>
-                <Routes location={location} key={location.pathname}>
+            <AuthContext.Provider value={[authContext, setAuthContext]}>
+                <Routes>
                     {/* Main route */}
-                    <Route element={<Wrapper />}>
                     <Route path="/" element={ <MainContent/> }>
                         {/* Index route */}
                         <Route index element={ <Home/> }/>
@@ -184,9 +156,7 @@ export default function App() {
                         {/* Route to display some error page when the route is not defined */}
                         <Route path="*" element={ <NotFound/> } />
                     </Route>
-                    </Route>
                 </Routes>
-            </AnimatePresence>
             </AuthContext.Provider>
         </div>
   );
