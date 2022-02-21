@@ -29,7 +29,7 @@ export default function SecondSection(){
                 <div className="w-72 xl:w-fit">
                     <h1 className="text-3xl mb-2 text-slate-200">Have/need an idea?</h1>
                     <h3 className="mb-3 text-slate-200">join our community by clicking this fun button down below!</h3>
-                    <button className="w-44 h-8 text-center bg-blue-100 hover:bg-purple-400
+                    <button className="w-44 h-8 text-center bg-jasmine hover:bg-amber-500
                     hover:scale-105 hover:origin-bottom hover:-rotate-3 hover:drop-shadow-xl transition duration-150"
                             onClick={() => navigate("/register")}>
                         Register now!

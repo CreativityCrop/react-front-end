@@ -175,7 +175,7 @@ export default function AccountSettings(props) {
                     <button
                         type={!editMode ? "submit" : "button"}
                         // button="submit"
-                        className="mt-2 w-20 h-10 ml-44 bg-maxbluepurple hover:bg-purple-200 sm:ml-24
+                        className="mt-2 w-20 h-10 ml-44 bg-maxbluepurple hover:bg-sky-500 sm:ml-24
                                     hover:-rotate-3 hover:drop-shadow-xl transition duration-150"
                         onClick={() => setEditMode(!editMode)}
                     >{editMode ? "Save" : "Edit"}</button>
@@ -183,7 +183,7 @@ export default function AccountSettings(props) {
             </div>
             <div id="manual" className="w-56 sm:w-full text-center sm:border-y-2 sm:py-6 ">
                 <h3 className="text-2xl mb-4">Don't know where to start?</h3>
-                <button className="w-44 h-9 m-auto text-lg text-center bg-maxbluepurple hover:bg-purple-200 hover:rotate-3 hover:drop-shadow-xl transition duration-150">
+                <button className="w-44 h-9 m-auto text-lg text-center bg-maxbluepurple hover:bg-sky-500 hover:rotate-3 hover:drop-shadow-xl transition duration-150">
                     Read the manual!
                 </button>
             </div>

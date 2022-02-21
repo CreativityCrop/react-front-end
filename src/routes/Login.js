@@ -95,7 +95,7 @@ export default function Login() {
                         <Link to="/password-reset" className='text-slate-300' >Can't remember you password?</Link>
                         <br/>
                         <div className="mt-4">
-                            <button className="w-24 mb-2 py-1 text-center bg-jasmine hover:bg-purple-200
+                            <button className="w-24 mb-2 py-1 text-center bg-jasmine hover:bg-amber-500
                             hover:scale-105 hover:origin-bottom hover:rotate-3 hover:drop-shadow-xl transition duration-150" type="submit">Log in</button>
                             <br/>
                             <Link to="/register" className='text-slate-300'>Don't have an account?</Link>

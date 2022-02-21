@@ -92,7 +92,7 @@ export default function PasswordReset() {
             <div id="password-reset">
                 <AuthProvider />
                 <div className="flex justify-center gap-4 mt-28 mb-20 sm:mt-20">
-                    <div id="img" className="w-96 h-82 bg-blue-500 sm:hidden">
+                    <div id="img" className="w-96 h-82 bg-slate-300 sm:hidden">
                         <img alt="nice img" />
                     </div>
                     <div className="p-4 border-2 sm:w-80 bg-yankeesblue">
@@ -125,7 +125,8 @@ export default function PasswordReset() {
                                     </div>
                                 </label>
                                 <div className="text-center mt-8">
-                                    <button className="border-4 text-center bg-green-200 hover:bg-purple-200" type="submit">Save Password</button>
+                                    <button className="p-2 text-center bg-jasmine hover:bg-amber-500
+                                    hover:scale-105 hover:origin-bottom hover:-rotate-3 hover:drop-shadow-xl transition duration-150" type="submit">Save Password</button>
                                 </div>
                             </form>
                         }
@@ -139,7 +140,7 @@ export default function PasswordReset() {
         <div id="password-reset">
                 <AuthProvider />
                 <div className="flex justify-center gap-4 mt-28 mb-20 sm:mt-20">
-                    <div id="img" className="w-96 h-82 bg-blue-500 sm:hidden">
+                    <div id="img" className="w-96 h-82 bg-slate-300 sm:hidden">
                         <img alt="nice img" />
                     </div>
                     <div className="p-4 border-2 sm:w-80 bg-yankeesblue">
@@ -161,8 +162,9 @@ export default function PasswordReset() {
                                     {errors.email?.type === 'required' && "Email is required."}
                                 </div>
                             </label>
-                            <div className="text-center mt-8">
-                                <button className="border-4 mt-4 text-center bg-green-200 hover:bg-purple-200" type="submit">Reset Password</button>
+                            <div className="text-center mt-4">
+                                <button className="p-2 mb-2 text-center bg-jasmine hover:bg-amber-500
+                                hover:scale-105 hover:origin-bottom hover:rotate-3 hover:drop-shadow-xl transition duration-150" type="submit">Reset Password</button>
                             </div>
                         </form>
                     }

@@ -252,7 +252,7 @@ function MainButton(props) {
 
     return(
         <Link
-            className="mt-1 text-lg text-center w-48 h-8 ml-12 bg-jasmine hover:bg-purple-200 sm:w-36 sm:ml-2 hover:scale-105 hover:shadow-lg transition" 
+            className="mt-1 text-lg text-center w-48 h-8 ml-12 bg-jasmine hover:bg-amber-500 sm:w-36 sm:ml-2 hover:scale-105 hover:shadow-lg transition" 
             to={url}
         >
             {text}
@@ -299,7 +299,7 @@ function PayoutButton(props) {
             return(
                 <button
                     type="button"
-                    className="text-lg text-center w-48 h-8 ml-12 bg-jasmine hover:bg-purple-200 sm:ml-0 sm:w-40
+                    className="text-lg text-center w-48 h-8 ml-12 bg-jasmine hover:bg-amber-500 sm:ml-0 sm:w-40
                     hover:scale-105 hover:shadow-lg transition"
                     onClick={putPayout}
                 >
@@ -355,7 +355,7 @@ function InvoiceButton(props) {
     }
     return(
         <Link
-            className="text-lg text-center w-48 h-8 ml-auto mr-0 mt-3 col-span-2 bg-cyan-500 hover:bg-cyan-700
+            className="text-lg text-center w-48 h-8 pt-[0.15rem] ml-auto mr-0 mt-3 col-span-2 bg-maxbluepurple hover:bg-sky-500
             sm:ml-0 sm:w-40 hover:scale-105 hover:shadow-lg transition"
             to={`/invoice/${props.id}`}
         >

@@ -128,10 +128,10 @@ export default function Register() {
                             </div>
                         </label>
                         <p>
-                            By clicking register you agree to the <Link className="text-jasmine hover:text-purple-600" to="/terms-conditions" target="_blank">Terms and Conditions</Link>
+                            By clicking register you agree to the <Link className="text-jasmine hover:text-purple-800" to="/terms-conditions" target="_blank">Terms and Conditions</Link>
                         </p>
                         <div>
-                            <button className="w-24 mt-4 mb-2 py-1 text-center bg-jasmine hover:bg-purple-200 
+                            <button className="w-24 mt-4 mb-2 py-1 text-center bg-jasmine hover:bg-amber-500
                             hover:scale-105 hover:origin-bottom hover:-rotate-3 hover:drop-shadow-xl transition duration-150" type="submit">Register</button>
                             <br/>
                             <Link to="/login">Already have an account?</Link>
