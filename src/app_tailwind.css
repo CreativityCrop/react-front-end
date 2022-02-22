@@ -686,9 +686,6 @@ select {
 .mb-1 {
   margin-bottom: 0.25rem;
 }
-.-mt-\[18\.5rem\] {
-  margin-top: -18.5rem;
-}
 .mt-5 {
   margin-top: 1.25rem;
 }
@@ -1664,6 +1661,11 @@ select {
 
   .sm\:w-36 {
     width: 9rem;
+  }
+
+  .sm\:w-fit {
+    width: -moz-fit-content;
+    width: fit-content;
   }
 
   .sm\:w-40 {
