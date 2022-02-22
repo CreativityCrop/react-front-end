@@ -35,7 +35,7 @@ export default function Footer() {
                             <p></p>
                             <Link to="/marketplace/sell">Sell an idea</Link>
                         </div>
-                        <div className="-ml-14 text-[1.05rem] md:ml-3 sm:ml-16">
+                        <div className="-ml-14 -mt-1 text-[1.05rem] md:ml-3 sm:ml-16">
                             <p></p>
                             <Link to="/about-us">About us</Link>
                             <p></p>

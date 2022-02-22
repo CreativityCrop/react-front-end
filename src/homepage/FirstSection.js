@@ -5,9 +5,12 @@ export default function FirstSection() {
         <div id="first-section" className="md:mx-6 xl:mb-52">
             <div className=" flex flex-row sm:flex-col gap-4 justify-center">
                 <div id="left" className="flex flex-col gap-2 justify-center text-center xl:basis-1/2 md:basis-1/2 m-auto">
-                    <h1 className="text-4xl">A marketplace for</h1>
-                    <h2 className="max-w-fit m-auto text-4xl px-6 py-3 hover:bg-maxbluepurple hover:text-slate-100 transition-colors delay-110 rounded-sm">ideas</h2>
-                    <h3 className="text-lg">insparational quote here</h3>
+                    <div className="ml-5">
+                        <h1 className="text-4xl">A marketplace for</h1>
+                        <h2 className="max-w-fit m-auto text-4xl px-6 py-3 hover:bg-maxbluepurple hover:text-slate-100 transition-colors delay-110 rounded-sm mb-4">ideas</h2>
+                    </div>
+                    <h3 className="">“You only live once, but if you do it right, once is enough.”</h3>
+                    <h3 className="font-medium">― Mae West</h3>
                 </div>
                 <img alt="" id="right" className="xl:basis-1/2 md:basis-1/2 m-auto bg-slate-300 w-64 h-72 md:h-64 sm:w-72"/>
             </div>
