@@ -17,7 +17,7 @@ export default function LinkMenu(props) {
 		<div className={"flex flex-row sm:flex-col gap-3 text-center sm:my-3 " + variable + " " + props.className}>
 			<div className="h-12 border-[3px] py-[6px] px-5 text-lg hover:scale-105 transition cursor-pointer"
                 onClick={() => navigate("/marketplace")}>
-				<Link addr="/marketplace" text="Marketplace"/>
+				<Link addr="/marketplace/" text="Marketplace"/>
 			</div>
 			<div className="h-12 border-[3px] py-[6px] px-5 text-lg hover:scale-105 transition cursor-pointer"
                 onClick={() => navigate("/about-us")}>
