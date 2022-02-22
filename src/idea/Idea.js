@@ -212,7 +212,7 @@ function File(props) {
             <p className="mr-4 flex-auto w-64 self-center sm:mr-0 sm:w-44">
                 {props.file.name.substring(0, 25) + (props.file.name.length<=25 ? "" : " ...")}
             </p>
-            <a className="block bg-amber-300 hover:bg-amber-500 px-3 py-2 flex-initial self-center" href={downloadLink(props.file.id)} download>Download</a>
+            <a className="block bg-amber-300 opacity-60 hover:opacity-100 hover:scale-105 transition px-3 py-2 flex-initial self-center" href={downloadLink(props.file.id)} download>Download</a>
         </div>
     );
 }
@@ -311,7 +311,7 @@ function PayoutButton(props) {
             return(
                 <button
                     type="button"
-                    className="text-lg text-center w-48 h-8 ml-12 bg-jasmine sm:ml-0 sm:w-40
+                    className="text-lg text-center w-48 h-8 ml-12 bg-jasmine hover:bg-amber-500 sm:ml-0 sm:w-40
                     hover:scale-105 hover:shadow-lg transition"
                     disabled
                 >
@@ -323,7 +323,7 @@ function PayoutButton(props) {
             return(
                 <button
                     type="button"
-                    className="text-lg text-center w-48 h-8 ml-12 bg-green-500  sm:ml-0 sm:w-40
+                    className="text-lg text-center w-48 h-8 ml-12 bg-jasmine hover:bg-amber-500  sm:ml-0 sm:w-40
                     hover:scale-105 hover:shadow-lg transition"
                     disabled
                 >
@@ -334,7 +334,7 @@ function PayoutButton(props) {
         case "denied":
             return(
                 <Link
-                    className="text-lg text-center w-48 h-8 ml-12 bg-red-400 sm:ml-0 sm:w-40
+                    className="text-lg text-center w-48 h-8 ml-12 bg-yankeesblue hover:bg-purple-700 sm:ml-0 sm:w-40
                     hover:scale-105 hover:shadow-lg transition"
                     to='#'
                     onClick={(e) => {
