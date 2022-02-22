@@ -93,7 +93,7 @@ export default function Invoice() {
         <div className="mb-20">
             <AuthProvider/>
             <div className="mt-6 mb-10 flex flex-row justify-center">
-                <button onClick={handlePrint} className="flex flex-row items-center gap-4 p-3 border-4">
+                <button onClick={handlePrint} className="flex flex-row items-center gap-4 p-3 border-4 sm:w-fit">
                     <span>{loading ? "Prepairing print" : "Print"}</span><PrintIcon className="w-12"/>
                 </button>
             </div>
@@ -109,7 +109,7 @@ export default function Invoice() {
                         <div id="logo" className="w-60 h-40 bg-slate-300 sm:w-40 sm:h-20"></div>
                         <h1 className="text-6xl sm:text-4xl sm:mt-4 sm:mb-10">Invoice</h1>
                     </div>
-                    <div className="grid grid-col gap-4 mt-10 sm:mt-3">
+                    <div className="flex justify-between gap-4 mt-10 sm:mt-3 sm:grid">
                         <div id="address" className="font-bold">
                             <div>
                             <p>CreativityCrop LLC</p>
@@ -131,7 +131,7 @@ export default function Invoice() {
                                 <p>{country}</p>
                             </div>}
                         </div>
-                        <div id="details" className="row-span-2 text-right -mt-[18.5rem] sm:mt-4 sm:text-left">
+                        <div id="details" className="row-span-2 text-right sm:mt-4 ">
                             <p className="font-bold">Invoice ID: <span className="font-normal">{invoice?.id}</span></p>
                             <p className="font-bold">Invoice Date: <span className="font-normal">{invoice?.date}</span></p>
                             <p className="mt-5">This invoice is generated for a processed payment on an idea item from the CreativityCrop platform </p>
