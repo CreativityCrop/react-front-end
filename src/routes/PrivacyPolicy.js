@@ -2,7 +2,7 @@ import AuthProvider from '../AuthAPI';
 
 export default function PrivacyPolicy() {
     return (
-        <div id="privacy-policy" className="flex flex-col gap-4 p-3 mt-3 pr-4 mb-20">
+        <div id="privacy-policy" className="flex flex-col gap-4 p-3 mt-3 pr-4 mb-20 text-justify">
             <AuthProvider/>
             <h1 className="text-4xl font-bold text-center mb-3">Privacy policy</h1>
             <div id="introduction">
@@ -26,22 +26,22 @@ export default function PrivacyPolicy() {
                         <strong>Company</strong> (also referred to as "we", "us" or "our") refers to CreativityCrop LLC.
                     </li>
                     <li className="mt-2">
-                        <strong>You </strong> (also referred to as “user”) refers to the individual accessing or using the <strong><em>service</em></strong>, or the company, or other legal entity on behalf of which such individual is accessing or using the <strong><em>service</em></strong>, as applicable.
+                        <strong>You </strong> (also referred to as “user”) refers to the individual accessing or using the <strong>service</strong>, or the company, or other legal entity on behalf of which such individual is accessing or using the <strong>service</strong>, as applicable.
                     </li>
                     <li className="mt-2">
-                        <strong>Service</strong> (also referred as “application”, “website” or “product”) refers to the web software program, named CreativityCrop and accessible at <a href="https://creativitycrop.tech/">https://creativitycrop.tech</a>, provided by the <strong><em>company</em> </strong>and used by <strong><em>you</em></strong> on any device
+                        <strong>Service</strong> (also referred as “application”, “website” or “product”) refers to the web software program, named CreativityCrop and accessible at <a href="https://creativitycrop.tech/">https://creativitycrop.tech</a>, provided by the <strong>company </strong>and used by <strong>you</strong> on any device
                     </li>
                     <li className="mt-2">
-                        <strong>Service provider</strong> means any natural or legal person who processes data on behalf of the <strong><em>company</em></strong>. It refers to third-party companies or individuals employed by the <strong><em>company</em></strong> to facilitate the <strong><em>service</em></strong>, to provide the<strong><em>service</em></strong> on behalf of the<strong><em>company</em></strong>, to perform services related to the<strong><em>service</em></strong> or to assist the<strong><em>company</em></strong> in analysing how the <strong><em>service</em></strong> is used.<strong />
+                        <strong>Service provider</strong> means any natural or legal person who processes data on behalf of the <strong>company</strong>. It refers to third-party companies or individuals employed by the <strong>company</strong> to facilitate the <strong>service</strong>, to provide the <strong>service</strong> on behalf of the <strong>company</strong>, to perform services related to the <strong>service</strong> or to assist the <strong>company</strong> in analysing how the <strong>service</strong> is used.
                     </li>
                     <li className="mt-2">
                         <strong>Personal data</strong> is any information that relates to an identified or identifiable individual.
                     </li>
                     <li className="mt-2">
-                        <strong>Usage data</strong> refers to data collected automatically, either generated using the<strong><em>service</em></strong> or from the <strong><em>service</em></strong> infrastructure itself (for example, the duration of a page visit).
+                        <strong>Usage data</strong> refers to data collected automatically, either generated using the <strong>service</strong> or from the <strong>service</strong> infrastructure itself (for example, the duration of a page visit).
                     </li>
                     <li className="mt-2">
-                        <strong>Account</strong> means a unique account created for <strong><em>you</em></strong> to access our <strong><em>service</em></strong>.
+                        <strong>Account</strong> means a unique account created for <strong>you</strong> to access our <strong>service</strong>.
                     </li>
                 </ul>
             </div>
@@ -78,7 +78,7 @@ export default function PrivacyPolicy() {
                         To provide and maintain our <strong>service</strong>, including to monitor the usage of our <strong>service</strong>.
                     </li>
                     <li className="mt-2">
-                        To manage <strong>your</strong> <strong>account</strong>: the<strong>personal data</strong> <strong>you</strong> provide can give<strong>you</strong> access to different functionalities of the <strong>service</strong> that are available to <strong>you</strong> as a registered user.
+                        To manage <strong>your account</strong>: the<strong>personal data you</strong> provide can give<strong>you</strong> access to different functionalities of the <strong>service</strong> that are available to <strong>you</strong> as a registered user.
                     </li>
                     <li className="mt-2">
                         For the performance of a contract: the development, compliance and undertaking of the purchase contract for the products, items, or services you have purchased or of any other contract with <strong>us</strong> through the <strong>service</strong>.
@@ -96,7 +96,7 @@ export default function PrivacyPolicy() {
                 <p><strong>We</strong> may share <strong>your</strong> personal information in the following situations:</p>
                 <ul className="list-disc list-inside">
                     <li className="mt-2">
-                        With <strong>service</strong> <strong>providers</strong>: <strong>we</strong> may share <strong>your</strong> personal information with <strong>service</strong> <strong>providers</strong> to allow certain functions to work on our <strong>service</strong> and analyse the use of our <strong>service</strong>.
+                        With <strong>service providers</strong>: <strong>we</strong> may share <strong>your</strong> personal information with <strong>service providers</strong> to allow certain functions to work on our <strong>service</strong> and analyse the use of our <strong>service</strong>.
                     </li>
                     <li className="mt-2">
                         With <strong>your</strong> consent: <strong>we</strong> may disclose<strong>your</strong> personal information for any other purpose with <strong>your</strong> consent.
@@ -105,33 +105,33 @@ export default function PrivacyPolicy() {
             </div>
             <h2 className="text-2xl font-bold mb-4">Retention of your personal data</h2>
             <p>
-                <strong>The company</strong> will retain <strong>your</strong> <strong>personal</strong> <strong>data</strong> only for as long as is necessary for the purposes set out in this <strong>privacy</strong> <strong>policy</strong>.<strong>We</strong> will retain and use <strong>your</strong>    <strong>personal</strong> <strong>data</strong> to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes, and enforce our legal agreements and policies.
+                <strong>The company</strong> will retain <strong>your personal data</strong> only for as long as is necessary for the purposes set out in this <strong>privacy policy</strong>. <strong>We</strong> will retain and use <strong>your</strong>    <strong>personal data</strong> to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes, and enforce our legal agreements and policies.
             </p>
             <p>
-                <strong>The</strong> <strong>company</strong> will also retain <strong>usage</strong> <strong>data</strong> for internal analysis purposes. <strong>Usage</strong> <strong>data</strong> is generally retained for a shorter period of time, except when this data is used to strengthen the security or to improve the functionality of <strong>our</strong> <strong>service</strong>, or <strong>we</strong> are legally obligated to retain this data for longer time periods.
+                <strong>The company</strong> will also retain <strong>usage data</strong> for internal analysis purposes. <strong>Usage data</strong> is generally retained for a shorter period of time, except when this data is used to strengthen the security or to improve the functionality of <strong>our service</strong>, or <strong>we</strong> are legally obligated to retain this data for longer time periods.
             </p>
             <h2 className="text-2xl font-bold mb-4">Transfer of your personal data</h2>
             <p>
                 <strong>Your</strong> information may be transferred to — and maintained on — computers located outside of <strong>your</strong> state, province, country, or other governmental jurisdiction where the data protection laws may differ than those from <strong>your</strong> jurisdiction.
             </p>
             <p>
-                <strong>Your</strong> consent to this <strong>privacy policy</strong> followed by<strong>your</strong> submission of such information represents    <strong>your</strong> agreement to that transfer.
+                <strong>Your</strong> consent to this <strong>privacy policy</strong> followed by <strong>your</strong> submission of such information represents <strong>your</strong> agreement to that transfer.
             </p>
             <p>
-                <strong>The company</strong> will take all steps reasonably necessary to ensure that<strong>your</strong> data is treated securely and in accordance with this<strong>privacy</strong> <strong>policy</strong> and no transfer of <strong>your</strong> <strong>personal</strong> <strong>data</strong> will take place to an organization or a country unless there are adequate controls in place including the security of <strong>your</strong> data and other personal information.
+                <strong>The company</strong> will take all steps reasonably necessary to ensure that <strong>your</strong> data is treated securely and in accordance with this <strong>privacy policy</strong> and no transfer of <strong>your personal data</strong> will take place to an organization or a country unless there are adequate controls in place including the security of <strong>your</strong> data and other personal information.
             </p>
             <h2 className="text-2xl font-bold mb-4">Disclosure of your personal data</h2>
             <h4 className="text-lg font-bold mb-4">Business transactions</h4>
             <p>
-                If the <strong>company</strong> is involved in a merger, acquisition or asset sale, <strong>your</strong> <strong>personal</strong><strong>data</strong> may be transferred. We will provide notice before    <strong>your</strong> <strong>personal</strong> <strong>data</strong> is transferred and becomes subject to a different <strong>privacy</strong> <strong>policy</strong>.
+                If the <strong>company</strong> is involved in a merger, acquisition or asset sale, <strong>your personal data</strong> may be transferred. We will provide notice before    <strong>your personal data</strong> is transferred and becomes subject to a different <strong>privacy policy</strong>.
             </p>
             <h4 className="text-lg font-bold mb-4">Law enforcement</h4>
             <p>
-                Under certain circumstances, the <strong>company</strong> may be required to disclose <strong>your</strong> <strong>personal</strong>    <strong>data</strong> if required to do so by law or in response to valid requests by public authorities (e.g., A court or a government agency).
+                Under certain circumstances, the <strong>company</strong> may be required to disclose <strong>your personal</strong>    <strong>data</strong> if required to do so by law or in response to valid requests by public authorities (e.g., A court or a government agency).
             </p>
             <h4 className="text-lg font-bold mb-4">Other legal requirements</h4>
             <p>
-                <strong>The</strong> <strong>company</strong> may disclose <strong>your</strong> <strong>personal</strong> <strong>data</strong> in the good faith belief that such action is necessary to:
+                <strong>The company</strong> may disclose <strong>your personal data</strong> in the good faith belief that such action is necessary to:
             </p>
             <ul className="list-disc list-inside">
                 <li className="mt-2">
@@ -152,11 +152,11 @@ export default function PrivacyPolicy() {
             </ul>
             <h2 className="text-2xl font-bold mb-4">Security of your personal data</h2>
             <p>
-                The security of <strong>your</strong> <strong>personal</strong> <strong>data</strong> is important to <strong>us</strong> but remember that no method of transmission over the internet, or method of electronic storage is 100% secure. While <strong>we</strong> strive to use commercially acceptable means to protect <strong>your</strong>    <strong>personal</strong> <strong>data</strong>, <strong>we</strong> cannot guarantee its absolute security.
+                The security of <strong>your personal data</strong> is important to <strong>us</strong> but remember that no method of transmission over the internet, or method of electronic storage is 100% secure. While <strong>we</strong> strive to use commercially acceptable means to protect <strong>your</strong>    <strong>personal data</strong>, <strong>we</strong> cannot guarantee its absolute security.
             </p>
             <h2 className="text-2xl font-bold mb-4">Children's privacy</h2>
             <p>
-                Our <strong>service</strong> does not have age requirements for its usage, but our <strong>service providers</strong> do. If <strong>your</strong> jurisdiction requires from <strong>us</strong> strict rules for children’s privacy, <strong>we</strong> state that <strong>we</strong> do not knowingly collect personally identifiable information from minors. If you are a parent or guardian and you are aware that your child has provided us with <strong>personal</strong> <strong>data</strong>, please contact us. If<strong>we</strong> become aware that <strong>we</strong> have collected    <strong>personal</strong> <strong>data</strong> without verification of parental consent, <strong>we</strong> take steps to remove that information from our servers.
+                Our <strong>service</strong> does not have age requirements for its usage, but our <strong>service providers</strong> do. If <strong>your</strong> jurisdiction requires from <strong>us</strong> strict rules for children’s privacy, <strong>we</strong> state that <strong>we</strong> do not knowingly collect personally identifiable information from minors. If you are a parent or guardian and you are aware that your child has provided us with <strong>personal data</strong>, please contact us. If<strong>we</strong> become aware that <strong>we</strong> have collected    <strong>personal data</strong> without verification of parental consent, <strong>we</strong> take steps to remove that information from our servers.
             </p>
             <p>
                 If <strong>we</strong> need to rely on consent as a legal basis for processing your information and your country requires consent from a parent, we may require your parent's consent before we collect and use that information.
@@ -166,17 +166,17 @@ export default function PrivacyPolicy() {
                 <strong>Our service</strong> may contain links to other websites that are not operated by us. If you click on a third-party link, you will be directed to that third party's site. We strongly advise you to review the <strong>privacy policy</strong> of every site you visit.
             </p>
             <p>
-                <strong>We</strong> have no control over and assume no responsibility for the content, <strong>privacy</strong> <strong>policies</strong> or practices of any third-party sites or services.
+                <strong>We</strong> have no control over and assume no responsibility for the content, <strong>privacy policies</strong> or practices of any third-party sites or services.
             </p>
             <h2 className="text-2xl font-bold mb-4">Changes to this privacy policy</h2>
             <p>
-                <strong>We</strong> may update our <strong>privacy</strong> <strong>policy</strong> from time to time. We will notify you of any changes by posting the new <strong>privacy</strong> <strong>policy</strong> on this page.
+                <strong>We</strong> may update our <strong>privacy policy</strong> from time to time. We will notify you of any changes by posting the new <strong>privacy policy</strong> on this page.
             </p>
             <p>
-                <strong>We</strong> will let you know via email and/or a prominent notice on    <strong>our</strong> <strong>service</strong>, prior to the change becoming effective.
+                <strong>We</strong> will let you know via email and/or a prominent notice on    <strong>our service</strong>, prior to the change becoming effective.
             </p>
             <p>
-                <strong>You</strong> are advised to review this <strong>privacy</strong> <strong>policy</strong> periodically for any changes. Changes to this <strong>privacy</strong>    <strong>policy</strong> are effective when they are posted on this page.
+                <strong>You</strong> are advised to review this <strong>privacy policy</strong> periodically for any changes. Changes to this <strong>privacy</strong>    <strong>policy</strong> are effective when they are posted on this page.
             </p>
         </div>
     );
