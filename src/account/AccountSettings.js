@@ -123,7 +123,9 @@ export default function AccountSettings(props) {
                         />
                     </div>
                     :
-                    <img src={props.avatarUrl} alt="user avatar" className="w-48 h-48 sm:w-36 sm:h-36 bg-slate-300"/>
+                    <div  className="w-48 h-48 sm:w-36 sm:h-36 bg-slate-300">
+                        <img src={props.avatarUrl} alt="user avatar"/>
+                    </div>
                 }
 
                 <form className="w-fit" onSubmit={handleSubmit(updateUser)}>
