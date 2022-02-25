@@ -292,11 +292,11 @@ export default function SubmitIdea() {
                     />
                     )}
                 />
-                <div id="file-upload" className="mb-4 sm:w-[21rem] bg-white">
+                <div id="file-upload" className="mb-4 sm:w-[21rem] bg-white bg-opacity-50 pb-1 pl-2">
                     <FileUploader
                         children={
-                            <div className="h-10 mb-3 border py-2 px-3 text-grey-darkest cursor-pointer truncate">
-                                Click or drop to upload!<span className="text-xs right-0 ">{fileTypes.map((item) => " "+item)}</span>
+                            <div className="h-10 border py-2 px-3 -ml-2 text-grey-darkest cursor-pointer truncate bg-white">
+                                Click or drop to upload!<span className="text-xs right-0">{fileTypes.map((item) => " "+item)}</span>
                             </div>
                         }
                         handleChange={handleFileUploadChange}
