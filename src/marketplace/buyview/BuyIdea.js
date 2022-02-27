@@ -60,7 +60,7 @@ export default function BuyIdea() {
     }
 
     return (
-        <div id="ideas-list" className="p-3 w-[46rem] sm:w-[23.5rem] sm:ml-6">
+        <div id="buy-idea" className="border-4 border-maxbluepurple">
             <AuthProvider/>
             {ideaEntry()}
             <Outlet/>

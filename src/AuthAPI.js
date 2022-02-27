@@ -6,7 +6,13 @@ import Cookies from 'universal-cookie';
 import jwt_decode from "jwt-decode";
 import { toast } from "react-toastify";
 
+//DEV
+export const MAIN_API_URL = 'http://creativitycrop.tech/api';
+//PROD
+//export const MAIN_API_URL = '/api';
+
 export const AuthContext = React.createContext();
+
 const cookies = new Cookies();
 const cookieParams = {
     path: '/',
@@ -15,11 +21,6 @@ const cookieParams = {
     secure: false, // in development, for production set to TRUE
     sameSite: "strict"
 };
-
-//DEV
-export const MAIN_API_URL = 'http://creativitycrop.tech/api';
-//PROD
-//export const MAIN_API_URL = '/api';
 
 export const setToken = (token) => {
     //localStorage.setItem("access_token", token);

@@ -5,7 +5,7 @@ export default function FirstSection() {
         <div id="first-section" className="md:mx-6 xl:mb-52">
             <div className=" flex flex-row sm:flex-col gap-4 justify-center">
                 <div id="left" className="flex flex-col gap-2 justify-center text-center xl:basis-1/2 md:basis-1/2 m-auto">
-                    <div className="ml-5">
+                    <div className="">
                         <h1 className="text-4xl">A marketplace for</h1>
                         <h2 className="max-w-fit m-auto text-4xl px-6 py-3 hover:bg-maxbluepurple hover:text-slate-100 transition-colors delay-110 rounded-sm mb-4">ideas</h2>
                     </div>

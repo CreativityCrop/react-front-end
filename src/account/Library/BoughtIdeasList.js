@@ -14,9 +14,6 @@ export default function BoughtIdeasList() {
     const [ideas, setIdeas] = useState([]);
     const [hasMore, setHasMore] = useState(false);
 
-    // Put this somewhere to fix bug when loading new ideas scrolls to top bruh
-    // document.getElementById('bought-ideas-list').scrollIntoView();
-
     useEffect(() => {
         axios
             .get(MAIN_API_URL + `/account/ideas/bought?page=${page}`, {
@@ -68,14 +65,14 @@ export default function BoughtIdeasList() {
     });
 
     return(
-        <div id="bought-ideas-list" className="xl:w-10/12 m-auto bg-yankeesblue">
+        <div id="bought-ideas-list" className="xl:w-10/12 w-11/12 m-auto bg-yankeesblue">
             <h1 className="w-full h-16 bg-maxbluepurple text-white text-3xl p-2">Your Bought Ideas</h1>
             <div className="flex flex-col gap-4 px-4 py-10 border-4 border-maxbluepurple border-t-0 ">
                 {loading && <p className="text-white text-center text-lg">Loading...</p>}
                 {listIdeas}
                 {
                     listIdeas.length===0 &&
-                    <p className="text-white text-center text-lg">You haven't bought any ideas yet! Go buy some at the <Link className="text-maxbluepurple" to="/marketplace/buy">Marketplace</Link>.</p>
+                    <p className="text-white text-center text-lg">You haven't bought any ideas yet! <br/>Go buy some at the <Link className="text-maxbluepurple" to="/marketplace/buy">Marketplace</Link>.</p>
                 }
                 {
                     error &&
@@ -89,7 +86,7 @@ export default function BoughtIdeasList() {
                     <button
                         className="text-white text-center text-lg" 
                         onClick={() => setPage((prevPage) => prevPage + 1)}
-                        >Load more</button>
+                    >Load more</button>
                 }
             </div>
         </div>

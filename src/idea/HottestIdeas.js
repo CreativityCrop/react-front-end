@@ -43,15 +43,37 @@ export default function HottestIdeas(props) {
         );
     });
 
-    return (
-        <div className={props.className}>
-            {ideas && listIdeas}
-            {
-                error && <div>
-                    <h1>{error.title}</h1>
-                    <p>{error.msg}</p>
+    if(props.homepage) {
+        return(
+            <div className="select-none p-4">
+                <h1 className="text-3xl mb-5 text-center">Hottest Ideas right now!</h1>
+                <div className="m-auto">
+                    <div className="flex flex-nowrap xl:place-content-center gap-4 overflow-auto relative">
+                        {ideas && listIdeas}
+                        {
+                            error && <div className="text-white">
+                                <h1>{error.title}</h1>
+                                <p>{error.msg}</p>
+                            </div>
+                        }
+                    </div>
                 </div>
-            }
+            </div>
+        );
+    }
+
+    return (
+        <div className={"order-1 xl:order-2 xl:w-48 p-4 xl:flex xl:flex-col xl:justify-center xl:items-center xl:h-fit xl:-mt-10 " + props.className}>
+            <h1 className="break-all text-center text-slate-300 text-2xl mt-4 mb-5">Hottest ideas<br className='hidden xl:block'/> right now!</h1>
+            <div className="md:flex sm:flex md:overflow-auto sm:overflow-auto gap-3">
+                {ideas && listIdeas}
+                {
+                    error && <div className="text-white">
+                        <h1>{error.title}</h1>
+                        <p>{error.msg}</p>
+                    </div>
+                }
+            </div>
         </div>
     );
 }

@@ -54,11 +54,12 @@ export default function IdeasForSale() {
     });
 
     return (
-        <div id="ideas-list" className="border-4 border-maxbluepurple p-3 w-[46rem] min-h-[37rem] sm:w-[23.5rem]">
+        <div id="ideas-list" className="border-4 border-maxbluepurple">
             <AuthProvider/>
             {listIdeas}
-            {loading && "Loading..."}
-            {error && "Error"}
+            {ideas.length===0 && <p className="text-white">No ideas found based on your criteria.</p>}
+            {loading && <p className="text-white">Loading...</p>}
+            {error && <p className="text-white">Error! Please refresh, if problem persists contact us!</p>}
         </div>
     );
 }

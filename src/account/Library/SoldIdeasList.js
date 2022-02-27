@@ -63,14 +63,14 @@ export default function SoldIdeasList() {
     });
 
     return(
-        <div id="sold-ideas" className="xl:w-10/12 m-auto bg-yankeesblue">
+        <div id="sold-ideas" className="xl:w-10/12 w-11/12 m-auto bg-yankeesblue">
             <h1 className="w-full h-16 bg-maxbluepurple text-white text-3xl p-2">Your Sold Ideas</h1>
             <div className="flex flex-col gap-4 px-4 py-10 border-4 border-maxbluepurple border-t-0 ">
                 {loading && <p className="text-white text-center text-lg">Loading...</p>}
                 {listIdeas}
                 {
                     listIdeas.length===0 &&
-                    <p className="text-white text-center text-lg">You don't thave any sold ideas yet! Go sell some at the <Link className="text-maxbluepurple" to="/marketplace/sell">Marketplace</Link>.</p>
+                    <p className="text-white text-center text-lg">You don't thave any sold ideas yet! <br/>Go sell some at the <Link className="text-maxbluepurple" to="/marketplace/sell">Marketplace</Link>.</p>
                 }
                 {
                     error &&
