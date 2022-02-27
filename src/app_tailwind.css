@@ -641,6 +641,9 @@ select {
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
 }
+.mt-20 {
+  margin-top: 5rem;
+}
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -760,6 +763,9 @@ select {
 }
 .ml-10 {
   margin-left: 2.5rem;
+}
+.-ml-2 {
+  margin-left: -0.5rem;
 }
 .-mt-\[6\.51rem\] {
   margin-top: -6.51rem;
@@ -1017,6 +1023,9 @@ select {
 .justify-between {
   justify-content: space-between;
 }
+.gap-10 {
+  gap: 2.5rem;
+}
 .gap-6 {
   gap: 1.5rem;
 }
@@ -1163,6 +1172,9 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(254 202 202 / var(--tw-bg-opacity));
 }
+.bg-opacity-50 {
+  --tw-bg-opacity: 0.5;
+}
 .bg-gradient-to-b {
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
 }
@@ -1275,6 +1287,9 @@ select {
 .pr-4 {
   padding-right: 1rem;
 }
+.pl-2 {
+  padding-left: 0.5rem;
+}
 .pb-\[3\.8rem\] {
   padding-bottom: 3.8rem;
 }
@@ -1302,13 +1317,13 @@ select {
   font-size: 2.25rem;
   line-height: 2.5rem;
 }
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 .text-6xl {
   font-size: 3.75rem;
@@ -1902,6 +1917,16 @@ select {
   .md\:p-4 {
     padding: 1rem;
   }
+
+  .md\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+
+  .md\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
 }
 @media (min-width: 1024px) {
 
@@ -1957,6 +1982,11 @@ select {
   .xl\:px-10 {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
+  }
+
+  .xl\:text-8xl {
+    font-size: 6rem;
+    line-height: 1;
   }
 
   .xl\:transition {

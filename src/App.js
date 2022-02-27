@@ -18,6 +18,7 @@ import Logout from './routes/Logout';
 import ViewIdea from './routes/ViewIdea';
 import TermsAndConditions from './routes/TermsAndConditions';
 import PrivacyPolicy from './routes/PrivacyPolicy';
+import UserManual from './routes/UserManual';
 import Admin from './routes/Admin';
 
 import NotFound from './NotFound';
@@ -49,6 +50,7 @@ export default function App() {
             case "/password-reset": title = "Password reset"; break;
             case "/terms-conditions": title = " Terms and Conditions"; break;
             case "/privacy-policy": title = "Privacy Policy"; break;
+            case "/user-manual": title="User Manual"; break;
             case "/idea": title = "Idea"; break;
             default: title = ""; break;
         }
@@ -153,6 +155,7 @@ export default function App() {
 
                         <Route path="/terms-conditions" element={ <TermsAndConditions/> } />
                         <Route path="/privacy-policy" element={ <PrivacyPolicy/> } />
+                        <Route path="/user-manual" element={ <UserManual/> } />
 
                         {/* Route to display some error page when the route is not defined */}
                         <Route path="*" element={ <NotFound/> } />
