@@ -30,6 +30,7 @@ export default function Dashboard() {
                 setLoading(false);
             })
             .catch((err) => {
+                setLoading(false);
                 if(err.response.status === 401) {
                     removeToken();
                     setAuthContext("unauthenticated");

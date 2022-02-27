@@ -38,6 +38,7 @@ export default function useLoadIdeas(pageNumber, category) {
             setLoading(false);
         }).catch( (err) => {
             if(axios.isCancel(err)) return;
+            setLoading(false);
             setError(true);
         });
         return () => cancel();

@@ -57,9 +57,9 @@ export default function IdeasForSale() {
         <div id="ideas-list" className="border-4 border-maxbluepurple">
             <AuthProvider/>
             {listIdeas}
-            {ideas.length===0 && <p className="text-white">No ideas found based on your criteria.</p>}
             {loading && <p className="text-white">Loading...</p>}
             {error && <p className="text-white">Error! Please refresh, if problem persists contact us!</p>}
+            {ideas.length===0 && !error && <p className="text-white">No ideas found based on your criteria.</p>}
         </div>
     );
 }

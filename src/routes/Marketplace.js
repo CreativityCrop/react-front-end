@@ -1,11 +1,13 @@
 import { Outlet, NavLink, useLocation } from 'react-router-dom';
 import HottestIdeas from '../idea/HottestIdeas';
+import SubmitTutorial from '../marketplace/sellview/SubmitTutorial'
+
 
 export default function Marketplace() {
     const location = useLocation();
     console.log(location);
     return (
-        <div id="marketplace" className="mt-5 xl:mt-10 mb-20 flex flex-col max-w-fit m-auto">
+        <div id="marketplace" className="mt-5 xl:mt-10 mb-20 flex flex-col max-w-fit m-auto select-none">
         <div className="flex flex-col xl:flex-row">
             <div className="order-2 xl:order-1 m-auto xl:ml-24">
                 <div className="flex flex-row">
@@ -30,6 +32,7 @@ export default function Marketplace() {
             </div>
             
             {location.pathname==='/marketplace/buy' && <HottestIdeas className="bg-gradient-to-b from-yankeesblue xl:via-yankeesblue"/>}
+            {location.pathname==='/marketplace/sell' && <SubmitTutorial/>}
         </div>
         </div>
     );

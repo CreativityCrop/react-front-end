@@ -29,6 +29,7 @@ export default function BoughtIdeasList() {
                 setHasMore(response.data.countLeft > 0);
             })
             .catch((err) => {
+                setLoading(false);
                 if(err.response.status === 401) {
                     removeToken();
                     setAuthContext("unauthenticated");

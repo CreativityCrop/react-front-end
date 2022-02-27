@@ -8,7 +8,7 @@
 // Files - not required
 // Price - min 0.5$ and max is 999 999.99$
 
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import CreatableSelect from 'react-select/creatable';
 import { FileUploader } from "react-drag-drop-files";
@@ -29,14 +29,15 @@ export default function SubmitIdea() {
     const { register, control, formState: { errors }, handleSubmit, reset } = useForm();
     // Logic help variables
     const [categoriesInputData, setCategoriesInputData] = useState({inputValue: "", value: []});
-    const [categoriesInputLastChar, setCategoriesInputLastChar] = useState(null);
     const [files, setFiles] = useState([]);
     const [imgVisual, setImgVisual] = useState(null);
+    const [tempPrice, setTempPrice] = useState(0);
 
     const clearForm = () => {
         setCategoriesInputData({inputValue: "", value: []});
         setFiles([]);
         setImgVisual(null);
+        setTempPrice(0);
         reset();
     };
 
@@ -70,6 +71,7 @@ export default function SubmitIdea() {
                 })
                 .then(() => {
                     toast.success("Idea was uploaded successfully!");
+                    clearForm();
                 })
                 .catch((error) => {
                     if(error.response.status === 401) {
@@ -126,22 +128,6 @@ export default function SubmitIdea() {
         value: label
     });
 
-    // useEffect(() => {
-    //     document.getElementById("react-select-3-input").addEventListener("input", event => {
-    //         const { inputValue, value } = categoriesInputData;
-    //         if (!inputValue) return;
-    //         const key = event.target.value.slice(event.target.value.length - 1);
-    //         console.log(`"${key}"`);
-    //         if(key === ' ') {
-    //             if(value.map(item => item.value).indexOf(event.target.value) !== -1) return;
-    //             setCategoriesInputData({
-    //                 inputValue: "",
-    //                 value: [...value, createOption(event.target.value)]
-    //             });
-    //         }
-    //     });
-    //   }, [categoriesInputData]);
-
     const handleCategoriesChange = (value) => setCategoriesInputData({ value });
     const handleCategoriesInputChange = (inputValue) =>
                 setCategoriesInputData({inputValue: inputValue, value: categoriesInputData.value});    
@@ -181,11 +167,11 @@ export default function SubmitIdea() {
     // Creates a list of fles
     const filesList = files.map((file) => {
         return(
-            <div key={file.name} className="flex my-3">
+            <div key={file.name} className="flex justify-between">
                 <p>{file.name}</p>
                 <button
                     type="button"
-                    className="w-7 h-7 ml-10 text-white bg-red-400 hover:bg-red-600"
+                    className="w-7 h-7 text-white bg-red-400 hover:bg-red-600"
                     onClick={() => setFiles(files.filter(item => item !==file))}
                 >
                     x
@@ -195,7 +181,7 @@ export default function SubmitIdea() {
     });
 
     return(
-        <div className="container items-center p-8 w-[46rem] border-4 md:ml-3 sm:ml-4 sm:p-4 sm:w-[23.5rem] bg-maxbluepurple border-maxbluepurple">
+        <div className="container items-center p-8 w-[46rem] border-4 sm:p-4 sm:w-[23.5rem] bg-maxbluepurple border-maxbluepurple">
             <form className="" onSubmit={handleSubmit(postIdea)}>
                 <div className="flex flex-row max-h-96 mb-4">
                     {/* Container to visualise Image and input for uploading it */}
@@ -292,7 +278,7 @@ export default function SubmitIdea() {
                     />
                     )}
                 />
-                <div id="file-upload" className="mb-4 sm:w-[21rem] bg-white bg-opacity-50 pb-1 pl-2">
+                <div id="file-upload" className="mb-4 sm:w-[21rem] bg-white bg-opacity-50 pl-2">
                     <FileUploader
                         children={
                             <div className="h-10 border py-2 px-3 -ml-2 text-grey-darkest cursor-pointer truncate bg-white">
@@ -302,7 +288,9 @@ export default function SubmitIdea() {
                         handleChange={handleFileUploadChange}
                         name="file"
                     />
-                    {filesList}
+                    <div className={filesList.length===0 ? "flex flex-col gap-3 " : "flex flex-col gap-3 p-3"}>
+                        {filesList}
+                    </div>
                 </div>
                 <div className="flex flex-row sm:flex-col sm:w-[21rem]">
                     <div className="flex flex-col">
@@ -323,10 +311,11 @@ export default function SubmitIdea() {
                                 allowNegativeValue={false}
                                 decimalSeparator="."
                                 groupSeparator=" "
+                                value={tempPrice}
                                 placeholder="Please enter a price"
                                 defaultValue={undefined}
                                 decimalsLimit={2}
-                                onValueChange={(value) => field.onChange(value)}
+                                onValueChange={(value) => {setTempPrice(value); field.onChange(value);}}
                             />)}
                         />
                         

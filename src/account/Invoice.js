@@ -70,6 +70,7 @@ export default function Invoice() {
                 document.title = "Invoice - " + response.data.ideaTitle + " - CreativityCrop";
             })
             .catch((err) => {
+                setLoading(false);
                 if(err.response.status === 401) {
                     removeToken();
                     setAuthContext("unauthenticated");
