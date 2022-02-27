@@ -6,12 +6,6 @@ export default function Marketplace() {
     console.log(location);
     return (
         <div id="marketplace" className="mt-5 xl:mt-10 mb-20 flex flex-col max-w-fit m-auto">
-            {/* <div className="max-w-fit block xl:hidden py-6 px-4 bg-gradient-to-b from-yankeesblue
-                md:mt-4 sm:mt-3">
-                    <h1 className="text-center text-white text-2xl mb-3">Hottest ideas right now!</h1>
-                    <HottestIdeas className="max-w-fit md:flex sm:flex md:overflow-auto sm:overflow-auto md:space-x-3 sm:space-x-3"/>
-            </div> */}
-
         <div className="flex flex-col xl:flex-row">
             <div className="order-2 xl:order-1 m-auto xl:ml-24">
                 <div className="flex flex-row">
