@@ -17,11 +17,10 @@ module.exports = {
                 'yankeesblue': '#1a2238',
                 'jasmine': '#FFDF67',
                 'maxbluepurple': '#99A9FF'
-            }
-        },
-        
-        fontFamily: {
-            sans: ["WhiteRabbit", "sans-serif"],
+            },
+            fontFamily: {
+                'whiterabbit': ['White Rabbit']
+              }
         }
     },
     plugins: [

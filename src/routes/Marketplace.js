@@ -5,7 +5,6 @@ import SubmitTutorial from '../marketplace/sellview/SubmitTutorial'
 
 export default function Marketplace() {
     const location = useLocation();
-    console.log(location);
     return (
         <div id="marketplace" className="mt-5 xl:mt-10 mb-20 flex flex-col max-w-fit m-auto select-none">
         <div className="flex flex-col xl:flex-row">

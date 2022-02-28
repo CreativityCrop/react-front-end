@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'WhiteRabbit';
-  src: local('WhiteRabbit'), url(./assets/whitrabt.ttf) format('truetype');
+@layer base {
+  @font-face {
+    font-family: White Rabbit;
+    src: url(./assets/whitrabt.ttf);
+  }
 }

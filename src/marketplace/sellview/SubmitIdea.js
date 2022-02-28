@@ -328,12 +328,12 @@ export default function SubmitIdea() {
                     <div className="grow"></div>
                     <div className='sm:mt-4'>
                     <button type="button" 
-                        className="py-[0.4rem] px-9 uppercase text-lg bg-yankeesblue text-slate-200 hover:bg-purple-700 sm:w-32
+                        className="py-2 px-9 uppercase text-lg bg-yankeesblue text-slate-200 hover:bg-purple-700 sm:w-32
                         hover:scale-105 hover:shadow-lg transition hover:rotate-3"
                         onClick={clearForm}>Reset</button>
                     <button
                         type="submit" 
-                        className="ml-5 right-0 py-[0.4rem] px-9 uppercase text-lg bg-jasmine hover:bg-amber-500 sm:w-[11.7rem]
+                        className="ml-5 right-0 py-2 px-9 uppercase text-lg bg-jasmine hover:bg-amber-500 sm:w-[11.7rem]
                         hover:scale-105 hover:shadow-lg transition hover:rotate-3"
                     >
                         Submit

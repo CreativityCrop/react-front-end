@@ -24,24 +24,18 @@ export default function AccountSettings(props) {
         // checks which fields have been altered
         if (data.avatar.length !== 0) {
             formData.append("avatar", data.avatar[0], data.avatar[0]?.name);
-            console.log("AVATAR CHANGED");
         }
         if (data.username !== undefined && props.userData.username !== data.username) {
             formData.append("username", data.username);
-            console.log("USERNAME CHANGED");
         }
         if (data.email !== undefined  && props.userData.email !== data.email) {
             formData.append("email", data.email);
-            console.log("EMAIL CHANGED");
         }
         if (data.iban !== undefined  && props.userData.iban !== data.iban) {
             formData.append("iban", data.iban);
-            console.log("IBAN CHANGED");
         }
         if (data.password !== undefined  && !!data.password) {
-            console.log(data.password);
             formData.append("pass_hash", sha3_256(data.password));
-            console.log("PAASS CHANGED");
         }
         if (formData.entries().next().done) {    // if formData is empty don't send a request
             return;
@@ -125,8 +119,9 @@ export default function AccountSettings(props) {
                         />
                     </div>
                     :
-                    <div  className="w-48 h-48 sm:w-36 sm:h-36 bg-slate-300 overflow-hidden">
-                        <img src={props.avatarUrl} alt="user avatar" className="object-cover"/>
+                    <div  className="w-48 h-48 sm:w-36 sm:h-36 bg-slate-300 overflow-hidden flex items-center justify-center">
+                        {props.avatarUrl && <img src={props.avatarUrl} alt="user avatar" className="object-cover"/>}
+                        {!props.avatarUrl && <p className="text-center px-2">Click edit to upload a new image</p>}
                     </div>
                 }
 
@@ -187,7 +182,7 @@ export default function AccountSettings(props) {
             </div>
             <div id="manual" className="w-56 sm:w-full text-center sm:border-y-2 sm:py-6 ">
                 <h3 className="text-2xl mb-4">Don't know where to start?</h3>
-                <button className="w-44 h-9 m-auto text-lg text-center bg-maxbluepurple hover:bg-sky-500 hover:rotate-3 hover:drop-shadow-xl transition duration-150"
+                <button className="w-48 h-9 m-auto text-lg text-center bg-maxbluepurple hover:bg-sky-500 hover:rotate-3 hover:drop-shadow-xl transition duration-150"
                  onClick={() => navigate("/user-manual")}>
                     Read the manual!
                 </button>

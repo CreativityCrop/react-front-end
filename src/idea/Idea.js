@@ -222,8 +222,8 @@ function Price(props) {
         return(null);
     }
     return(
-        <div className="w-48 h-9 pt-[0.15rem] bg-yankeesblue text-slate-300 sm:w-36">
-            <h3 className="text-lg text-center">${props.price}</h3>
+        <div className="w-48 h-9 bg-yankeesblue text-slate-300 sm:w-36 flex justify-center items-center">
+            <h3 className="text-lg text-center ">${props.price}</h3>
         </div>
     );
 }
@@ -252,7 +252,7 @@ function MainButton(props) {
 
     return(
         <Link
-            className="mt-1 text-lg text-center w-48 h-8 ml-12 bg-jasmine hover:bg-amber-500 sm:w-36 sm:ml-2 hover:scale-105 hover:shadow-lg transition" 
+            className="mt-1 text-lg flex items-center justify-center text-center w-48 h-8 ml-12 bg-jasmine hover:bg-amber-500 sm:w-36 sm:ml-2 hover:scale-105 hover:shadow-lg transition" 
             to={url}
         >
             {text}
@@ -355,7 +355,7 @@ function InvoiceButton(props) {
     }
     return(
         <Link
-            className="text-lg text-center w-48 h-8 pt-[0.15rem] ml-auto mr-0 mt-3 col-span-2 bg-maxbluepurple hover:bg-sky-500
+            className="text-lg text-center w-48 h-8 flex items-center justify-center ml-auto mr-0 mt-3 col-span-2 bg-maxbluepurple hover:bg-sky-500
             sm:ml-0 sm:w-40 hover:scale-105 hover:shadow-lg transition"
             to={`/invoice/${props.id}`}
         >

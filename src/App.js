@@ -80,10 +80,14 @@ export default function App() {
                 cookieName="cookie-consent"
                 style={{ background: "#2B373B" }}
                 buttonStyle={{ color: "#4e503b", fontSize: "13px", marginRight: '3rem' }}
+                buttonClasses="font-whiterabbit bg-jasmine hover:bg-amber-500"
                 expires={150}
             >
-                This website uses cookies. By using it, you agree to the Terms of Service and Privacy Policy.{" "}
-                <span className="text-xs"><Link to="/privacy-policy">Privacy Policy</Link></span>
+                <h1 className="font-whiterabbit">This website uses cookies. By using it, you agree to the Terms of Service and Privacy Policy.{" "}</h1>
+                <span className="flex flex-row gap-2 font-whiterabbit text-xs ">
+                    <Link to="/terms-conditions">Terms and conditions</Link>
+                    <Link to="/privacy-policy">Privacy Policy</Link>
+                </span>
             </CookieConsent>
             <AuthContext.Provider value={[authContext, setAuthContext]}>
                 <Routes>
@@ -182,11 +186,12 @@ export function AuthenticatedRoute({children }) {
     let location = useLocation();
 
     useEffect(() => {
-        if(!auth) {
-            localStorage.setItem("redirect-back", location.pathname);
-            return <Navigate to="/login" state={{ from: location }}/>;
-        }
     }, [auth, location]);
+
+    if(!auth) {
+        localStorage.setItem("redirect-back", location.pathname);
+        return <Navigate to="/login" state={{ from: location }}/>;
+    }
 
     return children;
 }

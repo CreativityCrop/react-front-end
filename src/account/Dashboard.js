@@ -11,7 +11,6 @@ import Idea from '../idea/Idea';
 export default function Dashboard() {
     const [, setAuthContext] = useContext(AuthContext);
     const [userData, setUserData] = useState({});
-    const [loading, setLoading] = useState(true);
     const [error, setError] = useState();
     const [retryPayment, setRetryPayment] = useState(null);
     const [unfinishedPaymentChanged, setUnfinishedPaymentChanged] = useState(false);
@@ -27,10 +26,8 @@ export default function Dashboard() {
             })
             .then((response) => {
                 setUserData(response.data);
-                setLoading(false);
             })
             .catch((err) => {
-                setLoading(false);
                 if(err.response.status === 401) {
                     removeToken();
                     setAuthContext("unauthenticated");
@@ -108,12 +105,10 @@ export default function Dashboard() {
                     </div>
                 </div>
             }
-            {
-                !loading && <AccountSettings
-                                userData={userData}
-                                avatarUrl={userData.avatarURL}
-                            />
-            }
+            <AccountSettings
+                userData={userData}
+                avatarUrl={userData.avatarURL}
+            />
             {
                 error && <div>
                             <h1>{error.title}</h1>
