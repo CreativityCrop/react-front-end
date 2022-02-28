@@ -19,12 +19,14 @@ import { ReactComponent as UploadIcon } from '../../assets/icons/upload-image.sv
 
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const fileTypes = ["svg", "jpeg", "jpg", "png", "mp3", "mp4", "mpeg", "txt", "csv", "pdf", "json", "xml", "doc", "docx", "ppt", "pptx", "xls", "xlsx", "rar", "zip"];
 
 export default function SubmitIdea() {
     // Inter component context for authentication status
     const [, setAuthContext] = useContext(AuthContext);
+    const navigate = useNavigate();
     // Hook for handling form and validation
     const { register, control, formState: { errors }, handleSubmit, reset } = useForm();
     // Logic help variables
@@ -70,8 +72,9 @@ export default function SubmitIdea() {
                     }
                 })
                 .then(() => {
-                    toast.success("Idea was uploaded successfully!");
+                    toast.success("Idea was uploaded successfully! Redirecting in 5 sec.");
                     clearForm();
+                    setTimeout(() => navigate("/marketplace/buy"), 5000)
                 })
                 .catch((error) => {
                     if(error.response.status === 401) {

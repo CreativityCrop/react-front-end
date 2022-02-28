@@ -1005,6 +1005,9 @@ select {
 .justify-between {
   justify-content: space-between;
 }
+.gap-2 {
+  gap: 0.5rem;
+}
 .gap-10 {
   gap: 2.5rem;
 }
@@ -1025,9 +1028,6 @@ select {
 }
 .gap-3 {
   gap: 0.75rem;
-}
-.gap-2 {
-  gap: 0.5rem;
 }
 .gap-x-24 {
   column-gap: 6rem;
@@ -1110,6 +1110,10 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(153 169 255 / var(--tw-bg-opacity));
 }
+.bg-jasmine {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 223 103 / var(--tw-bg-opacity));
+}
 .bg-slate-300 {
   --tw-bg-opacity: 1;
   background-color: rgb(203 213 225 / var(--tw-bg-opacity));
@@ -1117,10 +1121,6 @@ select {
 .bg-yankeesblue {
   --tw-bg-opacity: 1;
   background-color: rgb(26 34 56 / var(--tw-bg-opacity));
-}
-.bg-jasmine {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 223 103 / var(--tw-bg-opacity));
 }
 .bg-slate-200 {
   --tw-bg-opacity: 1;
@@ -1409,13 +1409,13 @@ select {
 .hover\:cursor-pointer:hover {
   cursor: pointer;
 }
-.hover\:bg-sky-500:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(14 165 233 / var(--tw-bg-opacity));
-}
 .hover\:bg-amber-500:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(245 158 11 / var(--tw-bg-opacity));
+}
+.hover\:bg-sky-500:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(14 165 233 / var(--tw-bg-opacity));
 }
 .hover\:bg-purple-700:hover {
   --tw-bg-opacity: 1;

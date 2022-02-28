@@ -11,15 +11,16 @@ import AuthProvider, { setToken, MAIN_API_URL, regex_user } from '../AuthAPI';
 
 export default function Login() {
     const navigate = useNavigate();
+    const location = useLocation();
     const navigateBack = localStorage.getItem("redirect-back");
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const query = new URLSearchParams(useLocation().search);
 
     useEffect(() => {
+        const query = new URLSearchParams(location.search);
         if(query.get("email_verified")) {
             toast.success("Email is verified! You can login now.")
         }
-    });
+    }, [location]);
     
     const postLogin = (data) => {
         axios
