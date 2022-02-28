@@ -7,20 +7,14 @@ export default function Footer() {
                 <div className="ml-11 md:ml-6 sm:ml-2">
                     <h1 className="text-xl font-medium mb-2">Stay Connected</h1>
                     <div className="ml-3 md:w-[11.7rem]">
-                        <h3 className="text-lg">this will be our business e-mail</h3>
+                        <h3 className="text-lg">contact@creativitycrop.tech</h3>
                         <h3 className="text-lg">088 888 8888</h3>
-                        <div className="flex flex-row space-x-4">
-                            <p>fb</p>
-                            <p>twi</p>
-                            <p>ig</p>
-                        </div>
                     </div>
                 </div>
                 <div className="ml-11 md:-ml-5 sm:ml-0">
                     <h1 className="mb-2 text-xl font-medium">About</h1>
                     <div className="ml-3 w-72 break-words md:w-64 sm:w-44 sm:ml-2">
-                        <p>This project is the fruit of countless sleepless nights and child labor so pls give us 
-                            money so we can go to collage and not starve to death ♡
+                        <p>Go to our "About Us" page to read up about our team and how our project came to life!
                         </p>
                     </div>
                 </div>

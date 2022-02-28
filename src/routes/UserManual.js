@@ -21,7 +21,7 @@ export default function UserManual() {
                     a glimpse of the different options out marketplace provides, note some of the most liked ideas at the 
                     moment as well as get insight on whats on our about page.
                     </p>
-                <h2 className="text-2xl font-bold mb-4">Creating an account</h2>
+                <h2 className="grid grid-cols-2 text-2xl font-bold mb-4">Creating an account</h2>
                     <p className="mb-3">
                     But before you can use the marketplace, every user has to register, or if done that already, log into 
                     their account. On the Register page every proud future holder of an account must first input all their 

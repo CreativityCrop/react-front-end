@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { useReactToPrint } from "react-to-print";
 import NumberFormat from 'react-number-format';
 
+import Logo from '../header/Logo';
+
 import axios from 'axios';
 
 import AuthProvider, { MAIN_API_URL, getToken, removeToken, AuthContext } from '../AuthAPI';
@@ -94,8 +96,8 @@ export default function Invoice() {
         <div className="mb-20">
             <AuthProvider/>
             <div className="mt-6 mb-10 flex flex-row justify-center">
-                <button onClick={handlePrint} className="flex flex-row items-center gap-4 p-3 border-4 sm:w-fit">
-                    <span>{loading ? "Prepairing print" : "Print"}</span><PrintIcon className="w-12"/>
+                <button onClick={handlePrint} className="flex flex-row items-center p-3 border-4 sm:w-fit">
+                <PrintIcon className="w-12 ml-2"/><span className='ml-2'>{loading ? "Prepairing print" : null}</span>
                 </button>
             </div>
             <div className="flex flex-col w-10/12 m-auto mt-4 p-6 border-4 sm:border-2 sm:p-4" ref={componentRef}>
@@ -107,7 +109,9 @@ export default function Invoice() {
                 }
                 {invoice&&<div>
                     <div id="heading" className="flex flex-row sm:text-center justify-between">
-                        <div id="logo" className="w-60 h-40 bg-slate-300 sm:w-40 sm:h-20"></div>
+                        <div id="logo" className="w-60 h-40 sm:w-40 sm:h-20">
+                            <Logo className="w-52 md:w-40 ml-3 shrink-0"/>
+                        </div>
                         <h1 className="text-6xl sm:text-4xl sm:mt-4 sm:mb-10">Invoice</h1>
                     </div>
                     <div className="flex justify-between gap-4 mt-10 sm:mt-3 sm:grid">
