@@ -12,7 +12,7 @@ export default function FirstSection() {
                     <h3 className="">“You only live once, but if you do it right, once is enough.”</h3>
                     <h3 className="font-medium">― Mae West</h3>
                 </div>
-                <img alt="" id="right" className="xl:basis-1/2 md:basis-1/2 m-auto bg-slate-300 w-64 h-72 md:h-64 sm:w-72"/>
+                <img alt="" src="./assets/Illustrations/3.png" id="right" className="xl:basis-1/2 md:basis-1/2 m-auto bg-slate-300 w-64 h-72 md:h-64 sm:w-72"/>
             </div>
             <div className="flex justify-center mt-28">
                 <button

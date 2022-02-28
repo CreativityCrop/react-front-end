@@ -68,7 +68,7 @@ export default function App() {
             <ScrollToTop 
                 style={{borderRadius: "9999px"}}
                 component={
-                    <div className="w-full h-full text-white text-center text-3xl rounded-full opacity-80 
+                    <div className="w-full h-full text-center text-3xl rounded-full opacity-80 
                     hover:opacity-100 hover:scale-110 transition bg-maxbluepurple">↑</div>
                 }
                 smooth
@@ -181,10 +181,12 @@ export function AuthenticatedRoute({children }) {
     let auth = getToken();
     let location = useLocation();
 
-    if(!auth) {
-        localStorage.setItem("redirect-back", location.pathname);
-        return <Navigate to="/login" state={{ from: location }}/>;
-    }
+    useEffect(() => {
+        if(!auth) {
+            localStorage.setItem("redirect-back", location.pathname);
+            return <Navigate to="/login" state={{ from: location }}/>;
+        }
+    }, [auth, location]);
 
     return children;
 }

@@ -18,9 +18,14 @@ module.exports = {
                 'jasmine': '#FFDF67',
                 'maxbluepurple': '#99A9FF'
             }
+        },
+        
+        fontFamily: {
+            sans: ["WhiteRabbit", "sans-serif"],
         }
     },
     plugins: [
-        require('@tailwindcss/forms')
+        require('@tailwindcss/forms'),
+        // require('@tailwindcss/typography')
     ]
 }

@@ -59,7 +59,7 @@ export default function IdeasForSale() {
             {listIdeas}
             {loading && <p className="text-white">Loading...</p>}
             {error && <p className="text-white">Error! Please refresh, if problem persists contact us!</p>}
-            {ideas.length===0 && !error && <p className="text-white">No ideas found based on your criteria.</p>}
+            {ideas.length===0 && !error && !loading && <p className="text-white">No ideas found based on your criteria.</p>}
         </div>
     );
 }
