@@ -25,7 +25,6 @@ export default function Checkout(props) {
         if (props.clientSecret === undefined || props.clientSecret === null) {
             const url = location.pathname;
             const idea_id = url.match(/[0-9a-fA-F]{64}/g)[0];
-            console.log(getToken());
             // Create PaymentIntent as soon as the page loads
             axios
                 .get(MAIN_API_URL + "/payment/create?idea_id=" + idea_id, {
@@ -61,10 +60,14 @@ export default function Checkout(props) {
 
     const appearance = {
         theme: 'stripe',
+        variables: {
+            borderRadius: '0px',
+        }
     };
     const options = {
         clientSecret,
         appearance,
+        locale: "en"
     };
 
     return (

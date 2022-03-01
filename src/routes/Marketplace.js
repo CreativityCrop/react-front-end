@@ -8,7 +8,7 @@ export default function Marketplace() {
     return (
         <div id="marketplace" className="mt-5 xl:mt-10 mb-20 flex flex-col max-w-fit m-auto select-none">
         <div className="flex flex-col xl:flex-row">
-            <div className="order-2 xl:order-1 m-auto xl:ml-24">
+            <div className="order-2 xl:order-1 m-auto mt-0 xl:ml-24">
                 <div className="flex flex-row">
                     <NavLink
                         className={({ isActive }) => isActive 
@@ -30,7 +30,7 @@ export default function Marketplace() {
                 <Outlet/>
             </div>
             
-            {location.pathname==='/marketplace/buy' && <HottestIdeas className="bg-gradient-to-b from-yankeesblue xl:via-yankeesblue"/>}
+            {location.pathname.startsWith('/marketplace/buy') && <HottestIdeas className="bg-gradient-to-b from-yankeesblue xl:via-yankeesblue"/>}
             {location.pathname==='/marketplace/sell' && <SubmitTutorial/>}
         </div>
         </div>

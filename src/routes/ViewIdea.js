@@ -61,7 +61,7 @@ export default function ViewIdea() {
     }
 
     return(
-        <div id="ideas-list" className="max-w-fit m-auto mt-12 mb-20 p-8 md:p-4 sm:p-3 bg-maxbluepurple">
+        <div id="ideas-list" className="w-9/12 m-auto mt-12 mb-20 p-8 md:p-4 sm:p-3 bg-maxbluepurple">
             <AuthProvider/>
             {idea && ideaEntry()}
             {

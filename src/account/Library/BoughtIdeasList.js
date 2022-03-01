@@ -68,7 +68,7 @@ export default function BoughtIdeasList() {
     return(
         <div id="bought-ideas-list" className="xl:w-10/12 w-11/12 m-auto bg-yankeesblue">
             <h1 className="w-full h-16 bg-maxbluepurple text-white text-3xl p-2">Your Bought Ideas</h1>
-            <div className="flex flex-col gap-4 px-4 py-10 border-4 border-maxbluepurple border-t-0 ">
+            <div className="flex flex-col gap-6 px-5 py-6 border-4 border-maxbluepurple border-t-0 ">
                 {loading && <p className="text-white text-center text-lg">Loading...</p>}
                 {listIdeas}
                 {

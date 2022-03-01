@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 
 import AuthProvider from "../AuthAPI";
 
@@ -25,7 +25,7 @@ export default function Admin() {
 	        setWs(new WebSocket(URL));
 	      }
 	    }
-  	}, [ws.onmessage, ws.onopen, ws.onclose, messages]);
+  	}, [ws, messages]);
 
     return(
         <div className="mb-20">

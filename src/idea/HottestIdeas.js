@@ -64,7 +64,7 @@ export default function HottestIdeas(props) {
 
     return (
         <div className={"order-1 xl:order-2 xl:w-48 p-4 xl:flex xl:flex-col xl:justify-center xl:items-center xl:h-fit xl:-mt-10 " + props.className}>
-            <h1 className="break-all text-center text-slate-300 text-2xl mt-4 mb-5">Hottest ideas<br className='hidden xl:block'/> right now!</h1>
+            <h1 className="text-center text-slate-300 text-2xl mt-4 mb-5">Hottest ideas<br className='hidden xl:block'/> right now!</h1>
             <div className="md:flex sm:flex md:overflow-auto sm:overflow-auto gap-3">
                 {ideas && listIdeas}
                 {

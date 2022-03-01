@@ -66,7 +66,7 @@ export default function Login() {
                 <div id="img" className="w-96 h-82 bg-slate-300 sm:hidden">
                     <img alt="nice img" />
                 </div>
-                <div id="form" className="p-4 sm:w-80 bg-yankeesblue">
+                <div id="form" className="sm:p-4 p-6 sm:w-80 bg-yankeesblue">
                     <div className="w-full mb-4 text-center">
                         <h1 className="text-2xl break-words sm:text-xl text-slate-300">Log in to your account</h1>
                     </div>

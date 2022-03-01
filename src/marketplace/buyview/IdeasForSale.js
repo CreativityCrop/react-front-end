@@ -54,7 +54,7 @@ export default function IdeasForSale() {
     });
 
     return (
-        <div id="ideas-list" className="border-4 border-maxbluepurple">
+        <div id="ideas-list" className="flex flex-col gap-5 border-4 border-maxbluepurple">
             <AuthProvider/>
             {listIdeas}
             {loading && <p className="text-white">Loading...</p>}

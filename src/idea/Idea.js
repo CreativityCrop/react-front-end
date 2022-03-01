@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { toast  } from 'react-toastify';
 
@@ -9,10 +9,13 @@ import CategoryButton  from "./CategoryButton";
 
 export default function Idea(props) {
     return (
-        <div className="m-auto xl:flex md:flex mb-5 border-2 p-3 w-[44rem] sm:border-2 sm:w-[21.5rem] bg-white" key={props.title} ref={props.innerRef}>
-            <Image {...props} className="sm:w-20 sm:h-20"/>
-            <div>
-                <div className="flex mb-2">
+        <div className="flex flex-row  w-full m-auto gap-4 border-2 sm:border-2 p-4 bg-white " key={props.title} ref={props.innerRef}>
+            <div id="left" className="flex-none sm:hidden">
+                <Image {...props} className="sm:w-20 sm:h-20 sm:hidden"/>
+            </div>
+            <div id="right" className="w-full flex flex-col gap-3 ">
+                <div className="flex gap-2 mb-2 justify-between">
+                    <Image {...props} className="shrink-0 hidden sm:block sm:w-20 sm:h-20"/>
                     <Title {...props} />    
                     <Likes {...props} />
                 </div>
@@ -20,11 +23,15 @@ export default function Idea(props) {
                 <LongDescription {...props} />
                 <CategoriesList {...props} />
                 <FileList {...props} />
-                <div className="grid grid-cols-2 mt-3 ml-2 sm:ml-0">
-                    <Price {...props} />
-                    <MainButton {...props} />
-                    <PayoutButton {...props} />
-                    <InvoiceButton {...props} />
+                <div className="flex flex-row flex-wrap gap-4 justify-between sm:justify-center mt-3">
+                    <div>
+                        <Price {...props} className="row-span-2"/>
+                    </div>
+                    <div className="flex flex-col gap-4">
+                        <MainButton {...props} />
+                        <PayoutButton {...props} />
+                        <InvoiceButton {...props} />
+                    </div>
                 </div>
             </div>
         </div>
@@ -34,7 +41,7 @@ export default function Idea(props) {
 function Image(props) {
     return(
         <div 
-            className={"bg-slate-300 w-40 h-40 mr-3 " + props.className}
+            className={"bg-slate-300 w-40 h-40 " + props.className}
             style={
                     { 
                     backgroundImage: `url(${props.imgUrl})`,
@@ -50,8 +57,8 @@ function Image(props) {
 
 function Title(props) {
     return(
-        <div className="ml-2 break-words mr-12 sm:ml-[5.8rem] sm:mr-0 sm:-mt-[5.2rem]">
-            <h3 className="text-2xl w-[24rem] sm:w-[10.5rem] sm:text-xl">{props.title}</h3>
+        <div className={"break-words " + props.className}>
+            <h3 className="text-2xl sm:text-xl">{props.title}</h3>
         </div>
     );
 }
@@ -93,8 +100,9 @@ function Likes(props) {
                 }        
             });
     };
+
     return(
-        <div className="flex w-fit h-8 object-right-top sm:-mt-[5.2rem] sm:ml-1">
+        <div className="flex w-fit h-8 object-right-top">
             <button
                 className="text-xl"
                 type="button"
@@ -113,13 +121,12 @@ function ShortDescription(props) {
         return(null);
     }
     return(
-        <div id="short-desc" className="ml-2 mb-3 break-words w-[30rem] sm:w-80 sm:ml-0 sm:mr-0">
-            <p className="text-base">
+            <p className="text-base break-words">
                 { props.listView ?
                     props.shortDesc.substring(0, 150) + (props.shortDesc.length<=150 ? "" : " ...") :
                     props.shortDesc }
             </p>
-        </div>
+
     );
 }
 
@@ -128,7 +135,7 @@ function LongDescription(props) {
         return(null);
     }
     return(
-        <div id="long-desc" className="ml-2 mb-3 break-words w-[30rem] sm:w-80 sm:ml-0">
+        <div id="long-desc" className="break-words">
             <p>
                 { props.listView ?
                         props.longDesc.substring(0, 150) + (props.longDesc.length<=150 ? "" : " ...") :
@@ -143,7 +150,7 @@ function CategoriesList(props) {
         return(null);
     }
     return(
-        <div className="flex flex-row space-x-2 w-[30rem] ml-2 mb-3 overflow-y-auto sm:ml-0 sm:w-72">
+        <div className="flex flex-wrap gap-4 overflow-auto pb-2 ">
             { props.categories?.map( (category) => <CategoryButton key={category} category={category}/> ) }
         </div>
     );
@@ -160,15 +167,16 @@ function FileList(props) {
         return filesArr;
     };
     return(
-        <div className="flex flex-col gap-2 ml-2 mb-3 w-[30rem] sm:w-72">
+        <div className="flex flex-col gap-2 ">
             {getFiles()}
         </div>
     );
 }
 
-const downloadLink = (file_id) => MAIN_API_URL + "/files/download?file_id=" + file_id + "&token=" + getToken();
 
 function File(props) {
+    const downloadLink = (file_id) => MAIN_API_URL + "/files/download?file_id=" + file_id + "&token=" + getToken();
+
     const getIcon = (contentType) => {
         switch(contentType) {
             case "image/svg+xml":
@@ -203,13 +211,13 @@ function File(props) {
         }
     }
     return(
-        <div className="flex">
+        <div className="flex flex-wrap gap-2">
             <img 
-                className="mr-4 flex-none w-10 h-10 sm:mr-0" 
+                className="flex-none w-10 h-10" 
                 src={"/assets/icons/" + getIcon(props.file.contentType)} 
                 alt={props.file.contentType}
             />
-            <p className="mr-4 flex-auto w-64 self-center sm:mr-0 sm:w-44">
+            <p className="flex-auto self-center">
                 {props.file.name.substring(0, 25) + (props.file.name.length<=25 ? "" : " ...")}
             </p>
             <a className="block bg-amber-300 opacity-60 hover:opacity-100 hover:scale-105 transition px-3 py-2 flex-initial self-center" href={downloadLink(props.file.id)} download>Download</a>
@@ -222,16 +230,23 @@ function Price(props) {
         return(null);
     }
     return(
-        <div className="w-48 h-9 bg-yankeesblue text-slate-300 sm:w-36 flex justify-center items-center">
+        <div className={"w-48 h-9 sm:w-36 bg-yankeesblue text-slate-300 flex justify-center items-center " + props.className}>
             <h3 className="text-lg text-center ">${props.price}</h3>
         </div>
     );
 }
 
 function MainButton(props) {
+    const location = useLocation();
+
     if(props.listView === undefined && props.buyView === undefined) {
         return(null);
     }
+    if(location.pathname.endsWith("/checkout")) {
+        return(null);
+    }
+
+
     let url, text
     if(props.listView) {
         if(props.boughtView) {
@@ -252,7 +267,8 @@ function MainButton(props) {
 
     return(
         <Link
-            className="mt-1 text-lg flex items-center justify-center text-center w-48 h-8 ml-12 bg-jasmine hover:bg-amber-500 sm:w-36 sm:ml-2 hover:scale-105 hover:shadow-lg transition" 
+            className="text-lg flex items-center justify-center text-center w-48 sm:w-36 py-1
+            bg-jasmine hover:bg-amber-500 hover:scale-105 hover:shadow-lg transition" 
             to={url}
         >
             {text}
@@ -299,7 +315,7 @@ function PayoutButton(props) {
             return(
                 <button
                     type="button"
-                    className="text-lg text-center w-48 h-8 ml-12 bg-jasmine hover:bg-amber-500 sm:ml-0 sm:w-40
+                    className="text-lg text-center w-48 sm:w-36 py-1 bg-jasmine hover:bg-amber-500
                     hover:scale-105 hover:shadow-lg transition"
                     onClick={putPayout}
                 >
@@ -311,7 +327,7 @@ function PayoutButton(props) {
             return(
                 <button
                     type="button"
-                    className="text-lg text-center w-48 h-8 ml-12 bg-jasmine hover:bg-amber-500 sm:ml-0 sm:w-40
+                    className="text-lg text-center w-48 sm:w-36 py-1 bg-jasmine hover:bg-amber-500
                     hover:scale-105 hover:shadow-lg transition"
                     disabled
                 >
@@ -323,7 +339,7 @@ function PayoutButton(props) {
             return(
                 <button
                     type="button"
-                    className="text-lg text-center w-48 h-8 ml-12 bg-jasmine hover:bg-amber-500  sm:ml-0 sm:w-40
+                    className="text-lg text-center w-48 sm:w-36 py-1 bg-jasmine hover:bg-amber-500
                     hover:scale-105 hover:shadow-lg transition"
                     disabled
                 >
@@ -334,8 +350,8 @@ function PayoutButton(props) {
         case "denied":
             return(
                 <Link
-                    className="text-lg text-center w-48 h-8 ml-12 bg-yankeesblue hover:bg-purple-700 sm:ml-0 sm:w-40
-                    hover:scale-105 hover:shadow-lg transition"
+                    className="text-lg text-center w-48 sm:w-36 h-fit bg-yankeesblue
+                     hover:bg-purple-700 hover:scale-105 hover:shadow-lg transition"
                     to='#'
                     onClick={(e) => {
                         window.open("mailto:contact@creativitycrop.tech");
@@ -355,8 +371,8 @@ function InvoiceButton(props) {
     }
     return(
         <Link
-            className="text-lg text-center w-48 h-8 flex items-center justify-center ml-auto mr-0 mt-3 col-span-2 bg-maxbluepurple hover:bg-sky-500
-            sm:ml-0 sm:w-40 hover:scale-105 hover:shadow-lg transition"
+            className="text-lg text-center w-48 py-1 sm:w-36 flex items-center justify-center bg-maxbluepurple hover:bg-sky-500
+            hover:scale-105 hover:shadow-lg transition"
             to={`/invoice/${props.id}`}
         >
             Invoice

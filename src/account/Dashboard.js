@@ -123,7 +123,7 @@ export default function Dashboard() {
 function UnpaidOrder(props) {
     const userData = props.userData;
     return (
-        <div className="flex flex-col justify-center gap-16 m-auto w-fit select-none">
+        <div id="ideas-list" className="w-fit m-auto mt-12 mb-20 p-8 md:p-4 sm:p-3 bg-maxbluepurple">
             <Idea
                 key={userData.unfinishedPaymentIdea.id}
                 id={userData.unfinishedPaymentIdea.id}
@@ -133,7 +133,7 @@ function UnpaidOrder(props) {
                 price={userData.unfinishedPaymentIdea.price}
                 likes={userData.unfinishedPaymentIdea.likes}
             />
-            <Checkout className="" clientSecret={userData.unfinishedPaymentIntentSecret}/>
+            <Checkout className="mt-10 " clientSecret={userData.unfinishedPaymentIntentSecret}/>
         </div>
     )
 }
