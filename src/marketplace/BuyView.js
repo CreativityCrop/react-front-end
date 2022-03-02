@@ -4,9 +4,9 @@ import AuthProvider from '../AuthAPI';
 export default function BuyView() {
 
     return (
-        <div id="buy-view" className="flex flex-row md:flex-col sm:flex-col select-none w-fit">
+        <div id="buy-view" className="sm:max-w-[100vw] flex flex-row md:flex-col sm:flex-col select-none w-fit">
             <AuthProvider/>
-            <div className="bg-maxbluepurple xl:min-w-[47rem]  p-3">
+            <div className="bg-maxbluepurple xl:min-w-[47rem] p-3">
                 <Outlet/>
             </div>
         </div>

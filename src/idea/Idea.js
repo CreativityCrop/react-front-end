@@ -13,7 +13,7 @@ export default function Idea(props) {
             <div id="left" className="flex-none sm:hidden">
                 <Image {...props} className="sm:w-20 sm:h-20 sm:hidden"/>
             </div>
-            <div id="right" className="w-full flex flex-col gap-3 ">
+            <div id="right" className="w-full overflow-hidden flex flex-col gap-3 ">
                 <div className="flex gap-2 mb-2 justify-between">
                     <Image {...props} className="shrink-0 hidden sm:block sm:w-20 sm:h-20"/>
                     <Title {...props} />    
@@ -150,7 +150,7 @@ function CategoriesList(props) {
         return(null);
     }
     return(
-        <div className="flex flex-wrap gap-4 overflow-auto pb-2 ">
+        <div className="flex flex-nowrap gap-4 overflow-auto pb-2 ">
             { props.categories?.map( (category) => <CategoryButton key={category} category={category}/> ) }
         </div>
     );
