@@ -126,7 +126,8 @@ export default function Checkout(props) {
                     clientSecret && <Elements options={options} stripe={stripePromise}><CheckoutForm /></Elements>
                 }
             </div>
-            <button type="button" className="w-full mt-4 py-3 px-4 font-arial font-bold bg-jasmine hover:bg-amber-500 "
+            <button type="button" className="w-full mt-4 py-3 px-4 font-arial font-bold text-slate-300 bg-yankeesblue hover:bg-purple-700 
+             hover:origin-bottom hover:drop-shadow-xl transition duration-150"
                     onClick={() => cancelPayment()}
             >Cancel order </button>
         </div>
