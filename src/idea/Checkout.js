@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import axios from 'axios';
@@ -20,6 +20,7 @@ export default function Checkout(props) {
     const [, setAuthContext] = useContext(AuthContext);
     const [clientSecret, setClientSecret] = useState("");
     let location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (props.clientSecret === undefined || props.clientSecret === null) {
@@ -58,6 +59,53 @@ export default function Checkout(props) {
         }
     }, [location, props.clientSecret, setAuthContext]);
 
+    const cancelPayment = () => {
+        const url = location.pathname;
+        let idea_id;
+        console.log(url);
+        if(url.match(/[0-9a-fA-F]{64}/g) === null) {
+            console.log("No id in url");
+            idea_id = props.ideaID;
+        }
+        else {
+            console.log("ID IS IN URL");
+            idea_id = url.match(/[0-9a-fA-F]{64}/g)[0]
+        }
+        axios
+            .delete(MAIN_API_URL + `/payment/cancel?idea_id=${idea_id}`, {
+                headers: {
+                    "Token": getToken(),
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*"
+                }
+            })
+            .then((response) => {
+                toast.success("Idea payment is canceled!");
+                if(location.pathname !== '/account') {
+                    navigate("/marketplace/buy");
+                }
+                else {
+                    window.location.reload();
+                }
+            })
+            .catch((error) => {
+                if(error.response.status === 401) {
+                    removeToken();
+                    setAuthContext("unauthenticated");
+                }
+                else if (error.response) {
+                    toast.error(error.response.data.detail.msg);
+                }
+                else if (error.request) {
+                    // client never received a response, or request never left
+                }
+                else {
+                    // anything else
+                }
+            
+            });
+    };
+
     const appearance = {
         theme: 'stripe',
         variables: {
@@ -71,13 +119,16 @@ export default function Checkout(props) {
     };
 
     return (
-        <div>
+        <div className="mt-6">
             <AuthProvider />
             <div id="buy-request" className={props.className}>
                 {
                     clientSecret && <Elements options={options} stripe={stripePromise}><CheckoutForm /></Elements>
                 }
             </div>
+            <button type="button" className="w-full mt-4 py-3 px-4 font-arial font-bold bg-jasmine hover:bg-amber-500 "
+                    onClick={() => cancelPayment()}
+            >Cancel order </button>
         </div>
     );
 }

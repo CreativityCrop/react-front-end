@@ -19,7 +19,8 @@ module.exports = {
                 'maxbluepurple': '#99A9FF'
             },
             fontFamily: {
-                'whiterabbit': ['White Rabbit']
+                'whiterabbit': ['White Rabbit'],
+                'arial': ['Arial', 'sans-serif']
               }
         }
     },
