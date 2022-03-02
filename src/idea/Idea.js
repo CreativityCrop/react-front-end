@@ -9,7 +9,7 @@ import CategoryButton  from "./CategoryButton";
 
 export default function Idea(props) {
     return (
-        <div className="flex flex-row  w-full m-auto gap-4 border-2 sm:border-2 p-4 bg-white " key={props.title} ref={props.innerRef}>
+        <div className="flex flex-row w-full m-auto gap-4 border-2 sm:border-2 p-4 bg-white " key={props.title} ref={props.innerRef}>
             <div id="left" className="flex-none sm:hidden overflow-hidden">
                 <Image {...props} className="sm:w-20 sm:h-20 sm:hidden object-cover"/>
             </div>
