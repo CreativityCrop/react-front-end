@@ -12,7 +12,7 @@ export default function SecondSection(){
                     className="flex flex-row w-auto p-4 xl:p-6 gap-4 md:basis-1/2 bg-jasmine hover:scale-105 xl:transition cursor-pointer"
                     onClick={() => navigate("/marketplace/buy")}
                 >
-                    <img alt="" src={test} className="bg-slate-300 xl:w-52 xl:h-60 w-32 h-52"/>
+                    <img alt="" src="./assets/Illustrations/buy.png" className="bg-slate-300 xl:w-52 xl:h-60 w-32 h-52 object-cover"/>
                     <div className="w-52 m-auto md:w-44">
                         <h1 className="mb-3 text-3xl">Buy an idea</h1>
                         <h3 className="text-sm">
@@ -32,11 +32,11 @@ export default function SecondSection(){
                             you can post your idea in the marketplace and if someone likes it, you'll get paid for it.
                         </h3>
                     </div>
-                    <img alt="" src={test} className="bg-slate-300 xl:w-52 xl:h-60 w-32 h-52"/>
+                    <img alt="" src="./assets/Illustrations/sell.png" className="bg-slate-300 xl:w-52 xl:h-60 w-32 h-52 object-cover"/>
                 </div>
             </div>
             <div id="bottom" className="flex sm:flex-col justify-center items-center gap-16 mt-6">
-                <img alt="" src={test} className="w-60"/>
+                <img alt="" src="./assets/Illustrations/lady.png" className="w-60"/>
                 <div className="w-72 xl:w-fit">
                     <h1 className="text-3xl mb-2 text-slate-200">Have or need an idea?</h1>
                     <h3 className="mb-3 text-slate-200">Join our community by creating an account and start browsing!</h3>
