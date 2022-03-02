@@ -133,7 +133,7 @@ function UnpaidOrder(props) {
                 price={userData.unfinishedPaymentIdea.price}
                 likes={userData.unfinishedPaymentIdea.likes}
             />
-            <Checkout className="mt-10 " clientSecret={userData.unfinishedPaymentIntentSecret}/>
+            <Checkout className="" ideaID={userData.unfinishedPaymentIdea.id} clientSecret={userData.unfinishedPaymentIntentSecret}/>
         </div>
     )
 }
