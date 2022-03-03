@@ -80,7 +80,7 @@ export default function UserManual() {
                         <img src="./assets/User-manual/buying.png" alt="oh no" className="ml-2 mt-1 object-cover"/>
                     </div>
                 <h2 className="text-2xl font-bold mb-4">Uploading an idea</h2>
-                    <div className="grid grid-cols-2 gap-9">
+                    <div className="grid grid-cols-2 gap-14">
                         <img src="./assets/User-manual/Sellidea.png" alt="oh no" className="scale-110 mt-3 object-cover"/>
                         <p className="mb-5">
                         Navigating to the “Sell” tab you will be taken to a page where you will have to fill out a form. You can 

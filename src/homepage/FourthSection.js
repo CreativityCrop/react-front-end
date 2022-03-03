@@ -16,8 +16,8 @@ export default function FourthSection() {
                         Learn more about us!
                     </button>
                 </div>
-                <img alt="" src="./assets/Illustrations/2.png" className="grow order-1 sm:order-2  bg-slate-300 w-44 h-64 sm:mt-10 sm:w-40 sm:h-56 object-cover"/>
-                <img alt="" src="./assets/Illustrations/2.png" className="grow order-3 bg-slate-300 w-44 h-64 sm:mt-10 sm:w-40 sm:h-56 object-cover"/>
+                <img alt="" src="./assets/Illustrations/lilbuddy2.png" className="grow order-1 sm:order-2 sm:mt-10 sm:w-40 sm:h-56 object-cover scale-75 -mt-6"/>
+                <img alt="" src="./assets/Illustrations/lilbuddy4.png" className="grow order-3 sm:mt-10 sm:w-40 sm:h-56 object-cover scale-75 -mt-6"/>
             </div>
         </div>
     );
