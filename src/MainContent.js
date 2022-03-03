@@ -5,14 +5,14 @@ import AnimatedPage from './AnimatedPage';
 
 export default function MainContent() {
     return (
-        <AnimatedPage>
             <div className="flex flex-col min-h-screen font-whiterabbit" >
                 <Header/>
                 <div className="flex-grow container">
-                    <Outlet/>
+                    <AnimatedPage>
+                        <Outlet/>
+                    </AnimatedPage>
                 </div>
                 <Footer/>
             </div>
-        </AnimatedPage>
     );
 }
