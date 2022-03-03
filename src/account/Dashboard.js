@@ -10,7 +10,7 @@ import Idea from '../idea/Idea';
 
 export default function Dashboard() {
     const [, setAuthContext] = useContext(AuthContext);
-    const [userData, setUserData] = useState({});
+    const [userData, setUserData] = useState({avatarURL: "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="});
     const [error, setError] = useState();
     const [retryPayment, setRetryPayment] = useState(null);
     const [unfinishedPaymentChanged, setUnfinishedPaymentChanged] = useState(false);

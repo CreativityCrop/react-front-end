@@ -85,8 +85,8 @@ export default function App() {
             >
                 <h1 className="font-whiterabbit">This website uses cookies. By using it, you agree to the Terms of Service and Privacy Policy.{" "}</h1>
                 <span className="flex flex-row gap-2 font-whiterabbit text-xs ">
-                    <Link to="/terms-conditions">Terms and conditions</Link>
-                    <Link to="/privacy-policy">Privacy Policy</Link>
+                    <Link to="/terms-conditions" className="text-jasmine hover:text-purple-800">Terms and conditions</Link>
+                    <Link to="/privacy-policy" className="text-jasmine hover:text-purple-800">Privacy Policy</Link>
                 </span>
             </CookieConsent>
             <AuthContext.Provider value={[authContext, setAuthContext]}>

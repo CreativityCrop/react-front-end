@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
 import Cookies from 'universal-cookie';
@@ -43,7 +43,7 @@ export const verifyToken = async () => {
         if (jwt_decode(getToken()).exp <= Math.round(Date.now() / 1000)) {
             toast.info("Your session has expired!")
             removeToken();
-            return;
+            return "deauthenticated";
         }
         //console.log("Making a request to verify token!");
         await axios.get(MAIN_API_URL + "/auth/verify", {
@@ -54,8 +54,9 @@ export const verifyToken = async () => {
             }
         }).catch(function (error) {
             if (error.response.status === 401) {
-                //console.log("removing the token")
+                // console.log("removing the token");
                 removeToken();
+                return "deauthenticated"
             } else {
                 console.log('Error', error.message);
             }
@@ -80,21 +81,25 @@ export const verifyToken = async () => {
 // }
 
 export default function AuthProvider() {
-    let location = useLocation();
     const [, setAuthContext] = useContext(AuthContext);
+    let location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        verifyToken().then(() => {
+        verifyToken().then((result) => { 
             if (getToken() != null) {
-                // return <ContextChanger value="authenticated"/>
                 setAuthContext("authenticated");
             }
             else {
-                // return <ContextChanger value="unauthenticated"/>
                 setAuthContext("unauthenticated");
+                if(result==="deauthenticated") {
+                    localStorage.setItem("redirect-back", location.pathname);
+                    navigate("/login");
+                }
             }
         });
-    }, [location, setAuthContext]);
+    }, [location, setAuthContext, navigate]);
+
     return(null);
 }
 

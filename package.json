@@ -1,6 +1,6 @@
 {
-  "name": "react-font-end",
-  "version": "0.1.0",
+  "name": "react-front-end",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@stripe/react-stripe-js": "^1.7.0",
@@ -33,7 +33,6 @@
     "react-select": "^5.2.1",
     "react-to-print": "^2.14.4",
     "react-toastify": "^8.1.1",
-    "tailwind-scrollbar-hide": "^1.1.7",
     "universal-cookie": "^4.0.4",
     "web-vitals": "^2.1.2"
   },

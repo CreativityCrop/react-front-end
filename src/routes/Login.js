@@ -36,12 +36,12 @@ export default function Login() {
                 //console.log(response.data.accessToken, "response.data.accessToken");
                 if (response.data.accessToken) {
                     setToken(response.data.accessToken);
+                    toast.success("Successful login!", {autoClose: 1000})
                     if (navigateBack) {
                         localStorage.removeItem("redirect-back");
                         navigate(navigateBack);
                     }
                     else {
-                        toast.success("Successful login!", {autoClose: 1000})
                         navigate("/account");
                     }
                 }

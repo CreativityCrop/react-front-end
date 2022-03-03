@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 
-import test from '../assets/test.png';
 
 export default function SecondSection(){
     const navigate = useNavigate();

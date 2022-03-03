@@ -4,7 +4,9 @@
 
 @layer base {
   @font-face {
-    font-family: White Rabbit;
-    src: url(./assets/whitrabt.ttf);
+    font-family: 'White Rabbit Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('White Rabbit Regular'), url('./assets/WHITRABT.woff') format('woff');
   }
 }
