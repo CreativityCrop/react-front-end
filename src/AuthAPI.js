@@ -94,7 +94,7 @@ export default function AuthProvider() {
                 setAuthContext("unauthenticated");
                 if(result==="deauthenticated") {
                     localStorage.setItem("redirect-back", location.pathname);
-                    navigate("/login");
+                    navigate("/");
                 }
             }
         });

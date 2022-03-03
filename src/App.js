@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Routes, Route, useLocation, Navigate, Link } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import { getToken, AuthContext } from './AuthAPI';
 import { ToastContainer } from 'react-toastify';
 import ScrollToTop from "react-scroll-to-top";
@@ -90,7 +91,8 @@ export default function App() {
                 </span>
             </CookieConsent>
             <AuthContext.Provider value={[authContext, setAuthContext]}>
-                <Routes>
+            <AnimatePresence exitBeforeEnter>
+                <Routes key={location.pathname} location={location}>
                     {/* Main route */}
                     <Route path="/" element={ <MainContent/> }>
                         {/* Index route */}
@@ -165,6 +167,7 @@ export default function App() {
                         <Route path="*" element={ <NotFound/> } />
                     </Route>
                 </Routes>
+            </AnimatePresence>
             </AuthContext.Provider>
         </div>
   );
