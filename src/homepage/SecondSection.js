@@ -15,7 +15,7 @@ export default function SecondSection(){
                     <div className="w-52 m-auto md:w-44">
                         <h1 className="mb-3 text-3xl">Buy an idea</h1>
                         <h3 className="text-sm">
-                            Browse our marketplace full of wonderful ideas. You will see a short description describing it in general.
+                            Browse our marketplace full of wonderful ideas. You will see a short description outlining it in general.
                             After purchasing you will gain access to the long description, that will fully explain it to you how to apply it.
                         </h3>
                     </div>
