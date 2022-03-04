@@ -7,11 +7,11 @@ import { ReactComponent as HamburgerSVG } from '../assets/hamburger-menu.svg'
 
 export default function Header() {
     const [opened, setOpened] = useState(false);
-    const pathname  = useLocation();
+    const location = useLocation();
 
     useEffect(() => {
-      setOpened(false);
-    }, [pathname]);
+        setOpened((prevOpened) => { if(prevOpened) return false;} );
+    }, [location.pathname]);
 
     return (
         <div id="header"
