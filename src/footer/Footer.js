@@ -6,7 +6,7 @@ export default function Footer() {
             <div className="grid grid-cols-3 mb-5 sm:grid-cols-2">
                 <div className="ml-11 md:ml-6 sm:ml-2">
                     <h1 className="text-xl font-medium mb-2">Stay Connected</h1>
-                    <div className="ml-3 md:w-[11.7rem]">
+                    <div className="ml-3 md:w-[11.7rem] break-words">
                         <h3 className="text-lg">contact@creativitycrop.tech</h3>
                         <h3 className="text-lg">088 888 8888</h3>
                     </div>

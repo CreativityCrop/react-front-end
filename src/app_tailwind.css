@@ -1283,6 +1283,9 @@ select {
 .font-whiterabbit {
   font-family: White Rabbit Regular;
 }
+.font-sans {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
 .font-arial {
   font-family: Arial, sans-serif;
 }
@@ -1610,10 +1613,6 @@ select {
     height: 5rem;
   }
 
-  .sm\:h-56 {
-    height: 14rem;
-  }
-
   .sm\:h-32 {
     height: 8rem;
   }
@@ -1839,8 +1838,8 @@ select {
     gap: 2.25rem;
   }
 
-  .md\:gap-8 {
-    gap: 2rem;
+  .md\:gap-2 {
+    gap: 0.5rem;
   }
 
   .md\:overflow-auto {
@@ -1906,6 +1905,14 @@ select {
   .xl\:h-fit {
     height: -moz-fit-content;
     height: fit-content;
+  }
+
+  .xl\:w-64 {
+    width: 16rem;
+  }
+
+  .xl\:w-72 {
+    width: 18rem;
   }
 
   .xl\:w-52 {
