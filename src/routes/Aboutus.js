@@ -3,6 +3,7 @@ import FirstSec from '../aboutus/FirstSec';
 import SecSec from '../aboutus/SecSec';
 import ThirdSec from '../aboutus/ThirdSec';
 import FourthSec from '../aboutus/FourthSec';
+import Contact from '../aboutus/Contact';
 
 export default function Aboutus() {
     return (
@@ -10,6 +11,7 @@ export default function Aboutus() {
             <AuthProvider/>
             <FirstSec/>
             <SecSec/>
+            <Contact/>
             <ThirdSec/>
             <FourthSec/>
         </div>

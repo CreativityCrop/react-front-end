@@ -774,11 +774,11 @@ select {
 .h-full {
   height: 100%;
 }
-.h-64 {
-  height: 16rem;
-}
 .h-36 {
   height: 9rem;
+}
+.h-64 {
+  height: 16rem;
 }
 .h-32 {
   height: 8rem;
@@ -838,15 +838,15 @@ select {
 .w-full {
   width: 100%;
 }
-.w-96 {
-  width: 24rem;
-}
 .w-fit {
   width: -moz-fit-content;
   width: fit-content;
 }
 .w-56 {
   width: 14rem;
+}
+.w-96 {
+  width: 24rem;
 }
 .w-80 {
   width: 20rem;
@@ -1617,16 +1617,16 @@ select {
     height: 8rem;
   }
 
+  .sm\:w-44 {
+    width: 11rem;
+  }
+
   .sm\:w-\[21rem\] {
     width: 21rem;
   }
 
   .sm\:w-80 {
     width: 20rem;
-  }
-
-  .sm\:w-44 {
-    width: 11rem;
   }
 
   .sm\:w-full {
