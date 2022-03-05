@@ -70,7 +70,7 @@ export default function App() {
                 style={{borderRadius: "9999px"}}
                 component={
                     <div className="w-full h-full text-white text-center text-3xl rounded-full opacity-80 
-                    hover:opacity-100 hover:scale-110 transition bg-maxbluepurple">↑</div>
+                    hover:opacity-100 hover:scale-110 transition bg-maxbluepurple select-none">↑</div>
                 }
                 smooth
             />
