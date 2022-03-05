@@ -1766,8 +1766,12 @@ select {
     padding-bottom: 2.5rem;
   }
 
-  .sm\:pt-3 {
-    padding-top: 0.75rem;
+  .sm\:pt-10 {
+    padding-top: 2.5rem;
+  }
+
+  .sm\:pb-24 {
+    padding-bottom: 6rem;
   }
 
   .sm\:text-left {

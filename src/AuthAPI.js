@@ -82,7 +82,7 @@ export const verifyToken = async () => {
 
 export default function AuthProvider() {
     const [, setAuthContext] = useContext(AuthContext);
-    let location = useLocation();
+    const location = useLocation();
     const navigate = useNavigate();
 
     useEffect(() => {

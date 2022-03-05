@@ -35,7 +35,7 @@ import Invoice from './account/Invoice';
 
 export default function App() {
     const [authContext, setAuthContext] = useState("unauthenticated");
-    let location = useLocation();
+    const location = useLocation();
 
     useEffect(() => {
         let title;
@@ -175,7 +175,7 @@ export default function App() {
 
 export function AuthenticationRoute({children}) {
     let auth = getToken();
-    let location = useLocation();
+    const location = useLocation();
 
     if(auth) {
         return <Navigate to="/account" state={{ from: location }}/>;
@@ -186,7 +186,7 @@ export function AuthenticationRoute({children}) {
 
 export function AuthenticatedRoute({children }) {
     let auth = getToken();
-    let location = useLocation();
+    const location = useLocation();
 
     useEffect(() => {
     }, [auth, location]);

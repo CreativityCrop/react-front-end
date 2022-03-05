@@ -6,6 +6,7 @@ import { toast  } from 'react-toastify';
 import { getToken, removeToken, AuthContext, MAIN_API_URL } from '../AuthAPI';
 
 import CategoryButton  from "./CategoryButton";
+import NumberFormat from 'react-number-format';
 
 export default function Idea(props) {
     return (
@@ -231,7 +232,19 @@ function Price(props) {
     }
     return(
         <div className={"w-48 h-9 sm:w-36 bg-yankeesblue text-slate-300 flex justify-center items-center " + props.className}>
-            <h3 className="text-lg text-center ">${props.price}</h3>
+            <NumberFormat
+                className="text-lg"
+                value={props.price}
+                displayType="text"
+                prefix="$ "
+                thousandsGroupStyle="thousand"
+                thousandSeparator=" "
+                decimalScale={2}
+                fixedDecimalScale={true}
+                isNumericString={true}
+                allowNegative={false}
+            />
+            {/* <h3 className="text-lg text-center ">${props.price}</h3> */}
         </div>
     );
 }

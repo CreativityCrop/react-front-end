@@ -19,7 +19,7 @@ const stripePromise = loadStripe("pk_test_51Jx4d2Ldhfi7be410LUMAYrElAWn9sf4uB1ul
 export default function Checkout(props) {
     const [, setAuthContext] = useContext(AuthContext);
     const [clientSecret, setClientSecret] = useState("");
-    let location = useLocation();
+    const location = useLocation();
     const navigate = useNavigate();
 
     useEffect(() => {
