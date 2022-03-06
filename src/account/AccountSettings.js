@@ -55,15 +55,16 @@ export default function AccountSettings(props) {
                 window.location.reload(false);      // refresh page just in case
             })
             .catch((error) => {
-                if (error.response.status === 401) {
+                if (error.response?.status === 401) {
                     removeToken();
                     setAuthContext("unauthenticated");
+                    navigate("/login");
                 }
                 else if (error.response) {
                     toast.error(error.response.data.detail.msg);
                 }
                 else if (error.request) {
-                    // client never received a response, or request never left
+                    toast.error("Network error! Please check your connection.");
                 }
                 else {
                     // anything else

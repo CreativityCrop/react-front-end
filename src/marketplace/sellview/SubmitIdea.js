@@ -80,6 +80,7 @@ export default function SubmitIdea() {
                     if(error.response.status === 401) {
                         removeToken();
                         setAuthContext("unauthenticated");
+                        navigate("/login");
                     }
                     else if (error.response) {
                         toast.error(error.response.data.detail.msg);
@@ -96,6 +97,7 @@ export default function SubmitIdea() {
                 if(error.response.status === 401) {
                     removeToken();
                     setAuthContext("unauthenticated");
+                    navigate("/login");
                 }
                 else if (error.response) {
                     toast.error(error.response.data.detail.msg);

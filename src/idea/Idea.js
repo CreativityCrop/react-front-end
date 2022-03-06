@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast  } from 'react-toastify';
 
@@ -66,6 +66,7 @@ function Title(props) {
 
 function Likes(props) {
     const [authContext, setAuthContext] = useContext(AuthContext);
+    const navigate = useNavigate();
     const [like, setLike] = useState({});
 
     if(authContext !=="authenticated" || props.likes === undefined) {
@@ -89,6 +90,7 @@ function Likes(props) {
                 if(error.response.status === 401) {
                     removeToken();
                     setAuthContext("unauthenticated");
+                    navigate("/login");
                 }
                 else if (error.response) {
                     toast.error(error.response.data.detail.msg);
@@ -292,6 +294,7 @@ function MainButton(props) {
 function PayoutButton(props) {
     const [, setAuthContext] = useContext(AuthContext);
     const [payoutStatus, setPayoutStatus] = useState(props.payoutStatus);
+    const navigate = useNavigate();
 
     const putPayout = () => {
         axios
@@ -310,6 +313,7 @@ function PayoutButton(props) {
                 if(error.response.status === 401) {
                     removeToken();
                     setAuthContext("unauthenticated");
+                    navigate("/login");
                 }
                 else if (error.response) {
                     toast.error(error.response.data.detail.msg);

@@ -42,6 +42,7 @@ export default function Checkout(props) {
                     if(error.response.status === 401) {
                         removeToken();
                         setAuthContext("unauthenticated");
+                        navigate("/login");
                     }
                     else if (error.response) {
                         toast.error(error.response.data.detail.msg);
@@ -57,7 +58,7 @@ export default function Checkout(props) {
         else {
             setClientSecret(props.clientSecret);
         }
-    }, [location, props.clientSecret, setAuthContext]);
+    }, [location, props.clientSecret, setAuthContext, navigate]);
 
     const cancelPayment = () => {
         const url = location.pathname;
@@ -92,6 +93,7 @@ export default function Checkout(props) {
                 if(error.response.status === 401) {
                     removeToken();
                     setAuthContext("unauthenticated");
+                    navigate("/login");
                 }
                 else if (error.response) {
                     toast.error(error.response.data.detail.msg);

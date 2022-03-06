@@ -7,9 +7,11 @@ import AccountSettings from './AccountSettings';
 import Library from './Library';
 import Checkout from '../idea/Checkout';
 import Idea from '../idea/Idea';
+import { useNavigate } from 'react-router-dom';
 
 export default function Dashboard() {
     const [, setAuthContext] = useContext(AuthContext);
+    const navigate = useNavigate();
     const [userData, setUserData] = useState({avatarURL: "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="});
     const [error, setError] = useState();
     const [retryPayment, setRetryPayment] = useState(null);
@@ -31,6 +33,7 @@ export default function Dashboard() {
                 if(err.response.status === 401) {
                     removeToken();
                     setAuthContext("unauthenticated");
+                    navigate("/login");
                 }
                 else if (err.response) {
                     setError(err.response.data.detail);
@@ -43,7 +46,7 @@ export default function Dashboard() {
                 }
             
             });
-    }, [setAuthContext, unfinishedPaymentChanged]);
+    }, [setAuthContext, unfinishedPaymentChanged, navigate]);
 
     useEffect(() => {
         if(userData.unfinishedPaymentIntent) {
@@ -69,6 +72,7 @@ export default function Dashboard() {
                 if(error.response.status === 401) {
                     removeToken();
                     setAuthContext("unauthenticated");
+                    navigate("/login");
                 }
                 else if (error.response) {
                     toast.error(error.response.data.detail.msg);
