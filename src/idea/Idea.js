@@ -328,7 +328,7 @@ function PayoutButton(props) {
             return(
                 <button
                     type="button"
-                    className="text-lg text-center w-48 sm:w-36 py-1 bg-jasmine hover:bg-amber-500
+                    className="text-lg text-center w-48 sm:w-36 p-1 bg-jasmine hover:bg-amber-500
                     hover:scale-105 hover:shadow-lg transition"
                     onClick={putPayout}
                 >
@@ -340,7 +340,7 @@ function PayoutButton(props) {
             return(
                 <button
                     type="button"
-                    className="text-lg text-center w-48 sm:w-36 py-1 bg-jasmine hover:bg-amber-500
+                    className="text-lg text-center w-48 sm:w-36 p-1 bg-jasmine hover:bg-amber-500
                     hover:scale-105 hover:shadow-lg transition"
                     disabled
                 >
@@ -352,7 +352,7 @@ function PayoutButton(props) {
             return(
                 <button
                     type="button"
-                    className="text-lg text-center w-48 sm:w-36 py-1 bg-jasmine hover:bg-amber-500
+                    className="text-lg text-center w-48 sm:w-36 p-1 bg-jasmine hover:bg-amber-500
                     hover:scale-105 hover:shadow-lg transition"
                     disabled
                 >
@@ -363,7 +363,7 @@ function PayoutButton(props) {
         case "denied":
             return(
                 <Link
-                    className="text-lg text-center w-48 sm:w-36 h-fit bg-yankeesblue
+                    className="text-lg text-center text-slate-300 w-48 sm:w-36 p-1 bg-yankeesblue
                      hover:bg-purple-700 hover:scale-105 hover:shadow-lg transition"
                     to='#'
                     onClick={(e) => {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Routes, Route, useLocation, Navigate, Link } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate, Link, useNavigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { getToken, AuthContext } from './AuthAPI';
 import { ToastContainer } from 'react-toastify';
@@ -174,27 +174,31 @@ export default function App() {
 }
 
 export function AuthenticationRoute({children}) {
-    let auth = getToken();
-    const location = useLocation();
+    const auth = getToken();
+    const navigate = useNavigate();
 
-    if(auth) {
-        return <Navigate to="/account" state={{ from: location }}/>;
-    }
+    useEffect(() => {
+        if(auth) {
+            navigate("/account");
+            return(null);
+        }
+    }, [auth, navigate]);
+    
 
     return children;
 }
 
 export function AuthenticatedRoute({children }) {
-    let auth = getToken();
+    const auth = getToken();
     const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
-    }, [auth, location]);
-
-    if(!auth) {
-        localStorage.setItem("redirect-back", location.pathname);
-        return <Navigate to="/login" state={{ from: location }}/>;
-    }
+        if(!auth) {
+            localStorage.setItem("redirect-back", location.pathname);
+            navigate("/login");
+        }
+    }, [auth, location, navigate]);
 
     return children;
 }
