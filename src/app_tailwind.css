@@ -534,12 +534,6 @@ select {
 [type='file']:focus {
   outline: 1px auto -webkit-focus-ring-color;
 }
-  @font-face {
-    font-family: 'White Rabbit Regular';
-    font-style: normal;
-    font-weight: normal;
-    src: local('White Rabbit Regular'), url('./assets/WHITRABT.woff') format('woff');
-  }
 
 *, ::before, ::after {
   --tw-translate-x: 0;
