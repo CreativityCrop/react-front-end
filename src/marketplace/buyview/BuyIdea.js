@@ -27,7 +27,7 @@ export default function BuyIdea() {
                 document.title = response.data.title + " - Buy - CreativityCrop";
             })
             .catch((error) => {
-                if(error.response.status === 401) {
+                if(error.response?.status === 401) {
                     removeToken();
                     setAuthContext("unauthenticated");
                 }

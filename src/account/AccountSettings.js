@@ -58,7 +58,7 @@ export default function AccountSettings(props) {
                 if (error.response?.status === 401) {
                     removeToken();
                     setAuthContext("unauthenticated");
-                    navigate("/login");
+                    // navigate("/login");
                 }
                 else if (error.response) {
                     toast.error(error.response.data.detail.msg);

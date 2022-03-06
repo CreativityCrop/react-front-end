@@ -39,7 +39,7 @@ export default function Checkout(props) {
                     setClientSecret(response.data.clientSecret);
                 })
                 .catch((error) => {
-                    if(error.response.status === 401) {
+                    if(error.response?.status === 401) {
                         removeToken();
                         setAuthContext("unauthenticated");
                     }
@@ -89,7 +89,7 @@ export default function Checkout(props) {
                 }
             })
             .catch((error) => {
-                if(error.response.status === 401) {
+                if(error.response?.status === 401) {
                     removeToken();
                     setAuthContext("unauthenticated");
                 }

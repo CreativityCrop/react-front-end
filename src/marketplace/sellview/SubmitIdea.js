@@ -77,7 +77,7 @@ export default function SubmitIdea() {
                     setTimeout(() => navigate("/marketplace/buy"), 5000)
                 })
                 .catch((error) => {
-                    if(error.response.status === 401) {
+                    if(error.response?.status === 401) {
                         removeToken();
                         setAuthContext("unauthenticated");
                     }
@@ -93,7 +93,7 @@ export default function SubmitIdea() {
                 });
             })
             .catch((error) => {
-                if(error.response.status === 401) {
+                if(error.response?.status === 401) {
                     removeToken();
                     setAuthContext("unauthenticated");
                 }

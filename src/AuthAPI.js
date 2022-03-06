@@ -53,7 +53,7 @@ export const verifyToken = async () => {
                 "Content-Type": "application/json"
             }
         }).catch(function (error) {
-            if (error.response.status === 401) {
+            if (error.response?.status === 401) {
                 // console.log("removing the token");
                 removeToken();
                 return "deauthenticated"

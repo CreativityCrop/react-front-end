@@ -66,7 +66,7 @@ export default function Dashboard() {
                 setUnfinishedPaymentChanged(true);
             })
             .catch((error) => {
-                if(error.response.status === 401) {
+                if(error.response?.status === 401) {
                     removeToken();
                     setAuthContext("unauthenticated");
                 }
