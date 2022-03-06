@@ -174,31 +174,32 @@ export default function App() {
 }
 
 export function AuthenticationRoute({children}) {
-    const auth = getToken();
-    const navigate = useNavigate();
+    let auth = getToken();
+    const location = useLocation();
 
-    useEffect(() => {
-        if(auth) {
-            navigate("/account");
-            return(null);
-        }
-    }, [auth, navigate]);
-    
+    if(auth) {
+        return <Navigate to="/account" state={{ from: location }}/>;
+    }
 
     return children;
 }
 
 export function AuthenticatedRoute({children }) {
-    const auth = getToken();
+    let auth = getToken();
     const location = useLocation();
     const navigate = useNavigate();
 
     useEffect(() => {
         if(!auth) {
             localStorage.setItem("redirect-back", location.pathname);
-            navigate("/login");
+            navigate("/login",{ state: {from: location} });
         }
+
     }, [auth, location, navigate]);
+
+    if(!auth) {
+        return null;
+    }
 
     return children;
 }
