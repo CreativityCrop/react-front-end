@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { Outlet, useNavigate, useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import axios from 'axios';
@@ -12,7 +12,6 @@ export default function BuyIdea() {
     const [, setAuthContext] = useContext(AuthContext);
     const params = useParams();
     const [idea, setIdea] = useState({});
-    const navigate = useNavigate();
 
     useEffect(() => {
         axios
@@ -31,7 +30,6 @@ export default function BuyIdea() {
                 if(error.response.status === 401) {
                     removeToken();
                     setAuthContext("unauthenticated");
-                    navigate("/login");
                 }
                 else if (error.response) {
                     toast.error(error.response.data.detail.msg);
@@ -43,7 +41,7 @@ export default function BuyIdea() {
                     // anything else
                 }            
             });
-    }, [params.ideaID, setAuthContext, navigate]);
+    }, [params.ideaID, setAuthContext]);
 
     const ideaEntry = () => {
         return <Idea

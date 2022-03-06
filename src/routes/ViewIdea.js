@@ -1,5 +1,5 @@
 import { React, useState, useEffect, useContext } from 'react';
-import { Outlet, useNavigate, useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import AuthProvider, { MAIN_API_URL, getToken, removeToken, AuthContext } from '../AuthAPI';
@@ -11,7 +11,6 @@ export default function ViewIdea() {
     const params = useParams();
     const [idea, setIdea] = useState(null);
     const [error, setError] = useState(null);
-    const navigate = useNavigate();
 
     useEffect(() => {
         axios
@@ -30,7 +29,6 @@ export default function ViewIdea() {
                 if(err.response.status === 401) {
                     removeToken();
                     setAuthContext("unauthenticated");
-                    navigate("/login");
                 }
                 else if (err.response) {
                     setError(err.response.data.detail);
@@ -43,7 +41,7 @@ export default function ViewIdea() {
                     // anything else
                 }
             });
-    }, [params.ideaID, setAuthContext, navigate]);
+    }, [params.ideaID, setAuthContext]);
 
     
 

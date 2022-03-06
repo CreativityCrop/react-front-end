@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { MAIN_API_URL, getToken, removeToken, AuthContext } from '../../AuthAPI';
 import axios from 'axios';
 
@@ -7,7 +7,6 @@ import Idea from '../../idea/Idea';
 
 export default function BoughtIdeasList() {
     const [, setAuthContext] = useContext(AuthContext);
-    const navigate = useNavigate();
 
     const [page, setPage] = useState(0);
     const [loading, setLoading] = useState(true);
@@ -34,7 +33,6 @@ export default function BoughtIdeasList() {
                 if(err.response?.status === 401) {
                     removeToken();
                     setAuthContext("unauthenticated");
-                    navigate("/login");
                 }
                 else if (err.response) {
                     setError(err.response.data.detail);
@@ -47,7 +45,7 @@ export default function BoughtIdeasList() {
                     // anything else
                 }
             });
-    }, [page, setAuthContext, navigate]);
+    }, [page, setAuthContext]);
 
     const listIdeas = ideas.map((idea) => {
         return (

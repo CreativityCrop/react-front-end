@@ -1,5 +1,5 @@
 import { useEffect, useCallback, useRef, useState, useContext } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useReactToPrint } from "react-to-print";
 import NumberFormat from 'react-number-format';
 
@@ -12,7 +12,6 @@ import { ReactComponent as PrintIcon } from '../assets/print.svg'
 
 export default function Invoice() {
     const [, setAuthContext] = useContext(AuthContext);
-    const navigate = useNavigate();
     const params = useParams();
     const [invoice, setInvoice] = useState(null);
 
@@ -77,7 +76,6 @@ export default function Invoice() {
                 if(err.response.status === 401) {
                     removeToken();
                     setAuthContext("unauthenticated");
-                    navigate("/login");
                 }
                 else if (err.response) {
                     setError(err.response.data.detail);
@@ -90,7 +88,7 @@ export default function Invoice() {
                 }
             
             });
-    }, [params.invoiceID, setAuthContext, navigate]);
+    }, [params.invoiceID, setAuthContext]);
 
     
 
