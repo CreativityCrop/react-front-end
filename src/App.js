@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Routes, Route, useLocation, Navigate, Link, useNavigate } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
+import { Routes, Route, useLocation, Navigate, Link } from 'react-router-dom';
 import { getToken, AuthContext } from './AuthAPI';
 import { ToastContainer } from 'react-toastify';
 import ScrollToTop from "react-scroll-to-top";
@@ -91,7 +90,7 @@ export default function App() {
                 </span>
             </CookieConsent>
             <AuthContext.Provider value={[authContext, setAuthContext]}>
-            <AnimatePresence exitBeforeEnter>
+            {/* <AnimatePresence exitBeforeEnter> */}
                 <Routes key={location.pathname} location={location}>
                     {/* Main route */}
                     <Route path="/" element={ <MainContent/> }>
@@ -167,14 +166,14 @@ export default function App() {
                         <Route path="*" element={ <NotFound/> } />
                     </Route>
                 </Routes>
-            </AnimatePresence>
+            {/* </AnimatePresence> */}
             </AuthContext.Provider>
         </div>
   );
 }
 
 export function AuthenticationRoute({children}) {
-    let auth = getToken();
+    const auth = getToken();
     const location = useLocation();
 
     if(auth) {
@@ -185,20 +184,16 @@ export function AuthenticationRoute({children}) {
 }
 
 export function AuthenticatedRoute({children }) {
-    let auth = getToken();
+    const auth = getToken();
     const location = useLocation();
-    const navigate = useNavigate();
 
     useEffect(() => {
-        if(!auth) {
-            localStorage.setItem("redirect-back", location.pathname);
-            navigate("/login",{ state: {from: location} });
-        }
-
-    }, [auth, location, navigate]);
+    }, [auth]);
 
     if(!auth) {
-        return null;
+        // console.log("Not authenticated for " + location.pathname + " so go to /login");
+        localStorage.setItem("redirect-back", location.pathname);
+        return <Navigate to="/login" state={{ from: location }}/>;
     }
 
     return children;

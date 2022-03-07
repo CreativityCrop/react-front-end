@@ -13,7 +13,7 @@ export default function AnimatedPage({children}) {
             initial="hidden" // Set the initial state to variants.hidden
             animate="enter" // Animated state to variants.enter
             exit="exit" // Exit state (used later) to variants.exit
-            transition={{ type: 'linear' }} // Set the transition to linear
+            transition={{ type: 'linear', duration: 0.8 }} // Set the transition to linear
         >
             {children}
         </motion.div>

@@ -95,7 +95,7 @@ export default function PasswordReset() {
                 <AuthProvider />
                 <div className="flex justify-center gap-4 mt-28 mb-20 sm:mt-20">
                     <div id="img" className="w-96 flex items-center sm:hidden overflow-hidden">
-                        <img alt="nice img" src="./assets/Illustrations/2.png" alt="nice img" className='scale-150'/>
+                        <img alt="nice img" src="./assets/Illustrations/2.png" className='scale-150'/>
                     </div>
                     <div className="p-4 border-2 sm:w-80 bg-yankeesblue">
                         <div className=" mb-10 text-center">
@@ -143,7 +143,7 @@ export default function PasswordReset() {
                 <AuthProvider />
                 <div className="flex justify-center gap-4 mt-28 mb-20 sm:mt-20">
                     <div id="img" className="w-96 flex items-center sm:hidden overflow-hidden">
-                        <img alt="nice img" src="./assets/Illustrations/2.png" alt="nice img" className='scale-150'/>
+                        <img alt="nice img" src="./assets/Illustrations/2.png" className='scale-150'/>
                     </div>
                     <div className="p-4 border-2 sm:w-80 bg-yankeesblue">
                         <div className=" mb-10 text-center">

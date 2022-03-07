@@ -19,6 +19,8 @@ const stripePromise = loadStripe("pk_test_51Jx4d2Ldhfi7be410LUMAYrElAWn9sf4uB1ul
 export default function Checkout(props) {
     const [, setAuthContext] = useContext(AuthContext);
     const [clientSecret, setClientSecret] = useState("");
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -37,10 +39,12 @@ export default function Checkout(props) {
                 })
                 .then((response) => {
                     setClientSecret(response.data.clientSecret);
+                    setLoading(false);
                 })
                 .catch((error) => {
+                    setError(true);
                     if(error.response?.status === 401) {
-                        removeToken();
+                        removeToken("expired");
                         setAuthContext("unauthenticated");
                     }
                     else if (error.response) {
@@ -90,7 +94,7 @@ export default function Checkout(props) {
             })
             .catch((error) => {
                 if(error.response?.status === 401) {
-                    removeToken();
+                    removeToken("expired");
                     setAuthContext("unauthenticated");
                 }
                 else if (error.response) {
@@ -122,15 +126,16 @@ export default function Checkout(props) {
     return (
         <div className="mt-6">
             <AuthProvider />
+            {loading && <p className="text-white">Loading...</p>}
             <div id="buy-request" className={props.className}>
                 {
                     clientSecret && <Elements options={options} stripe={stripePromise}><CheckoutForm /></Elements>
                 }
             </div>
-            <button type="button" className="w-full mt-4 py-3 px-4 font-arial font-bold text-slate-300 bg-yankeesblue hover:bg-purple-700 
+            {!error && <button type="button" className="w-full mt-4 py-3 px-4 font-arial font-bold text-slate-300 bg-yankeesblue hover:bg-purple-700 
              hover:origin-bottom hover:drop-shadow-xl transition duration-150"
                     onClick={() => cancelPayment()}
-            >Cancel order </button>
+            >Cancel order </button>}
         </div>
     );
 }

@@ -16,8 +16,9 @@ export const AuthContext = React.createContext();
 const cookies = new Cookies();
 const cookieParams = {
     path: '/',
-    // domain: "creativitycrop.tech",
-    // secure: true, // in development, for production set to TRUE
+    //expires: ,
+    //domain: "creativitycrop.tech",
+    secure: false, // in development, for production set to TRUE
     sameSite: "strict"
 };
 
@@ -31,8 +32,11 @@ export const getToken = () => {
     return cookies.get('accessToken');
 };
 
-export const removeToken = () => {
+export const removeToken = (reason) => {
     //return localStorage.removeItem("access_token");
+    if(reason === "expired") {
+        toast.info("Your session has expired!");
+    }
     return cookies.remove('accessToken', cookieParams);
 }
 
@@ -54,7 +58,7 @@ export const verifyToken = async () => {
         }).catch(function (error) {
             if (error.response?.status === 401) {
                 // console.log("removing the token");
-                removeToken();
+                removeToken("expired");
                 return "deauthenticated"
             } else {
                 console.log('Error', error.message);

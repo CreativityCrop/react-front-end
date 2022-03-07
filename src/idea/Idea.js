@@ -87,7 +87,7 @@ function Likes(props) {
             })
             .catch((error) => {
                 if(error.response?.status === 401) {
-                    removeToken();
+                    removeToken("expired");
                     setAuthContext("unauthenticated");
                 }
                 else if (error.response) {
@@ -309,7 +309,7 @@ function PayoutButton(props) {
             })
             .catch((error) => {
                 if(error.response?.status === 401) {
-                    removeToken();
+                    removeToken("expired");
                     setAuthContext("unauthenticated");
                 }
                 else if (error.response) {

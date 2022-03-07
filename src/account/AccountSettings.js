@@ -55,10 +55,14 @@ export default function AccountSettings(props) {
                 window.location.reload(false);      // refresh page just in case
             })
             .catch((error) => {
-                if (error.response?.status === 401) {
-                    removeToken();
+                if(error.response?.status === 401) {
+                    removeToken("expired");
                     setAuthContext("unauthenticated");
-                    // navigate("/login");
+                }
+                else if (error.response?.status === 409) {
+                    toast.error(error.response.data.detail.msg);
+                    document.getElementById("email").value = props.userData.email;
+                    document.getElementById("username").value = props.userData.username;
                 }
                 else if (error.response) {
                     toast.error(error.response.data.detail.msg);
@@ -129,6 +133,7 @@ export default function AccountSettings(props) {
                 <form className="w-fit" onSubmit={handleSubmit(updateUser)}>
                     <input
                         {...register("username", { minLength: 4, maxLength: 18, pattern: regex_user })}
+                        id="username"
                         type="text"
                         className="text-lg w-64 h-10 p-1 sm:w-44 sm:text-clip"
                         placeholder="Change Username"
@@ -141,6 +146,7 @@ export default function AccountSettings(props) {
                     </div>
                     <input
                         {...register("email", { pattern: regex_email })}
+                        id="email"
                         type="email"
                         className="w-64 h-10 p-1 mt-3 sm:w-44 sm:text-clip"
                         placeholder="Change Email"
