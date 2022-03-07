@@ -16,9 +16,8 @@ export const AuthContext = React.createContext();
 const cookies = new Cookies();
 const cookieParams = {
     path: '/',
-    //expires: ,
-    //domain: "creativitycrop.tech",
-    secure: false, // in development, for production set to TRUE
+    // domain: "creativitycrop.tech",
+    // secure: true, // in development, for production set to TRUE
     sameSite: "strict"
 };
 

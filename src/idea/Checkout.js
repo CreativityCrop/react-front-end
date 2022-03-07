@@ -47,10 +47,10 @@ export default function Checkout(props) {
                         toast.error(error.response.data.detail.msg);
                     }
                     else if (error.request) {
-                        // client never received a response, or request never left
+                        toast.error("Network error! Please check your connection.");
                     }
                     else {
-                        // anything else
+                        toast.error("Unknown error! Please try again.");
                     }
                 });
         }
@@ -98,9 +98,10 @@ export default function Checkout(props) {
                 }
                 else if (error.request) {
                     // client never received a response, or request never left
+                    toast.error("Network error! Please check your connection.");
                 }
                 else {
-                    // anything else
+                    toast.error("Unknown error! Please try again.");
                 }
             
             });

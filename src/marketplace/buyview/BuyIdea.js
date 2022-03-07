@@ -12,6 +12,8 @@ export default function BuyIdea() {
     const [, setAuthContext] = useContext(AuthContext);
     const params = useParams();
     const [idea, setIdea] = useState({});
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
 
     useEffect(() => {
         axios
@@ -24,22 +26,25 @@ export default function BuyIdea() {
             })
             .then((response) => {
                 setIdea(response.data);
+                setLoading(false);
                 document.title = response.data.title + " - Buy - CreativityCrop";
             })
-            .catch((error) => {
-                if(error.response?.status === 401) {
+            .catch((err) => {
+                setLoading(false);
+                if(err.response?.status === 401) {
                     removeToken();
                     setAuthContext("unauthenticated");
                 }
-                else if (error.response) {
-                    toast.error(error.response.data.detail.msg);
+                else if (err.response) {
+                    toast.error(err.response.data.detail.msg);
                 }
-                else if (error.request) {
+                else if (err.request) {
                     // client never received a response, or request never left
+                    setError({title: "Network error!", msg: "Please check your connection."});
                 }
                 else {
-                    // anything else
-                }            
+                    setError({title: "Unknown error!", msg: "Please try again."});
+                }
             });
     }, [params.ideaID, setAuthContext]);
 
@@ -62,7 +67,15 @@ export default function BuyIdea() {
     return (
         <div id="buy-idea" className="border-4 border-maxbluepurple">
             <AuthProvider/>
-            {ideaEntry()}
+            { loading && <p className="text-white text-center text-lg">Loading...</p> }
+            {
+                error &&
+                <div className="text-white">
+                    <h1>{error.title}</h1>
+                    <p>{error.msg}</p>
+                </div>
+            }
+            {!loading && !error && ideaEntry()}
             <Outlet/>
         </div>
     );

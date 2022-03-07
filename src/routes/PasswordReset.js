@@ -52,10 +52,11 @@ export default function PasswordReset() {
                 }
                 else if (error.request) {
                     // client never received a response, or request never left
+                    toast.error("Network error! Please check your connection.");
                 }
                 else {
-                    // anything else
-                }            
+                    toast.error("Unknown error! Please try again.");
+                }           
             });
     };
 
@@ -79,9 +80,10 @@ export default function PasswordReset() {
                 }
                 else if (error.request) {
                     // client never received a response, or request never left
+                    toast.error("Network error! Please check your connection.");
                 }
                 else {
-                    // anything else
+                    toast.error("Unknown error! Please try again.");
                 }
             
             });

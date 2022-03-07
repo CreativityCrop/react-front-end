@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { MAIN_API_URL, getToken, removeToken, AuthContext } from '../../AuthAPI';
 import axios from 'axios';
 
@@ -39,10 +40,10 @@ export default function SoldIdeasList() {
                 }
                 else if (err.request) {
                     // client never received a response, or request never left
-                    setError("Network error! Please check your connection.");
+                    setError({title: "Network error!", msg: "Please check your connection."});
                 }
                 else {
-                    // anything else
+                    toast.error("Unknown error! Please try again.");
                 }
             });
     }, [page, setAuthContext]);
@@ -71,7 +72,7 @@ export default function SoldIdeasList() {
                 {loading && <p className="text-white text-center text-lg">Loading...</p>}
                 {listIdeas}
                 {
-                    listIdeas.length===0 &&
+                    listIdeas.length===0 && !loading && !error &&
                     <p className="text-white text-center text-lg">You don't thave any sold ideas yet! <br/>Go sell some at the <Link className="text-maxbluepurple" to="/marketplace/sell">Marketplace</Link>.</p>
                 }
                 {

@@ -24,10 +24,11 @@ export default function HottestIdeas(props) {
             }
             else if (err.request) {
                 // client never received a response, or request never left
+                setError({title: "Network error!", msg: "Please check your connection."});
             }
             else {
-                // anything else
-            }        
+                setError({title: "Unknown error!", msg: "Please try again."});
+            }
         });
     }, []);
 

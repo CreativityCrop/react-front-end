@@ -67,7 +67,7 @@ export default function AccountSettings(props) {
                     toast.error("Network error! Please check your connection.");
                 }
                 else {
-                    // anything else
+                    toast.error("Unknown error! Please try again.");
                 }
 
             });

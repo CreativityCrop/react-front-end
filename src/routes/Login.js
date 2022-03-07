@@ -18,7 +18,7 @@ export default function Login() {
     useEffect(() => {
         const query = new URLSearchParams(location.search);
         if(query.get("email_verified")) {
-            toast.success("Email is verified! You can login now.")
+            toast.success("Email is verified! You can login now.");
         }
     }, [location]);
     
@@ -52,9 +52,10 @@ export default function Login() {
                 }
                 else if (error.request) {
                     // client never received a response, or request never left
+                    toast.error("Network error! Please check your connection.");
                 }
                 else {
-                    // anything else
+                    toast.error("Unknown error! Please try again.");
                 }
             });
     }
