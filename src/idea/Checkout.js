@@ -16,6 +16,7 @@ import './Checkout.css';
 // This is your test publishable API key.
 const stripePromise = loadStripe("pk_test_51Jx4d2Ldhfi7be410LUMAYrElAWn9sf4uB1ulyZrYU8F0qgSUFC9bS4TQ8LNTwDx9N1MOI4rc82OHZR07ZrJQMp600LkklOSo9");
 
+// Component for payment, using the stripe elements library
 export default function Checkout(props) {
     const [, setAuthContext] = useContext(AuthContext);
     const [clientSecret, setClientSecret] = useState("");
@@ -126,16 +127,22 @@ export default function Checkout(props) {
     return (
         <div className="mt-6">
             <AuthProvider />
-            {loading && <p className="text-white">Loading...</p>}
+            { loading && <p className="text-white">Loading...</p> }
             <div id="buy-request" className={props.className}>
                 {
                     clientSecret && <Elements options={options} stripe={stripePromise}><CheckoutForm /></Elements>
                 }
             </div>
-            {!error && <button type="button" className="w-full mt-4 py-3 px-4 font-arial font-bold text-slate-300 bg-yankeesblue hover:bg-purple-700 
-             hover:origin-bottom hover:drop-shadow-xl transition duration-150"
+            {
+                !error && 
+                <button 
+                    type="button" 
+                    className="w-full mt-4 py-3 px-4 font-arial font-bold text-slate-300 bg-yankeesblue hover:bg-purple-700 
+                        hover:origin-bottom hover:drop-shadow-xl transition duration-150"
                     onClick={() => cancelPayment()}
-            >Cancel order </button>}
+                >Cancel order
+                </button>
+            }
         </div>
     );
 }

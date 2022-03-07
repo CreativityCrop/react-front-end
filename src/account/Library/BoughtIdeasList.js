@@ -6,6 +6,7 @@ import axios from 'axios';
 
 import Idea from '../../idea/Idea';
 
+// Component for listing bought ideas
 export default function BoughtIdeasList() {
     const [, setAuthContext] = useContext(AuthContext);
 
@@ -15,6 +16,7 @@ export default function BoughtIdeasList() {
     const [ideas, setIdeas] = useState([]);
     const [hasMore, setHasMore] = useState(false);
 
+    // side effect for loading ideas
     useEffect(() => {
         axios
             .get(MAIN_API_URL + `/account/ideas/bought?page=${page}`, {

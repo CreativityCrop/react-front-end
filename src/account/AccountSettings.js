@@ -37,7 +37,8 @@ export default function AccountSettings(props) {
         if (data.password !== undefined  && !!data.password) {
             formData.append("pass_hash", sha3_256(data.password));
         }
-        if (formData.entries().next().done) {    // if formData is empty don't send a request
+        // if formData is empty don't send a request
+        if (formData.entries().next().done) {
             return;
         }
         axios
@@ -49,10 +50,12 @@ export default function AccountSettings(props) {
 
                 }
             }).then((response) => {
-                if (response.data.accessToken !== undefined) {   // if username has been changed we need a new token
+                // if username has been changed we need a new token
+                if (response.data.accessToken !== undefined) {
                     setToken(response.data.token.accessToken);
                 }
-                window.location.reload(false);      // refresh page just in case
+                // refresh page just in case
+                window.location.reload(false);
             })
             .catch((error) => {
                 if(error.response?.status === 401) {
@@ -61,6 +64,7 @@ export default function AccountSettings(props) {
                 }
                 else if (error.response?.status === 409) {
                     toast.error(error.response.data.detail.msg);
+                    // if there has been a duplication error, reset form to old data
                     document.getElementById("email").value = props.userData.email;
                     document.getElementById("username").value = props.userData.username;
                 }
@@ -75,10 +79,12 @@ export default function AccountSettings(props) {
                 }
 
             });
-        setImgVisual(null);     // reset the image visualizer
+        // reset the image visualizer
+        setImgVisual(null);
     };
 
-    const handleImageChange = (e) => {    // Function to visualise the uploaded Image
+    // Function to visualise the uploaded Image
+    const handleImageChange = (e) => {
         if (e.target.files.length === 0) return;
         if (["png", "jpg", "jpeg"].indexOf(e.target.files[0].name.match(/\.[0-9a-z]+$/i)[0].replace(".", "")) === -1) {
             toast.error("Filetype not allowed! Only jpeg, jpg and png.");

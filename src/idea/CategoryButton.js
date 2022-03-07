@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
-export default function Filters(props) {
+// Component for category button that takes its value as a prop
+export default function CategoryButton(props) {
     const navigate = useNavigate();
 
     const redirect = (event) => {

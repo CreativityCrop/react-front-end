@@ -1,20 +1,23 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+
 import AuthProvider from '../../AuthAPI';
-
-import Idea from '../../idea/Idea';
 import useLoadIdeas from './useLoadIdeas';
+import Idea from '../../idea/Idea';
 
+// Component for listing ideas for sale
 export default function IdeasForSale() {
     const [pageNumber, setPageNumber] = useState(0);
     const query = new URLSearchParams(useLocation().search);
     const category = query.get("cat");
 
+    // side effect that resets page number if a category is selected
     useEffect(() => {
         setPageNumber(0);
         window.scrollTo(0, 0);
     }, [category])
 
+    // custom hook for loading ideas while scrolling
     const {
         ideas,
         loading,
@@ -56,10 +59,10 @@ export default function IdeasForSale() {
     return (
         <div id="ideas-list" className="flex flex-col gap-5 border-4 border-maxbluepurple">
             <AuthProvider/>
-            {listIdeas}
-            {loading && <p className="text-white">Loading...</p>}
-            {error && <p className="text-white">Error! Please refresh, if problem persists contact us!</p>}
-            {ideas.length===0 && !error && !loading && <p className="text-white">No ideas found based on your criteria.</p>}
+            { listIdeas }
+            { loading && <p className="text-white">Loading...</p> }
+            { error && <p className="text-white">Error! Please refresh, if problem persists contact us!</p> }
+            { ideas.length===0 && !error && !loading && <p className="text-white">No ideas found based on your criteria.</p> }
         </div>
     );
 }

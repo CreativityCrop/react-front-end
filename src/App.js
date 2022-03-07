@@ -36,6 +36,7 @@ export default function App() {
     const [authContext, setAuthContext] = useState("unauthenticated");
     const location = useLocation();
 
+    // side effect for changing page title based on location
     useEffect(() => {
         let title;
         switch(location.pathname) {
@@ -172,6 +173,7 @@ export default function App() {
   );
 }
 
+// Dummy component that does not allow accessing the login or register pages after login
 export function AuthenticationRoute({children}) {
     const auth = getToken();
     const location = useLocation();
@@ -183,6 +185,7 @@ export function AuthenticationRoute({children}) {
     return children;
 }
 
+// Dummy component for protecting routes that need authentication
 export function AuthenticatedRoute({children }) {
     const auth = getToken();
     const location = useLocation();
@@ -199,12 +202,13 @@ export function AuthenticatedRoute({children }) {
     return children;
 }
 
+// Dummy component that scrolls to top on changes to the location
 function ScrollToTopOnURL() {
-  const pathname  = useLocation();
+  const location  = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [location]);
 
   return null;
 }

@@ -10,6 +10,7 @@ import axios from 'axios';
 import AuthProvider, { MAIN_API_URL, getToken, removeToken, AuthContext } from '../AuthAPI';
 import { ReactComponent as PrintIcon } from '../assets/print.svg'
 
+// Component for invoice generation
 export default function Invoice() {
     const [, setAuthContext] = useContext(AuthContext);
     const params = useParams();
@@ -26,12 +27,7 @@ export default function Invoice() {
     const [error, setError] = useState();
     const [printing, setPrinting] = useState(false);
   
-    const handleAfterPrint = useCallback(() => {
-        // console.log("`onAfterPrint` called"); // tslint:disable-line no-console
-    }, []);
-    const handleBeforePrint = useCallback(() => {
-        // console.log("`onBeforePrint` called"); // tslint:disable-line no-console
-    }, []);
+    // functions for printing functionality
     const handleOnBeforeGetContent = useCallback(() => {
         // console.log("`onBeforeGetContent` called"); // tslint:disable-line no-console
         setLoading(true);
@@ -51,13 +47,12 @@ export default function Invoice() {
 
     const handlePrint = useReactToPrint({
         content: reactToPrintContent,
-        documentTitle: "AwesomeFileName",
+        documentTitle: document.title.value,
         onBeforeGetContent: handleOnBeforeGetContent,
-        onBeforePrint: handleBeforePrint,
-        onAfterPrint: handleAfterPrint,
         removeAfterPrint: true
     });
 
+    // side effect to load data for invoice
     useEffect(() => {
         axios
             .get(MAIN_API_URL + "/account/invoice/" + params.invoiceID, {
@@ -91,8 +86,6 @@ export default function Invoice() {
             });
     }, [params.invoiceID, setAuthContext]);
 
-    
-
     return(
         <div className="mb-20 font-sans">
             <AuthProvider/>
@@ -116,8 +109,8 @@ export default function Invoice() {
                         <h1 className="text-6xl sm:text-4xl sm:mt-4 sm:mb-10">Invoice</h1>
                     </div>
                     <div className="flex justify-between gap-4 mt-10 sm:mt-3 sm:grid">
-                        <div id="address" className="font-bold">
-                            <div>
+                        <div id="address">
+                            <div  className="font-bold">
                             <p>CreativityCrop LLC</p>
                             <p>Stara Zagora</p>
                             <p>Bulgaria</p>
@@ -130,7 +123,8 @@ export default function Invoice() {
                                 <input onChange={(e) => setCountry(e.target.value)} type="text" className="block h-8 sm:w-36 mb-1" placeholder="Country"></input>
                             </div>}
                             {printing && <div className="mt-16">
-                                <p className="font-bold">Bill To: <span className="font-normal">{invoice?.userName}</span></p>
+                                <p className="font-bold">Bill To:</p>
+                                <p className="font-normal">{invoice?.userName}</p>
                                 <p>{addr1}</p>
                                 <p>{addr2}</p>
                                 <p>{city}</p>

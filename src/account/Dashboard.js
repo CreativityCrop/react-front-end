@@ -8,13 +8,17 @@ import Library from './Library';
 import Checkout from '../idea/Checkout';
 import Idea from '../idea/Idea';
 
+// Component that holds all account related components
 export default function Dashboard() {
     const [, setAuthContext] = useContext(AuthContext);
+    // the default avatarURL is an empty image blob, to prevent image not found while loading data
     const [userData, setUserData] = useState({avatarURL: "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="});
     const [error, setError] = useState();
+    // vars to hold non finished payment things
     const [retryPayment, setRetryPayment] = useState(null);
     const [unfinishedPaymentChanged, setUnfinishedPaymentChanged] = useState(false);
 
+    // side effect to fetch account data, updates on first render and if unfinished payment has changed state
     useEffect(() => {
         axios
             .get(MAIN_API_URL + "/account", {
@@ -46,6 +50,7 @@ export default function Dashboard() {
             });
     }, [setAuthContext, unfinishedPaymentChanged]);
 
+    // side effect to spawn a toast notification for unfinished payment
     useEffect(() => {
         if(userData.unfinishedPaymentIntent) {
             toast.warning("You have unfinished payment for an idea!");
@@ -84,6 +89,7 @@ export default function Dashboard() {
             });
     };
 
+    //if payment is retried render only the component for finishing it
     if(retryPayment) {
         return(
         <UnpaidOrder userData={userData}/>
@@ -93,6 +99,7 @@ export default function Dashboard() {
     return(
         <div className="flex flex-col gap-8 select-none">
             {
+                // display div only if there is unfinished payment
                 userData.unfinishedPaymentIntent &&
                 <div id="finish-payment" className="w-fit bg-maxbluepurple p-6 m-auto   "> 
                     <p className="mb-6 sm:mb-4"><strong>You have unfinished payment for idea:</strong> {userData.unfinishedPaymentIdea.title}</p>

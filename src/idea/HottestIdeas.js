@@ -4,10 +4,12 @@ import axios from 'axios';
 
 import SmallIdea from "./SmallIdea";
 
+// Component for the Hottest Ideas collumn/row
 export default function HottestIdeas(props) {
     const [ideas, setIdeas] = useState(null);
     const [error, setError] = useState();
 
+    // side effect to load list of ideas
     useEffect(() => {
         axios.get(MAIN_API_URL + "/ideas/get-hottest", {
             headers: {
@@ -44,6 +46,7 @@ export default function HottestIdeas(props) {
         );
     });
 
+    // style is different on homepage
     if(props.homepage) {
         return(
             <div className="select-none p-4">

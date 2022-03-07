@@ -1,13 +1,12 @@
 import { useState, useEffect, useContext } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-
 import axios from 'axios';
 
 import AuthProvider, { MAIN_API_URL, getToken, removeToken, AuthContext } from '../../AuthAPI';
-
 import Idea from '../../idea/Idea';
 
+// Component for detailed idea view and initiating the buying process
 export default function BuyIdea() {
     const [, setAuthContext] = useContext(AuthContext);
     const params = useParams();
@@ -15,6 +14,7 @@ export default function BuyIdea() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
+    // side effect for loading the selected idea
     useEffect(() => {
         axios
             .get(MAIN_API_URL + "/ideas/get/" + params.ideaID, {
@@ -75,7 +75,7 @@ export default function BuyIdea() {
                     <p>{error.msg}</p>
                 </div>
             }
-            {!loading && !error && ideaEntry()}
+            { !loading && !error && ideaEntry() }
             <Outlet/>
         </div>
     );

@@ -9,10 +9,15 @@ import { toast } from "react-toastify";
 // SET TO TRUE IF MAKING A BUILD
 const IS_PRODUCTION = false;
 
+
+// when running on a local server, the api url needs to be specified, 
+// when running on the actual host it is automatically fetched
 export const MAIN_API_URL = IS_PRODUCTION ? '/api' : 'http://creativitycrop.tech/api';
 
+// creating intercomponent context for the authentication status
 export const AuthContext = React.createContext();
 
+// library for creating cookies
 const cookies = new Cookies();
 const cookieParams = {
     path: '/',
@@ -40,14 +45,15 @@ export const removeToken = (reason) => {
 }
 
 export const verifyToken = async () => {
-    //console.log("Checking token");
+    // first check if there is any token
     if (getToken() != null) {
+        // then check if it has expired
         if (jwt_decode(getToken()).exp <= Math.round(Date.now() / 1000)) {
             toast.info("Your session has expired!")
             removeToken();
             return "deauthenticated";
         }
-        //console.log("Making a request to verify token!");
+        // finally verify it at api
         await axios
         .get(MAIN_API_URL + "/auth/verify", {
             headers: {
@@ -68,22 +74,7 @@ export const verifyToken = async () => {
     }
 }
 
-// export default function AuthProvider() {
-//     const [authContext, setAuthContext] = useContext(AuthContext);
-//     useEffect(() => {
-//         verifyToken().then(() => {
-//             if (getToken() != null) {
-//                 setAuthContext("authenticated");
-//             }
-//             else {
-//                 setAuthContext("unauthenticated");
-//             }
-//         });
-//         //console.log("Token: " + getToken() + "\nStatus: " + authContext);
-//     }, [authContext, setAuthContext]);
-//     return(<TokenProvider/>);
-// }
-
+// Dummy component for regular checks of token validity, while browsing routes
 export default function AuthProvider() {
     const [, setAuthContext] = useContext(AuthContext);
     const location = useLocation();
@@ -107,6 +98,7 @@ export default function AuthProvider() {
     return(null);
 }
 
+// regular expressions used to validate forms
 export const regex_name = /^[a-zA-Z ,.'-]+$/i;
 export const regex_user = /^(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/i;
 export const regex_email = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;

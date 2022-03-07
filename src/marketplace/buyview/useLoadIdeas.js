@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { MAIN_API_URL } from '../../AuthAPI';
 import axios from 'axios';
 
+// Custom react hook for loading ideas
 export default function useLoadIdeas(pageNumber, category) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);

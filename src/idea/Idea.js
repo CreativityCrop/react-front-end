@@ -8,6 +8,7 @@ import { getToken, removeToken, AuthContext, MAIN_API_URL } from '../AuthAPI';
 import CategoryButton  from "./CategoryButton";
 import NumberFormat from 'react-number-format';
 
+// Component for idea, consisting of many subcomponents
 export default function Idea(props) {
     return (
         <div className="flex flex-row w-full m-auto gap-4 border-2 sm:border-2 p-4 bg-white " key={props.title} ref={props.innerRef}>
