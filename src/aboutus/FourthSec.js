@@ -2,8 +2,8 @@ export default function FourthSec(){
     return(
         <div className="flex justify-center bg-maxbluepurple">
             <div className="w-fit grid grid-cols-2 gap-x-24 sm:gap-x-5 gap-y-6 items-center p-6 ">
-                <h3 className="w-56 sm:w-44 text-center ">Our idea for a marketplace like this came to us one
-                day when we were </h3>
+                <h3 className="w-56 sm:w-44 text-center ">You may wonder how this unique idea came to us? wWell, we 
+                were a part of a national IT competition</h3>
                 <div className="h-36 w-56 overflow-hidden">
                     <img alt="" src="./assets/Illustrations/1.png" className="scale-150 object-cover"/>
                 </div>

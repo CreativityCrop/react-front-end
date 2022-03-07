@@ -94,8 +94,8 @@ export default function PasswordReset() {
             <div id="password-reset">
                 <AuthProvider />
                 <div className="flex justify-center gap-4 mt-28 mb-20 sm:mt-20">
-                    <div id="img" className="w-96 h-82 bg-slate-300 sm:hidden">
-                        <img alt="nice img" />
+                    <div id="img" className="w-96 flex items-center sm:hidden overflow-hidden">
+                        <img alt="nice img" src="./assets/Illustrations/2.png" alt="nice img" className='scale-150'/>
                     </div>
                     <div className="p-4 border-2 sm:w-80 bg-yankeesblue">
                         <div className=" mb-10 text-center">
@@ -112,7 +112,7 @@ export default function PasswordReset() {
                                     <input className="mt-2 w-72"
                                         type="password" placeholder="Password"
                                         {...register("password", { required: true, minLength: 6 })} />
-                                    <div id="password-error" className="text-red-500 pb-3">
+                                    <div id="password-error" className="text-red-500 pb-3 w-72 break-words">
                                         {errors.password?.type === 'minLength' && "Password must be at least 6 characters."}
                                         {errors.password?.type === 'required' && "Password is required."}
                                     </div>
@@ -121,7 +121,7 @@ export default function PasswordReset() {
                                     <input className="mt-2 w-72"
                                         type="password" placeholder="Confirm password"
                                         {...register("confirmPassword", { required: true, validate: value => value === password.current || "The passwords do not match" })} />
-                                    <div id="password-error" className="text-red-500 pb-3">
+                                    <div id="password-error" className="text-red-500 pb-3 w-72 break-words">
                                         {errors.password?.type === 'required' && "Confirm password is required."}
                                         {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
                                     </div>
@@ -142,8 +142,8 @@ export default function PasswordReset() {
         <div id="password-reset">
                 <AuthProvider />
                 <div className="flex justify-center gap-4 mt-28 mb-20 sm:mt-20">
-                    <div id="img" className="w-96 h-82 bg-slate-300 sm:hidden">
-                        <img alt="nice img" />
+                    <div id="img" className="w-96 flex items-center sm:hidden overflow-hidden">
+                        <img alt="nice img" src="./assets/Illustrations/2.png" alt="nice img" className='scale-150'/>
                     </div>
                     <div className="p-4 border-2 sm:w-80 bg-yankeesblue">
                         <div className=" mb-10 text-center">
@@ -159,7 +159,7 @@ export default function PasswordReset() {
                                 <input className="w-72 mb-2"
                                     type="email" placeholder="Email"
                                     {...register("email", { required: true, pattern: regex_email })} />
-                                <div id="email-error" className="text-red-500 pb-3">
+                                <div id="email-error" className="text-red-500 w-72 pb-3 break-words">
                                     {errors.email?.type === 'pattern' && "Email must be valid."}
                                     {errors.email?.type === 'required' && "Email is required."}
                                 </div>

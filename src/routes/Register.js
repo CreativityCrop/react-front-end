@@ -51,7 +51,7 @@ export default function Register() {
         <div>
             <AuthProvider/>
             <div className="flex justify-center items-center gap-6 mt-16 mb-20">
-                <div id="image" className="w-96 h-72 flex items-center bg-slate-300 sm:hidden overflow-hidden">
+                <div id="image" className="w-96 h-72 flex items-center sm:hidden overflow-hidden">
                     <img alt="nice img" src="./assets/Illustrations/2.png" className="scale-150"/>
                 </div>
                 <div id="form" className="sm:w-80 sm:p-4 p-6 max-w-min bg-maxbluepurple">
@@ -64,7 +64,7 @@ export default function Register() {
                                 type="text" placeholder="First name"
                                 autoComplete="on"
                                 {...register("firstName", {required: true, minLength: 2, maxLength: 30, pattern: regex_name })} />
-                            <div id="first-name-error" className="text-red-700 pb-3">
+                            <div id="first-name-error" className="text-red-700 pb-3 w-72 break-words">
                             {errors.firstName?.type === 'minLength' && "First name must be at least 2 characters."}
                             {errors.firstName?.type === 'maxLength' && "First name must be at most 30 characters."}
                             {errors.firstName?.type === 'pattern' && "First name can only include letters and [,.'-]."}
@@ -76,7 +76,7 @@ export default function Register() {
                                 type="text" placeholder="Last name"
                                 autoComplete="on"
                                 {...register("lastName", {required: true, minLength: 2, maxLength: 30, pattern: regex_name })} />
-                            <div id="last-name-error" className="text-red-700 pb-3">
+                            <div id="last-name-error" className="text-red-700 pb-3 w-72 break-words">
                             {errors.lastName?.type === 'minLength' && "Last name must be at least 2 characters."}
                             {errors.lastName?.type === 'maxLength' && "Last name must be at most 30 characters."}
                             {errors.lastName?.type === 'pattern' && "Last name can only include letters and [,.'-]."}
@@ -88,7 +88,7 @@ export default function Register() {
                                 type="email" placeholder="Email"
                                 autoComplete="on"
                                 {...register("email", {required: true, pattern: regex_email })} />
-                            <div id="email-error" className="text-red-700 pb-3">
+                            <div id="email-error" className="text-red-700 pb-3 w-72 break-words">
                             {errors.email?.type === 'pattern' && "Email must be valid."}
                             {errors.email?.type === 'required' && "Email is required."}
                             </div>                        
@@ -100,7 +100,7 @@ export default function Register() {
                                 type="text" placeholder="IBAN"
                                 autoComplete="on"
                                 {...register("iban", {required: true, validate: isIbanValid})} />
-                            <div id="iban-error" className="text-red-700 pb-3">
+                            <div id="iban-error" className="text-red-700 pb-3 w-72 break-words">
                             {errors.iban?.type === "validate" && "IBAN must be valid."}
                             {errors.iban?.type === 'required' && "IBAN is required."}
                             </div>                        
@@ -111,7 +111,7 @@ export default function Register() {
                                 type="text" placeholder="Username"
                                 autoComplete="on"
                                 {...register("username", { required: true, minLength: 4, maxLength: 18, pattern: regex_user })} />
-                            <div id="username-error" className="text-red-700 pb-3">
+                            <div id="username-error" className="text-red-700 pb-3 w-72 break-words">
                             {errors.username?.type === 'minLength' && "Username must be at least 4 characters."}
                             {errors.username?.type === 'maxLength' && "Username must be at most 18 characters."}
                             {errors.username?.type === 'pattern' && "Username can only include letters and [,.'-]."}
@@ -123,7 +123,7 @@ export default function Register() {
                                 type="password" placeholder="Password"
                                 autoComplete="off"
                                 {...register("password", {required: true, minLength: 6})} />
-                            <div id="password-error" className="text-red-700 pb-3">
+                            <div id="password-error" className="text-red-700 pb-3 w-72 break-words">
                             {errors.password?.type === 'minLength' && "Password must be at least 6 characters."}
                             {errors.password?.type === 'required' && "Password is required."}
                             </div>

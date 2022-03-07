@@ -64,7 +64,7 @@ export default function Login() {
         <div id="login">
             <AuthProvider />
             <div className="flex justify-center gap-6 mt-28 mb-20">
-                <div id="img" className="w-96 h-82 flex items-center     sm:hidden overflow-hidden">
+                <div id="img" className="w-96 flex items-center sm:hidden overflow-hidden">
                     <img alt="nice img" src="./assets/Illustrations/1.png" className="scale-150"/>
                 </div>
                 <div id="form" className="sm:p-4 p-6 sm:w-80 bg-yankeesblue">
@@ -77,7 +77,7 @@ export default function Login() {
                                 type="text" placeholder="Username"
                                 autoComplete="on"
                                 {...register("username", { required: true, minLength: 4, maxLength: 18, pattern: regex_user })} />
-                            <div id="username-error" className="text-red-500 pb-3">
+                            <div id="username-error" className="text-red-500 w-72 pb-3 break-words">
                             {errors.username?.type === 'minLength' && "Username must be at least 4 characters."}
                             {errors.username?.type === 'maxLength' && "Username must be at most 18 characters."}
                             {errors.username?.type === 'pattern' && "Username can only include letters and [,.'-]."}
@@ -89,7 +89,7 @@ export default function Login() {
                                 type="password" placeholder="Password" 
                                 autoComplete="on"
                                 {...register("password", {required: true, minLength: 6})} />
-                            <div id="password-error" className="text-red-500 pb-1 break-words">
+                            <div id="password-error" className="text-red-500 w-72 pb-1 break-words">
                             {errors.password?.type === 'minLength' && "Password must be at least 6 characters."}
                             {errors.password?.type === 'required' && "Password is required."}
                             </div>
