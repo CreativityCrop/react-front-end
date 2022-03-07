@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'White Rabbit Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: url('./WHITRABT.woff') format('woff2'), local('White Rabbit Regular');
+    font-display: swap
+}

@@ -63,8 +63,8 @@ export default function Login() {
         <div id="login">
             <AuthProvider />
             <div className="flex justify-center gap-6 mt-28 mb-20">
-                <div id="img" className="w-96 h-82 bg-slate-300 sm:hidden overflow-hidden">
-                    <img alt="nice img" src="./assets/Illustrations/1.png" className="scale-150 mt-12"/>
+                <div id="img" className="w-96 h-82 flex items-center     sm:hidden overflow-hidden">
+                    <img alt="nice img" src="./assets/Illustrations/1.png" className="scale-150"/>
                 </div>
                 <div id="form" className="sm:p-4 p-6 sm:w-80 bg-yankeesblue">
                     <div className="w-full mb-4 text-center">
@@ -88,7 +88,7 @@ export default function Login() {
                                 type="password" placeholder="Password" 
                                 autoComplete="on"
                                 {...register("password", {required: true, minLength: 6})} />
-                            <div id="password-error" className="text-red-500 pb-1">
+                            <div id="password-error" className="text-red-500 pb-1 break-words">
                             {errors.password?.type === 'minLength' && "Password must be at least 6 characters."}
                             {errors.password?.type === 'required' && "Password is required."}
                             </div>

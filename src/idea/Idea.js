@@ -6,6 +6,7 @@ import { toast  } from 'react-toastify';
 import { getToken, removeToken, AuthContext, MAIN_API_URL } from '../AuthAPI';
 
 import CategoryButton  from "./CategoryButton";
+import NumberFormat from 'react-number-format';
 
 export default function Idea(props) {
     return (
@@ -85,7 +86,7 @@ function Likes(props) {
                 setLike(response.data);
             })
             .catch((error) => {
-                if(error.response.status === 401) {
+                if(error.response?.status === 401) {
                     removeToken();
                     setAuthContext("unauthenticated");
                 }
@@ -231,7 +232,19 @@ function Price(props) {
     }
     return(
         <div className={"w-48 h-9 sm:w-36 bg-yankeesblue text-slate-300 flex justify-center items-center " + props.className}>
-            <h3 className="text-lg text-center ">${props.price}</h3>
+            <NumberFormat
+                className="text-lg"
+                value={props.price}
+                displayType="text"
+                prefix="$ "
+                thousandsGroupStyle="thousand"
+                thousandSeparator=" "
+                decimalScale={2}
+                fixedDecimalScale={true}
+                isNumericString={true}
+                allowNegative={false}
+            />
+            {/* <h3 className="text-lg text-center ">${props.price}</h3> */}
         </div>
     );
 }
@@ -294,7 +307,7 @@ function PayoutButton(props) {
                 
             })
             .catch((error) => {
-                if(error.response.status === 401) {
+                if(error.response?.status === 401) {
                     removeToken();
                     setAuthContext("unauthenticated");
                 }
@@ -315,7 +328,7 @@ function PayoutButton(props) {
             return(
                 <button
                     type="button"
-                    className="text-lg text-center w-48 sm:w-36 py-1 bg-jasmine hover:bg-amber-500
+                    className="text-lg text-center w-48 sm:w-36 p-1 bg-jasmine hover:bg-amber-500
                     hover:scale-105 hover:shadow-lg transition"
                     onClick={putPayout}
                 >
@@ -327,7 +340,7 @@ function PayoutButton(props) {
             return(
                 <button
                     type="button"
-                    className="text-lg text-center w-48 sm:w-36 py-1 bg-jasmine hover:bg-amber-500
+                    className="text-lg text-center w-48 sm:w-36 p-1 bg-jasmine hover:bg-amber-500
                     hover:scale-105 hover:shadow-lg transition"
                     disabled
                 >
@@ -339,7 +352,7 @@ function PayoutButton(props) {
             return(
                 <button
                     type="button"
-                    className="text-lg text-center w-48 sm:w-36 py-1 bg-jasmine hover:bg-amber-500
+                    className="text-lg text-center w-48 sm:w-36 p-1 bg-jasmine hover:bg-amber-500
                     hover:scale-105 hover:shadow-lg transition"
                     disabled
                 >
@@ -350,7 +363,7 @@ function PayoutButton(props) {
         case "denied":
             return(
                 <Link
-                    className="text-lg text-center w-48 sm:w-36 h-fit bg-yankeesblue
+                    className="text-lg text-center text-slate-300 w-48 sm:w-36 p-1 bg-yankeesblue
                      hover:bg-purple-700 hover:scale-105 hover:shadow-lg transition"
                     to='#'
                     onClick={(e) => {

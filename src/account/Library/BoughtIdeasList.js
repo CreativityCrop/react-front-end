@@ -30,7 +30,7 @@ export default function BoughtIdeasList() {
             })
             .catch((err) => {
                 setLoading(false);
-                if(err.response.status === 401) {
+                if(err.response?.status === 401) {
                     removeToken();
                     setAuthContext("unauthenticated");
                 }
@@ -39,6 +39,7 @@ export default function BoughtIdeasList() {
                 }
                 else if (err.request) {
                     // client never received a response, or request never left
+                    setError("Network error! Please check your connection.");
                 }
                 else {
                     // anything else

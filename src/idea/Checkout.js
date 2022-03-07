@@ -19,7 +19,7 @@ const stripePromise = loadStripe("pk_test_51Jx4d2Ldhfi7be410LUMAYrElAWn9sf4uB1ul
 export default function Checkout(props) {
     const [, setAuthContext] = useContext(AuthContext);
     const [clientSecret, setClientSecret] = useState("");
-    let location = useLocation();
+    const location = useLocation();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -39,7 +39,7 @@ export default function Checkout(props) {
                     setClientSecret(response.data.clientSecret);
                 })
                 .catch((error) => {
-                    if(error.response.status === 401) {
+                    if(error.response?.status === 401) {
                         removeToken();
                         setAuthContext("unauthenticated");
                     }
@@ -89,7 +89,7 @@ export default function Checkout(props) {
                 }
             })
             .catch((error) => {
-                if(error.response.status === 401) {
+                if(error.response?.status === 401) {
                     removeToken();
                     setAuthContext("unauthenticated");
                 }

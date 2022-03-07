@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Routes, Route, useLocation, Navigate, Link } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate, Link, useNavigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { getToken, AuthContext } from './AuthAPI';
 import { ToastContainer } from 'react-toastify';
@@ -35,7 +35,7 @@ import Invoice from './account/Invoice';
 
 export default function App() {
     const [authContext, setAuthContext] = useState("unauthenticated");
-    let location = useLocation();
+    const location = useLocation();
 
     useEffect(() => {
         let title;
@@ -70,7 +70,7 @@ export default function App() {
                 style={{borderRadius: "9999px"}}
                 component={
                     <div className="w-full h-full text-white text-center text-3xl rounded-full opacity-80 
-                    hover:opacity-100 hover:scale-110 transition bg-maxbluepurple">↑</div>
+                    hover:opacity-100 hover:scale-110 transition bg-maxbluepurple select-none">↑</div>
                 }
                 smooth
             />
@@ -175,7 +175,7 @@ export default function App() {
 
 export function AuthenticationRoute({children}) {
     let auth = getToken();
-    let location = useLocation();
+    const location = useLocation();
 
     if(auth) {
         return <Navigate to="/account" state={{ from: location }}/>;
@@ -186,14 +186,19 @@ export function AuthenticationRoute({children}) {
 
 export function AuthenticatedRoute({children }) {
     let auth = getToken();
-    let location = useLocation();
+    const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
-    }, [auth, location]);
+        if(!auth) {
+            localStorage.setItem("redirect-back", location.pathname);
+            navigate("/login",{ state: {from: location} });
+        }
+
+    }, [auth, location, navigate]);
 
     if(!auth) {
-        localStorage.setItem("redirect-back", location.pathname);
-        return <Navigate to="/login" state={{ from: location }}/>;
+        return null;
     }
 
     return children;
