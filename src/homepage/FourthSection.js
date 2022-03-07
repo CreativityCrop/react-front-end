@@ -16,8 +16,8 @@ export default function FourthSection() {
                         Learn more about us!
                     </button>
                 </div>
-                <img alt="littlebuddy2" src="./assets/Illustrations/lilbuddy2.png" className="order-1 xl:w-64 sm:order-2 sm:mt-10 object-cover scale-75 -mt-6"/>
-                <img alt="littlebuddy4" src="./assets/Illustrations/lilbuddy4.png" className="order-3 xl:w-72 sm:mt-10 object-cover scale-75 -mt-6"/>
+                <img alt="friendly triangle person" src="./assets/Illustrations/lilbuddy2.png" className="order-1 xl:w-64 sm:order-2 sm:mt-10 object-cover scale-75 -mt-6"/>
+                <img alt="friendly square person" src="./assets/Illustrations/lilbuddy4.png" className="order-3 xl:w-72 sm:mt-10 object-cover scale-75 -mt-6"/>
             </div>
         </div>
     );

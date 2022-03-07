@@ -65,7 +65,7 @@ export default function Login() {
             <AuthProvider />
             <div className="flex justify-center gap-6 mt-28 mb-20">
                 <div id="img" className="w-96 flex items-center sm:hidden overflow-hidden">
-                    <img alt="nice img" src="./assets/Illustrations/1.png" className="scale-150"/>
+                    <img alt="" src="./assets/Illustrations/1.png" className="scale-150"/>
                 </div>
                 <div id="form" className="sm:p-4 p-6 sm:w-80 bg-yankeesblue">
                     <div className="w-full mb-4 text-center">

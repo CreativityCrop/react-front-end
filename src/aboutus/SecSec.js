@@ -3,7 +3,7 @@
 export default function SecSec(){
     return(
         <div className="mt-28 sm:pb-10 flex flex-wrap justify-center items-center py-14 gap-16 md:gap-9 bg-yankeesblue text-slate-300"> 
-            <img src="./assets/Illustrations/lilbuddy3.png" alt="littlebuddy3" className="order-1 sm:order-2 "/>
+            <img src="./assets/Illustrations/lilbuddy3.png" alt="friendly triangle person" className="order-1 sm:order-2 "/>
             <div className="sm:grow sm:w-full order-2 sm:order-1 text-center w-80 sm:mt-10">
                 <h1 className="text-3xl mb-4">Our Team</h1>
                 <h3 className="mb-6">Here at CreativityCrop we have two very hard-working employees who also happen to be the owners of the company.</h3>
@@ -15,7 +15,7 @@ export default function SecSec(){
                     their high-school career, before earning thousands of supporters all around the world.</h3>
                 
             </div>
-            <img src="./assets/Illustrations/lilbuddy1.png" alt="littlebuddy1" className="order-3 sm:order-3"/>
+            <img src="./assets/Illustrations/lilbuddy1.png" alt="friendly square person" className="order-3 sm:order-3"/>
         </div>
     );
 }

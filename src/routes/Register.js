@@ -52,7 +52,7 @@ export default function Register() {
             <AuthProvider/>
             <div className="flex justify-center items-center gap-6 mt-16 mb-20">
                 <div id="image" className="w-96 h-72 flex items-center sm:hidden overflow-hidden">
-                    <img alt="nice img" src="./assets/Illustrations/2.png" className="scale-150"/>
+                    <img alt="" src="./assets/Illustrations/2.png" className="scale-150"/>
                 </div>
                 <div id="form" className="sm:w-80 sm:p-4 p-6 max-w-min bg-maxbluepurple">
                     <div className="w-full mb-4 text-center">

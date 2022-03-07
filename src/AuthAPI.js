@@ -6,19 +6,18 @@ import Cookies from 'universal-cookie';
 import jwt_decode from "jwt-decode";
 import { toast } from "react-toastify";
 
-//DEV
-export const MAIN_API_URL = 'http://creativitycrop.tech/api';
-//PROD
-//export const MAIN_API_URL = '/api';
+// SET TO TRUE IF MAKING A BUILD
+const IS_PRODUCTION = false;
+
+export const MAIN_API_URL = IS_PRODUCTION ? '/api' : 'http://creativitycrop.tech/api';
 
 export const AuthContext = React.createContext();
 
 const cookies = new Cookies();
 const cookieParams = {
     path: '/',
-    //expires: ,
-    //domain: "creativitycrop.tech",
-    secure: false, // in development, for production set to TRUE
+    domain: IS_PRODUCTION && "creativitycrop.tech",
+    secure: IS_PRODUCTION, // in development, for production set to TRUE
     sameSite: "strict"
 };
 
@@ -49,20 +48,22 @@ export const verifyToken = async () => {
             return "deauthenticated";
         }
         //console.log("Making a request to verify token!");
-        await axios.get(MAIN_API_URL + "/auth/verify", {
+        await axios
+        .get(MAIN_API_URL + "/auth/verify", {
             headers: {
                 "Token": getToken(),
                 "Access-Control-Allow-Origin": "*",
                 "Content-Type": "application/json"
             }
-        }).catch(function (error) {
+        })
+        .catch(function (error) {
             if (error.response?.status === 401) {
-                // console.log("removing the token");
                 removeToken("expired");
                 return "deauthenticated"
-            } else {
-                console.log('Error', error.message);
             }
+            // else {
+            //     console.log('Error', error.message);
+            // }
         });
     }
 }

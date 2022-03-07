@@ -52,7 +52,7 @@ export default function HottestIdeas(props) {
                     <div className="flex flex-nowrap xl:place-content-center gap-4 overflow-auto relative">
                         {ideas && listIdeas}
                         {
-                            error && <div className="text-white">
+                            error && <div className="text-yankeesblue text-center">
                                 <h1>{error.title}</h1>
                                 <p>{error.msg}</p>
                             </div>
