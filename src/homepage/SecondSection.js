@@ -8,7 +8,7 @@ export default function SecondSection(){
             <div id="top" className="flex xl:flex-row sm:flex-col justify-center gap-5 m-auto">
                 <div
                     id="buy" 
-                    className="flex flex-row w-auto p-4 xl:p-6 gap-4 md:basis-1/2 bg-jasmine hover:scale-105 xl:transition cursor-pointer"
+                    className="flex flex-row w-auto p-4 xl:p-6 gap-4 md:basis-1/2 bg-jasmine xl:hover:scale-105 xl:transition cursor-pointer"
                     onClick={() => navigate("/marketplace/buy")}
                 >
                     <img alt="buy illustration brain" src="./assets/Illustrations/buy.png" className="xl:w-52 xl:h-60 w-32 h-52 object-cover"/>
@@ -22,7 +22,7 @@ export default function SecondSection(){
                 </div>
                 <div
                     id="sell"
-                    className="flex flex-row w-auto p-4 xl:p-6 gap-4 md:basis-1/2 bg-jasmine hover:scale-105 xl:transition cursor-pointer"
+                    className="flex flex-row w-auto p-4 xl:p-6 gap-4 md:basis-1/2 bg-jasmine xl:hover:scale-105 xl:transition cursor-pointer"
                     onClick={() => navigate("/marketplace/sell")}
                 >
                     <div className="w-52 m-auto md:w-44">

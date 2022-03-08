@@ -3,24 +3,39 @@
 export default function ThirdSec(){
     return(
             <div className="p-6 bg-jasmine">
-                <h1 className="mb-7 text-3xl text-center">Our Sponsors</h1>
-                <div className="flex flex-row justify-center gap-8 sm:grid grid-cols-2 sm:ml-14">
-                    <a href="https://github.com/" target="_blank" rel="noopener noreferrer"
-                    className="w-32 h-32 hover:scale-105 transition opacity-60 hover:opacity-100 duration-200 hover:cursor-pointer">
-                        <img src="./assets/Sponsors/github.png" alt="github" className="pt-6"/>
-                    </a>
-                    <a href="https://www.mailgun.com/" target="_blank" rel="noopener noreferrer"
-                    className="w-32 h-32 hover:scale-105 transition opacity-60 hover:opacity-100 duration-200 hover:cursor-pointer">
-                        <img src="./assets/Sponsors/mailgun.png" alt="mailgun" className="pt-10"/>
-                    </a>
-                    <a href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer" 
-                    className="w-32 h-32 hover:scale-105 transition opacity-60 hover:opacity-100 duration-200 hover:cursor-pointer">
-                        <img src="./assets/Sponsors/tailwind.png" alt="tailwind" className="scale-75"/>
-                    </a>
-                    <a href="https://stripe.com/" target="_blank" rel="noopener noreferrer" 
-                    className="w-32 h-32 hover:scale-105 transition opacity-60 hover:opacity-100 duration-200 hover:cursor-pointer">
-                        <img src="./assets/Sponsors/stripe.png" alt="stripe" className="pt-6"/>
-                    </a>
+                <h1 className="mb-7 text-3xl text-center">Built using the magic provided by</h1>
+                <div className="flex flex-wrap justify-center gap-8">
+                    <div
+                        onClick={ () => window.open('https://github.com/', '_blank')}
+                        className="flex items-center h-32 w-32 first-letter:hover:scale-105 transition opacity-60 hover:opacity-100 duration-200 hover:cursor-pointer"
+                    >
+                        <img src="./assets/Sponsors/github.png" alt="github"/>
+                    </div>
+                    <div
+                        onClick={ () => window.open('https://reactjs.org/', '_blank')}
+                        className="flex items-center h-32 w-32 first-letter:hover:scale-105 transition opacity-60 hover:opacity-100 duration-200 hover:cursor-pointer">
+                        <img src="./assets/Sponsors/react.png" alt="react"/>
+                    </div>
+                    <div
+                        onClick={ () => window.open('https://tailwindcss.com/', '_blank')}
+                        className="flex items-center h-32 w-32 first-letter:hover:scale-105 transition opacity-60 hover:opacity-100 duration-200 hover:cursor-pointer">
+                        <img src="./assets/Sponsors/tailwind.png" alt="tailwind"/>
+                    </div>
+                    <div
+                        onClick={ () => window.open('https://stripe.com/', '_blank')}
+                        className="flex items-center h-32 w-32 first-letter:hover:scale-105 transition opacity-60 hover:opacity-100 duration-200 hover:cursor-pointer">
+                        <img src="./assets/Sponsors/stripe.png" alt="stripe"/>
+                    </div>
+                    <div
+                        onClick={ () => window.open('https://www.mailgun.com/', '_blank')}
+                        className="flex items-center h-32 w-32 first-letter:hover:scale-105 transition opacity-60 hover:opacity-100 duration-200 hover:cursor-pointer">
+                        <img src="./assets/Sponsors/mailgun.png" alt="mailgun"/>
+                    </div>
+                    {/* <div
+                        onClick={ () => window.open('https://www.mailgun.com/', '_blank')}
+                        className="flex items-center h-32 w-32 first-letter:hover:scale-105 transition opacity-60 hover:opacity-100 duration-200 hover:cursor-pointer">
+
+                    </div> */}
                 </div>
             </div>
     );

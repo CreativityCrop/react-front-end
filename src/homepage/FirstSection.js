@@ -2,7 +2,7 @@
 
 export default function FirstSection() {
     return(
-        <div id="first-section" className="md:mx-6 xl:mb-52">
+        <div id="first-section" className="xl:mb-52 p-4">
             <div className=" flex flex-row sm:flex-col gap-4 justify-center">
                 <div id="left" className="flex flex-col gap-2 justify-center text-center xl:basis-1/2 md:basis-1/2 m-auto">
                     <div className="">

@@ -1686,10 +1686,6 @@ select {
     width: 11.7rem;
   }
 
-  .sm\:min-w-\[80\%\] {
-    min-width: 80%;
-  }
-
   .sm\:max-w-\[100vw\] {
     max-width: 100vw;
   }
@@ -1774,6 +1770,10 @@ select {
 
   .sm\:pb-24 {
     padding-bottom: 6rem;
+  }
+
+  .sm\:pr-96 {
+    padding-right: 24rem;
   }
 
   .sm\:text-center {
