@@ -37,7 +37,6 @@ API endpoint must be changed to reflect you current environment. In `src/AuthAPI
 
 The production build can be deployed on any compatible web server. For more information see [Deployment](https://create-react-app.dev/docs/deployment/).
 
-
 ## License
 
 [GNU GPLv3](https://www.gnu.org/licenses/gpl-3.0.html)

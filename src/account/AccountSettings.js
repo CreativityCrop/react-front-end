@@ -86,6 +86,10 @@ export default function AccountSettings(props) {
     // Function to visualise the uploaded Image
     const handleImageChange = (e) => {
         if (e.target.files.length === 0) return;
+        if(Math.floor(e.target.files[0].size * 	0.00000095367432) > 500) {
+            toast.error("File too large, size limit is 500 MB!");
+            return;
+        }
         if (["png", "jpg", "jpeg"].indexOf(e.target.files[0].name.match(/\.[0-9a-z]+$/i)[0].replace(".", "")) === -1) {
             toast.error("Filetype not allowed! Only jpeg, jpg and png.");
             return;

@@ -44,12 +44,13 @@ export default function SubmitIdea() {
     };
 
     const postIdea = (data) => {
+        const status = toast.loading("Idea is uploading...", {autoClose: 5000});
         axios
             .post(MAIN_API_URL + "/ideas/post", {
                 "title": data.title,
                 "short_desc": data.shortDescription,
                 "long_desc": data.longDescription,
-                "categories": data.categories.map(category => category.value),
+                "categories": data.categories?.map(category => category.value),
                 "price": data.price
             }, {
                 headers: {
@@ -59,6 +60,7 @@ export default function SubmitIdea() {
                 }
             })
             .then((response) => {
+                toast.update(status, { render: "Idea is uploaded! Uploading files now!", type: "loading", isLoading: true, autoClose: 5000 });
                 const formData = new FormData();
                 files.forEach( file => {
                     formData.append("files", file, file.name);
@@ -72,7 +74,8 @@ export default function SubmitIdea() {
                     }
                 })
                 .then(() => {
-                    toast.success("Idea was uploaded successfully! Redirecting in 5 sec.");
+                    toast.update(status, { render: "Files uploaded successfully! Redirecting in 5 sec.", type: "success", isLoading: false, autoClose: 5000 });
+                    // toast.success("Idea was uploaded successfully! Redirecting in 5 sec.");
                     clearForm();
                     setTimeout(() => navigate("/marketplace/buy"), 5000)
                 })
@@ -82,14 +85,17 @@ export default function SubmitIdea() {
                         setAuthContext("unauthenticated");
                     }
                     else if (error.response) {
-                        toast.error(error.response.data.detail.msg);
+                        toast.update(status, { render: error.response.data.detail.msg, type: "error", isLoading: false, autoClose: 5000 });
+                        // toast.error(error.response.data.detail.msg);
                     }
                     else if (error.request) {
                         // client never received a response, or request never left
-                        toast.error("Network error! Please check your connection.");
+                        toast.update(status, { render: "Network error! Please check your connection.", type: "error", isLoading: false, autoClose: 5000 });
+                        // toast.error("Network error! Please check your connection.");
                     }
                     else {
-                        toast.error("Unknown error! Please try again.");
+                        toast.update(status, { render: "Unknown error! Please try again.", type: "error", isLoading: false, autoClose: 5000 });
+                        // toast.error("Unknown error! Please try again.");
                     }
                 });
             })
@@ -99,14 +105,17 @@ export default function SubmitIdea() {
                     setAuthContext("unauthenticated");
                 }
                 else if (error.response) {
-                    toast.error(error.response.data.detail.msg);
+                    toast.update(status, { render: error.response.data.detail.msg, type: "error", isLoading: false, autoClose: 5000 });
+                    // toast.error(error.response.data.detail.msg);
                 }
                 else if (error.request) {
                     // client never received a response, or request never left
-                    toast.error("Network error! Please check your connection.");
+                    toast.update(status, { render: "Network error! Please check your connection.", type: "error", isLoading: false, autoClose: 5000 });
+                    // toast.error("Network error! Please check your connection.");
                 }
                 else {
-                    toast.error("Unknown error! Please try again.");
+                    toast.update(status, { render: "Unknown error! Please try again.", type: "error", isLoading: false, autoClose: 5000 });
+                    // toast.error("Unknown error! Please try again.");
                 }
             });
     }
@@ -115,6 +124,10 @@ export default function SubmitIdea() {
     const handleImageChange = (e) => {
         if(e.target.files.length === 0 ) return;
         // console.log("NEW FILE");
+        if(Math.floor(e.target.files[0].size * 	0.00000095367432) > 500) {
+            toast.error("File too large, size limit is 500 MB!");
+            return;
+        }
         if(["png", "jpg", "jpeg"].indexOf(e.target.files[0].name.match(/\.[0-9a-z]+$/i)[0].replace(".","")) === -1) {
             toast.error("Filetype not allowed! Only jpeg, jpg and png.");
             return;
@@ -158,6 +171,10 @@ export default function SubmitIdea() {
 
     // Logic for file upload field
     const handleFileUploadChange = (file) => {
+        if(Math.floor(file.size * 	0.00000095367432) > 500) {
+            toast.error("File too large, size limit is 500 MB!");
+            return;
+        }
         if(fileTypes.indexOf(file.name.match(/\.[0-9a-z]+$/i)[0].replace(".","")) === -1) {
             toast.error("Filetype not allowed!");
             return;

@@ -42,18 +42,18 @@ export default function Idea(props) {
 
 function Image(props) {
     return(
-        <div 
-            className={"bg-slate-300 w-40 h-40 " + props.className}
+        <img 
+            className={"bg-slate-300 w-40 h-40 pointer-events-none " + props.className}
+            src={props.imgUrl}
+            alt=""
             style={
-                    { 
-                    backgroundImage: `url(${props.imgUrl})`,
+                    {
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "center center"
                 }
             }
-        >
-        </div>
+        />
     );
 }
 
