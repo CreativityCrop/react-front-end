@@ -30,7 +30,7 @@ export default function Register() {
             })
             .catch((error) => {
                 if (error.response) {
-                    console.log(error.response);
+                    // console.log(error.response);
                     toast.error(error.response.data.detail.msg);
                 }
                 else if (error.request) {

@@ -67,13 +67,13 @@ export default function Checkout(props) {
     const cancelPayment = () => {
         const url = location.pathname;
         let idea_id;
-        console.log(url);
+        // console.log(url);
         if(url.match(/[0-9a-fA-F]{64}/g) === null) {
-            console.log("No id in url");
+            // console.log("No id in url");
             idea_id = props.ideaID;
         }
         else {
-            console.log("ID IS IN URL");
+            // console.log("ID IS IN URL");
             idea_id = url.match(/[0-9a-fA-F]{64}/g)[0]
         }
         axios

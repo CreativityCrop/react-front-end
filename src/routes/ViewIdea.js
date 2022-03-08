@@ -31,8 +31,8 @@ export default function ViewIdea() {
                     setAuthContext("unauthenticated");
                 }
                 else if (err.response) {
+                    // console.log(err);
                     setError(err.response.data.detail);
-                    console.log(err);
                 }
                 else if (err.request) {
                     // client never received a response, or request never left
