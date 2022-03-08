@@ -1083,6 +1083,9 @@ select {
 .break-words {
   overflow-wrap: break-word;
 }
+.break-all {
+  word-break: break-all;
+}
 .rounded-full {
   border-radius: 9999px;
 }
@@ -1365,6 +1368,10 @@ select {
 .text-red-700 {
   --tw-text-opacity: 1;
   color: rgb(185 28 28 / var(--tw-text-opacity));
+}
+.text-yankeesblue {
+  --tw-text-opacity: 1;
+  color: rgb(26 34 56 / var(--tw-text-opacity));
 }
 .text-gray-600 {
   --tw-text-opacity: 1;
