@@ -60,7 +60,7 @@ export default function IdeasForSale() {
         <div id="ideas-list" className="flex flex-col gap-5 border-4 border-maxbluepurple">
             <AuthProvider/>
             { listIdeas }
-            { loading && <p className="text-white">Loading...</p> }
+            { loading && <p className="text-white sm:pr-96">Loading...</p> }
             { error && <p className="text-white">Error! Please refresh, if problem persists contact us!</p> }
             { ideas.length===0 && !error && !loading && <p className="text-white">No ideas found based on your criteria.</p> }
         </div>
