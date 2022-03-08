@@ -59,7 +59,7 @@ function Image(props) {
 
 function Title(props) {
     return(
-        <div className={"break-words " + props.className}>
+        <div className={"break-all " + props.className}>
             <h3 className="text-2xl sm:text-xl">{props.title}</h3>
         </div>
     );
