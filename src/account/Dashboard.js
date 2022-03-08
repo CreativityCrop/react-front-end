@@ -131,7 +131,7 @@ export default function Dashboard() {
 function UnpaidOrder(props) {
     const userData = props.userData;
     return (
-        <div id="ideas-list" className="w-fit m-auto mt-12 mb-20 p-8 md:p-4 sm:p-3 bg-maxbluepurple">
+        <div id="ideas-list" className="w-fit m-auto mt-12 mb-20 p-8 md:p-4 sm:p-3 bg-maxbluepurple select-none">
             <Idea
                 key={userData.unfinishedPaymentIdea.id}
                 id={userData.unfinishedPaymentIdea.id}

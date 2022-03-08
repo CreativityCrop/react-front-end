@@ -60,6 +60,7 @@ export default function Checkout(props) {
                 });
         }
         else {
+            setLoading(false);
             setClientSecret(props.clientSecret);
         }
     }, [location, props.clientSecret, setAuthContext]);

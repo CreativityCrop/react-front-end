@@ -9,15 +9,19 @@
 }
 
 #payment-message {
-    color: rgb(105, 115, 134);
+    color: white;
     font-size: 16px;
     line-height: 20px;
-    padding-top: 12px;
+    padding-bottom: 18px;
     text-align: center;
 }
 
 #payment-element {
     margin-bottom: 24px;
+}
+
+.Label {
+    color: yellow !important;
 }
 
 /* Buttons and links */
@@ -69,7 +73,7 @@
 .spinner:before,
 .spinner:after {
     position: absolute;
-    content: "";
+    content: '';
 }
 
 .spinner:before {
@@ -106,13 +110,6 @@
     100% {
         -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
-    }
-}
-
-@media only screen and (max-width: 600px) {
-    form {
-        width: 80vw;
-        min-width: initial;
     }
 }
 
