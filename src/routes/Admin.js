@@ -28,7 +28,7 @@ export default function Admin() {
                 setWs(new WebSocket(URL));
             }
         }
-    }, []);
+    }, [ws]);
 
     return (
         <div className="mb-20">

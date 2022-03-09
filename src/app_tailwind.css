@@ -813,8 +813,8 @@ select {
 .h-7 {
   height: 1.75rem;
 }
-.h-24 {
-  height: 6rem;
+.h-\[6\.5rem\] {
+  height: 6.5rem;
 }
 .h-fit {
   height: -moz-fit-content;
@@ -907,9 +907,6 @@ select {
 }
 .w-1\/4 {
   width: 25%;
-}
-.w-\[41\.5rem\] {
-  width: 41.5rem;
 }
 .max-w-fit {
   max-width: -moz-fit-content;
@@ -1588,10 +1585,6 @@ select {
     margin-top: 5rem;
   }
 
-  .sm\:ml-4 {
-    margin-left: 1rem;
-  }
-
   .sm\:block {
     display: block;
   }
@@ -1618,6 +1611,10 @@ select {
 
   .sm\:h-32 {
     height: 8rem;
+  }
+
+  .sm\:h-\[4\.5rem\] {
+    height: 4.5rem;
   }
 
   .sm\:w-\[21rem\] {
@@ -1667,10 +1664,6 @@ select {
 
   .sm\:w-32 {
     width: 8rem;
-  }
-
-  .sm\:w-48 {
-    width: 12rem;
   }
 
   .sm\:w-\[11\.7rem\] {
