@@ -43,6 +43,7 @@ export default function Checkout(props) {
                     setLoading(false);
                 })
                 .catch((error) => {
+                    setLoading(false);
                     setError(true);
                     if(error.response?.status === 401) {
                         removeToken("expired");
