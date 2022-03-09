@@ -11,7 +11,7 @@ export default function MarketplaceButtons(){
                     className="flex flex-row w-auto p-4 xl:p-6 gap-4 md:basis-1/2 bg-jasmine xl:hover:scale-105 xl:transition cursor-pointer"
                     onClick={() => navigate("/marketplace/buy")}
                 >
-                    <img alt="buy illustration brain" src="./assets/Illustrations/buy.png" className="xl:w-52 xl:h-60 w-32 h-52 object-cover"/>
+                    <img alt="buy illustration brain" src="./assets/illustrations/buy.png" className="xl:w-52 xl:h-60 w-32 h-52 object-contain"/>
                     <div className="w-52 m-auto md:w-44">
                         <h1 className="mb-3 text-3xl">Buy an idea</h1>
                         <h3 className="text-sm">
@@ -31,11 +31,11 @@ export default function MarketplaceButtons(){
                             you can post your idea in the marketplace and if someone likes it, you'll get paid for it.
                         </h3>
                     </div>
-                    <img alt="sell illustration brain" src="./assets/Illustrations/sell.png" className="xl:w-52 xl:h-60 w-32 h-52 object-cover"/>
+                    <img alt="sell illustration brain" src="./assets/illustrations/sell.png" className="xl:w-52 xl:h-60 w-32 h-52 object-contain"/>
                 </div>
             </div>
             <div id="bottom" className="flex sm:flex-col justify-center items-center gap-16 mt-6">
-                <img alt="a beatiful lady" src="./assets/Illustrations/lady.png" className="w-60"/>
+                <img alt="a beatiful lady" src="./assets/illustrations/lady.png" className="w-60 object-contain"/>
                 <div className="w-72 xl:w-fit">
                     <h1 className="text-3xl mb-2 text-slate-200">Have or need an idea?</h1>
                     <h3 className="mb-3 text-slate-200">Join our community by creating an account and start browsing!</h3>

@@ -12,7 +12,7 @@ export default function Intro() {
                     <h3 className="">“You only live once, but if you do it right, once is enough.”</h3>
                     <h3 className="font-medium">― Mae West</h3>
                 </div>
-                <img src="./assets/Illustrations/1.png" alt="" id="right" className="xl:basis-1/2 md:basis-1/2 m-auto w-64 h-72 md:h-64 sm:w-72 object-cover"/>
+                <img src="./assets/illustrations/1.png" alt="" id="right" className="xl:basis-1/2 md:basis-1/2 m-auto w-64 h-72 md:h-64 sm:w-72 object-cover"/>
             </div>
             <div className="flex justify-center mt-28">
                 <button

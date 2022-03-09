@@ -30,10 +30,10 @@ export default function UserManual() {
                         confirm their e-mail address. Of course, every user is expected to read our PrivacyPolicy document as well 
                         as our TermsAndConditions document, which can be found on the bottom of the page, beside out copyright mark.
                         </p>
-                        <img src="./assets/User-manual/Creatinganaccount.png" alt="register page" className="w-96 object-cover"/>
+                        <img src="./assets/user-manual/Creatinganaccount.png" alt="register page" className="w-96 object-cover"/>
                     </div>
                     <div className="grid grid-cols-2 gap-20">
-                        <img src="./assets/User-manual/login.png" alt="login page" className="w-96 mt-10 object-cover"/>
+                        <img src="./assets/user-manual/login.png" alt="login page" className="w-96 mt-10 object-cover"/>
                         <p className="mb-5">
                         Once that's done the new registered user will have to log into their new account by going to the “Log in” page. 
                         All you have to do is input your information in the specified fields before navigating down to the “log in” button. 
@@ -50,11 +50,11 @@ export default function UserManual() {
                         tab, you can browse the newest updated ideas, as well as see the most liked ones on the bar on the right side 
                         of the screen. Under the “Sell” tab the user will be able to upload an idea to our marketplace
                         </p>
-                        <img src="./assets/User-manual/buytab.png" alt="marketplace" className="w-96 ml-8 -mt-2 object-cover"/>
+                        <img src="./assets/user-manual/buytab.png" alt="marketplace" className="w-96 ml-8 -mt-2 object-cover"/>
                     </div>
                 <h2 className="text-2xl font-bold mb-4">Idea construction</h2>
                     <div className="grid grid-cols-2">
-                        <img src="./assets/User-manual/idea.png" alt="idea construction" className="mt-11 object-cover"/>
+                        <img src="./assets/user-manual/idea.png" alt="idea construction" className="mt-11 object-cover"/>
                         <p className="mb-5">
                         Each idea consists of couple of things: header image, title, short description as well as a long description, 
                         categories, file list and a price. Depending on where you are in the site, each idea will also have a button 
@@ -77,11 +77,11 @@ export default function UserManual() {
                         to pay for it before you. After purchasing, the idea will appear in your account library under the 
                         “Bought Ideas” subtitle
                         </p>
-                        <img src="./assets/User-manual/buying.png" alt="buying an idea" className="ml-2 mt-1 object-cover"/>
+                        <img src="./assets/user-manual/buying.png" alt="buying an idea" className="ml-2 mt-1 object-cover"/>
                     </div>
                 <h2 className="text-2xl font-bold mb-4">Selling an idea</h2>
                     <div className="grid grid-cols-2 gap-14">
-                        <img src="./assets/User-manual/Sellidea.png" alt="selling an idea" className="scale-110 mt-3 object-cover"/>
+                        <img src="./assets/user-manual/Sellidea.png" alt="selling an idea" className="scale-110 mt-3 object-cover"/>
                         <p className="mb-5">
                         Navigating to the “Sell” tab you will be taken to a page where you will have to fill out a form. You can 
                         select an image to upload as the heading image of the idea. Make sure it is accurate to the selling idea. 
