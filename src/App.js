@@ -77,11 +77,11 @@ export default function App() {
             <ScrollToTopOnURL/>
             <CookieConsent
                 location="bottom"
-                buttonText="I consenst!"
+                buttonText="I consent!"
                 cookieName="cookie-consent"
                 style={{ background: "#2B373B" }}
+                buttonClasses="font-whiterabbit bg-jasmine hover:bg-amber-500 hover:scale-105 hover:origin-bottom hover:-rotate-3 hover:drop-shadow-xl transition duration-150"
                 buttonStyle={{ color: "#4e503b", fontSize: "13px", marginRight: '3rem' }}
-                buttonClasses="font-whiterabbit bg-jasmine hover:bg-amber-500"
                 expires={150}
             >
                 <h1 className="font-whiterabbit">This website uses cookies. By using it, you agree to the Terms of Service and Privacy Policy.{" "}</h1>

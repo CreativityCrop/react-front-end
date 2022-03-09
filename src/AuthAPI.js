@@ -6,6 +6,7 @@ import Cookies from 'universal-cookie';
 import jwt_decode from "jwt-decode";
 import { toast } from "react-toastify";
 
+// IMPORTANT IMPORTANT IMPORTANT 
 // SET TO TRUE IF MAKING A BUILD
 const IS_PRODUCTION = false;
 

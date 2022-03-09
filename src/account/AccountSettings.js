@@ -91,7 +91,7 @@ export default function AccountSettings(props) {
             return;
         }
         if (["png", "jpg", "jpeg"].indexOf(e.target.files[0].name.match(/\.[0-9a-z]+$/i)[0].replace(".", "")) === -1) {
-            toast.error("Filetype not allowed! Only jpeg, jpg and png.");
+            toast.error("File type not allowed! Only jpeg, jpg and png.");
             return;
         }
         //console.log("picture: ", e.target.files);
