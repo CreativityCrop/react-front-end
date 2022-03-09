@@ -1,6 +1,6 @@
 
 
-export default function FirstSection() {
+export default function Intro() {
     return(
         <div id="first-section" className="xl:mb-52 p-4">
             <div className=" flex flex-row sm:flex-col gap-4 justify-center">

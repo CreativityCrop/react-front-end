@@ -1,6 +1,6 @@
 
 
-export default function ThirdSec(){
+export default function Tools() {
     return(
             <div className="p-6 bg-jasmine">
                 <h1 className="mb-7 text-3xl text-center">Built using the magic provided by</h1>

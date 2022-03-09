@@ -1,4 +1,4 @@
-export default function FourthSec(){
+export default function History() {
     return(
             <div className="flex flex-col justify-center gap-10 p-8 bg-maxbluepurple xl:px-32">
                 <div className="flex flex-wrap justify-center items-center gap-10">

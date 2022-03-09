@@ -1,6 +1,4 @@
-
-
-export default function SecSec(){
+export default function Team() {
     return(
         <div className="flex flex-wrap justify-center items-center mt-28 sm:pb-10 py-14 px-4 md:px-0 gap-16 md:gap-6 bg-yankeesblue text-slate-300"> 
             <img src="./assets/Illustrations/lilbuddy3.png" alt="friendly triangle person" className="max-w-full"/>

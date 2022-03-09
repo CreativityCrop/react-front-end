@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
 
-export default function SecondSection(){
+export default function MarketplaceButtons(){
     const navigate = useNavigate();
     return (
         <div id="second-section" className="bg-yankeesblue md:p-6 xl:p-6 sm:py-6">

@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-
-export default function FourthSection() {
+export default function LearnAboutUs() {
     const navigate = useNavigate();
 
     return(
