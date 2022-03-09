@@ -13,7 +13,7 @@ export default function ThirdSec(){
                     </div>
                     <div
                         onClick={ () => window.open('https://reactjs.org/', '_blank')}
-                        className="flex items-center h-32 w-32 first-letter:hover:scale-105 transition opacity-60 hover:opacity-100 duration-200 hover:cursor-pointer">
+                        className="flex items-center h-32 w-32 scale-75 first-letter:hover:scale-105 transition opacity-60 hover:opacity-100 duration-200 hover:cursor-pointer">
                         <img src="./assets/Sponsors/react.png" alt="react"/>
                     </div>
                     <div
