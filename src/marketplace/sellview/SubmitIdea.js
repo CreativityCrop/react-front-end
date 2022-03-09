@@ -237,7 +237,7 @@ export default function SubmitIdea() {
                     </div>
 
                     {/* Title and short description */}
-                    <div className="grow ml-3 sm:ml-4">
+                    <div className="grow ml-3 sm:-ml-3">
                         <input 
                             className="w-full mb-3 sm:w-48"
                             type="text"
