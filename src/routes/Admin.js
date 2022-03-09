@@ -6,34 +6,43 @@ import { useState, useEffect } from "react";
 
 import AuthProvider, { getToken } from "../AuthAPI";
 
-const URL = `ws://creativitycrop.tech/api/admin/log?token=${getToken()}`;
+const URL = `//creativitycrop.tech/api/admin/log?token=${getToken()}`;
 
 export default function Admin() {
     const [messages, setMessages] = useState([]);
-    const [ws, setWs] = useState(new WebSocket(URL));
+    const [ws, setWs] = useState(null);
 
     useEffect(() => {
-        ws.onopen = () => {
-            console.log('WebSocket Connected');
-        }
+        if(ws !== null) {
+            ws.onopen = () => {
+                console.log('WebSocket Connected');
+            }
 
-        ws.onmessage = (e) => {
-            const message = e.data;
-            setMessages((prevMessages) => [message, ...prevMessages]);
-        }
+            ws.onmessage = (e) => {
+                const message = e.data;
+                setMessages((prevMessages) => [message, ...prevMessages]);
+            }
 
-        return () => {
-            ws.onclose = () => {
-                console.log('WebSocket Disconnected');
-                setWs(new WebSocket(URL));
+            return () => {
+                ws.onclose = () => {
+                    console.log('WebSocket Disconnected');
+                }
             }
         }
     }, [ws]);
 
+    useEffect(() => {
+        const prefix = window.location.protocol;
+        setWs(new WebSocket( prefix + URL));
+    }, []);
+
     return (
-        <div className="mb-20">
+        <div className="mt-5 mb-20">
             <AuthProvider />
-            {messages.map(item => <p key={item}>{item}</p>)}
+            <h1 className="mb-10 text-black text-center text-3xl">FastAPI uvicorn log</h1>
+            <div className="overflow-y-auto h-[30rem]">
+                {messages.map(item => <p key={item}>{item}</p>)}
+            </div>
         </div>
     );
 }
