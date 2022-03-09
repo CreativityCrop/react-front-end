@@ -135,7 +135,7 @@ export default function AccountSettings(props) {
                     </div>
                     :
                     <div  className="w-48 h-48 sm:w-36 sm:h-36 flex items-center justify-center overflow-hidden">
-                        {props.avatarUrl && <img src={props.avatarUrl} alt="user avatar" className="w-48 h-48 object-cover justify-center"/>}
+                        {props.avatarUrl && <img src={props.avatarUrl} alt="user avatar" className="w-48 h-48 object-cover justify-center pointer-events-none"/>}
                         {!props.avatarUrl && <p className="text-center px-2">Click edit to upload a new image</p>}
                     </div>
                 }

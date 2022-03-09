@@ -130,11 +130,14 @@ export default function Checkout(props) {
         <div className="mt-6">
             <AuthProvider />
             { loading && <p className="text-white">Loading...</p> }
-            <div id="buy-request" className={props.className}>
-                {
-                    clientSecret && <Elements options={options} stripe={stripePromise}><CheckoutForm /></Elements>
-                }
-            </div>
+            {
+                clientSecret && 
+                <div id="buy-request" className={props.className}>
+                    <p className="text-white font-bold">You have 10 minutes to finish your order. After that it will be canceled.</p>
+                    <p className="text-white font-bold mb-6">If there is any problem, do not hesitate to contact us.</p>
+                    <Elements options={options} stripe={stripePromise}><CheckoutForm /></Elements>
+                </div>
+            }
             {
                 !error && 
                 <button 
