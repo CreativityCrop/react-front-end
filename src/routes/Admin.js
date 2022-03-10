@@ -19,7 +19,7 @@ export default function Admin() {
             }
 
             ws.onmessage = (e) => {
-                const message = e.data;
+                const message = e.data + "\n";
                 setMessages((prevMessages) => [message, ...prevMessages]);
             }
 
@@ -32,16 +32,19 @@ export default function Admin() {
     }, [ws]);
 
     useEffect(() => {
-        const prefix = window.location.protocol;
-        setWs(new WebSocket( prefix + URL));
+        switch(window.location.protocol) {
+            case "https:": setWs(new WebSocket("wss:" + URL)); break;
+            default: setWs(new WebSocket("ws:" + URL)); break;
+        }
     }, []);
 
     return (
         <div className="mt-5 mb-20">
             <AuthProvider />
             <h1 className="mb-10 text-black text-center text-3xl">FastAPI uvicorn log</h1>
-            <div className="overflow-y-auto h-[30rem]">
-                {messages.map(item => <p key={item}>{item}</p>)}
+            <div className="overflow-y-auto ">
+                {/* {messages.map(item => <p key={Date.now() + item}>{item}</p>)} */}
+                <textarea className="w-full h-[30rem] " id="log" value={messages} />
             </div>
         </div>
     );

@@ -807,6 +807,9 @@ select {
 .h-\[100\%\] {
   height: 100%;
 }
+.h-\[30rem\] {
+  height: 30rem;
+}
 .h-14 {
   height: 3.5rem;
 }
@@ -1065,6 +1068,9 @@ select {
 }
 .overflow-hidden {
   overflow: hidden;
+}
+.overflow-y-auto {
+  overflow-y: auto;
 }
 .truncate {
   overflow: hidden;
@@ -1362,6 +1368,10 @@ select {
 .text-yankeesblue {
   --tw-text-opacity: 1;
   color: rgb(26 34 56 / var(--tw-text-opacity));
+}
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 .text-gray-600 {
   --tw-text-opacity: 1;
