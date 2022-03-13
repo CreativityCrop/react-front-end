@@ -77,7 +77,7 @@ export default function App() {
             <ScrollToTopOnURL/>
             <CookieConsent
                 location="bottom"
-                buttonText="I consenst!"
+                buttonText="I consent!"
                 cookieName="cookie-consent"
                 style={{ background: "#2B373B" }}
                 buttonStyle={{ color: "#4e503b", fontSize: "13px", marginRight: '3rem' }}

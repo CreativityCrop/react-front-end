@@ -41,10 +41,10 @@ export default function Admin() {
     return (
         <div className="mt-5 mb-20">
             <AuthProvider />
-            <h1 className="mb-10 text-black text-center text-3xl">FastAPI uvicorn log</h1>
+            <h1 className="mb-10 text-black text-center text-3xl select-none">FastAPI uvicorn log</h1>
             <div className="overflow-y-auto ">
                 {/* {messages.map(item => <p key={Date.now() + item}>{item}</p>)} */}
-                <textarea className="w-full h-[30rem] " id="log" value={messages} />
+                <textarea className="w-full h-[30rem] " id="log" value={messages} readonly/>
             </div>
         </div>
     );

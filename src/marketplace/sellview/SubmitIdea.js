@@ -176,7 +176,7 @@ export default function SubmitIdea() {
             return;
         }
         if (fileTypes.indexOf(file.name.match(/\.[0-9a-z]+$/i)[0].replace(".", "")) === -1) {
-            toast.error("Filetype not allowed!");
+            toast.error("File type not allowed!");
             return;
         }
         if (files.map(function (e) { return e.name; }).indexOf(file.name) !== -1) {
@@ -306,9 +306,10 @@ export default function SubmitIdea() {
                     <FileUploader
                         children={
                             <div className="h-10 border py-2 px-3 -ml-2 text-grey-darkest cursor-pointer truncate bg-white">
-                                Click or drop to upload!<span className="text-xs right-0">{fileTypes.map((item) => " " + item)}</span>
+                                Click or drop to upload!<span className="text-xs right-0" title={fileTypes.map((item) => " " + item)}>{fileTypes.map((item) => " " + item)}</span>
                             </div>
                         }
+                        types={fileTypes}
                         handleChange={handleFileUploadChange}
                         name="file"
                     />
