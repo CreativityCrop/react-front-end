@@ -53,6 +53,7 @@ export default function ViewIdea() {
                 title={idea.title}
                 shortDesc={idea.shortDesc}
                 longDesc={idea.longDesc}
+                boughtView={idea.longDesc}
                 categories={idea.categories}
                 files={idea.files}
                 price={idea.price}
