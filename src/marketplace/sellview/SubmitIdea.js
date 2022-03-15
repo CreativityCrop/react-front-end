@@ -74,7 +74,7 @@ export default function SubmitIdea() {
                     }
                 })
                     .then(() => {
-                        toast.update(status, { render: "Files uploaded successfully! Redirecting in 5 sec.", type: "success", isLoading: false, autoClose: 5000 });
+                        toast.update(status, { render: "Idea and files uploaded successfully! Redirecting in 5 sec.", type: "success", isLoading: false, autoClose: 5000 });
                         // toast.success("Idea was uploaded successfully! Redirecting in 5 sec.");
                         clearForm();
                         setTimeout(() => navigate("/marketplace/buy"), 5000)
@@ -189,11 +189,11 @@ export default function SubmitIdea() {
     // Creates a list of fles
     const filesList = files.map((file) => {
         return (
-            <div key={file.name} className="flex justify-between">
-                <p>{file.name}</p>
+            <div key={file.name} className="flex justify-between gap-2 items-center">
+                <p className="break-all shrink">{file.name}</p>
                 <button
                     type="button"
-                    className="w-7 h-7 text-white bg-red-400 hover:bg-red-600"
+                    className="w-7 h-7 shrink-0 text-white bg-red-400 hover:bg-red-600"
                     onClick={() => setFiles(files.filter(item => item !== file))}
                 >
                     x

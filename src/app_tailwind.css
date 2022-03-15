@@ -933,6 +933,9 @@ select {
 .shrink-0 {
   flex-shrink: 0;
 }
+.shrink {
+  flex-shrink: 1;
+}
 .flex-grow {
   flex-grow: 1;
 }
@@ -1819,6 +1822,10 @@ select {
 
   .md\:w-44 {
     width: 11rem;
+  }
+
+  .md\:w-\[45rem\] {
+    width: 45rem;
   }
 
   .md\:max-w-\[100vw\] {
