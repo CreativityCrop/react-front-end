@@ -12,6 +12,20 @@ import AuthProvider, { getToken, MAIN_API_URL } from "../AuthAPI";
 
 const URL = `//creativitycrop.tech/api/admin/log?token=${getToken()}`;
 
+const modalStyle = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+        width: "30rem",
+        borderRadius: "000px",
+        fontFamily: "White Rabbit Regular"
+    },
+};
+
 export default function Admin() {
     // const location = useLocation();
 
@@ -52,8 +66,12 @@ const convertDate = (date) => {
 
 function Users() {
     const [users, setUsers] = useState([]);
-    const [modalPasswordOpened, setModalPasswordOpened] = useState(false);
+    
+    const [modalPasswordUpdate, setModalPasswordUpdate] = useState(false);
     const [passwordUpdateData, setPasswordUpdateData] = useState({userID: null, password: null});
+    
+    const [modalUserDelete, setModalUserDelete] = useState(false);
+    const [userDeleteData, setUserDeleteData] = useState({userID: null});
 
     useEffect(() => {
         axios
@@ -91,6 +109,8 @@ function Users() {
                 }
             })
             .then( () => {
+                setModalUserDelete(false);
+                toast.success("User deleted!");
                 setUsers((prevUsers) => prevUsers.filter(user => user.id !== id));
             })
             .catch((error) => {
@@ -108,7 +128,6 @@ function Users() {
     }
 
     const updateUserPassword = () => {
-        console.log(passwordUpdateData);
         axios
             .put(MAIN_API_URL + `/admin/users/${passwordUpdateData.userID}/password`, {
                 pass_hash: sha3_256(passwordUpdateData.password)
@@ -120,8 +139,71 @@ function Users() {
                 }
             })
             .then( () => {
-                setModalPasswordOpened(false);
+                setModalPasswordUpdate(false);
                 toast.success("Password updated!");
+            })
+            .catch((error) => {
+                if (error.response) {
+                    toast.error(error.response.data.detail.msg);
+                }
+                else if (error.request) {
+                    // client never received a response, or request never left
+                    toast.error("Network error! Please check your connection.");
+                }
+                else {
+                    toast.error("Unknown error! Please try again.");
+                }
+            });
+    }
+
+    const verifyUser = (id) => {
+        axios
+            .put(MAIN_API_URL + `/admin/users/${id}/activate`, {}, {
+                headers: {
+                    "Allow-Control-Allow-Origin": "*",
+                    "Content-Type": "application/json",
+                    "Token": getToken()
+                }
+            })
+            .then( () => {
+                toast.success("User status set to verified!");
+                setUsers((prevUsers) => prevUsers.map(user => {
+                    if (user.id === id) {
+                        user.verified = true;
+                    }
+                    return user;
+                }));
+            })
+            .catch((error) => {
+                if (error.response) {
+                    toast.error(error.response.data.detail.msg);
+                }
+                else if (error.request) {
+                    // client never received a response, or request never left
+                    toast.error("Network error! Please check your connection.");
+                }
+                else {
+                    toast.error("Unknown error! Please try again.");
+                }
+            });
+    }
+    const disableUser = (id) => {
+        axios
+            .put(MAIN_API_URL + `/admin/users/${id}/deactivate`, {}, {
+                headers: {
+                    "Allow-Control-Allow-Origin": "*",
+                    "Content-Type": "application/json",
+                    "Token": getToken()
+                }
+            })
+            .then( () => {
+                toast.success("User status set to unverified!");
+                setUsers((prevUsers) => prevUsers.map(user => {
+                    if (user.id === id) {
+                        user.verified = false;
+                    }
+                    return user;
+                }));
             })
             .catch((error) => {
                 if (error.response) {
@@ -150,31 +232,29 @@ function Users() {
                 <td className="break-all">{user.iban}</td>
                 <td className="text-center">{convertDate(user.dateRegister)}</td>
                 <td className="text-center">{convertDate(user.dateLogin)}</td>
-                <td className="text-center"><button className="select-none" title="Delete user" onClick={() => deleteUser(user.id)}>🗑️</button></td>
-                <td  className="text-center">
-                    <button className="select-none" title="Change password" onClick={() => {
-                        setPasswordUpdateData(prevData => {
-                            return {userID: prevData.userID=user.id, password: prevData.password};
-                        });
-                        setModalPasswordOpened(true);
-                    }}>🔏</button>
+                <td className="text-center w-16">
+                    <div className="flex flex-wrap">
+                        <button className="select-none" title="Delete user" onClick={() => {
+                            setUserDeleteData({userID: user.id});
+                            setModalUserDelete(true);
+                        }}>🗑️</button>                
+                        <button className="select-none" title="Change password" onClick={() => {
+                            setPasswordUpdateData(prevData => {
+                                return {userID: prevData.userID=user.id, password: prevData.password};
+                            });
+                            setModalPasswordUpdate(true);
+                        }}>🔏</button>
+                        <button className="select-none" title="Verify user" onClick={() => {
+                            verifyUser(user.id);
+                        }}>✔️</button>
+                        <button className="select-none" title="Disable user" onClick={() => {
+                            disableUser(user.id);
+                        }}>❌</button>
+                    </div>
                 </td>
             </tr>
         )
     })
-    const customStyles = {
-        content: {
-          top: '50%',
-          left: '50%',
-          right: 'auto',
-          bottom: 'auto',
-          marginRight: '-50%',
-          transform: 'translate(-50%, -50%)',
-          width: "30rem",
-          borderRadius: "000px",
-          fontFamily: "White Rabbit Regular"
-        },
-      };
 
     return (
         <div>
@@ -200,15 +280,14 @@ function Users() {
                     </tbody>
                 </table>
                 <Modal
-                    closeTimeoutMS={200}
-                    isOpen={modalPasswordOpened}
-                    style={customStyles}
+                    isOpen={modalPasswordUpdate}
+                    style={modalStyle}
                     onAfterClose={() => setPasswordUpdateData({userID: null, password: null})}
                     appElement={document.getElementById('root')}
                 >
                     
                     <div className="">
-                        <button className="float-right mb-10" onClick={() => {setModalPasswordOpened(false);}}>❌</button>
+                        <button className="float-right mb-10 select-none" onClick={() => {setModalPasswordUpdate(false);}}>❌</button>
                         <h1 className="mb-5">Changing password for user {passwordUpdateData.userID}</h1>
                         <form className="flex flex-col gap-6 mx-20">
                             <input
@@ -222,6 +301,20 @@ function Users() {
                         </form>
                     </div>
                 </Modal>
+                <Modal
+                    isOpen={modalUserDelete}
+                    style={modalStyle}
+                    onAfterClose={() => setUserDeleteData({userID: null})}
+                    appElement={document.getElementById('root')}
+                >
+                    
+                    <div className="">
+                        <button className="float-right mb-10 select-none" onClick={() => setModalUserDelete(false)}>❌</button>
+                        <h1 className="mb-5">Changing password for user {userDeleteData.userID}</h1>
+                        <h2>Are you sure you want to delete this user?</h2>
+                        <button type="button" onClick={() => deleteUser(userDeleteData.userID)}>Submit</button>
+                    </div>
+                </Modal>
             </div>
             <button className="mt-6 flex flex-row items-center px-4 py-1 bg-amber-300 select-none"><img className="h-4" src="/assets/icons/text.svg" alt="icon"/>Export</button>
         </div>
@@ -230,6 +323,8 @@ function Users() {
 
 function Ideas() {
     const [ideas, setIdeas] = useState([]);
+    const [modalDeleteIdea, setModalDeleteIdea] = useState(false);
+    const [deleteIdeaData, setDeleteIdeaData] = useState({ideaID: null});
 
     useEffect(() => {
         axios
@@ -267,6 +362,8 @@ function Ideas() {
                 }
             })
             .then( () => {
+                setModalDeleteIdea(false);
+                toast.success("Idea deleted!");
                 setIdeas((prevIdeas) => prevIdeas.filter(idea => idea.id !== id));
             })
             .catch((error) => {
@@ -306,7 +403,14 @@ function Ideas() {
                 <td className="text-center">{idea.price}</td>
                 <td className="text-center">{idea.likes}</td>
                 {/* <td>{idea.categories}</td> */}
-                <td><button className="select-none" title="Delete idea" onClick={() => deleteIdea(idea.id)}>🗑️</button></td>
+                <td>
+                    <button className="select-none" title="Delete idea" onClick={
+                        () => {
+                            setDeleteIdeaData({ideaID: idea.id});
+                            setModalDeleteIdea(true);
+                        }
+                    }>🗑️</button>
+                </td>
             </tr>
         )
     })
@@ -334,6 +438,24 @@ function Ideas() {
                     {ideas_rows}
                 </tbody>
             </table>
+            <Modal
+                closeTimeoutMS={200}
+                isOpen={modalDeleteIdea}
+                style={modalStyle}
+                onAfterClose={() => setDeleteIdeaData({ideaID: null})}
+                appElement={document.getElementById('root')}
+            >    
+                <div className="">
+                    <button className="float-right mb-10 select-none" onClick={() => setModalDeleteIdea(false)}>❌</button>
+                    <h1 className="mb-5 break-all">
+                        Deleting idea <Link to={"/marketplace/buy/" + deleteIdeaData.ideaID} target="_blank">
+                            {deleteIdeaData.ideaID}
+                        </Link>
+                    </h1>
+                    <h2>Are you sure you want to delete the idea?</h2>
+                    <button type="button" onClick={() => deleteIdea(deleteIdeaData.ideaID)}>Confirm</button>
+                </div>
+            </Modal>
         </div>
     );
 }
@@ -479,8 +601,17 @@ function Payouts() {
 function Logs() {
     const [messages, setMessages] = useState([]);
     const [ws, setWs] = useState(null);
+    const [status, setStatus] = useState();
 
     useEffect(() => {
+        switch(ws?.readyState) {
+            case 0: setStatus("CONNECTING"); break;
+            case 1: setStatus("CONNECTED 💔"); break;
+            case 2: setStatus("DISCONNECTING"); break;
+            default:
+            case 3: setStatus("DISCONNECTED 🔗"); break;
+            
+        }
         if(ws !== null) {
             ws.onopen = () => {
                 console.log('WebSocket Connected');
@@ -491,11 +622,18 @@ function Logs() {
                 setMessages((prevMessages) => [message, ...prevMessages]);
             }
 
-            return () => {
-                ws.onclose = () => {
-                    console.log('WebSocket Disconnected');
+            ws.onclose = () => {
+                console.log('WebSocket Disconnected');
+                switch(ws?.readyState) {
+                    case 0: setStatus("CONNECTING"); break;
+                    case 1: setStatus("CONNECTED 💔"); break;
+                    case 2: setStatus("DISCONNECTING"); break;
+                    default:
+                    case 3: setStatus("DISCONNECTED 🔗"); break;
+                    
                 }
             }
+            
         }
     }, [ws]);
 
@@ -521,7 +659,7 @@ function Logs() {
 
     return(
         <div className="flex flex-col">
-            <button className="select-none" onClick={() => toggleConnection()}>{ws?.readyState===1 ? "💔" : "🔗"}</button>
+            <button className="select-none" onClick={() => toggleConnection()}>{status}</button>
             <textarea className="w-auto h-[30rem] mx-2 overflow-y-auto" id="log" defaultValue={messages} readOnly />
         </div>
     )
