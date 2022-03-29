@@ -31,10 +31,17 @@ import BuyIdea from './marketplace/buyview/BuyIdea';
 import Checkout from './idea/Checkout';
 import Invoice from './account/Invoice';
 
+import ReactGA from "react-ga4";
+const TRACKING_ID = "G-1RXKNX9BN3";
+ReactGA.initialize(TRACKING_ID);
 
 export default function App() {
     const [authContext, setAuthContext] = useState("unauthenticated");
     const location = useLocation();
+
+    useEffect(() => {
+        ReactGA.send({ hitType: "pageview", page: window.location.pathname });
+    }, []);
 
     // side effect for changing page title based on location
     useEffect(() => {
