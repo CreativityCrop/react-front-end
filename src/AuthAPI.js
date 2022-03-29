@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 // IMPORTANT IMPORTANT IMPORTANT 
 // SET TO TRUE IF MAKING A BUILD
-const IS_PRODUCTION = false;
+const IS_PRODUCTION = true;
 
 
 // when running on a local server, the api url needs to be specified, 

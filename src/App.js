@@ -31,8 +31,8 @@ import BuyIdea from './marketplace/buyview/BuyIdea';
 import Checkout from './idea/Checkout';
 import Invoice from './account/Invoice';
 
-import ReactGA from 'react-ga';
-const TRACKING_ID = "UA-220438183-5"; // OUR_TRACKING_ID
+import ReactGA from "react-ga4";
+const TRACKING_ID = "G-1RXKNX9BN3";
 ReactGA.initialize(TRACKING_ID);
 
 export default function App() {
@@ -40,7 +40,7 @@ export default function App() {
     const location = useLocation();
 
     useEffect(() => {
-        ReactGA.pageview(window.location.pathname + window.location.search);
+        ReactGA.send({ hitType: "pageview", page: window.location.pathname });
     }, []);
 
     // side effect for changing page title based on location
