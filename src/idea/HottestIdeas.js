@@ -14,7 +14,10 @@ export default function HottestIdeas(props) {
         axios.get(MAIN_API_URL + "/ideas/get-hottest", {
             headers: {
                 "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*"
+                "Access-Control-Allow-Origin": "*",
+                'Cache-Control': 'no-cache',
+                'Pragma': 'no-cache',
+                'Expires': '0',
             }
         })
         .then((response) => {

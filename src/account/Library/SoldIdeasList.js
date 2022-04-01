@@ -23,7 +23,10 @@ export default function SoldIdeasList() {
                 headers: {
                     "Token": getToken(),
                     "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin": "*"
+                    "Access-Control-Allow-Origin": "*",
+                    'Cache-Control': 'no-cache',
+                    'Pragma': 'no-cache',
+                    'Expires': '0',
                 }
             })
             .then((response) => {
