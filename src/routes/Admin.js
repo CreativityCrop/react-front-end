@@ -32,22 +32,10 @@ export default function Admin() {
     return (
         <div className="mt-5 mb-20 flex flex-col gap-6">
             <AuthProvider />
-            <div id="payouts">
-                <h1 className="mb-4 text-black text-left text-3xl select-none">Payouts</h1>
-                <Payouts />
-            </div>
-            <div id="users">
-                <h1 className="mb-4 text-black text-left text-3xl select-none">Users</h1>
-                <Users />
-            </div>
-            <div id="ideas">
-                <h1 className="mb-4 text-black text-left text-3xl select-none">Ideas</h1>
-                <Ideas />
-            </div>
-            <div>
-                <h1 className="mb-4 text-black text-center text-3xl select-none">FastAPI uvicorn log</h1>
-                <Logs/>
-            </div>
+            <Payouts />
+            <Users />
+            <Ideas />
+            <Logs/>
         </div>
     );
 }
@@ -64,6 +52,18 @@ const convertDate = (date) => {
     return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
 }
 
+const downloadFile = (res, filename) => {
+    const file = new Blob([res.data], {type: 'text/csv'});
+    const fileURL = window.URL.createObjectURL(file);
+    const link = document.createElement('a');
+    link.href = fileURL;
+    link.setAttribute('download', filename);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(fileURL);
+}
+
 function Users() {
     const [users, setUsers] = useState([]);
     
@@ -72,6 +72,11 @@ function Users() {
     
     const [modalUserDelete, setModalUserDelete] = useState(false);
     const [userDeleteData, setUserDeleteData] = useState({userID: null});
+    const [refresh, setRefresh] = useState(0);
+
+    useEffect(() => {
+        setRefresh(prevRefresh => prevRefresh + 1);
+    }, []);
 
     useEffect(() => {
         axios
@@ -97,7 +102,7 @@ function Users() {
                     toast.error("Unknown error! Please try again.");
                 }
             });
-    }, []);
+    }, [refresh]);
 
     const deleteUser = (id) => {
         axios
@@ -219,6 +224,30 @@ function Users() {
             });
     }
 
+    const exportUsers = () => {
+        axios
+            .get(MAIN_API_URL + "/admin/users/export", {
+                headers: {
+                    "Allow-Control-Allow-Origin": "*",
+                    "Content-Type": "text/csv",
+                    "Token": getToken()
+                }
+            }).then(res => {
+                downloadFile(res, "users.csv");
+            }).catch((error) => {
+                if (error.response) {
+                    toast.error(error.response.data.detail.msg);
+                }
+                else if (error.request) {
+                    // client never received a response, or request never left
+                    toast.error("Network error! Please check your connection.");
+                }
+                else {
+                    toast.error("Unknown error! Please try again.");
+                }
+            });
+    }
+
     const users_rows = users?.map(user => {
         return (
             <tr key={user.id}>
@@ -257,7 +286,8 @@ function Users() {
     })
 
     return (
-        <div>
+        <div id="users">
+            <h1 className="mb-4 text-black text-left text-3xl select-none">Users <button title="Refresh" onClick={() => setRefresh(prevRefresh => prevRefresh + 1)}>🔄</button></h1>
             <div className="overflow-x-auto">
                 <table className="">
                     <thead className="text-center">
@@ -279,44 +309,48 @@ function Users() {
                         {users_rows}
                     </tbody>
                 </table>
-                <Modal
-                    isOpen={modalPasswordUpdate}
-                    style={modalStyle}
-                    onAfterClose={() => setPasswordUpdateData({userID: null, password: null})}
-                    appElement={document.getElementById('root')}
-                >
-                    
-                    <div className="">
-                        <button className="float-right mb-10 select-none" onClick={() => {setModalPasswordUpdate(false);}}>❌</button>
-                        <h1 className="mb-5">Changing password for user {passwordUpdateData.userID}</h1>
-                        <form className="flex flex-col gap-6 mx-20">
-                            <input
-                                type="password"
-                                onChange={
-                                    (e) => setPasswordUpdateData(prevData => {
-                                            return {userID: prevData.userID, password: e.target.value}
-                                        })
-                            }></input>
-                            <button type="button" onClick={() => updateUserPassword()}>Submit</button>
-                        </form>
-                    </div>
-                </Modal>
-                <Modal
-                    isOpen={modalUserDelete}
-                    style={modalStyle}
-                    onAfterClose={() => setUserDeleteData({userID: null})}
-                    appElement={document.getElementById('root')}
-                >
-                    
-                    <div className="">
-                        <button className="float-right mb-10 select-none" onClick={() => setModalUserDelete(false)}>❌</button>
-                        <h1 className="mb-5">Changing password for user {userDeleteData.userID}</h1>
-                        <h2>Are you sure you want to delete this user?</h2>
-                        <button type="button" onClick={() => deleteUser(userDeleteData.userID)}>Submit</button>
-                    </div>
-                </Modal>
             </div>
-            <button className="mt-6 flex flex-row items-center px-4 py-1 bg-amber-300 select-none"><img className="h-4" src="/assets/icons/text.svg" alt="icon"/>Export</button>
+            <Modal
+                isOpen={modalPasswordUpdate}
+                style={modalStyle}
+                onAfterClose={() => setPasswordUpdateData({userID: null, password: null})}
+                appElement={document.getElementById('root')}
+            >
+                
+                <div className="">
+                    <button className="float-right mb-10 select-none" onClick={() => {setModalPasswordUpdate(false);}}>❌</button>
+                    <h1 className="mb-5">Changing password for user {passwordUpdateData.userID}</h1>
+                    <form className="flex flex-col gap-6 mx-20">
+                        <input
+                            type="password"
+                            onChange={
+                                (e) => setPasswordUpdateData(prevData => {
+                                        return {userID: prevData.userID, password: e.target.value}
+                                    })
+                        }></input>
+                        <button type="button" onClick={() => updateUserPassword()}>Submit</button>
+                    </form>
+                </div>
+            </Modal>
+            <Modal
+                isOpen={modalUserDelete}
+                style={modalStyle}
+                onAfterClose={() => setUserDeleteData({userID: null})}
+                appElement={document.getElementById('root')}
+            >
+                
+                <div className="">
+                    <button className="float-right mb-10 select-none" onClick={() => setModalUserDelete(false)}>❌</button>
+                    <h1 className="mb-5">Changing password for user {userDeleteData.userID}</h1>
+                    <h2>Are you sure you want to delete this user?</h2>
+                    <button type="button" onClick={() => deleteUser(userDeleteData.userID)}>Submit</button>
+                </div>
+            </Modal>
+            <button
+                onClick={() => exportUsers()}
+                className="mt-6 flex flex-row items-center px-4 py-1 bg-amber-300 select-none">
+                    <img className="h-4" src="/assets/icons/text.svg" alt="icon"/>Export
+            </button>
         </div>
     );
 }
@@ -325,6 +359,11 @@ function Ideas() {
     const [ideas, setIdeas] = useState([]);
     const [modalDeleteIdea, setModalDeleteIdea] = useState(false);
     const [deleteIdeaData, setDeleteIdeaData] = useState({ideaID: null});
+    const [refresh, setRefresh] = useState(0);
+
+    useEffect(() => {
+        setRefresh(prevRefresh => prevRefresh + 1);
+    }, []);
 
     useEffect(() => {
         axios
@@ -350,7 +389,7 @@ function Ideas() {
                     toast.error("Unknown error! Please try again.");
                 }
             });
-    }, []);
+    }, [refresh]);
 
     const deleteIdea = (id) => {
         axios
@@ -416,28 +455,32 @@ function Ideas() {
     })
 
     return (
-        <div className="overflow-x-auto">
-            <table  className="">
-                <thead className="text-center select-none">
-                    <tr>
-                        <th>Image</th>
-                        <th title="Seller ID">👨‍🌾</th>
-                        <th title="Buyer ID">👩‍💼</th>
-                        <th>Title</th>
-                        <th>Short Desc</th>
-                        <th>Published</th>
-                        <th>Expires</th>
-                        <th>Bought</th>
-                        <th>$</th>
-                        <th title="Likes">👍</th>
-                        {/* <th title="Categories">📃</th> */}
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {ideas_rows}
-                </tbody>
-            </table>
+        <div id="ideas">
+            <h1 className="mb-4 text-black text-left text-3xl select-none">Ideas <button title="Refresh" onClick={() => setRefresh(prevRefresh => prevRefresh + 1)}>🔄</button></h1>
+            
+            <div className="overflow-x-auto">
+                <table  className="">
+                    <thead className="text-center select-none">
+                        <tr>
+                            <th>Image</th>
+                            <th title="Seller ID">👨‍🌾</th>
+                            <th title="Buyer ID">👩‍💼</th>
+                            <th>Title</th>
+                            <th>Short Desc</th>
+                            <th>Published</th>
+                            <th>Expires</th>
+                            <th>Bought</th>
+                            <th>$</th>
+                            <th title="Likes">👍</th>
+                            {/* <th title="Categories">📃</th> */}
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {ideas_rows}
+                    </tbody>
+                </table>
+            </div>
             <Modal
                 closeTimeoutMS={200}
                 isOpen={modalDeleteIdea}
@@ -462,6 +505,11 @@ function Ideas() {
 
 function Payouts() {
     const [payouts, setPayouts] = useState([]);
+    const [refresh, setRefresh] = useState(0);
+
+    useEffect(() => {
+        setRefresh(prevRefresh => prevRefresh + 1);
+    }, []);
 
     useEffect(() => {
         axios
@@ -487,7 +535,7 @@ function Payouts() {
                     toast.error("Unknown error! Please try again.");
                 }
             });
-    }, []);
+    }, [refresh]);
 
     const completePayout = (id) => {
         axios
@@ -552,6 +600,30 @@ function Payouts() {
             });
     }
 
+    const exportPayouts = () => {
+        axios
+            .get(MAIN_API_URL + "/admin/payouts/export", {
+                headers: {
+                    "Allow-Control-Allow-Origin": "*",
+                    "Content-Type": "text/csv",
+                    "Token": getToken()
+                }
+            }).then(res => {
+                downloadFile(res, "payouts.csv");
+            }).catch((error) => {
+                if (error.response) {
+                    toast.error(error.response.data.detail.msg);
+                }
+                else if (error.request) {
+                    // client never received a response, or request never left
+                    toast.error("Network error! Please check your connection.");
+                }
+                else {
+                    toast.error("Unknown error! Please try again.");
+                }
+            });
+    }
+
     const payouts_rows = payouts?.map(payout => {
         return (
             <tr key={payout.ideaID}>
@@ -571,7 +643,8 @@ function Payouts() {
     })
 
     return (
-        <div>
+        <div id="payouts">
+            <h1 className="mb-4 text-black text-left text-3xl select-none">Payouts <button title="Refresh" onClick={() => setRefresh(prevRefresh => prevRefresh + 1)}>🔄</button></h1>
             <div className="overflow-x-auto">
                 <table className="">
                     <thead className="text-center select-none">
@@ -593,7 +666,11 @@ function Payouts() {
                     </tbody>
                 </table>
             </div>
-            <button className="mt-6 flex flex-row items-center px-4 py-1 bg-amber-300 select-none"><img className="h-4" src="/assets/icons/text.svg" alt="icon"/>Export</button>
+            <button
+                onClick={() => exportPayouts()}
+                className="mt-6 flex flex-row items-center px-4 py-1 bg-amber-300 select-none">
+                    <img className="h-4" src="/assets/icons/text.svg" alt="icon"/>Export
+            </button>
         </div>
     );
 }
@@ -658,7 +735,8 @@ function Logs() {
     }
 
     return(
-        <div className="flex flex-col">
+        <div id="log" className="flex flex-col">
+            <h1 className="mb-4 text-black text-center text-3xl select-none">FastAPI uvicorn log</h1>
             <button className="select-none" onClick={() => toggleConnection()}>{status}</button>
             <textarea className="w-auto h-[30rem] mx-2 overflow-y-auto" id="log" defaultValue={messages} readOnly />
         </div>
