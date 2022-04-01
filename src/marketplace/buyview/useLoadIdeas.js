@@ -28,7 +28,10 @@ export default function useLoadIdeas(pageNumber, category) {
         axios.get(url, {
             headers: {
                 "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*"
+                "Access-Control-Allow-Origin": "*",
+                'Cache-Control': 'no-cache',
+                'Pragma': 'no-cache',
+                'Expires': '0'
             },
             cancelToken: new axios.CancelToken( c=> cancel = c)
         }).then( (response) => {
