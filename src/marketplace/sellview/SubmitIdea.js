@@ -45,59 +45,28 @@ export default function SubmitIdea() {
 
     const postIdea = (data) => {
         const status = toast.loading("Idea is uploading...", { autoClose: 5000 });
+        const idea_data = new FormData();
+        idea_data.append("title", data.title);
+        idea_data.append("image", data.image[0]);
+        idea_data.append("short_desc", data.shortDescription);
+        idea_data.append("long_desc", data.longDescription);
+        idea_data.append("price", data.price);
+        idea_data.append("categories",  data.categories?.map(category => category.value));    
+        files.forEach(file => idea_data.append("files", file, file.name));
+    
         axios
-            .post(MAIN_API_URL + "/ideas/post", {
-                "title": data.title,
-                "short_desc": data.shortDescription,
-                "long_desc": data.longDescription,
-                "categories": data.categories?.map(category => category.value),
-                "price": data.price
-            }, {
+            .post(MAIN_API_URL + "/ideas/post2", idea_data, {
                 headers: {
                     "Token": getToken(),
-                    "Content-Type": "application/json",
+                    "Content-Type": "multi-part/form-data",
                     "Access-Control-Allow-Origin": "*"
                 }
             })
             .then((response) => {
-                toast.update(status, { render: "Idea is uploaded! Uploading files now!", type: "loading", isLoading: true, autoClose: 5000 });
-                const formData = new FormData();
-                files.forEach(file => {
-                    formData.append("files", file, file.name);
-                });
-                formData.append("files", data.image[0], "title-" + data.image[0].name);
-                axios.post(MAIN_API_URL + "/files/upload?idea_id=" + response.data, formData, {
-                    headers: {
-                        "Token": getToken(),
-                        "Content-type": "multipart/form-data",
-                        "Access-Control-Allow-Origin": "*"
-                    }
-                })
-                    .then(() => {
-                        toast.update(status, { render: "Idea and files uploaded successfully! Redirecting in 5 sec.", type: "success", isLoading: false, autoClose: 5000 });
-                        // toast.success("Idea was uploaded successfully! Redirecting in 5 sec.");
-                        clearForm();
-                        setTimeout(() => navigate("/marketplace/buy"), 5000)
-                    })
-                    .catch((error) => {
-                        if (error.response?.status === 401) {
-                            removeToken("expired");
-                            setAuthContext("unauthenticated");
-                        }
-                        else if (error.response) {
-                            toast.update(status, { render: error.response.data.detail.msg, type: "error", isLoading: false, autoClose: 5000 });
-                            // toast.error(error.response.data.detail.msg);
-                        }
-                        else if (error.request) {
-                            // client never received a response, or request never left
-                            toast.update(status, { render: "Network error! Please check your connection.", type: "error", isLoading: false, autoClose: 5000 });
-                            // toast.error("Network error! Please check your connection.");
-                        }
-                        else {
-                            toast.update(status, { render: "Unknown error! Please try again.", type: "error", isLoading: false, autoClose: 5000 });
-                            // toast.error("Unknown error! Please try again.");
-                        }
-                    });
+                toast.update(status, { render: "Idea and files uploaded successfully! Redirecting in 5 sec.", type: "success", isLoading: false, autoClose: 5000 });
+                // toast.success("Idea was uploaded successfully! Redirecting in 5 sec.");
+                clearForm();
+                setTimeout(() => navigate("/marketplace/buy"), 5000);
             })
             .catch((error) => {
                 if (error.response?.status === 401) {
