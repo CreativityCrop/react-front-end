@@ -1856,8 +1856,8 @@ select {
     width: 11rem;
   }
 
-  .md\:w-\[45rem\] {
-    width: 45rem;
+  .md\:w-\[40rem\] {
+    width: 40rem;
   }
 
   .md\:max-w-\[100vw\] {
