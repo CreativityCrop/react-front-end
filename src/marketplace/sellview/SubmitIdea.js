@@ -51,7 +51,7 @@ export default function SubmitIdea() {
         idea_data.append("short_desc", data.shortDescription);
         idea_data.append("long_desc", data.longDescription);
         idea_data.append("price", data.price);
-        idea_data.append("categories",  data.categories?.map(category => category.value));    
+        data.categories?.forEach(category => idea_data.append("categories", category.value))
         files.forEach(file => idea_data.append("files", file, file.name));
     
         axios

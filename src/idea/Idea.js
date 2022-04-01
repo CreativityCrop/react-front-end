@@ -124,7 +124,7 @@ function ShortDescription(props) {
         return(null);
     }
     return(
-            <p className="text-base break-all ">
+            <p className="text-base break-all whitespace-pre-line">
                 { props.listView ?
                     props.shortDesc.substring(0, 150) + (props.shortDesc.length<=150 ? "" : " ...") :
                     props.shortDesc }
@@ -138,7 +138,7 @@ function LongDescription(props) {
         return(null);
     }
     return(
-        <div id="long-desc" className="break-all">
+        <div id="long-desc" className="break-all whitespace-pre-line">
             <p>
                 { props.listView ?
                         props.longDesc.substring(0, 150) + (props.longDesc.length<=150 ? "" : " ...") :

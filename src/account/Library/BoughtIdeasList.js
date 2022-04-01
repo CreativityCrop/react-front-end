@@ -81,7 +81,7 @@ export default function BoughtIdeasList() {
                 }
                 {
                     error &&
-                    <div className="text-white">
+                    <div className="text-white text-center text-lg">
                         <h1>{error.title}</h1>
                         <p>{error.msg}</p>
                     </div>
