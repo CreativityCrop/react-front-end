@@ -2,7 +2,7 @@
 /*           This is work in progress            */
 
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Modal from 'react-modal';
 import axios from "axios";
@@ -65,6 +65,7 @@ const downloadFile = (res, filename) => {
 }
 
 function Users() {
+    const navigate = useNavigate();
     const [users, setUsers] = useState([]);
     
     const [modalPasswordUpdate, setModalPasswordUpdate] = useState(false);
@@ -79,6 +80,7 @@ function Users() {
     }, []);
 
     useEffect(() => {
+        if(refresh === 0) return;
         axios
             .get(MAIN_API_URL + "/admin/users", {
                 headers: {
@@ -92,6 +94,11 @@ function Users() {
             })
             .catch((error) => {
                 if (error.response) {
+                    if(error.response.data.detail.errno === 601) {
+                        navigate("/");
+                        toast.info("You are not allowed to access this resource!");
+                        return;
+                    }
                     toast.error(error.response.data.detail.msg);
                 }
                 else if (error.request) {
@@ -102,7 +109,7 @@ function Users() {
                     toast.error("Unknown error! Please try again.");
                 }
             });
-    }, [refresh]);
+    }, [refresh, navigate]);
 
     const deleteUser = (id) => {
         axios
@@ -366,6 +373,7 @@ function Ideas() {
     }, []);
 
     useEffect(() => {
+        if(refresh === 0) return;
         axios
             .get(MAIN_API_URL + "/admin/ideas", {
                 headers: {
@@ -379,6 +387,9 @@ function Ideas() {
             })
             .catch((error) => {
                 if (error.response) {
+                    if(error.response.data.detail.errno === 601) {
+                        return;
+                    }
                     toast.error(error.response.data.detail.msg);
                 }
                 else if (error.request) {
@@ -512,6 +523,7 @@ function Payouts() {
     }, []);
 
     useEffect(() => {
+        if(refresh === 0) return;
         axios
             .get(MAIN_API_URL + "/admin/payouts", {
                 headers: {
@@ -525,6 +537,9 @@ function Payouts() {
             })
             .catch((error) => {
                 if (error.response) {
+                    if(error.response.data.detail.errno === 601) {
+                        return;
+                    }
                     toast.error(error.response.data.detail.msg);
                 }
                 else if (error.request) {
