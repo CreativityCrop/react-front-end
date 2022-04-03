@@ -116,17 +116,32 @@ export default function SubmitIdea() {
     });
 
     const handleCategoriesChange = (value) => setCategoriesInputData({ value });
-    const handleCategoriesInputChange = (inputValue) =>
+    const handleCategoriesInputChange = (inputValue) => {
+        if(inputValue.endsWith(" ") && !inputValue.startsWith(" ")) {
+            const { value } = categoriesInputData;
+            if (value.map(item => item.value).indexOf(inputValue) !== -1) return;
+            setCategoriesInputData({
+                inputValue: "",
+                value: [...value, createOption(inputValue)]
+            });
+            return;
+        }
+
+
         setCategoriesInputData({ inputValue: inputValue, value: categoriesInputData.value });
+    };
     const handleCategoriesKeyDown = (event) => {
         const { inputValue, value } = categoriesInputData;
         if (!inputValue) return;
         // console.log(event.key);
         switch (event.key) {
-            case ' ':
+            // case ' ':
             case 'Enter':
             case 'Tab':
-                if (value.map(item => item.value).indexOf(inputValue) !== -1) return;
+                if (value.map(item => item.value).indexOf(inputValue) !== -1) {
+                    event.preventDefault();
+                    return;
+                }
                 setCategoriesInputData({
                     inputValue: "",
                     value: [...value, createOption(inputValue)]
@@ -172,7 +187,7 @@ export default function SubmitIdea() {
     });
 
     return (
-        <div className="container items-center p-8 w-[46rem] border-4 sm:p-4 sm:w-[23.5rem] bg-maxbluepurple border-maxbluepurple">
+        <div className="container items-center p-8 w-[46rem] border-4 sm:p-4 max-w-[100vw] bg-maxbluepurple border-maxbluepurple">
             <form className="flex flex-col" onSubmit={handleSubmit(postIdea)}>
                 <div className="flex flex-row gap-4 w-full mb-4">
                     {/* Container to visualise Image and input for uploading it */}
@@ -266,7 +281,7 @@ export default function SubmitIdea() {
                                     handleCategoriesInputChange(event);
                                 }
                             }
-                            placeholder="Categories: Type and press enter or tab"
+                            placeholder={<span>Categories (<span className='text-sm'>words, separated by space<span className='sm:hidden md:hidden'> or Tab / Enter</span></span>)</span>}
                             value={categoriesInputData.value}
                         />
                     )}
