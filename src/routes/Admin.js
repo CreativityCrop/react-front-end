@@ -696,22 +696,30 @@ function Logs() {
     const [status, setStatus] = useState();
 
     useEffect(() => {
-        switch(ws?.readyState) {
-            case 0: setStatus("CONNECTING"); break;
-            case 1: setStatus("CONNECTED 💔"); break;
-            case 2: setStatus("DISCONNECTING"); break;
-            default:
-            case 3: setStatus("DISCONNECTED 🔗"); break;
-            
-        }
         if(ws !== null) {
             ws.onopen = () => {
                 console.log('WebSocket Connected');
+                switch(ws?.readyState) {
+                    case 0: setStatus("CONNECTING"); break;
+                    case 1: setStatus("CONNECTED 💔"); break;
+                    case 2: setStatus("DISCONNECTING"); break;
+                    default:
+                    case 3: setStatus("DISCONNECTED 🔗"); break;
+                    
+                }
             }
 
             ws.onmessage = (e) => {
                 const message = e.data + "\n";
                 setMessages((prevMessages) => [message, ...prevMessages]);
+                switch(ws?.readyState) {
+                    case 0: setStatus("CONNECTING"); break;
+                    case 1: setStatus("CONNECTED 💔"); break;
+                    case 2: setStatus("DISCONNECTING"); break;
+                    default:
+                    case 3: setStatus("DISCONNECTED 🔗"); break;
+                    
+                }
             }
 
             ws.onclose = () => {
