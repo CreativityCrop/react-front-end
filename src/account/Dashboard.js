@@ -1,4 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
+import { useLocation } from 'react-router-dom';
+
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { MAIN_API_URL, getToken, removeToken, AuthContext } from '../AuthAPI';
@@ -17,6 +19,8 @@ export default function Dashboard() {
     // vars to hold non finished payment things
     const [retryPayment, setRetryPayment] = useState(null);
     const [unfinishedPaymentChanged, setUnfinishedPaymentChanged] = useState(false);
+    const query = new URLSearchParams(useLocation().search);
+    const redirectStatus = query.get("redirect_status");
 
     // side effect to fetch account data, updates on first render and if unfinished payment has changed state
     useEffect(() => {
@@ -52,10 +56,16 @@ export default function Dashboard() {
 
     // side effect to spawn a toast notification for unfinished payment
     useEffect(() => {
-        if(userData.unfinishedPaymentIntent) {
+        if(userData.unfinishedPaymentIntent && redirectStatus !== "succeeded") {
             toast.warning("You have unfinished payment for an idea!");
         }
-    }, [userData]);
+    }, [userData, redirectStatus]);
+
+    useEffect( () => {
+        if(redirectStatus === "succeeded") {
+            toast.info("Your idea should arrive soon. Refresh for updates.")
+        }
+    }, [redirectStatus]);
 
     const cancelPayment = (idea_id) => {
         axios
@@ -99,8 +109,9 @@ export default function Dashboard() {
     return(
         <div className="flex flex-col gap-8 select-none">
             {
+                //redirect_status=succeeded
                 // display div only if there is unfinished payment
-                userData.unfinishedPaymentIntent &&
+                userData.unfinishedPaymentIntent && redirectStatus !== "succeeded" &&
                 <div id="finish-payment" className="w-fit bg-maxbluepurple p-6 m-auto   "> 
                     <p className="mb-6 sm:mb-4"><strong>You have unfinished payment for idea:</strong> {userData.unfinishedPaymentIdea.title}</p>
                     <div className="flex flex-row justify-between"> 

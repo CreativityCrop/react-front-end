@@ -693,7 +693,7 @@ function Payouts() {
 function Logs() {
     const [messages, setMessages] = useState([]);
     const [ws, setWs] = useState(null);
-    const [status, setStatus] = useState();
+    const [status, setStatus] = useState("DISCONNECTED 🔗");
 
     useEffect(() => {
         if(ws !== null) {
