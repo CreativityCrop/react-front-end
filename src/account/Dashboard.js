@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -12,6 +12,7 @@ import Idea from '../idea/Idea';
 
 // Component that holds all account related components
 export default function Dashboard() {
+    const navigate = useNavigate();
     const [, setAuthContext] = useContext(AuthContext);
     // the default avatarURL is an empty image blob, to prevent image not found while loading data
     const [userData, setUserData] = useState({avatarURL: "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="});
@@ -19,7 +20,8 @@ export default function Dashboard() {
     // vars to hold non finished payment things
     const [retryPayment, setRetryPayment] = useState(null);
     const [unfinishedPaymentChanged, setUnfinishedPaymentChanged] = useState(false);
-    const query = new URLSearchParams(useLocation().search);
+    const location = useLocation();
+    const query = new URLSearchParams(location.search);
     const redirectStatus = query.get("redirect_status");
 
     // side effect to fetch account data, updates on first render and if unfinished payment has changed state
@@ -50,7 +52,6 @@ export default function Dashboard() {
                 else {
                     setError({title: "Unknown error!", msg: "Please try again."});
                 }
-            
             });
     }, [setAuthContext, unfinishedPaymentChanged]);
 
@@ -62,10 +63,41 @@ export default function Dashboard() {
     }, [userData, redirectStatus]);
 
     useEffect( () => {
-        if(redirectStatus === "succeeded") {
-            toast.info("Your idea should arrive soon. Refresh for updates.")
-        }
-    }, [redirectStatus]);
+        // if(redirectStatus === "succeeded") {
+        //     toast.info("Your idea should arrive soon. Refresh for updates.")
+        // }
+        location.search && axios
+            .get(MAIN_API_URL + "/payment/status" + location.search, {
+                headers: {
+                    "Token": getToken(),
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*"
+                }
+            })
+            .then((response) => {
+                if(response.data.status === "succeeded") {
+                    navigate("/account");
+                    return;
+                }
+                toast.info(response.data.message);
+            })
+            .catch((err) => {
+                if(err.response.status === 401) {
+                    removeToken();
+                    setAuthContext("unauthenticated");
+                }
+                else if (err.response) {
+                    setError(err.response.data.detail);
+                }
+                else if (err.request) {
+                    // client never received a response, or request never left
+                    setError({title: "Network error!", msg: "Please check your connection."});
+                }
+                else {
+                    setError({title: "Unknown error!", msg: "Please try again."});
+                }
+            });
+    }, [location.search, setAuthContext, navigate]);
 
     const cancelPayment = (idea_id) => {
         axios
