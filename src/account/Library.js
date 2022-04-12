@@ -1,5 +1,5 @@
-import BoughtIdeasList from './Library/BoughtIdeasList';
-import SoldIdeasList from './Library/SoldIdeasList';
+import BoughtIdeasList from './library/BoughtIdeasList';
+import SoldIdeasList from './library/SoldIdeasList';
 
 // Component for user library
 export default function Library() {
