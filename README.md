@@ -1,4 +1,4 @@
-# CreativityCrop React Frond End
+# CreativityCrop React Front End
 
 This is the front end for the CreativityCrop project. Created with Create React App and Tailwind CSS.
 
