@@ -6,14 +6,9 @@ import Cookies from 'universal-cookie';
 import jwt_decode from "jwt-decode";
 import { toast } from "react-toastify";
 
-// IMPORTANT IMPORTANT IMPORTANT 
-// SET TO TRUE IF MAKING A BUILD
-const IS_PRODUCTION = false;
-
-
 // when running on a local server, the api url needs to be specified, 
 // when running on the actual host it is automatically fetched
-export const MAIN_API_URL = IS_PRODUCTION ? '/api' : 'http://creativitycrop.tech/api';
+export const MAIN_API_URL = process.env.REACT_APP_MAIN_API_URL;
 
 // creating intercomponent context for the authentication status
 export const AuthContext = React.createContext();
@@ -22,8 +17,8 @@ export const AuthContext = React.createContext();
 const cookies = new Cookies();
 const cookieParams = {
     path: '/',
-    domain: IS_PRODUCTION && "creativitycrop.tech",
-    secure: IS_PRODUCTION, // in development, for production set to TRUE
+    domain: process.env.REACT_APP_DOMAIN,
+    secure: process.env.NODE_ENV === 'production', // in development, for production set to TRUE
     sameSite: "strict"
 };
 

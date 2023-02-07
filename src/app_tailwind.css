@@ -1200,6 +1200,9 @@ select {
 .via-yankeesblue {
   --tw-gradient-stops: var(--tw-gradient-from), #1a2238, var(--tw-gradient-to, rgb(26 34 56 / 0));
 }
+.fill-yankeesblue {
+  fill: #1a2238;
+}
 .object-contain {
   object-fit: contain;
 }

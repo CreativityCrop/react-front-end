@@ -23,7 +23,7 @@ export default function TermsAndConditions() {
                         <strong>You </strong> (also referred to as “User”) refers to the individual accessing or using the <strong>service</strong>, or the company, or other legal entity on behalf of which such individual is accessing or using the <strong>service</strong>, as applicable.
                     </li>
                     <li className="mt-3">
-                        <strong>Service</strong> (also referred as “Application”, “Website” or “Product”) refers to the web software program, named CreativityCrop and accessible at <a href="https://creativitycrop.tech/">https://creativitycrop.tech</a>, provided by the <strong>company </strong>and used by <strong>you</strong> on any device
+                        <strong>Service</strong> (also referred as “Application”, “Website” or “Product”) refers to the web software program, named CreativityCrop and accessible at <a href={process.env.REACT_APP_URL}>https://creativitycrop.tech</a>, provided by the <strong>company </strong>and used by <strong>you</strong> on any device
                     </li>
                     <li className="mt-3">
                         <strong>Account</strong> means a unique account created for <strong>you</strong> to access our <strong>service</strong>.
@@ -38,7 +38,7 @@ export default function TermsAndConditions() {
                         <strong>Usage Data</strong> refers to data collected automatically, either generated using the <strong>service</strong> or from the <strong>service</strong> infrastructure itself (for example, the duration of a page visit).
                     </li>
                     <li className="mt-3">
-                        <strong>Privacy Policy </strong> refers to the document published at <a href="https://creativitycrop.tech/privacy-policy">https://creativitycrop.tech/privacy-policy</a>
+                        <strong>Privacy Policy </strong> refers to the document published at <a href={process.env.REACT_APP_URL + "/privacy-policy"}>https://creativitycrop.tech/privacy-policy</a>
                     </li>
                     <li className="mt-3">
                         <strong>Service Provider</strong> means any natural or legal person who processes data on behalf of the	<strong>company</strong>. It refers to third-party companies or individuals employed by the <strong>company</strong> to facilitate the <strong>service</strong>, to provide the <strong>service</strong> on behalf of the <strong>company</strong>, to perform services related to the <strong>service</strong> or to assist the <strong>company</strong> in analyzing how the <strong>service</strong> is used.

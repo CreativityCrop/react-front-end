@@ -29,7 +29,7 @@ export default function PrivacyPolicy() {
                         <strong>You </strong> (also referred to as “user”) refers to the individual accessing or using the <strong>service</strong>, or the company, or other legal entity on behalf of which such individual is accessing or using the <strong>service</strong>, as applicable.
                     </li>
                     <li className="mt-2">
-                        <strong>Service</strong> (also referred as “application”, “website” or “product”) refers to the web software program, named CreativityCrop and accessible at <a href="https://creativitycrop.tech/">https://creativitycrop.tech</a>, provided by the <strong>company </strong>and used by <strong>you</strong> on any device
+                        <strong>Service</strong> (also referred as “application”, “website” or “product”) refers to the web software program, named CreativityCrop and accessible at <a href={process.env.REACT_APP_URL}>https://creativitycrop.tech</a>, provided by the <strong>company </strong>and used by <strong>you</strong> on any device
                     </li>
                     <li className="mt-2">
                         <strong>Service provider</strong> means any natural or legal person who processes data on behalf of the <strong>company</strong>. It refers to third-party companies or individuals employed by the <strong>company</strong> to facilitate the <strong>service</strong>, to provide the <strong>service</strong> on behalf of the <strong>company</strong>, to perform services related to the <strong>service</strong> or to assist the <strong>company</strong> in analysing how the <strong>service</strong> is used.
